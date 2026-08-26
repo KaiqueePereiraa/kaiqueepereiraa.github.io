@@ -105,30 +105,29 @@ main, .site-header, .site-footer, .depth-rail, .wa-float { position: relative; z
 
 /* header sempre com leve fundo escuro (o hero é claro) */
 /* ---- Cabeçalho: a própria BORDA de baixo é uma linha d'água ondulando.
-   Um mask corta o retângulo do header numa onda; o mask desliza de lado
-   para dar movimento de água. ------------------------------------------- */
+   Uma ÚNICA onda (sem tiling, esticada em 100%) recorta o retângulo do
+   header — nada de emendas nem "quadradinhos". O mask sobe/desce e
+   balança de leve para dar movimento de água. -------------------------- */
 body[data-page="ein"] .site-header {
   background: rgba(4,18,27,.42); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   border-bottom: 0;
-  --wave-h: 16px;
-  --wave: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27140%27%20height%3D%2718%27%20viewBox%3D%270%200%20140%2018%27%3E%3Cpath%20d%3D%27M0%200%20H140%20V9%20C116%205%2094%205%2070%209%20C46%2013%2024%2013%200%209%20Z%27%20fill%3D%27%23000%27%2F%3E%3C%2Fsvg%3E");
+  --wave-h: 15px;
+  --wave: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%271200%27%20height%3D%2720%27%20viewBox%3D%270%200%201200%2020%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%200%20H1200%20V11%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20q%20-37.5%20-6%20-75%200%20q%20-37.5%206%20-75%200%20Z%27%20fill%3D%27%23000%27%2F%3E%3C%2Fsvg%3E");
   -webkit-mask:
-    linear-gradient(#000 0 0) top / 100% calc(100% - var(--wave-h)) no-repeat,
-    var(--wave) 0 100% / 140px var(--wave-h) repeat-x;
+    linear-gradient(#000 0 0) center top / 100% calc(100% - var(--wave-h)) no-repeat,
+    var(--wave) 0% 100% / 132% var(--wave-h) no-repeat;
           mask:
-    linear-gradient(#000 0 0) top / 100% calc(100% - var(--wave-h)) no-repeat,
-    var(--wave) 0 100% / 140px var(--wave-h) repeat-x;
-  animation: hdr-water 11s linear infinite;
+    linear-gradient(#000 0 0) center top / 100% calc(100% - var(--wave-h)) no-repeat,
+    var(--wave) 0% 100% / 132% var(--wave-h) no-repeat;
+  animation: hdr-water 15s ease-in-out infinite alternate;
 }
 body[data-page="ein"] .site-header.scrolled { background: rgba(4,18,27,.82); border-bottom: 0; }
 /* folga extra embaixo pra onda não encostar no menu */
 body[data-page="ein"] .site-header { padding-bottom: 24px; }
 body[data-page="ein"] .site-header.scrolled { padding-bottom: 18px; }
 @keyframes hdr-water {
-  to {
-    -webkit-mask-position: top, 140px 100%;
-            mask-position: top, 140px 100%;
-  }
+  from { -webkit-mask-position: center top,   0% 100%; mask-position: center top,   0% 100%; }
+  to   { -webkit-mask-position: center top, 100% 100%; mask-position: center top, 100% 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   body[data-page="ein"] .site-header { animation: none; }
