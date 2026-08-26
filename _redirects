@@ -1,0 +1,4 @@
+# Netlify — redireciona www para o domínio raiz (spec P0-3)
+https://www.wasfit.com.br/*   https://wasfit.com.br/:splat   301!
+http://www.wasfit.com.br/*    https://wasfit.com.br/:splat   301!
+http://wasfit.com.br/*        https://wasfit.com.br/:splat    301!
