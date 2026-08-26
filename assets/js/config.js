@@ -402,13 +402,14 @@ window.WASFIT = {
         'Você tem fluxo ativo de rematrícula e reposição?',
         'Seu WhatsApp responde à noite e no fim de semana, quando as famílias pesquisam?',
       ],
-      // resultado por nº de "Não"
+      // resultado por nº de "Não" — 3 faixas: 0-1 / 2-3 / 4-5
       resultados: [
-        { max: 0, titulo: 'Operação redonda', texto: 'Sua escola já tem processo. O WasFit tira o trabalho manual do meio.' },
-        { max: 2, titulo: 'Dá pra apertar', texto: 'Alguns furos no funil. O WasFit fecha essas brechas em 30 minutos.' },
-        { max: 5, titulo: 'Sua escola precisa do WasFit agora', texto: '3 ou mais "não" = matrícula escapando toda semana. Vamos resolver.' },
+        { max: 1, titulo: 'Sua escola já está no caminho certo.', texto: 'Você tem uma base organizada — o Assist entra pra tirar o repetitivo do seu time e responder mais rápido do que hoje.' },
+        // [DADO FICTÍCIO] no plano: "...representa algumas matrículas por mês" — recolocar quando houver número real de matrículas perdidas/mês.
+        { max: 3, titulo: 'Você está perdendo matrícula sem perceber.', texto: 'Alguns leads estão escapando pela falta de resposta rápida ou de follow-up. É exatamente onde o Assist entra.' },
+        { max: 5, titulo: 'Sua escola está deixando dinheiro na mesa todo mês.', texto: 'Sem resposta rápida, sem follow-up e sem controle de onde o lead está, a maior parte da perda de matrícula acontece antes mesmo de alguém da equipe saber que o lead existiu.' },
       ],
-      cta: { label: 'Quero minha vaga', evento: 'clique_vaga', plano: 'fundador' },
+      cta: { label: 'Ver os planos', evento: 'viu_planos' },
     },
     incluido: {
       eyebrow: 'O que está incluído',

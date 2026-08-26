@@ -78,11 +78,11 @@
       <span>WasFit</span>
     </a>
     <nav class="nav" aria-label="Principal">
-      <a href="#evento">O evento</a>
       <a href="#prova">Prova real</a>
       <a href="#mgb">Metodologia</a>
       <a href="#planos">Planos</a>
-      <a href="#diagnostico">Autodiagnóstico</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#vaga">O evento</a>
       <a href="/">Site</a>
     </nav>
     <div class="header-actions">
@@ -116,8 +116,8 @@
         <span class="node">Converte</span>
       </div>
       <div class="btn-row mt-m">
-        <a class="btn btn--grad btn--lg" href="#vaga" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
-        <a class="btn btn--ghost btn--lg" href="#evento" data-evt="clique_evento">Ver o Assist ao vivo no EIN</a>
+        <a class="btn btn--grad btn--lg" href="#planos" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
+        <a class="btn btn--ghost btn--lg" href="#vaga" data-evt="clique_evento">Ver o Assist ao vivo no EIN</a>
       </div>
       <p class="mono-label mt-s"><svg width="13" height="13" style="vertical-align:-2px" aria-hidden="true"><use href="#i-pin"/></svg> 15–17 de outubro de 2026 · São Paulo · Estande WasFit</p>
     </div>
@@ -125,49 +125,6 @@
       <img src="/assets/img/wavi.png" alt="" width="460" height="325">
     </div>
     <div class="scroll-cue" aria-hidden="true"><span>Mergulhe</span><span class="arw"></span></div>
-  </section>
-
-  <div class="lane-sep lane-sep--ein" aria-hidden="true">
-    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>O evento</em></span></span>
-  </div>
-
-  <!-- ================= O EVENTO — território EIN (tela cheia) ================= -->
-  <section id="evento" class="section ein-section" aria-labelledby="ev-h">
-   <div class="container">
-    <div class="section-head rise">
-      <p><img class="ein-logo-mark" style="height:38px" src="/assets/img/ein-logo.png" alt="EIN — Encontro Internacional de Natação"></p>
-      <p class="save-the-date mt-s">Save the date — 15, 16 e 17 de outubro</p>
-      <h2 id="ev-h" class="display-2">O maior encontro de natação do país. <span class="accent-ein">A WasFit vai estar lá.</span></h2>
-      <p class="lead">Três dias de gestores, técnicos e escolas de todo o Brasil no Encontro Internacional de Natação. Passe no estande e veja o Assist atender um lead de verdade, ao vivo.</p>
-    </div>
-    <div class="pass rise" data-delay="1">
-      <div class="pass-brand">
-        <span class="pass-brand-mark">WasFit</span>
-        <span class="credencial">no EIN 2026</span>
-      </div>
-      <div class="pass-head">
-        <span class="k">Onde vamos estar</span>
-        <span class="v" data-cfg="ein.evento.nome">Encontro Internacional de Natação</span>
-      </div>
-      <dl class="pass-meta">
-        <div><dt><svg width="11" height="11" aria-hidden="true"><use href="#i-pin"/></svg> Local</dt><dd data-cfg="ein.evento.local">Centro de Convenções Senac Santo Amaro · São Paulo</dd></div>
-        <div><dt>Data</dt><dd data-cfg="ein.evento.dias">15, 16 e 17 de outubro de 2026</dd></div>
-        <div><dt>Estande</dt><dd data-cfg="ein.evento.estande">Estande WasFit</dd></div>
-      </dl>
-      <p class="cd-label">Faltam para o evento</p>
-      <div class="countdown" data-countdown>
-        <div class="cd-cell cd-wrap"><b data-cd="d">–</b><span>dias</span></div>
-        <div class="cd-cell cd-wrap"><b data-cd="h">–</b><span>horas</span></div>
-        <div class="cd-cell cd-wrap"><b data-cd="m">–</b><span>min</span></div>
-        <div class="cd-cell cd-wrap"><b data-cd="s">–</b><span>seg</span></div>
-        <span class="live-msg">Acontecendo agora — passe no estande →</span>
-      </div>
-      <div class="btn-row mt-m">
-        <a class="btn btn--grad" data-agendamento href="#" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga antes do evento</a>
-        <a class="btn btn--ghost" data-wa data-pos="evento" href="https://wa.me/">Combinar um horário no estande</a>
-      </div>
-    </div>
-   </div>
   </section>
 
   <div class="lane-sep" aria-hidden="true">
@@ -279,6 +236,27 @@
   </section>
 
   <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Resultados</em></span></span>
+  </div>
+
+  <!-- ================= PROVA SOCIAL QUANTIFICADA (dados a confirmar) ================= -->
+  <section id="prova-social" class="section container" aria-labelledby="ps-h">
+    <div class="bubbles" data-n="3" aria-hidden="true"></div>
+    <div class="section-head section-head--center rise">
+      <h2 id="ps-h" class="display-2">Resultado, <span class="accent">não promessa.</span></h2>
+      <p class="lead">Números de escolas que já usam o Assist no dia a dia.</p>
+    </div>
+    <!-- TODO: [DADO FICTÍCIO] — todos os números abaixo são placeholders. Trocar por dados reais (ou por 1 depoimento real) antes de publicar. Buscar por data-placeholder="true". -->
+    <div class="grid grid-4 stat-cards rise" data-delay="1">
+      <div class="stat-card" data-placeholder="true"><b>+3.400</b><span>mensagens respondidas pela IA em escolas parceiras</span></div>
+      <div class="stat-card" data-placeholder="true"><b>92%</b><span>dos leads recebem a 1ª resposta em menos de 1 minuto</span></div>
+      <div class="stat-card" data-placeholder="true"><b>+27%</b><span>de aumento médio em matrículas por lead qualificado</span></div>
+      <div class="stat-card" data-placeholder="true"><b>12</b><span>escolas de natação já usando o Assist</span></div>
+    </div>
+    <p class="mono-label rise" style="text-align:center;margin-top:18px;color:#9fc9ee">Números de referência — a confirmar com dados reais antes do lançamento.</p>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Como funciona</em></span></span>
   </div>
 
@@ -338,8 +316,8 @@
     <div class="cta-bar rise mt-m">O melhor de cada conexão.</div>
   </section>
 
-  <!-- ================= A TRANSFORMAÇÃO ================= -->
-  <section class="section container" aria-labelledby="t-h">
+  <!-- ================= A TRANSFORMAÇÃO (antes/depois, com números) ================= -->
+  <section id="comparacao" class="section container" aria-labelledby="t-h">
     <div class="section-head rise">
       <span class="eyebrow">A transformação</span>
       <h2 id="t-h" class="display-2 mt-s">Menos fila.<br><span class="accent">Mais matrícula.</span></h2>
@@ -349,18 +327,24 @@
       <div class="col col--bad rise">
         <h3>Sem Assist</h3>
         <ul class="check-list">
-          <li>Fila de conversas</li><li>Lead esquecido</li>
-          <li>Resposta genérica</li><li>Gestão no escuro</li>
+          <li><span>Fila de conversas</span><em data-placeholder="true">tempo médio de resposta acima de 4 horas</em></li>
+          <li><span>Lead esquecido</span><em data-placeholder="true">até 40% dos leads não recebem um 2º contato</em></li>
+          <li><span>Resposta genérica</span><em>sem personalização por nível ou turma</em></li>
+          <li><span>Gestão no escuro</span><em>sem visibilidade de onde o lead travou</em></li>
         </ul>
       </div>
       <div class="col col--good rise" data-delay="1">
         <h3>Com Assist</h3>
         <ul class="check-list">
-          <li>Resposta imediata</li><li>Follow-up ativo</li>
-          <li>Argumento contextual</li><li>Funil visível</li>
+          <li><span>Resposta imediata</span><em>em segundos, 24 horas por dia</em></li>
+          <li><span>Follow-up ativo</span><em>a IA volta a falar com quem não respondeu</em></li>
+          <li><span>Argumento contextual</span><em>usa o vocabulário da Metodologia Gustavo Borges</em></li>
+          <li><span>Funil visível</span><em>todo lead rastreável do 1º contato à matrícula</em></li>
         </ul>
       </div>
     </div>
+    <!-- TODO: [DADO FICTÍCIO] recalcular com ticket médio e CAC reais de uma escola cliente -->
+    <p class="roi-line rise" data-placeholder="true">Uma matrícula perdida custa mais do que 3 meses de plano Essencial.</p>
   </section>
 
   <div class="lane-sep" aria-hidden="true">
@@ -400,9 +384,47 @@
         <h3>Responda as 5 perguntas</h3>
         <p>O resultado aparece aqui.</p>
         <div class="btn-row mt-s">
-          <a class="btn btn--grad" data-agendamento href="#" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
+          <a class="btn btn--grad" href="#planos" data-evt="viu_planos">Ver os planos</a>
+          <a class="btn btn--ghost" data-wa data-pos="diagnostico" href="https://wa.me/" data-evt="clique_contato">Falar agora no WhatsApp</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Perguntas</em></span></span>
+  </div>
+
+  <!-- ================= PERGUNTAS FREQUENTES ================= -->
+  <section id="faq" class="section container" aria-labelledby="faq-h">
+    <div class="section-head rise">
+      <h2 id="faq-h" class="display-2">Antes de decidir, <span class="accent">tire suas dúvidas.</span></h2>
+    </div>
+    <div class="faq rise" data-delay="1">
+      <details class="faq-item">
+        <summary>O Assist substitui minha secretária ou minha equipe?</summary>
+        <p>Não. Ele cuida do repetitivo — primeira resposta, qualificação, agendamento de experimental, follow-up de quem sumiu. Sua equipe entra pra fechar e cuidar do que só uma pessoa resolve bem.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Já uso outra plataforma de gestão. Dá pra migrar?</summary>
+        <p>Sim. A implantação com migração de outra plataforma custa R$ 1.000 a mais, e nossa equipe cuida da transição.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Meus dados e os dos alunos ficam seguros?</summary>
+        <p data-placeholder="true">A ser preenchido com a política de dados / LGPD da WasFit antes de publicar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Corro o risco de o WhatsApp ser bloqueado?</summary>
+        <p>Trabalhamos com a API oficial da Meta, a forma homologada de automação em escala — sem o risco de bloqueio de números não oficiais usados sozinhos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo leva para sair do zero até estar no ar?</summary>
+        <p>No ar em 30 minutos — o mesmo prazo informado no plano Essencial.</p>
+      </details>
+      <details class="faq-item">
+        <summary>E se eu não gostar depois de contratar?</summary>
+        <p>Sem fidelidade, cancele quando quiser, e a condição de lançamento inclui garantia de 30 dias.</p>
+      </details>
     </div>
   </section>
 
@@ -410,11 +432,29 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Planos</em></span></span>
   </div>
 
-  <!-- ================= PLANOS ================= -->
+  <!-- ================= PLANOS (consolidado — inclui a faixa de lançamento) ================= -->
   <section id="planos" class="section container" aria-labelledby="pl-h">
     <div class="section-head section-head--center rise">
       <h2 id="pl-h" class="display-2">Sem fidelidade. Preço único. <span class="accent">Cancele quando quiser.</span></h2>
-      <p class="lead">O mesmo preço para todo mundo. Quem entra agora ainda garante a condição de lançamento — <a href="#vaga">implantação grátis para os 20 primeiros ↓</a></p>
+    </div>
+
+    <!-- Faixa de lançamento: condição comercial, vale para qualquer plano abaixo -->
+    <div class="launch-band rise" data-launch data-delay="1">
+      <div class="lb-main">
+        <span class="eyebrow">Condição de lançamento — vale para qualquer plano</span>
+        <p class="lb-headline" data-launch-destaque>Implantação grátis — você não paga nada de entrada</p>
+        <ul class="lb-benefits" data-launch-beneficios>
+          <li>Preço travado enquanto for cliente</li>
+          <li>Garantia de 30 dias</li>
+          <li>Sem fidelidade</li>
+        </ul>
+        <p class="lb-prazo" data-launch-prazo>Válido até 31 de outubro de 2026</p>
+      </div>
+      <div class="lb-side">
+        <div class="lb-count"><span data-launch-num>20</span></div>
+        <div class="lb-count-label" data-launch-contador>de 20 vagas restantes</div>
+        <a class="btn btn--grad btn--block" data-agendamento href="#" data-launch-cta data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
+      </div>
     </div>
 
     <div class="plans">
@@ -494,36 +534,48 @@
     <div data-viu-planos aria-hidden="true"></div>
   </section>
 
-  <div class="lane-sep" aria-hidden="true">
-    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Sua vaga</em></span></span>
+  <div class="lane-sep lane-sep--ein" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>No EIN 2026</em></span></span>
   </div>
 
-  <!-- ================= CONDIÇÃO DE LANÇAMENTO ================= -->
-  <section id="vaga" class="section container" aria-labelledby="v-h">
+  <!-- ================= EVENTO EIN + URGÊNCIA FINAL (fusão) ================= -->
+  <section id="vaga" class="section ein-section" aria-labelledby="ev-h">
+   <div class="container">
     <div class="section-head rise">
-      <span class="eyebrow">Lançamento EIN 2026</span>
-      <h2 id="v-h" class="display-2 mt-s">Garanta a sua <span class="accent">condição de lançamento.</span></h2>
+      <p><img class="ein-logo-mark" style="height:38px" src="/assets/img/ein-logo.png" alt="EIN — Encontro Internacional de Natação"></p>
+      <p class="save-the-date mt-s">Save the date — 15, 16 e 17 de outubro</p>
+      <h2 id="ev-h" class="display-2">Vamos estar no maior encontro <span class="accent-ein">de natação do país.</span></h2>
+      <p class="lead">Três dias de gestores, técnicos e escolas de todo o Brasil no Encontro Internacional de Natação. Passe no estande e veja o Assist atender um lead de verdade, ao vivo.</p>
     </div>
-    <div class="launch rise" data-launch>
-      <div class="launch-inner">
-        <div>
-          <span class="eyebrow">Condição de lançamento</span>
-          <h3 class="display-3" data-launch-title>Condição de lançamento — Fundador</h3>
-          <p class="destaque" data-launch-destaque>Implantação grátis — você não paga nada de entrada</p>
-          <ul data-launch-beneficios>
-            <li>Preço travado enquanto for cliente</li>
-            <li>Garantia de 30 dias</li>
-            <li>Sem fidelidade</li>
-          </ul>
-          <p class="prazo" data-launch-prazo>Válido até 31 de outubro de 2026</p>
-        </div>
-        <div class="counter-box">
-          <div class="counter-num"><span data-launch-num>20</span></div>
-          <div class="counter-label" data-launch-contador>de 20 vagas restantes</div>
-          <a class="btn btn--grad btn--block" data-agendamento href="#" data-launch-cta data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
-        </div>
+    <div class="pass rise" data-delay="1">
+      <div class="pass-brand">
+        <span class="pass-brand-mark">WasFit</span>
+        <span class="credencial">no EIN 2026</span>
+      </div>
+      <div class="pass-head">
+        <span class="k">Onde vamos estar</span>
+        <span class="v" data-cfg="ein.evento.nome">Encontro Internacional de Natação</span>
+      </div>
+      <dl class="pass-meta">
+        <div><dt><svg width="11" height="11" aria-hidden="true"><use href="#i-pin"/></svg> Local</dt><dd data-cfg="ein.evento.local">Centro de Convenções Senac Santo Amaro · São Paulo</dd></div>
+        <div><dt>Data</dt><dd data-cfg="ein.evento.dias">15, 16 e 17 de outubro de 2026</dd></div>
+        <div><dt>Estande</dt><dd data-cfg="ein.evento.estande">Estande WasFit</dd></div>
+      </dl>
+      <p class="cd-label">Faltam para o evento</p>
+      <div class="countdown" data-countdown>
+        <div class="cd-cell cd-wrap"><b data-cd="d">–</b><span>dias</span></div>
+        <div class="cd-cell cd-wrap"><b data-cd="h">–</b><span>horas</span></div>
+        <div class="cd-cell cd-wrap"><b data-cd="m">–</b><span>min</span></div>
+        <div class="cd-cell cd-wrap"><b data-cd="s">–</b><span>seg</span></div>
+        <span class="live-msg">Acontecendo agora — passe no estande →</span>
+      </div>
+      <p class="pass-reinforce">As vagas de lançamento valem até o último dia do evento, <b>31 de outubro</b>. Depois disso, o preço padrão — sem implantação grátis — passa a valer.</p>
+      <div class="btn-row mt-m">
+        <a class="btn btn--grad" data-agendamento href="#" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga antes do evento</a>
+        <a class="btn btn--ghost" data-wa data-pos="evento" href="https://wa.me/">Combinar um horário no estande</a>
       </div>
     </div>
+   </div>
   </section>
 
   <!-- ================= CONTATO ================= -->
@@ -567,7 +619,7 @@
       <h2 id="cf-h" class="display-1 mt-s">Sua escola pode vender<br><span class="accent">enquanto você dorme.</span></h2>
       <p class="lead">Atendimento 24/7 com a inteligência do seu negócio e o acolhimento que cada família espera.</p>
       <div class="btn-row" style="justify-content:center">
-        <a class="btn btn--grad btn--lg" data-agendamento href="#" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
+        <a class="btn btn--grad btn--lg" href="#planos" data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
         <a class="btn btn--ghost btn--lg" data-wa data-pos="footer" href="https://wa.me/">Falar com a gente</a>
       </div>
       <p class="mono-label mt-m">Encontro Internacional de Natação · 15–17 out 2026 · São Paulo</p>
@@ -598,8 +650,8 @@
       </div>
       <div class="footer-col">
         <h4>Campanha</h4>
-        <a href="#evento">O evento</a>
-        <a href="#vaga">Condição de lançamento</a>
+        <a href="#planos">Planos e condição</a>
+        <a href="#vaga">O evento</a>
         <a href="#diagnostico">Autodiagnóstico</a>
       </div>
       <div class="footer-col">
