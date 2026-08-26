@@ -23,21 +23,27 @@
     setTimeout(function () { if (!$('.rise.in')) items.forEach(function (e) { e.classList.add('in'); }); }, 3500);
   });
 
-  /* -- 2. Régua de profundidade — cada marca leva a uma seção --------- */
+  /* -- 2. Régua de profundidade — marcos clicáveis + mergulhador ------
+     Os marcos ficam em ESPAÇOS IGUAIS na régua. O ponto verde anda
+     em ritmo VARIÁVEL (rápido onde as seções estão longe uma da outra,
+     devagar onde estão perto) para cair exatamente sobre o marco da
+     seção que está na tela. Mapa: posição de scroll de cada seção -> % fixo. */
   S(function () {
     var rail = $('.depth-rail');
     if (!rail) return;
     var track = $('.track', rail), diver = $('.diver', rail);
     if (!track || !diver) return;
 
-    // marcos principais: "a Xm de profundidade fica <seção>".
-    // Distribuídos em ESPAÇOS IGUAIS na régua (não pela posição real de scroll).
+    var OFFSET = 84;                 // header
+    var TOP = 4, SPAN = 84;          // faixa de posições dos marcos (%)
+
+    // os 5 pontos que mais pesam na decisão
     var stops = [
       { d: '0 m',   label: 'Superfície', sel: null },
       { d: '1,5 m', label: 'Prova real', sel: '#prova' },
       { d: '3 m',   label: 'Resultado',  sel: '#prova-social' },
       { d: '4,5 m', label: 'Planos',     sel: '#planos' },
-      { d: '6 m',   label: 'No EIN',     sel: '#vaga' }
+      { d: '6 m',   label: 'O evento',   sel: '#vaga' }
     ].filter(function (s) { return !s.sel || $(s.sel); });
 
     var doc = document.documentElement;
@@ -48,11 +54,11 @@
       var el = s.sel ? $(s.sel) : null;
       var node = document.createElement(s.sel ? 'a' : 'span');
       node.className = 'tick';
+      var railPos = stops.length > 1 ? TOP + (i / (stops.length - 1)) * SPAN : TOP;
+      node.style.top = railPos + '%';
       var db = document.createElement('b'); db.textContent = s.d;
       node.appendChild(db);
       node.appendChild(document.createTextNode(' · ' + s.label));
-      // espaçamento igual (3%..95% para não colar no topo nem na legenda)
-      node.style.top = (stops.length > 1 ? 3 + (i / (stops.length - 1)) * 92 : 3) + '%';
       if (s.sel) {
         node.href = s.sel;
         node.addEventListener('click', function (ev) {
@@ -63,27 +69,45 @@
         });
       }
       track.appendChild(node);
-      items.push({ node: node, el: el });
+      items.push({ node: node, el: el, rail: railPos });
     });
 
-    function place() { /* posições são fixas (espaços iguais) — nada a recalcular */ }
+    // segmentos: {sy = scroll onde a seção encosta no topo, rail = % fixo}
+    var segs = [];
+    function measure() {
+      segs = items.map(function (it) {
+        var sy = it.el ? Math.max(0, it.el.getBoundingClientRect().top + window.scrollY - OFFSET) : 0;
+        return { sy: sy, rail: it.rail };
+      });
+      // garante ordem crescente por scroll
+      segs.sort(function (a, b) { return a.sy - b.sy; });
+      segs.push({ sy: totalH(), rail: 100 });   // do último marco até o fundo
+    }
+
     var raf = 0;
     function upd() {
       raf = 0;
-      var p = Math.min(1, Math.max(0, window.scrollY / totalH()));
-      diver.style.top = (p * 100) + '%';
-      // marca ativa
-      var cur = null;
+      var y = window.scrollY, pos = segs[0].rail, active = null;
+      for (var i = 0; i < segs.length - 1; i++) {
+        var a = segs[i], b = segs[i + 1];
+        if (y <= a.sy) { pos = a.rail; break; }
+        if (y >= b.sy) { pos = b.rail; continue; }
+        pos = a.rail + (b.rail - a.rail) * ((y - a.sy) / Math.max(1, b.sy - a.sy));
+        break;
+      }
+      diver.style.top = pos + '%';
+      // marca ativa = último marco já alcançado
       items.forEach(function (it) {
-        if (it.el && it.el.getBoundingClientRect().top - 90 <= 0) cur = it.node;
+        if (it.el && (it.el.getBoundingClientRect().top - 96) <= 0) active = it.node;
       });
-      items.forEach(function (it) { it.node.classList.toggle('is-active', it.node === cur); });
+      items.forEach(function (it) { it.node.classList.toggle('is-active', it.node === active); });
     }
-    place();
-    window.addEventListener('resize', function () { place(); upd(); }, { passive: true });
-    window.addEventListener('load', place);
+
+    measure();
+    window.addEventListener('resize', function () { measure(); upd(); }, { passive: true });
+    window.addEventListener('load', function () { measure(); upd(); });
     window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
-    setTimeout(place, 400);
+    setTimeout(function () { measure(); upd(); }, 500);
     upd();
   });
 

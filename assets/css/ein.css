@@ -114,22 +114,22 @@ body[data-page="ein"] .site-header.scrolled { background: rgba(4,18,27,.82); }
   position: fixed; top: 0; bottom: 0; left: 12px;
   width: 30px; z-index: 40;
   display: flex; flex-direction: column; align-items: center;
-  padding: 100px 0 44px;
+  padding: 96px 0 30px;
   pointer-events: none;
 }
 .depth-rail .track {
-  position: relative; flex: 1; width: 2px; margin-bottom: 18px;
+  position: relative; flex: 1; width: 2px; margin-bottom: 12px;
   background: linear-gradient(180deg, transparent, rgba(255,255,255,.5) 8%, rgba(255,255,255,.28) 80%, transparent);
 }
 .depth-rail .tick {
   position: absolute; left: 50%; transform: translateX(-50%);
-  font-family: var(--font-mono); font-size: 8px; letter-spacing: .08em; text-transform: uppercase;
+  font-family: var(--font-mono); font-size: 7.5px; letter-spacing: .06em; text-transform: uppercase;
   color: rgba(255,255,255,.78); white-space: nowrap; text-decoration: none;
   writing-mode: vertical-rl; text-orientation: mixed;
-  text-shadow: 0 1px 4px rgba(0,0,0,.55);
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
   transition: color .16s, transform .16s;
 }
-.depth-rail .tick b { color: var(--teal); font-weight: 700; }
+.depth-rail .tick b { color: var(--teal); font-weight: 700; margin-block-end: 3px; }
 a.depth-rail__link, .depth-rail a.tick { pointer-events: auto; cursor: pointer; }
 .depth-rail a.tick:hover,
 .depth-rail a.tick:focus-visible { color: var(--teal); transform: translateX(-50%) scale(1.06); outline: none; }
@@ -154,11 +154,14 @@ a.depth-rail__link, .depth-rail a.tick { pointer-events: auto; cursor: pointer; 
 }
 @keyframes diver-bubbles { to { background-position: 0 -16px; } }
 .depth-rail .cap {
-  font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .18em;
-  color: rgba(255,255,255,.75); writing-mode: vertical-rl; text-transform: uppercase;
-  white-space: nowrap; text-shadow: 0 1px 4px rgba(0,0,0,.55);
+  font-size: 14px; line-height: 1; color: rgba(255,255,255,.7);
+  text-shadow: 0 1px 4px rgba(0,0,0,.55);
+  animation: cap-bob 1.8s ease-in-out infinite;
 }
-@media (prefers-reduced-motion: reduce) { .depth-rail .diver::after { animation: none; } }
+@keyframes cap-bob { 0%,100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) {
+  .depth-rail .diver::after, .depth-rail .cap { animation: none; }
+}
 @media (max-width: 1240px) { .depth-rail { display: none; } }
 
 /* ---- Divisor = DUAS RAIAS + NADADOR --------------------------------
