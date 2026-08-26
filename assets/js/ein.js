@@ -23,27 +23,68 @@
     setTimeout(function () { if (!$('.rise.in')) items.forEach(function (e) { e.classList.add('in'); }); }, 3500);
   });
 
-  /* -- 2. Régua de profundidade --------------------------------------- */
+  /* -- 2. Régua de profundidade — cada marca leva a uma seção --------- */
   S(function () {
     var rail = $('.depth-rail');
     if (!rail) return;
     var track = $('.track', rail), diver = $('.diver', rail);
     if (!track || !diver) return;
-    var ticks = [['Superfície', 4], ['−1,5 m', 33], ['−3 m', 60], ['−4 m · fundo', 84]];
-    ticks.forEach(function (t) {
-      var el = document.createElement('span');
-      el.className = 'tick'; el.textContent = t[0];
-      el.style.top = t[1] + '%';
-      track.appendChild(el);
+
+    // cada "profundidade" é um marco clicável para uma seção
+    var stops = [
+      { label: 'Superfície', sel: null },
+      { label: 'Prova real', sel: '#prova' },
+      { label: 'Resultado', sel: '#prova-social' },
+      { label: 'Planos', sel: '#planos' },
+      { label: 'No EIN', sel: '#vaga' }
+    ];
+    var doc = document.documentElement;
+    function totalH() { return Math.max(1, doc.scrollHeight - window.innerHeight); }
+
+    var items = [];
+    stops.forEach(function (s) {
+      var el = s.sel ? $(s.sel) : null;
+      if (s.sel && !el) return;
+      var node = document.createElement(s.sel ? 'a' : 'span');
+      node.className = 'tick';
+      node.textContent = s.label;
+      if (s.sel) {
+        node.href = s.sel;
+        node.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          try { el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+          catch (e) { el.scrollIntoView(); }
+          if (history.replaceState) history.replaceState(null, '', s.sel);
+        });
+      }
+      track.appendChild(node);
+      items.push({ node: node, el: el });
     });
+
+    function place() {
+      var h = totalH();
+      items.forEach(function (it) {
+        var frac = it.el ? (it.el.getBoundingClientRect().top + window.scrollY) / h : 0;
+        it.node.style.top = (Math.min(1, Math.max(0, frac)) * 100) + '%';
+      });
+    }
     var raf = 0;
     function upd() {
       raf = 0;
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      var p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+      var p = Math.min(1, Math.max(0, window.scrollY / totalH()));
       diver.style.top = (p * 100) + '%';
+      // marca ativa
+      var cur = null;
+      items.forEach(function (it) {
+        if (it.el && it.el.getBoundingClientRect().top - 90 <= 0) cur = it.node;
+      });
+      items.forEach(function (it) { it.node.classList.toggle('is-active', it.node === cur); });
     }
+    place();
+    window.addEventListener('resize', function () { place(); upd(); }, { passive: true });
+    window.addEventListener('load', place);
     window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    setTimeout(place, 400);
     upd();
   });
 

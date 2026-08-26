@@ -59,10 +59,10 @@
   </svg>
 </div>
 
-<aside class="depth-rail" aria-hidden="true">
-  <div class="track"><span class="diver"></span></div>
-  <span class="cap">↓ mais fundo, mais a IA entende</span>
-</aside>
+<nav class="depth-rail" aria-label="Ir para uma seção">
+  <div class="track"><span class="diver" aria-hidden="true"></span></div>
+  <span class="cap" aria-hidden="true">↓ mais fundo, mais a IA entende</span>
+</nav>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -124,7 +124,13 @@
     <div class="hero-art-wrap" aria-hidden="true">
       <img src="/assets/img/wavi.png" alt="" width="460" height="325">
     </div>
-    <div class="scroll-cue" aria-hidden="true"><span>Mergulhe</span><span class="arw"></span></div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Mergulhe</span>
+      <svg class="cue-hand" viewBox="0 0 40 52" fill="none">
+        <path d="M17 5a3 3 0 0 1 6 0v18l4.6-1.7a3 3 0 0 1 3.9 2.2l.2 1.1a6 6 0 0 1-1.2 5l-4.8 6c-1.5 1.9-3.8 3-6.2 3H17a8 8 0 0 1-6.6-3.5L6 34.7A3 3 0 0 1 10 30.6l3 2.4V8a3 3 0 0 1 4-2.8z" fill="currentColor"/>
+        <path class="cue-chev" d="M13 42l7 6 7-6" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
   </section>
 
   <div class="lane-sep" aria-hidden="true">
@@ -466,7 +472,7 @@
         </div>
         <div class="plan-price">R$ 597 <span>/mês</span></div>
         <div class="plan-note">Sem fidelidade. Cancele quando quiser.</div>
-        <div class="plan-impl">+ R$ 1.900 de implantação, uma única vez</div>
+        <div class="plan-impl"><s>+ R$ 1.900 de implantação, uma única vez</s><b class="impl-free">grátis na condição de lançamento</b></div>
         <ul class="plan-features">
           <li>1 unidade</li>
           <li>Até 2 números de WhatsApp</li>
@@ -492,7 +498,7 @@
         </div>
         <div class="plan-price">R$ 997 <span>/mês</span></div>
         <div class="plan-note">Sem fidelidade. Cancele quando quiser.</div>
-        <div class="plan-impl">+ R$ 2.900 de implantação, uma única vez</div>
+        <div class="plan-impl"><s>+ R$ 2.900 de implantação, uma única vez</s><b class="impl-free">grátis na condição de lançamento</b></div>
         <ul class="plan-features">
           <li class="ft-title">Tudo do Essencial, e mais:</li>
           <li>Até 2 unidades</li>
@@ -510,7 +516,7 @@
         </div>
         <div class="plan-price">A partir de R$ 1.347 <span>/mês</span></div>
         <div class="plan-note">R$ 1.347 para 3 unidades, mais R$ 350 por unidade adicional</div>
-        <div class="plan-impl">+ R$ 3.800 de implantação, mais R$ 900 por unidade adicional</div>
+        <div class="plan-impl"><s>+ R$ 3.800 de implantação, mais R$ 900 por unidade adicional</s><b class="impl-free">grátis na condição de lançamento</b></div>
         <ul class="plan-features">
           <li class="ft-title">Tudo do Escola, e mais:</li>
           <li>3 unidades ou mais</li>
