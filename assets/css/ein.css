@@ -104,8 +104,35 @@ body[data-page="ein"]::before { display: none; }   /* desliga o fundo padrão de
 main, .site-header, .site-footer, .depth-rail, .wa-float { position: relative; z-index: 2; }
 
 /* header sempre com leve fundo escuro (o hero é claro) */
-body[data-page="ein"] .site-header { background: rgba(4,18,27,.42); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-body[data-page="ein"] .site-header.scrolled { background: rgba(4,18,27,.82); }
+body[data-page="ein"] .site-header { background: rgba(4,18,27,.42); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 0; }
+body[data-page="ein"] .site-header.scrolled { background: rgba(4,18,27,.82); border-bottom: 0; }
+
+/* borda inferior do cabeçalho = linha d'água ondulando (o header fica "acima da água") */
+body[data-page="ein"] .site-header::before,
+body[data-page="ein"] .site-header::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%;
+  pointer-events: none; background-repeat: repeat-x;
+}
+body[data-page="ein"] .site-header::before {   /* onda de trás, mais suave */
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27120%27%20height%3D%2716%27%20viewBox%3D%270%200%20120%2016%27%3E%3Cpath%20d%3D%27M0%209%20Q15%202%2030%209%20T60%209%20T90%209%20T120%209%27%20fill%3D%27none%27%20stroke%3D%27%237fdcc4%27%20stroke-width%3D%272.5%27%20stroke-linecap%3D%27round%27%20stroke-dasharray%3D%273%209%27%20opacity%3D%270.7%27%2F%3E%3C%2Fsvg%3E");
+  background-size: 120px 16px;
+  opacity: .55;
+  animation: hdr-wave-b 9s linear infinite;
+}
+body[data-page="ein"] .site-header::after {    /* linha d'água tracejada, à frente */
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2780%27%20height%3D%2714%27%20viewBox%3D%270%200%2080%2014%27%3E%3Cpath%20d%3D%27M0%208%20Q10%202%2020%208%20T40%208%20T60%208%20T80%208%27%20fill%3D%27none%27%20stroke%3D%27%23d8f4ec%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-dasharray%3D%271.5%206%27%2F%3E%3C%2Fsvg%3E");
+  background-size: 80px 14px;
+  opacity: .7;
+  animation: hdr-wave-a 6s linear infinite;
+}
+@keyframes hdr-wave-a { to { background-position-x: 80px; } }
+@keyframes hdr-wave-b { to { background-position-x: -120px; } }
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="ein"] .site-header::before,
+  body[data-page="ein"] .site-header::after { animation: none; }
+}
 
 /* ---- Régua de profundidade (indicador de scroll temático) --------------
    Rótulos verticais (versão que o cliente preferiu) + legenda embaixo,
