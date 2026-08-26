@@ -30,24 +30,29 @@
     var track = $('.track', rail), diver = $('.diver', rail);
     if (!track || !diver) return;
 
-    // cada "profundidade" é um marco clicável para uma seção
+    // marcos principais: "a Xm de profundidade fica <seção>".
+    // Distribuídos em ESPAÇOS IGUAIS na régua (não pela posição real de scroll).
     var stops = [
-      { label: 'Superfície', sel: null },
-      { label: 'Prova real', sel: '#prova' },
-      { label: 'Resultado', sel: '#prova-social' },
-      { label: 'Planos', sel: '#planos' },
-      { label: 'No EIN', sel: '#vaga' }
-    ];
+      { d: '0 m',   label: 'Superfície', sel: null },
+      { d: '1,5 m', label: 'Prova real', sel: '#prova' },
+      { d: '3 m',   label: 'Resultado',  sel: '#prova-social' },
+      { d: '4,5 m', label: 'Planos',     sel: '#planos' },
+      { d: '6 m',   label: 'No EIN',     sel: '#vaga' }
+    ].filter(function (s) { return !s.sel || $(s.sel); });
+
     var doc = document.documentElement;
     function totalH() { return Math.max(1, doc.scrollHeight - window.innerHeight); }
 
     var items = [];
-    stops.forEach(function (s) {
+    stops.forEach(function (s, i) {
       var el = s.sel ? $(s.sel) : null;
-      if (s.sel && !el) return;
       var node = document.createElement(s.sel ? 'a' : 'span');
       node.className = 'tick';
-      node.textContent = s.label;
+      var db = document.createElement('b'); db.textContent = s.d;
+      node.appendChild(db);
+      node.appendChild(document.createTextNode(' · ' + s.label));
+      // espaçamento igual (3%..95% para não colar no topo nem na legenda)
+      node.style.top = (stops.length > 1 ? 3 + (i / (stops.length - 1)) * 92 : 3) + '%';
       if (s.sel) {
         node.href = s.sel;
         node.addEventListener('click', function (ev) {
@@ -61,13 +66,7 @@
       items.push({ node: node, el: el });
     });
 
-    function place() {
-      var h = totalH();
-      items.forEach(function (it) {
-        var frac = it.el ? (it.el.getBoundingClientRect().top + window.scrollY) / h : 0;
-        it.node.style.top = (Math.min(1, Math.max(0, frac)) * 100) + '%';
-      });
-    }
+    function place() { /* posições são fixas (espaços iguais) — nada a recalcular */ }
     var raf = 0;
     function upd() {
       raf = 0;

@@ -123,12 +123,13 @@ body[data-page="ein"] .site-header.scrolled { background: rgba(4,18,27,.82); }
 }
 .depth-rail .tick {
   position: absolute; left: 50%; transform: translateX(-50%);
-  font-family: var(--font-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
-  color: rgba(255,255,255,.8); white-space: nowrap; text-decoration: none;
+  font-family: var(--font-mono); font-size: 8px; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.78); white-space: nowrap; text-decoration: none;
   writing-mode: vertical-rl; text-orientation: mixed;
   text-shadow: 0 1px 4px rgba(0,0,0,.55);
   transition: color .16s, transform .16s;
 }
+.depth-rail .tick b { color: var(--teal); font-weight: 700; }
 a.depth-rail__link, .depth-rail a.tick { pointer-events: auto; cursor: pointer; }
 .depth-rail a.tick:hover,
 .depth-rail a.tick:focus-visible { color: var(--teal); transform: translateX(-50%) scale(1.06); outline: none; }
@@ -362,24 +363,22 @@ a.depth-rail__link, .depth-rail a.tick { pointer-events: auto; cursor: pointer; 
 
 .scroll-cue {
   position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 3;
   font-family: var(--font-mono); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.7);
 }
+/* traço original + mãozinha do arrasto, lado a lado */
+.scroll-cue .cue-row { display: flex; align-items: center; gap: 14px; }
 .scroll-cue .arw { width: 1px; height: 34px; background: linear-gradient(180deg, rgba(255,255,255,.7), transparent); position: relative; overflow: hidden; }
 .scroll-cue .arw::after { content: ""; position: absolute; left: 0; top: -34px; width: 1px; height: 34px; background: #fff; animation: cue 1.8s ease-in-out infinite; }
 @keyframes cue { to { top: 34px; } }
-/* mãozinha "deslize para baixo (mergulhe)" */
+/* mãozinha simulando o arrasto para baixo */
 .scroll-cue .cue-hand {
-  display: block; width: 26px; height: auto; color: #fff;
-  filter: drop-shadow(0 3px 8px rgba(0,0,0,.35));
-  animation: cue-hand 1.9s ease-in-out infinite;
+  display: block; width: 34px; height: auto; color: #fff;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.4));
+  animation: cue-drag 1.8s ease-in-out infinite;
 }
-.scroll-cue .cue-hand .cue-chev { opacity: .55; animation: cue-chev 1.9s ease-in-out infinite; }
-@keyframes cue-hand { 0%,100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
-@keyframes cue-chev { 0%,100% { opacity: .2; } 55% { opacity: .8; } }
-@media (prefers-reduced-motion: reduce) {
-  .scroll-cue .cue-hand, .scroll-cue .cue-hand .cue-chev { animation: none; }
-}
+@keyframes cue-drag { 0%, 100% { transform: translateY(-4px); } 50% { transform: translateY(10px); } }
+@media (prefers-reduced-motion: reduce) { .scroll-cue .cue-hand { animation: none; } }
 
 /* ====================================================================== */
 /*  TERRITÓRIO EIN — cores e elementos do Encontro Internacional de Natação */
