@@ -29,10 +29,10 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css?v=20260901">
-<link rel="stylesheet" href="/assets/css/styles.css?v=20260901">
-<link rel="stylesheet" href="/assets/css/ein.css?v=20260901">
-<link rel="stylesheet" href="/assets/css/home.css?v=20260901">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260901b">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260901b">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260901b">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260901b">
 
 <!-- GTM é injetado por main.js quando analytics.gtmId estiver preenchido no config.js (item 4) -->
 </head>
@@ -83,9 +83,9 @@
       <span>WasFit</span>
     </a>
     <nav class="nav" aria-label="Principal">
+      <a href="#prova">Prova real</a>
       <a href="#ias">As IAs</a>
       <a href="#planos">Planos</a>
-      <a href="#implantacao">Implantação</a>
       <a href="#faq">Perguntas</a>
     </nav>
     <div class="header-actions">
@@ -101,7 +101,7 @@
 
 <main id="conteudo">
 
-  <!-- ================= BLOCO 1 — HERO ================= -->
+  <!-- ================= BLOCO 01 — HERO ================= -->
   <section class="ein-hero">
     <div class="bubbles" data-n="3" aria-hidden="true"></div>
     <div class="container inner rise">
@@ -120,9 +120,12 @@
       </div>
       <div class="btn-row mt-m">
         <a class="btn btn--grad btn--lg" href="#planos" data-evt="clique_teste_gratis" data-plano="essencial">Testar grátis por 7 dias</a>
-        <a class="btn btn--ghost btn--lg" href="#" data-agendamento data-evt="clique_raiox" data-plano="rede">Peça um raio-x da sua escola</a>
       </div>
       <p class="mono-label mt-s">Sem cartão · No ar em 30 minutos</p>
+      <a class="hero-link" href="#" data-agendamento data-evt="clique_raiox" data-plano="rede">ou peça um raio-x da sua escola em 15 min →</a>
+      <div class="hero-trust" aria-hidden="true">
+        <span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span><span>Sem fidelidade</span>
+      </div>
     </div>
     <div class="hero-art-wrap" aria-hidden="true">
       <img src="/assets/img/wavi.png" alt="" width="460" height="325">
@@ -139,10 +142,50 @@
   </section>
 
   <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Prova real</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 02 — PROVA REAL (conversa + vídeo) ================= -->
+  <section id="prova" class="section container" aria-labelledby="prova-h">
+    <div class="section-head section-head--center rise">
+      <h2 id="prova-h" class="display-2">Não é promessa.<br><span class="accent">É a IA respondendo de verdade.</span></h2>
+      <p class="lead">Uma conversa real de um lead de natação, atendida pela IA do WasFit. Sem edição no conteúdo — nome e telefone trocados por privacidade.</p>
+    </div>
+    <div class="prova-grid rise" data-delay="1">
+      <div class="demo-frame" data-demo data-demo-key="home" data-evt-demo="viu_demo" role="button" tabindex="0" aria-label="Reproduzir vídeo de demonstração">
+        <div class="demo-poster">
+          <div class="demo-play"><svg aria-hidden="true"><use href="#i-play"/></svg></div>
+          <p class="ph-kind">Vídeo</p>
+          <p class="mono-label">A IA respondendo um lead no WhatsApp · ~60–90 s</p>
+          <p class="ph-note">[ mensagem: adicionar o vídeo depois ]</p>
+        </div>
+      </div>
+      <div class="wa-chat">
+        <div class="bar">
+          <span class="av">P</span>
+          <span class="who">Pai de aluno<span>online agora</span></span>
+        </div>
+        <div class="wa-body">
+          <div class="msg lead">oi, é da escola de natação? meu filho tem 5 anos e ainda não sabe nadar</div>
+          <div class="msg ia">[ Trecho ilustrativo temporário — colar aqui a CONVERSA REAL anonimizada, do primeiro contato até a aula experimental agendada, quando estiver disponível. ]</div>
+          <div class="msg lead">quero que ele aprenda com segurança, e talvez autossalvamento</div>
+          <div class="msg ia">Perfeito! Aqui as turmas seguem a Metodologia Gustavo Borges, organizadas por nível de habilidade. Quer que eu já deixe agendada uma aula experimental para ele conhecer a piscina e a professora?</div>
+          <div class="msg lead">quero sim</div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-row rise" style="justify-content:center;border-top:none;padding-top:34px" data-delay="2">
+      <div class="stat"><b>100%</b><span>respostas sem edição</span></div>
+      <div class="stat"><b>MGB</b><span>vocabulário da metodologia</span></div>
+      <div class="stat"><b>24/7</b><span>na conversa real</span></div>
+    </div>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>O problema</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 2 — O PROBLEMA ================= -->
+  <!-- ================= BLOCO 03 — O PROBLEMA ================= -->
   <section id="problema" class="section container" aria-labelledby="pr-h">
     <div class="bubbles" data-n="3" aria-hidden="true"></div>
     <div class="section-head rise">
@@ -154,18 +197,97 @@
       <div class="card card--num is-03 rise" data-delay="3"><span class="num">03</span><p><b>No fim do mês, você não sabe</b> quantas pessoas procuraram a escola e não fecharam.</p></div>
     </div>
     <p class="lead rise mt-m">Nenhum desses três é problema de esforço da sua equipe. É problema de não ter quem esteja acordado às onze da noite e quem registre tudo.</p>
+    <div class="cta-bar rise mt-m">Dinheiro ficando na mesa.</div>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Quem construiu</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 04 — QUEM CONSTRUIU ================= -->
+  <section id="quem-construiu" class="section container" aria-labelledby="qc-h">
+    <div class="qc-wrap">
+      <div class="section-head rise" style="margin-bottom:0">
+        <span class="eyebrow">Quem construiu</span>
+        <h2 id="qc-h" class="display-2 mt-s">Construímos para as nossas quatro unidades<br><span class="accent">antes de vender para a sua</span></h2>
+        <p class="lead" data-cfg="home.quemConstruiu.texto">São onze anos operando escolas de natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
+      </div>
+      <!-- FOTO REAL a adicionar: piscinas/fachadas/equipe. Enquanto não vem, fica o placeholder. -->
+      <figure class="qc-figure rise" data-delay="1" aria-label="As nossas unidades de natação">
+        <div class="ph-media">
+          <p class="ph-kind">Foto</p>
+          <p class="ph-desc">Piscina(s) da rede em aula, fachada das unidades ou a equipe — de preferência com pessoas.</p>
+          <p class="ph-note">[ mensagem: adicionar a foto real depois · ~1600×900 ]</p>
+        </div>
+        <figcaption>
+          <b>4</b><span>unidades próprias</span>
+          <b>11</b><span>anos operando</span>
+          <b>+1</b><span>ano rodando antes do mercado</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="lane-sep lane-sep--mgb" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Fala a língua da natação</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 05 — FALA A LÍNGUA DA NATAÇÃO (identidade MGB) ================= -->
+  <section id="lingua" class="section mgb-section" aria-labelledby="lg-h">
+    <div class="bubbles bubbles--mgb" data-n="5" aria-hidden="true"></div>
+    <img class="mgb-mascot mgb-mascot--1" src="/assets/img/mgb-mascot-polwerine.png" alt="" aria-hidden="true">
+    <img class="mgb-mascot mgb-mascot--2" src="/assets/img/mgb-mascot-flipo.png" alt="" aria-hidden="true">
+    <img class="mgb-mascot mgb-mascot--3" src="/assets/img/mgb-mascot-glover.png" alt="" aria-hidden="true">
+
+    <div class="container">
+      <div class="mgb-head rise">
+        <div class="mgb-brandline">
+          <img class="mgb-logo" src="/assets/img/mgb-credenciado.png" alt="Metodologia Gustavo Borges" width="76" height="76">
+          <span class="eyebrow eyebrow--mgb">Fala a língua da natação</span>
+        </div>
+        <h2 id="lg-h" class="display-2 mt-s">Ela não foi adaptada para natação.<br><span class="accent-mgb">Ela nasceu dentro de uma.</span></h2>
+        <p class="lead" style="max-width:64ch">A nossa IA sabe o que é troca de touca, o que é nível, o que é aula experimental, o que é reposição e o que é rematrícula. Não porque alguém escreveu isso num manual — porque ela foi treinada dentro de escolas de natação em operação, desde o primeiro dia de desenvolvimento.</p>
+      </div>
+
+      <div class="mgb-aguas rise" data-delay="1">
+        <span>Treinada na Metodologia Gustavo Borges</span>
+        <span class="mgb-toucas" title="Cada touca, um nível"><i></i><i></i><i></i><i></i><i></i></span>
+        <span>a IA fala a língua de cada nível</span>
+      </div>
+
+      <div class="chat-tag rise" data-delay="1" style="margin-top:28px">Exemplo ilustrativo</div>
+      <div class="wa-chat rise" data-delay="1" style="margin-top:10px">
+        <div class="bar">
+          <span class="av">P</span>
+          <span class="who">Pai de aluno<span>online agora</span></span>
+        </div>
+        <div class="wa-body">
+          <div class="msg lead">boa noite! o Théo pode trocar de touca esse mês?</div>
+          <div class="msg ia">Boa noite! O Théo está no nível 3, touca verde. A troca acontece quando a professora valida os objetivos do nível — no caso dele, flutuação e nado com respiração lateral.</div>
+          <div class="msg ia">A avaliação da turma dele é na próxima quarta. Se fechar os dois pontos, já sai com a touca do nível 4. Quer que eu te avise o resultado por aqui?</div>
+          <div class="msg lead">quero sim, obrigado</div>
+        </div>
+      </div>
+
+      <div class="chips rise mt-l" data-delay="2">
+        <span class="chip">Touca</span><span class="chip">Nível</span><span class="chip">Experimental</span>
+        <span class="chip">Reposição</span><span class="chip">Rematrícula</span><span class="chip">Adaptação</span>
+        <span class="chip">Avaliação</span><span class="chip">Autossalvamento</span>
+      </div>
+      <p class="mono-label rise" style="margin-top:14px;color:#9fc9ee">Vocabulário da natação que já faz parte da IA — desde o primeiro dia.</p>
+    </div>
   </section>
 
   <div class="lane-sep" aria-hidden="true">
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>As IAs</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 3 — AS IAs DO CICLO DO ALUNO ================= -->
+  <!-- ================= BLOCO 06 — AS IAs DO CICLO DO ALUNO ================= -->
   <section id="ias" class="section container" aria-labelledby="ias-h">
     <div class="section-head rise">
       <span class="eyebrow">As IAs do ciclo do aluno</span>
       <h2 id="ias-h" class="display-2 mt-s">Uma IA especialista <span class="accent">para cada momento do aluno</span></h2>
-      <p class="lead">Cada uma cuida de um momento do aluno. Todas incluídas em qualquer plano.</p>
+      <p class="lead">Cada uma cobre um momento em que hoje some gente — ou some dinheiro. Todas incluídas em qualquer plano.</p>
     </div>
     <div class="grid grid-3">
       <div class="ia-item card rise" data-delay="1"><span class="ic">01</span><div><h3>Atendimento</h3><p>Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
@@ -189,7 +311,7 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Resolve × estratégia</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 4 — RESOLVE × DEPENDE DE ESTRATÉGIA ================= -->
+  <!-- ================= BLOCO 07 — RESOLVE × DEPENDE DE ESTRATÉGIA ================= -->
   <section id="resolve" class="section container" aria-labelledby="rv-h">
     <div class="section-head rise">
       <h2 id="rv-h" class="display-2">O que ela resolve sozinha,<br><span class="accent">e o que depende de estratégia</span></h2>
@@ -222,60 +344,85 @@
     <p class="migracao-line rise"><a href="/servicos/">Ver o que fazemos com você →</a></p>
   </section>
 
-  <div class="lane-sep lane-sep--mgb" aria-hidden="true">
-    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Fala a língua da natação</em></span></span>
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>O Kanban</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 5 — FALA A LÍNGUA DA NATAÇÃO (identidade MGB) ================= -->
-  <section id="lingua" class="section mgb-section" aria-labelledby="lg-h">
-    <div class="bubbles bubbles--mgb" data-n="5" aria-hidden="true"></div>
-    <img class="mgb-mascot mgb-mascot--1" src="/assets/img/mgb-mascot-polwerine.png" alt="" aria-hidden="true">
-    <img class="mgb-mascot mgb-mascot--2" src="/assets/img/mgb-mascot-flipo.png" alt="" aria-hidden="true">
-    <img class="mgb-mascot mgb-mascot--3" src="/assets/img/mgb-mascot-glover.png" alt="" aria-hidden="true">
-
-    <div class="container">
-      <div class="mgb-head rise">
-        <div class="mgb-brandline">
-          <img class="mgb-logo" src="/assets/img/mgb-credenciado.png" alt="Metodologia Gustavo Borges" width="76" height="76">
-          <span class="eyebrow eyebrow--mgb">Fala a língua da natação</span>
-        </div>
-        <h2 id="lg-h" class="display-2 mt-s">Ela não foi adaptada para natação.<br><span class="accent-mgb">Ela nasceu dentro de uma.</span></h2>
-        <p class="lead" style="max-width:64ch">A nossa IA sabe o que é troca de touca, o que é nível, o que é aula experimental, o que é reposição e o que é rematrícula. Não porque alguém escreveu isso num manual — porque ela foi treinada dentro de escolas de natação em operação, desde o primeiro dia de desenvolvimento.</p>
-      </div>
-
-      <div class="mgb-aguas rise" data-delay="1">
-        <span>Treinada na Metodologia Gustavo Borges</span>
-        <span class="mgb-toucas" title="Cada touca, um nível"><i></i><i></i><i></i><i></i><i></i></span>
-        <span>a IA fala a língua de cada nível</span>
-      </div>
-
-      <div class="wa-chat rise" data-delay="1" style="margin-top:36px">
-        <div class="bar">
-          <span class="av">P</span>
-          <span class="who">Pai de aluno<span>online agora</span></span>
-        </div>
-        <div class="wa-body">
-          <div class="msg lead">boa noite! o Théo pode trocar de touca esse mês?</div>
-          <div class="msg ia">Boa noite! O Théo está no nível 3, touca verde. A troca acontece quando a professora valida os objetivos do nível — no caso dele, flutuação e nado com respiração lateral.</div>
-          <div class="msg ia">A avaliação da turma dele é na próxima quarta. Se fechar os dois pontos, já sai com a touca do nível 4. Quer que eu te avise o resultado por aqui?</div>
-          <div class="msg lead">quero sim, obrigado</div>
-        </div>
-      </div>
-
-      <div class="chips rise mt-l" data-delay="2">
-        <span class="chip">Touca</span><span class="chip">Nível</span><span class="chip">Experimental</span>
-        <span class="chip">Reposição</span><span class="chip">Rematrícula</span><span class="chip">Adaptação</span>
-        <span class="chip">Avaliação</span><span class="chip">Autossalvamento</span>
-      </div>
-      <p class="mono-label rise" style="margin-top:14px;color:#9fc9ee">Vocabulário da natação que já faz parte da IA — desde o primeiro dia.</p>
+  <!-- ================= BLOCO 08 — O KANBAN ================= -->
+  <section id="kanban" class="section container" aria-labelledby="k-h" data-kanban>
+    <div class="section-head rise">
+      <h2 id="k-h" class="display-2">Do primeiro contato à matrícula,<br><span class="accent">tudo num só lugar.</span></h2>
+      <p class="lead">A sua equipe vê, em tempo real, onde cada lead está. A IA cuida do repetitivo enquanto o time fecha.</p>
     </div>
+    <div class="kanban rise" data-delay="1">
+      <div class="kcol" data-cor="teal">
+        <h4>Interessado <span>2</span></h4>
+        <div class="kcard"><b>Ana P.</b><span>Perguntou sobre turma de 4 anos</span></div>
+        <div class="kcard"><b>Carlos M.</b><span>Veio do Instagram, quer adaptação</span></div>
+        <div class="kcard kcard--travel"><b>Rafael D.</b><span>Perguntou por WhatsApp às 22h</span></div>
+      </div>
+      <div class="kcol" data-cor="amber">
+        <h4>Aula marcada <span>2</span></h4>
+        <div class="kcard"><b>Júlia R.</b><span>IA agendou a experimental do filho</span></div>
+        <div class="kcard"><b>Marcos T.</b><span>Follow-up enviado</span></div>
+      </div>
+      <div class="kcol" data-cor="lime">
+        <h4>Proposta enviada <span>1</span></h4>
+        <div class="kcard"><b>Fernanda L.</b><span>Negociando plano família</span></div>
+      </div>
+      <div class="kcol" data-cor="white">
+        <h4>Matrícula fechada <span>1</span></h4>
+        <div class="kcard"><b>Beatriz S.</b><span>2 filhos matriculados</span></div>
+      </div>
+    </div>
+    <div class="ktrace rise">
+      <span class="mono-label">Rafael D.:</span>
+      <span class="step">Perguntou às 22h</span><span class="sep">→</span>
+      <span class="step">IA agendou experimental</span><span class="sep">→</span>
+      <span class="step">Proposta enviada pela IA</span><span class="sep">→</span>
+      <span class="step">Matriculado — sem fila</span>
+    </div>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>A transformação</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 09 — A TRANSFORMAÇÃO (antes / depois) ================= -->
+  <section id="comparacao" class="section container" aria-labelledby="t-h">
+    <div class="section-head rise">
+      <span class="eyebrow">A transformação</span>
+      <h2 id="t-h" class="display-2 mt-s">Menos fila.<br><span class="accent">Mais matrícula.</span></h2>
+      <p class="lead">A tecnologia assume a repetição. A equipe recupera tempo para acolher e fechar.</p>
+    </div>
+    <div class="compare">
+      <div class="col col--bad rise">
+        <h3>Sem WasFit</h3>
+        <ul class="check-list">
+          <li><span>Fila de conversas</span><em data-placeholder="true">a resposta leva horas — e o lead já falou com outra escola</em></li>
+          <li><span>Lead esquecido</span><em data-placeholder="true">boa parte dos contatos nunca recebe um 2º toque</em></li>
+          <li><span>Resposta genérica</span><em>sem personalização por nível ou turma</em></li>
+          <li><span>Gestão no escuro</span><em>sem visibilidade de onde o lead travou</em></li>
+        </ul>
+      </div>
+      <div class="col col--good rise" data-delay="1">
+        <h3>Com WasFit</h3>
+        <ul class="check-list">
+          <li><span>Resposta imediata</span><em>em segundos, 24 horas por dia</em></li>
+          <li><span>Follow-up ativo</span><em>a IA volta a falar com quem não respondeu</em></li>
+          <li><span>Argumento contextual</span><em>usa o vocabulário da Metodologia Gustavo Borges</em></li>
+          <li><span>Funil visível</span><em>todo lead rastreável do 1º contato à matrícula</em></li>
+        </ul>
+      </div>
+    </div>
+    <p class="roi-line rise" data-placeholder="true">Uma matrícula que não fecha custa mais do que vários meses de plano. <span style="opacity:.65;font-weight:400;font-family:var(--font-mono);font-size:.8rem">[ trocar por número real: ticket médio × mensalidade, com dados de uma escola cliente ]</span></p>
   </section>
 
   <div class="lane-sep" aria-hidden="true">
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Para quem usa EVO</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 6 — PARA QUEM USA EVO ================= -->
+  <!-- ================= BLOCO 10 — PARA QUEM USA EVO ================= -->
   <section id="evo" class="section container" aria-labelledby="evo-h">
     <div class="bubbles" data-n="3" aria-hidden="true"></div>
     <div class="section-head rise">
@@ -294,42 +441,76 @@
   </section>
 
   <div class="lane-sep" aria-hidden="true">
-    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Quem construiu</em></span></span>
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Autodiagnóstico</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 7 — QUEM CONSTRUIU ================= -->
-  <section id="quem-construiu" class="section container" aria-labelledby="qc-h">
-    <div class="qc-wrap">
-      <div class="section-head rise" style="margin-bottom:0">
-        <span class="eyebrow">Quem construiu</span>
-        <h2 id="qc-h" class="display-2 mt-s">Construímos para as nossas quatro unidades<br><span class="accent">antes de vender para a sua</span></h2>
-        <p class="lead">São onze anos operando academia e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
+  <!-- ================= BLOCO 11 — AUTODIAGNÓSTICO ================= -->
+  <section id="diagnostico" class="section container" aria-labelledby="dg-h">
+    <div class="section-head rise">
+      <h2 id="dg-h" class="display-2">A sua escola de natação<br><span class="accent">está pronta para automatizar?</span></h2>
+      <p class="lead">Cinco perguntas. Responda com sinceridade — o resultado aparece na hora.</p>
+    </div>
+    <div class="rise" data-diag>
+      <div class="diag-q">
+        <p>Você sabe de onde vêm os seus leads hoje?</p>
+        <span class="toggle"><button type="button" value="sim" aria-pressed="false">Sim</button><button type="button" value="nao" aria-pressed="false">Não</button></span>
       </div>
-      <!-- gráfico provisório: 4 unidades próprias (trocar por foto real quando houver) -->
-      <figure class="qc-figure rise" data-delay="1" aria-label="Quatro unidades próprias, onze anos de operação">
-        <svg viewBox="0 0 320 260" role="img" aria-hidden="true">
-          <defs>
-            <linearGradient id="qcg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#15EA9E"/><stop offset="1" stop-color="#9EEA4E"/>
-            </linearGradient>
-          </defs>
-          <g stroke="rgba(255,255,255,.10)" stroke-width="1">
-            <path d="M0 65 H320 M0 130 H320 M0 195 H320 M80 0 V260 M160 0 V260 M240 0 V260" />
-          </g>
-          <path class="qc-route" d="M58 176 C 90 120, 120 120, 150 78 S 220 60, 262 96" fill="none" stroke="rgba(21,234,158,.5)" stroke-width="2" stroke-dasharray="4 6"/>
-          <g class="qc-pins">
-            <g transform="translate(58 176)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
-            <g transform="translate(150 78)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
-            <g transform="translate(262 96)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
-            <g transform="translate(206 200)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
-          </g>
-        </svg>
-        <figcaption>
-          <b>4</b><span>unidades próprias</span>
-          <b>11</b><span>anos operando</span>
-          <b>+1</b><span>ano rodando antes do mercado</span>
-        </figcaption>
-      </figure>
+      <div class="diag-q">
+        <p>A sua equipe registra todos os contatos em um só lugar?</p>
+        <span class="toggle"><button type="button" value="sim" aria-pressed="false">Sim</button><button type="button" value="nao" aria-pressed="false">Não</button></span>
+      </div>
+      <div class="diag-q">
+        <p>Alguém faz follow-up de forma sistemática?</p>
+        <span class="toggle"><button type="button" value="sim" aria-pressed="false">Sim</button><button type="button" value="nao" aria-pressed="false">Não</button></span>
+      </div>
+      <div class="diag-q">
+        <p>Você tem fluxo ativo de rematrícula e reposição?</p>
+        <span class="toggle"><button type="button" value="sim" aria-pressed="false">Sim</button><button type="button" value="nao" aria-pressed="false">Não</button></span>
+      </div>
+      <div class="diag-q">
+        <p>O seu WhatsApp responde à noite e no fim de semana, quando as famílias pesquisam?</p>
+        <span class="toggle"><button type="button" value="sim" aria-pressed="false">Sim</button><button type="button" value="nao" aria-pressed="false">Não</button></span>
+      </div>
+      <div class="diag-result">
+        <span class="mono-label">Resultado</span>
+        <div class="diag-meter"><i></i></div>
+        <h3>Responda as 5 perguntas</h3>
+        <p>O resultado aparece aqui.</p>
+        <div class="btn-row mt-s">
+          <a class="btn btn--grad" href="#planos" data-evt="viu_planos">Ver os planos</a>
+          <a class="btn btn--ghost" data-wa data-pos="diagnostico" href="https://wa.me/" data-evt="clique_contato">Falar agora no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Resultados</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 12 — RESULTADOS / PROVA SOCIAL ================= -->
+  <!-- Os 4 números são placeholders (só para o espaço não ficar em branco): trocar pelos reais quando o produto tiver base. -->
+  <section id="resultados" class="section container" aria-labelledby="rs-h">
+    <div class="section-head section-head--center rise">
+      <h2 id="rs-h" class="display-2">Resultado, <span class="accent">não promessa.</span></h2>
+      <p class="lead">Números de escolas de natação que já usam o WasFit no dia a dia.</p>
+    </div>
+    <div class="grid grid-4 stat-cards rise" data-delay="1">
+      <div class="stat-card" data-placeholder="true"><b>+3.400</b><span>mensagens de leads respondidas pela IA</span></div>
+      <div class="stat-card" data-placeholder="true"><b>92%</b><span>dos leads recebem a 1ª resposta em menos de 1 minuto</span></div>
+      <div class="stat-card" data-placeholder="true"><b>+27%</b><span>de matrículas por lead qualificado</span></div>
+      <div class="stat-card" data-placeholder="true"><b>12</b><span>escolas de natação usando hoje</span></div>
+    </div>
+    <p class="mono-label rise" style="text-align:center;margin-top:16px;color:#9fc9ee">[ números de referência — trocar pelos reais antes de divulgar ]</p>
+    <div class="depo rise" data-delay="2">
+      <div class="ph-media">
+        <p class="ph-kind">Foto</p>
+        <p class="ph-note">[ depois ]</p>
+      </div>
+      <div>
+        <blockquote>“[ colar aqui um depoimento real: 1 ou 2 frases de um dono de escola de natação que usa o WasFit ]”</blockquote>
+        <cite>Nome · Escola · Cidade — <span style="color:var(--amber)">adicionar depois</span></cite>
+      </div>
     </div>
   </section>
 
@@ -337,13 +518,13 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Planos</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 8 — PLANOS (com a faixa de lançamento) ================= -->
+  <!-- ================= BLOCO 13 — PLANOS (com a faixa de lançamento) ================= -->
   <section id="planos" class="section container" aria-labelledby="pl-h">
     <div class="section-head section-head--center rise">
       <h2 id="pl-h" class="display-2">Sem fidelidade. Preço único. <span class="accent">Cancele quando quiser.</span></h2>
     </div>
 
-    <!-- 8.1 / 8.2 — faixa da condição de lançamento -->
+    <!-- 13.1 / 13.2 — faixa da condição de lançamento -->
     <div class="launch-band rise" data-launch data-delay="1">
       <div class="lb-main">
         <span class="eyebrow">Condição de lançamento</span>
@@ -363,7 +544,7 @@
       </div>
     </div>
 
-    <!-- 8.3 — os três cartões -->
+    <!-- 13.3 — os três cartões -->
     <div class="plans">
       <!-- Essencial -->
       <div class="plan rise">
@@ -445,7 +626,7 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Implantação</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 9 — COMO FUNCIONA A IMPLANTAÇÃO ================= -->
+  <!-- ================= BLOCO 14 — COMO FUNCIONA A IMPLANTAÇÃO ================= -->
   <section id="implantacao" class="section container" aria-labelledby="im-h">
     <div class="bubbles" data-n="3" aria-hidden="true"></div>
     <div class="section-head rise">
@@ -468,16 +649,17 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Garantia</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 10 — SEM FIDELIDADE E GARANTIA ================= -->
+  <!-- ================= BLOCO 15 — SEM FIDELIDADE, GARANTIA E DADOS ================= -->
   <section id="garantia" class="section container" aria-labelledby="gr-h">
     <div class="section-head rise">
       <span class="eyebrow">Sem peso na decisão</span>
-      <h2 id="gr-h" class="display-2 mt-s">Sem fidelidade <span class="accent">e garantia.</span></h2>
+      <h2 id="gr-h" class="display-2 mt-s">Sem fidelidade, garantia <span class="accent">e dados no lugar.</span></h2>
     </div>
     <div class="trust-band rise" data-trust>
       <div class="trust-col"><span class="trust-ic" aria-hidden="true">∞</span><h3>Sem fidelidade</h3><p>Não tem contrato de permanência. Você cancela no mês que quiser, sem multa.</p></div>
       <div class="trust-col" data-garantia-col><span class="trust-ic" aria-hidden="true">30</span><h3>Garantia de 30 dias</h3><p>Nas 20 primeiras escolas: se em 30 dias não servir, devolvemos a mensalidade. Uma mensagem no WhatsApp, sem formulário.</p></div>
       <div class="trust-col"><span class="trust-ic" aria-hidden="true">=</span><h3>Preço travado</h3><p>O seu preço não sobe enquanto você for cliente.</p></div>
+      <div class="trust-col"><span class="trust-ic" aria-hidden="true">🔒</span><h3>Seus dados protegidos</h3><p>[ escrever com o jurídico: onde os dados dos alunos ficam, LGPD e quem tem acesso. Adicionar depois. ]</p></div>
     </div>
   </section>
 
@@ -485,7 +667,7 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Perguntas</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 11 — PERGUNTAS FREQUENTES ================= -->
+  <!-- ================= BLOCO 16 — PERGUNTAS FREQUENTES ================= -->
   <section id="faq" class="section container" aria-labelledby="fq-h">
     <div class="section-head rise">
       <span class="eyebrow">Perguntas frequentes</span>
@@ -520,6 +702,10 @@
         <summary>Posso cancelar quando quiser?</summary>
         <p>Pode, no mês que quiser, sem multa. Não existe contrato de permanência.</p>
       </details>
+      <details class="faq-item">
+        <summary>Os dados da minha escola e dos alunos ficam seguros?</summary>
+        <p>[ resposta a preencher com o jurídico — LGPD, onde os dados são armazenados, quem tem acesso. Alinhar com o card "Seus dados protegidos" da seção anterior. ]</p>
+      </details>
     </div>
   </section>
 
@@ -527,7 +713,7 @@
     <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Como começar</em></span></span>
   </div>
 
-  <!-- ================= BLOCO 12 — CHAMADA FINAL ================= -->
+  <!-- ================= BLOCO 17 — CHAMADA FINAL ================= -->
   <section class="section container ein-final" aria-labelledby="cf-h">
     <span class="halo" aria-hidden="true"></span>
     <span class="dive-floor" aria-hidden="true"></span>
@@ -564,6 +750,7 @@
       </div>
       <div class="footer-col">
         <h4>Produto</h4>
+        <a href="#prova">Prova real</a>
         <a href="#ias">As IAs</a>
         <a href="#planos">Planos</a>
         <a href="#implantacao">Implantação</a>
@@ -589,9 +776,9 @@
   <svg aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/config.js?v=20260901"></script>
-<script src="/assets/js/main.js?v=20260901" defer></script>
-<script src="/assets/js/ein.js?v=20260901" defer></script>
+<script src="/assets/js/config.js?v=20260901b"></script>
+<script src="/assets/js/main.js?v=20260901b" defer></script>
+<script src="/assets/js/ein.js?v=20260901b" defer></script>
 <script>
 /* Home: rede de segurança do reveal. O ein.js revela os blocos .rise com
    IntersectionObserver ao rolar; se em algum navegador isso não pegar, todo

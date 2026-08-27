@@ -1,3 +1,25 @@
+# --- Lixo de sistema operacional ---
 .DS_Store
+**/.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Documentação interna: NÃO publicar ---
+# Contém URL do repo de staging, roadmap, dados marcados [DADO FICTÍCIO]
+# e ressalvas jurídicas (MGB/EIN). Fica só na máquina.
 README.internal.md
+
+# --- Editores ---
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Temporários ---
 *.log
+
+# NÃO ignorar CNAME.production / robots.production.txt:
+# são necessários no repo para o cutover de produção (ver README.internal.md).
+
+# Snapshot local da antiga landing /ein (reconstruído) — não publicar
+_arquivo/

@@ -1,0 +1,11 @@
+# GitHub Pages (Jekyll) — arquivos que NÃO entram no site publicado.
+# Rede de segurança caso algum deles acabe commitado mesmo assim.
+# Jekyll já ignora, por padrão, tudo que começa com "." ou "_".
+exclude:
+  - README.internal.md
+  - README.md
+  - netlify.toml
+  - _redirects
+  - CNAME.production
+  - robots.production.txt
+  - .gitignore

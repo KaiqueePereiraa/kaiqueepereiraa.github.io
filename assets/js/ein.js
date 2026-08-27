@@ -4,7 +4,8 @@
    ========================================================================== */
 (function () {
   'use strict';
-  var CFG = (window.WASFIT || {}).ein || {};
+  /* a home usa o mesmo ein.js: cai para WASFIT.home quando não há WASFIT.ein */
+  var CFG = (window.WASFIT || {}).ein || (window.WASFIT || {}).home || {};
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saveData = navigator.connection && navigator.connection.saveData;
   function S(fn) { try { fn(); } catch (e) { /* silencioso */ } }
@@ -42,7 +43,7 @@
     var isHome = document.body.hasAttribute('data-home');
     var stops = (isHome ? [
       { d: '0 m',   label: 'Superfície',  sel: null },
-      { d: '1,5 m', label: 'As IAs',      sel: '#ias' },
+      { d: '1,5 m', label: 'Prova real',  sel: '#prova' },
       { d: '3 m',   label: 'Metodologia', sel: '#lingua' },
       { d: '4,5 m', label: 'Planos',      sel: '#planos' },
       { d: '6 m',   label: 'Perguntas',   sel: '#faq' }
@@ -143,40 +144,41 @@
     var iv = setInterval(tick, 1000);
   });
 
-  /* -- 4. Chat "prova real": revela as mensagens (já no HTML) com "digitando" -- */
+  /* -- 4. Chats "prova real": revela as mensagens (já no HTML) com "digitando".
+     A home tem mais de um .wa-body (prova real + exemplo MGB) — anima todos. -- */
   S(function () {
-    var body = $('.wa-body');
-    if (!body) return;
-    var nodes = $$('.msg', body);
-    if (!nodes.length) return;
-    var i = 0, started = false;
-    var typing = document.createElement('div');
-    typing.className = 'typing'; typing.hidden = true;
-    typing.innerHTML = '<i></i><i></i><i></i>';
+    $$('.wa-body').forEach(function (body) {
+      var nodes = $$('.msg', body);
+      if (!nodes.length) return;
+      var i = 0, started = false;
+      var typing = document.createElement('div');
+      typing.className = 'typing'; typing.hidden = true;
+      typing.innerHTML = '<i></i><i></i><i></i>';
 
-    function step() {
-      if (i >= nodes.length) { if (typing.parentNode) typing.remove(); return; }
-      var isIA = nodes[i].classList.contains('ia');
-      if (isIA) { body.appendChild(typing); typing.hidden = false; body.scrollTop = body.scrollHeight; }
-      setTimeout(function () {
-        typing.hidden = true; if (typing.parentNode) typing.remove();
-        nodes[i].classList.add('show');
-        body.scrollTop = body.scrollHeight;
-        i++;
-        setTimeout(step, 480);
-      }, isIA ? 950 : 420);
-    }
-    function run() {
-      if (started) return; started = true;
-      if (reduce) { nodes.forEach(function (n) { n.classList.add('show'); }); return; }
-      step();
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (en) {
-        if (en[0].isIntersecting) { run(); io.disconnect(); }
-      }, { threshold: 0.3 });
-      io.observe(body);
-    } else { run(); }
+      function step() {
+        if (i >= nodes.length) { if (typing.parentNode) typing.remove(); return; }
+        var isIA = nodes[i].classList.contains('ia');
+        if (isIA) { body.appendChild(typing); typing.hidden = false; body.scrollTop = body.scrollHeight; }
+        setTimeout(function () {
+          typing.hidden = true; if (typing.parentNode) typing.remove();
+          nodes[i].classList.add('show');
+          body.scrollTop = body.scrollHeight;
+          i++;
+          setTimeout(step, 480);
+        }, isIA ? 950 : 420);
+      }
+      function run() {
+        if (started) return; started = true;
+        if (reduce) { nodes.forEach(function (n) { n.classList.add('show'); }); return; }
+        step();
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (en) {
+          if (en[0].isIntersecting) { run(); io.disconnect(); }
+        }, { threshold: 0.3 });
+        io.observe(body);
+      } else { run(); }
+    });
   });
 
   /* -- 5. Kanban: card que viaja pelas colunas ao rolar ------------- */

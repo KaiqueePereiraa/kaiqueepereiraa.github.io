@@ -14,8 +14,8 @@ window.WASFIT = {
     produto: 'WasFit Assist',
     dominio: 'wasfit.com.br',
     url: 'https://wasfit.com.br',
-    // Item 10.6 — não fixar "academia" no código. Trocar aqui muda o site todo.
-    segmento: 'escolas de natação e academias',
+    // O site vende SÓ natação neste momento (decisão 27/08/2026). Sem "academia".
+    segmento: 'escolas de natação',
     segmentoCurto: 'sua escola',
   },
 
@@ -172,7 +172,8 @@ window.WASFIT = {
     quemConstruiu: {
       eyebrow: 'Quem construiu',
       titulo: 'Construímos para as nossas quatro unidades antes de vender para a sua',
-      texto: 'São onze anos operando academia e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.',
+      // TROCAR se as 4 unidades não forem todas escolas de natação.
+      texto: 'São onze anos operando escolas de natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.',
     },
 
     // BLOCO 8 — Planos. SEM seletor de prazo. Um preço por cartão. Rede = "Falar com a gente".
@@ -320,7 +321,21 @@ window.WASFIT = {
       { q: 'Posso cancelar quando quiser?', a: 'Pode, no mês que quiser, sem multa. Não existe contrato de permanência.' },
     ],
 
-    // BLOCO 12 — Chamada final. Duas portas: testar ou pedir o raio-x.
+    // AUTODIAGNÓSTICO — 5 perguntas Sim/Não. O resultado é definido pela
+    // quantidade de "Não" (0..5): quanto mais "Não", mais a escola está vazando.
+    // ein.js escolhe a faixa por  nao <= max.  Tom: "eis o que priorizar", nunca "compre".
+    diagnostico: {
+      resultados: [
+        { max: 1, titulo: 'Sua operação já é organizada.',
+          texto: 'O básico está de pé. O ganho aqui é de escala: responder na hora, à noite e no fim de semana, sem depender de ninguém acordado. É onde a automação rende mais para quem já tem processo.' },
+        { max: 3, titulo: 'Tem furo no meio do caminho.',
+          texto: 'Você não perde matrícula por falta de esforço, e sim porque contato some e ninguém percebe. Comece pelo atendimento 24/7 e pelo funil visível — os dois juntos tapam o maior vazamento.' },
+        { max: 5, titulo: 'Está vazando lead em vários pontos.',
+          texto: 'A boa notícia: quase todo lead que você já recebe dá para recuperar. Um raio-x de 15 minutos mostra por onde começar sem virar a sua operação de cabeça para baixo.' },
+      ],
+    },
+
+    // BLOCO — Chamada final. Duas portas: testar ou pedir o raio-x.
     ctaFinal: {
       titulo: 'Duas formas de começar',
       portas: [
