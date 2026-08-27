@@ -415,3 +415,10 @@ body[data-home] #resultados .depo cite {
 
 /* -- §15 Garantia: 4º card (LGPD) cabe na faixa ---------------------- */
 body[data-home] #garantia .trust-band .trust-col { flex-basis: 220px; }
+
+/* -- §13 Planos: nota do modelo de 2 conexões (1 oficial + 1 não oficial) -- */
+body[data-home] .plans-note {
+  max-width: 62ch; margin: 0 auto clamp(22px, 3.5vw, 34px);
+  text-align: center; font-size: .96rem; line-height: 1.6; color: #d7e6f4;
+}
+body[data-home] .plans-note b { color: var(--teal); font-weight: 700; }

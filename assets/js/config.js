@@ -196,13 +196,12 @@ window.WASFIT = {
           itensTitulo: null,
           itens: [
             '1 unidade',
-            'Até 2 números de WhatsApp',
+            '2 números de WhatsApp — 1 na conexão oficial da Meta, 1 na não oficial',
             'Todas as IAs do ciclo do aluno',
             'Kanban de leads com a etapa visível',
             'Etiquetas e filtro da base',
             'Registro de origem de cada contato',
             'Painel de controle de atendimento',
-            'Conexão por API oficial ou não oficial da Meta — você escolhe, ou usa as duas ao mesmo tempo',
             'Integração nativa com o EVO',
             'No ar em 30 minutos',
             'Plataforma de treinamento em vídeo e IA de suporte no WhatsApp',
@@ -220,7 +219,7 @@ window.WASFIT = {
           itensTitulo: 'Tudo do Essencial, e mais:',
           itens: [
             'Até 2 unidades',
-            'Até 4 números de WhatsApp — um oficial e um secundário por unidade',
+            '4 números de WhatsApp — 1 oficial + 1 não oficial por unidade',
             'Visão consolidada entre as unidades',
           ],
           cta: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'escola' },
@@ -237,7 +236,7 @@ window.WASFIT = {
           itensTitulo: 'Tudo do Escola, e mais:',
           itens: [
             '3 unidades ou mais',
-            '2 números de WhatsApp por unidade',
+            'Por unidade: 1 número oficial + 1 não oficial',
             'IA configurada por unidade',
             'Painel unificado',
           ],
@@ -312,7 +311,7 @@ window.WASFIT = {
 
     // BLOCO 11 — Perguntas frequentes (acordeão, todas fechadas por padrão)
     faq: [
-      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. O número que os seus alunos já têm salvo continua o mesmo. Você escolhe como ele é atendido: pela conexão oficial da Meta, pela não oficial, ou pelas duas ao mesmo tempo — o que fizer mais sentido pra sua operação.' },
+      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. Você mantém o número que os seus alunos já têm. A gente soma um segundo: um fica na conexão oficial da Meta, para comunicação em escala, e o outro na não oficial, para a conversa do dia a dia. Os dois no mesmo painel.' },
       { q: 'E se eu já uso outra plataforma?', a: 'A migração é nossa. Levamos a sua base, as suas etiquetas, o seu histórico e o seu número, e você aprova o mapeamento por escrito antes de qualquer coisa ser ligada. A implantação com migração custa R$ 1.000 a mais.' },
       { q: 'Minha escola não usa EVO. Funciona?', a: 'Funciona igual. A integração com o EVO acrescenta coisas, mas nada do que está nesta página depende dela.' },
       { q: 'A IA vai falar errado com o meu aluno?', a: 'Na primeira semana a gente lê todas as conversas e ajusta o que sair fora do esperado. E as IAs que mexem com dinheiro só entram depois de conferirmos os seus dados — justamente para não cobrar quem já pagou.' },
