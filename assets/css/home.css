@@ -372,13 +372,18 @@ body[data-home] .hero-link {
 }
 body[data-home] .hero-link:hover { color: #fff; border-color: #fff; }
 
-/* -- §02 Prova real: vídeo + transcrição lado a lado ------------------- */
-body[data-home] #prova .prova-grid { display: grid; gap: 24px; }
-@media (min-width: 900px) {
-  body[data-home] #prova .prova-grid { grid-template-columns: 1.05fr .95fr; align-items: start; }
+/* -- §02 Prova real: vídeo no topo + duas transcrições reais ----------- */
+body[data-home] #prova .demo-frame { margin: 0 auto clamp(28px, 4.5vw, 44px); max-width: 760px; }
+body[data-home] #prova .prova-chats { display: grid; gap: clamp(24px, 4vw, 40px); }
+@media (min-width: 860px) {
+  body[data-home] #prova .prova-chats { grid-template-columns: 1fr 1fr; align-items: start; }
 }
-body[data-home] #prova .demo-frame { margin: 0; max-width: none; }
-body[data-home] #prova .wa-chat { margin: 0; }
+body[data-home] #prova .prova-chat { margin: 0; }
+body[data-home] #prova .prova-chat .wa-chat { margin: 0; max-width: none; }
+body[data-home] #prova .prova-chat figcaption {
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+}
 
 /* -- chat marcado como EXEMPLO (§05 MGB) ----------------------------- */
 body[data-home] .chat-tag {
