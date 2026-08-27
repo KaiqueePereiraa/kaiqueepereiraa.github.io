@@ -3,8 +3,8 @@
    ----------------------------------------------------------------------------
    Edite este arquivo e suba de novo. Nenhuma compilação é necessária.
    Procure por  "TROCAR"  para achar o que depende do Felipe / da operação.
-   Os textos finais chegam até 04/09 — aqui está a versão de trabalho, tirada
-   do deck EIN 2026 e da especificação v3.
+   A home (12 blocos) segue a spec "Conteúdo comercial do site" (25/08/2026):
+   todo texto entre aspas na spec é final. A /ein continua da versão v3.
    ========================================================================== */
 window.WASFIT = {
 
@@ -47,8 +47,8 @@ window.WASFIT = {
 
   /* ---- Open Graph / preview de link no WhatsApp (item 12) ----------------- */
   og: {
-    titulo: 'WasFit — a IA que atende como gente, 24/7 no WhatsApp',
-    descricao: 'Atendimento, qualificação e follow-up automáticos para escolas de natação e academias. Integração nativa com o EVO. API oficial da Meta.',
+    titulo: 'WasFit — a IA de WhatsApp que fala a língua da sua escola de natação',
+    descricao: 'Criada por quem opera quatro unidades há onze anos. Touca, nível, experimental, reposição, rematrícula. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.',
     // URL ABSOLUTA, imagem >= 1200x630, < 300 KB.
     imagem: 'https://wasfit.com.br/assets/img/og-cover.png',
   },
@@ -58,106 +58,136 @@ window.WASFIT = {
   /* ====================================================================== */
   home: {
     nav: [
-      { label: 'Como funciona', href: '#como-funciona' },
-      { label: 'As 7 IAs',      href: '#ias' },
-      { label: 'Planos',        href: '#planos' },
-      { label: 'EIN 2026',      href: '/ein/' },
+      { label: 'As IAs',       href: '#ias' },
+      { label: 'Planos',       href: '#planos' },
+      { label: 'Implantação',  href: '#implantacao' },
+      { label: 'EIN 2026',     href: '/ein/' },
     ],
 
+    // BLOCO 1 — Hero. Headline A da spec comercial (25/08/2026).
     hero: {
-      selo: 'API oficial da Meta',                    // item 10.3 — selo visível perto do topo
-      // Item 10.1 — título parametrizável. Texto novo até 04/09.
-      titulo: ['Sua escola vende', 'enquanto você dorme.'],
-      subtitulo: 'Atendimento 24/7 no WhatsApp com a inteligência da sua operação e o acolhimento que cada família espera. Menos fila, mais matrícula.',
-      ctaPrimario:   { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
-      ctaSecundario: { label: 'Falar com a gente',        evento: 'clique_contato',       plano: 'rede' },
-      stats: [
-        { n: '11 anos', l: 'de mercado fitness' },
-        { n: '24/7',    l: 'IA sempre ativa' },
-        { n: '1 nicho', l: 'fitness e natação' },
-      ],
+      selo: 'API oficial da Meta · Integração nativa com o EVO',
+      titulo: ['A IA de WhatsApp que fala a', 'língua da sua escola de natação'],
+      subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.',
+      ctaPrimario: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
+      raioX:       { label: 'Ou peça um raio-x da sua escola em 15 minutos', evento: 'clique_raiox', plano: 'rede' },
     },
 
-    // Vídeo de ~2 min acima da dobra. Carrega só quando o visitante pede (item 9).
+    // Vídeo de 45 s. Acima da dobra no desktop, abaixo da subheadline no celular.
     demo: {
-      eyebrow: 'Demonstração',
-      titulo: 'A IA escuta antes de vender',
-      texto: 'Uma conversa real: a IA identifica o objetivo da família, apresenta o diferencial certo e conduz para o próximo passo.',
+      titulo: 'Demonstração · 45 segundos',
       // Coloque o ID do YouTube OU um caminho .mp4 local. Vazio = mostra só o poster.
       youtubeId: '',                                   // TROCAR ex.: 'dQw4w9WgXcQ'
       mp4: '',                                         // ou 'assets/video/demo.mp4'
       evento: 'viu_demo',
     },
 
-    // Item 9 — As 7 IAs do ciclo do aluno. (nomes sujeitos a ajuste até 04/09)
-    ias: {
-      eyebrow: 'As 7 IAs do ciclo do aluno',
-      titulo: 'Uma IA para cada etapa. Nenhuma conversa perdida.',
-      itens: [
-        { icone: 'bolt',      nome: 'Recepção',    desc: 'Responde todo primeiro contato na hora, a qualquer hora.' },
-        { icone: 'target',    nome: 'Qualificação', desc: 'Entende objetivo, nível e perfil de quem chega.' },
-        { icone: 'calendar',  nome: 'Agendamento', desc: 'Marca a aula experimental e sincroniza a agenda.' },
-        { icone: 'reply',     nome: 'Follow-up',   desc: 'Reativa quem disse "vou pensar" antes de esfriar.' },
-        { icone: 'check',     nome: 'Matrícula',   desc: 'Conduz da experimental ao contrato, com contexto.' },
-        { icone: 'chat',      nome: 'Onboarding',  desc: 'Acompanha as primeiras semanas do novo aluno.' },
-        { icone: 'refresh',   nome: 'Rematrícula', desc: 'Antecipa a renovação antes do vencimento.' },
+    // BLOCO 2 — O problema
+    problema: {
+      titulo: 'O que acontece hoje quando alguém manda mensagem para a sua escola no domingo à noite?',
+      cards: [
+        'A mensagem fica esperando até segunda. Quando alguém responde, o pai já falou com outra escola.',
+        'Alguém pergunta o preço, some no meio da conversa, e ninguém percebe que sumiu.',
+        'No fim do mês, você não sabe quantas pessoas procuraram a escola e não fecharam.',
       ],
+      remate: 'Nenhum desses três é problema de esforço da sua equipe. É problema de não ter quem esteja acordado às onze da noite e quem registre tudo.',
     },
 
-    // Item 9 — duas colunas lado a lado
-    resolveVsComVoce: {
-      eyebrow: 'O que é e o que resolve',
-      titulo: 'A IA resolve sozinha. O time faz com você.',
-      sozinho: {
-        titulo: 'A IA resolve sozinha',
-        itens: [
-          'Responde na hora, 24/7, no WhatsApp',
-          'Qualifica cada lead pelo objetivo',
-          'Agenda a aula experimental',
-          'Faz o follow-up de quem sumiu',
-          'Registra a origem de cada contato',
-          'Organiza o funil no kanban',
-          'Comunicação em escala pela API oficial da Meta',
-        ],
-      },
-      comVoce: {
-        titulo: 'O que fazemos com você',
-        itens: [
-          'Desenho do funil e das filas de atendimento',
-          'Treino da IA com a linguagem da sua escola',
-          'Integração com o seu EVO',
-          'Migração da plataforma que você usa hoje',
-          'Acompanhamento nas primeiras semanas',
-        ],
+    // BLOCO 3 — As IAs do ciclo do aluno (10). Etiqueta: quando cada uma entra.
+    ias: {
+      eyebrow: 'As IAs do ciclo do aluno',
+      titulo: 'Uma IA especialista para cada momento do aluno',
+      subtitulo: 'Cada uma cuida de um momento do aluno. Todas incluídas em qualquer plano.',
+      itens: [
+        { nome: 'Atendimento', desc: 'Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Vendas', desc: 'Qualifica o interessado, apresenta os planos e agenda a experimental no horário que tem vaga.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Após cadastro de oportunidade', desc: 'Assim que a oportunidade entra no seu EVO, o contato já começa — sem esperar alguém puxar.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Rematrícula / matrícula', desc: 'Recebe quem acabou de fechar contrato ou rematricular com uma mensagem de boas-vindas.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Sem presença', desc: 'Percebe quem some das aulas por 7 dias e entra em contato antes que vire desistência.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Feliz aniversário ativo', desc: 'Parabeniza o aluno ativo na data, sem ninguém precisar lembrar.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Feliz aniversário inativo', desc: 'Também lembra do aluno que já saiu — mantendo a porta aberta.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Cobrança', desc: 'Cobra quem está em atraso, com o tom certo — insistindo o quanto for preciso.', etiqueta: 'Depois de conferir a sua base' },
+        { nome: 'Após vencimento do contrato', desc: 'Quando o contrato encerra, já chama o cliente para renovar — sem deixar o silêncio virar perda.', etiqueta: 'Depois de conferir a sua base' },
+        { nome: 'Cancelamento automático', desc: 'Quando o contrato é cancelado por inadimplência, avisa o cliente da pendência e dos próximos passos.', etiqueta: 'Depois de conferir a sua base' },
+      ],
+      porqueEsperam: {
+        titulo: 'Por que três delas esperam',
+        texto: 'Cobrança, aviso de vencimento e cancelamento por inadimplência mexem com dinheiro e com contrato. Uma cobrança disparada para quem já pagou, ou um aviso de pendência com o dado errado, não é um erro de sistema na cabeça do seu cliente — é a sua escola fazendo papel ruim. Por isso a gente confere os seus dados antes de ligar essas três. Se estiver tudo certo, elas entram na quarta semana.',
       },
     },
 
-    // Item 9 — bloco com selo de integração
+    // BLOCO 4 — Resolve × depende de estratégia
+    resolveVsEstrategia: {
+      titulo: 'O que ela resolve sozinha, e o que depende de estratégia',
+      subtitulo: 'Ferramenta nenhuma conserta operação. Esta é a parte que quase ninguém escreve no site.',
+      sozinha: {
+        titulo: 'Resolve sozinha',
+        itens: [
+          'Ninguém fica sem resposta, a qualquer hora',
+          'Nenhum contato se perde no meio da conversa',
+          'Os dados do aluno entram certos, no ato',
+          'Você sabe de onde veio cada contato',
+          'Você consegue filtrar quem te procurou e não fechou',
+          'Você vê em que etapa cada lead parou',
+        ],
+      },
+      estrategia: {
+        titulo: 'Depende de estratégia',
+        itens: [
+          'Dar continuidade ao lead que a IA qualificou',
+          'Fazer campanha que dá resultado, e não só disparo',
+          'Definir o que oferecer para quem quer cancelar',
+          'Ler o que os seus números estão dizendo',
+          'Manter a sua base de dados confiável',
+        ],
+      },
+      remate: 'A primeira coluna está inclusa no plano. A segunda a gente faz com você, ou te ensina a fazer — e você decide se quer.',
+      link: { label: 'Ver o que fazemos com você', href: '#' },   // TROCAR: /servicos/ quando a página existir
+    },
+
+    // BLOCO 5 — Fala a língua da natação
+    linguaNatacao: {
+      eyebrow: 'Fala a língua da natação',
+      titulo: 'Ela não foi adaptada para natação. Ela nasceu dentro de uma.',
+      texto: 'A nossa IA sabe o que é troca de touca, o que é nível, o que é aula experimental, o que é reposição e o que é rematrícula. Não porque alguém escreveu isso num manual — porque ela foi treinada dentro de escolas de natação em operação, desde o primeiro dia de desenvolvimento.',
+      // Aprovação MGB concedida — citar a metodologia nominalmente.
+      mgb: 'Treinada na Metodologia Gustavo Borges, desde o primeiro dia.',
+    },
+
+    // BLOCO 6 — Para quem usa EVO
     evo: {
       eyebrow: 'Para quem usa EVO',
-      titulo: 'O que muda para quem já roda no EVO',
+      titulo: 'Se a sua escola usa EVO, ela faz mais',
       selo: 'Integração nativa com o EVO',
       itens: [
-        { t: 'Sem digitação dupla', d: 'Cadastro, agenda e cobrança conversam com o WhatsApp.' },
-        { t: 'Lead vira aluno direto', d: 'O contato qualificado entra no EVO sem retrabalho.' },
-        { t: 'A IA sabe quem é quem', d: 'Distingue aluno ativo, ex-aluno e lead novo.' },
-        { t: 'Status em tempo real', d: 'Pagamento e presença puxados automaticamente.' },
+        'Cria o cadastro do aluno direto no EVO',
+        'Agenda a aula na grade, no horário que tem vaga',
+        'Dispara a cobrança a partir do que está no sistema',
+        'Lê a situação do aluno antes de responder',
       ],
+      remate: 'E se a sua escola não usa EVO, tudo o que está nesta página continua funcionando igual.',
     },
 
-    // ---- Planos (item 7) — SEM seletor de prazo. Um preço por cartão. ----
+    // BLOCO 7 — Quem construiu
+    quemConstruiu: {
+      eyebrow: 'Quem construiu',
+      titulo: 'Construímos para as nossas quatro unidades antes de vender para a sua',
+      texto: 'São onze anos operando academia e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.',
+    },
+
+    // BLOCO 8 — Planos. SEM seletor de prazo. Um preço por cartão. Rede = "Falar com a gente".
     planos: {
       eyebrow: 'Planos',
       titulo: 'Sem fidelidade. Preço único. Cancele quando quiser.',
-      migracao: {
-        texto: 'Já usa outra plataforma? A implantação com migração custa R$ 1.000 a mais.',
-        href: '#migracao',
-      },
+      // 8.3 — linha de migração que aparece em TODOS os cartões, abaixo da implantação.
+      migracaoCard: 'Já usa outra plataforma? A implantação com migração custa R$ 1.000 a mais.',
+      // Linha abaixo da grade dos três cartões.
+      rodape: { texto: 'Precisa de mais do que a ferramenta?', link: 'Ver o que fazemos com você →', href: '#' },
       cards: [
         {
           id: 'essencial',
           nome: 'Essencial',
-          subtitulo: 'para escolas de uma unidade',
+          subtitulo: 'Para escolas de uma unidade',
           preco: 'R$ 597', periodo: '/mês',
           semFidelidade: 'Sem fidelidade. Cancele quando quiser.',
           implantacao: '+ R$ 1.900 de implantação, uma única vez',
@@ -166,7 +196,7 @@ window.WASFIT = {
           itens: [
             '1 unidade',
             'Até 2 números de WhatsApp',
-            'As 7 IAs do ciclo do aluno',
+            'Todas as IAs do ciclo do aluno',
             'Kanban de leads com a etapa visível',
             'Etiquetas e filtro da base',
             'Registro de origem de cada contato',
@@ -181,12 +211,11 @@ window.WASFIT = {
         {
           id: 'escola',
           nome: 'Escola',
-          subtitulo: 'para escolas com mais de um endereço',
+          subtitulo: 'Para escolas com mais de um endereço',
           preco: 'R$ 997', periodo: '/mês',
           semFidelidade: 'Sem fidelidade. Cancele quando quiser.',
           implantacao: '+ R$ 2.900 de implantação, uma única vez',
-          destaque: true,
-          selo: 'Mais escolhido',
+          destaque: true,        // cartão do meio recebe o destaque visual. SEM selo.
           itensTitulo: 'Tudo do Essencial, e mais:',
           itens: [
             'Até 2 unidades',
@@ -198,9 +227,10 @@ window.WASFIT = {
         {
           id: 'rede',
           nome: 'Rede',
-          subtitulo: 'para redes com três unidades ou mais',
+          subtitulo: 'Para redes com três unidades ou mais',
           preco: 'A partir de R$ 1.347', periodo: '/mês',
-          semFidelidade: 'R$ 1.347 para 3 unidades, mais R$ 350 por unidade adicional',
+          precoDetalhe: 'R$ 1.347 para 3 unidades, mais R$ 350 por unidade adicional.',
+          semFidelidade: 'Sem fidelidade. Cancele quando quiser.',
           implantacao: '+ R$ 3.800 de implantação, mais R$ 900 por unidade adicional',
           destaque: false,
           itensTitulo: 'Tudo do Escola, e mais:',
@@ -211,7 +241,8 @@ window.WASFIT = {
             'Painel unificado',
           ],
           cta: { label: 'Falar com a gente', evento: 'clique_contato', plano: 'rede' },
-          // Calculadora (7.2). Válida de 3 a 6 unidades; acima disso, "Falar com a gente".
+          // 8.4 — Calculadora. mensalidade = 1.347 + 350/un. acima de 3. Implantação = 3.800 + 900/un.
+          // 1 ou 2 unidades => "o plano é o Escola". Acima de 6 => "Falar com a gente".
           calc: {
             base: 1347, porUnidade: 350,
             implBase: 3800, implPorUnidade: 900,
@@ -221,9 +252,10 @@ window.WASFIT = {
       ],
     },
 
-    // ---- Faixa da condição de lançamento (7.4 / item 8) ------------------
+    // ---- BLOCO 8.1 / 8.2 — Faixa da condição de lançamento ---------------
     // O contador é editável SEM deploy: mude os números em `vagas` abaixo.
-    // Quando fundador.restantes chega a 0, a faixa vira automaticamente Pioneiro.
+    // Quando fundador.restantes chega a 0, a faixa vira automaticamente Pioneiro
+    // (sem garantia de 30 dias) e o BLOCO 10 perde a coluna da garantia.
     vagas: {
       fundador: { total: 20, restantes: 20 },
       pioneiro: { total: 40, restantes: 40 },
@@ -232,37 +264,69 @@ window.WASFIT = {
       prazo: 'Válido até 31 de outubro de 2026',
       cta: { label: 'Quero minha vaga', evento: 'clique_vaga', plano: 'fundador' },
       fundador: {
-        titulo: 'Condição de lançamento — Fundador',
-        destaque: 'Implantação grátis — você não paga nada de entrada',
-        beneficios: ['Preço travado enquanto for cliente', 'Garantia de 30 dias', 'Sem fidelidade'],
-        contador: 'de {TOTAL} vagas restantes',
+        titulo: 'Implantação grátis para as 20 primeiras escolas',
+        destaque: 'Você entra sem pagar nada de entrada. A implantação, com o treinamento da sua recepção, é por nossa conta.',
+        beneficios: ['Preço travado enquanto você for cliente', 'Garantia de 30 dias', 'Sem fidelidade'],
+        contador: 'Restam {X} das {TOTAL} vagas',
       },
       pioneiro: {
-        titulo: 'Condição de lançamento — Pioneiro',
-        destaque: 'Implantação pela metade',
+        titulo: 'Implantação pela metade',
+        destaque: 'As 20 vagas de fundador acabaram. A condição de pioneiro vale até 31 de outubro.',
         beneficios: ['Preço travado por 12 meses', 'Sem fidelidade'],
-        contador: 'de {TOTAL} vagas restantes',
+        contador: 'Restam {X} das {TOTAL} vagas',
       },
       esgotado: {
         titulo: 'Condição de lançamento',
-        destaque: 'As vagas de lançamento acabaram',
+        destaque: 'As vagas de lançamento acabaram.',
         beneficios: ['Fale com a gente para conhecer as condições atuais'],
         contador: '',
       },
     },
 
-    // Item 9 — bloco de destaque, garantia por extenso
-    garantia: {
-      eyebrow: 'Garantia',
-      titulo: 'Garantia de 30 dias, escrita por extenso',
-      texto: 'Se em 30 dias o Assist não estiver rodando na sua operação do jeito que combinamos, devolvemos o valor da implantação. Sem letra miúda, sem fidelidade, sem pegadinha.',
+    // BLOCO 9 — Como funciona a implantação
+    implantacao: {
+      eyebrow: 'Como funciona a implantação',
+      titulo: 'O que acontece nas suas primeiras quatro semanas',
+      subtitulo: 'Implantação não é uma taxa. É o que faz a sua equipe usar de verdade.',
+      marcos: [
+        { marco: 'Dia 1', titulo: 'Ativação', texto: '60 minutos. Conectamos o número e ligamos as quatro primeiras IAs. Você sai com a IA respondendo.' },
+        { marco: 'Semana 1', titulo: 'Ajuste fino', texto: 'Lemos as conversas reais todo dia e corrigimos o que saiu fora. Seu tempo: nenhum.' },
+        { marco: 'Semana 2', titulo: 'O seu funil', texto: 'Montamos o Kanban com as etapas da sua escola e treinamos o ponto focal.' },
+        { marco: 'Semana 3', titulo: 'Treinamento da recepção', texto: 'Três horas com a sua equipe. É a parte que decide se a ferramenta vai ser usada.' },
+        { marco: 'Semana 4', titulo: 'As três IAs que faltam', texto: 'Conferimos os seus dados e ligamos cobrança, aviso de vencimento e cancelamento.' },
+      ],
+      remate: [
+        'Total do seu tempo nas quatro semanas: cerca de 5 horas.',
+        'Já usa outra plataforma? A gente leva a sua base, as suas etiquetas, o seu histórico e o seu número. Você não começa do zero.',
+      ],
     },
 
+    // BLOCO 10 — Sem fidelidade e garantia. A coluna da garantia some quando as
+    // 20 vagas de fundador acabam (main.js -> data-garantia-col).
+    trust: [
+      { titulo: 'Sem fidelidade', texto: 'Não tem contrato de permanência. Você cancela no mês que quiser, sem multa.' },
+      { titulo: 'Garantia de 30 dias', texto: 'Nas 20 primeiras escolas: se em 30 dias não servir, devolvemos a mensalidade. Uma mensagem no WhatsApp, sem formulário.', somenteFundador: true },
+      { titulo: 'Preço travado', texto: 'O seu preço não sobe enquanto você for cliente.' },
+    ],
+
+    // BLOCO 11 — Perguntas frequentes (acordeão, todas fechadas por padrão)
+    faq: [
+      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. O número que os seus alunos já têm salvo continua o mesmo. O que muda é por onde ele é atendido — passa a ser pela conexão oficial da Meta.' },
+      { q: 'E se eu já uso outra plataforma?', a: 'A migração é nossa. Levamos a sua base, as suas etiquetas, o seu histórico e o seu número, e você aprova o mapeamento por escrito antes de qualquer coisa ser ligada. A implantação com migração custa R$ 1.000 a mais.' },
+      { q: 'Minha escola não usa EVO. Funciona?', a: 'Funciona igual. A integração com o EVO acrescenta coisas, mas nada do que está nesta página depende dela.' },
+      { q: 'A IA vai falar errado com o meu aluno?', a: 'Na primeira semana a gente lê todas as conversas e ajusta o que sair fora do esperado. E as IAs que mexem com dinheiro só entram depois de conferirmos os seus dados — justamente para não cobrar quem já pagou.' },
+      { q: 'Isso substitui a minha recepção?', a: 'Não. A IA cuida do repetitivo e entrega o interessado qualificado. Quem acolhe, conduz e fecha continua sendo a sua equipe — com mais tempo para isso.' },
+      { q: 'Quanto tempo até estar funcionando?', a: 'A IA começa a responder no mesmo dia da ativação, que leva cerca de 30 minutos. As quatro semanas seguintes são para ela responder bem e para a sua equipe saber usar.' },
+      { q: 'Posso cancelar quando quiser?', a: 'Pode, no mês que quiser, sem multa. Não existe contrato de permanência.' },
+    ],
+
+    // BLOCO 12 — Chamada final. Duas portas: testar ou pedir o raio-x.
     ctaFinal: {
-      titulo: 'Pronto para tirar a sua escola da fila?',
-      subtitulo: 'Comece o teste grátis hoje ou fale com a gente sobre a sua rede.',
-      ctaPrimario:   { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
-      ctaSecundario: { label: 'Falar com a gente',        evento: 'clique_contato',       plano: 'rede' },
+      titulo: 'Duas formas de começar',
+      portas: [
+        { titulo: 'Teste grátis por 7 dias', texto: 'Sem cartão. Em 30 minutos a sua IA está respondendo.', cta: { label: 'Começar agora', evento: 'clique_teste_gratis', plano: 'essencial' } },
+        { titulo: 'Peça um raio-x da sua escola', texto: '15 minutos por vídeo. A gente olha o seu atendimento e te mostra onde está vazando. Cortesia.', cta: { label: 'Agendar meu raio-x', evento: 'clique_raiox', plano: 'rede' } },
+      ],
     },
   },
 
@@ -440,13 +504,14 @@ window.WASFIT = {
 
   /* ---- Rodapé --------------------------------------------------------------- */
   footer: {
-    tagline: 'IA + WhatsApp para escolas de natação e academias.',
+    tagline: 'IA de WhatsApp para escolas de natação, criada dentro de uma.',
     colunas: [
       { titulo: 'Produto', links: [
-        { label: 'Como funciona', href: '/#como-funciona' },
-        { label: 'As 7 IAs',      href: '/#ias' },
-        { label: 'Planos',        href: '/#planos' },
-        { label: 'Garantia',      href: '/#garantia' },
+        { label: 'As IAs',                href: '/#ias' },
+        { label: 'Planos',                href: '/#planos' },
+        { label: 'Implantação',           href: '/#implantacao' },
+        { label: 'Garantia',              href: '/#garantia' },
+        { label: 'Perguntas frequentes',  href: '/#faq' },
       ]},
       { titulo: 'Campanha', links: [
         { label: 'EIN 2026',            href: '/ein/' },

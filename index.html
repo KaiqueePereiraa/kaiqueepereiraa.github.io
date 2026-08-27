@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.className += ' js';</script>
-<title>WasFit — a IA que atende como gente, 24/7 no WhatsApp</title>
-<meta name="description" content="Atendimento, qualificação e follow-up automáticos para escolas de natação e academias. Integração nativa com o EVO. Comunicação em escala pela API oficial da Meta.">
+<title>WasFit — a IA de WhatsApp que fala a língua da sua escola de natação</title>
+<meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
 
 <!-- Open Graph / preview no WhatsApp (item 12) -->
@@ -13,44 +13,69 @@
 <meta property="og:site_name" content="WasFit">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://wasfit.com.br/">
-<meta property="og:title" content="WasFit — a IA que atende como gente, 24/7 no WhatsApp">
-<meta property="og:description" content="Atendimento, qualificação e follow-up automáticos para escolas de natação e academias. Integração nativa com o EVO. API oficial da Meta.">
+<meta property="og:title" content="WasFit — a IA de WhatsApp que fala a língua da sua escola de natação">
+<meta property="og:description" content="Criada por quem opera quatro unidades há onze anos. Touca, nível, experimental, reposição, rematrícula. No ar em 30 minutos.">
 <meta property="og:image" content="https://wasfit.com.br/assets/img/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WasFit — a IA que atende como gente, 24/7 no WhatsApp">
-<meta name="twitter:description" content="IA + WhatsApp para escolas de natação e academias. Menos fila, mais matrícula.">
+<meta name="twitter:title" content="WasFit — a IA de WhatsApp que fala a língua da sua escola de natação">
+<meta name="twitter:description" content="IA de WhatsApp para escolas de natação, criada dentro de uma. Integração nativa com o EVO. API oficial da Meta.">
 <meta name="twitter:image" content="https://wasfit.com.br/assets/img/og-cover.png">
-<meta name="theme-color" content="#0D1827">
+<meta name="theme-color" content="#06101B">
 
 <link rel="icon" href="/assets/img/favicon-64.png" sizes="64x64" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/icon-512.png">
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css?v=9619aa5">
-<link rel="stylesheet" href="/assets/css/styles.css?v=9619aa5">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260828">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260828">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260828">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260828">
 
 <!-- GTM é injetado por main.js quando analytics.gtmId estiver preenchido no config.js (item 4) -->
 </head>
-<body data-page="home">
+<body data-page="ein" data-home>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-<!-- Sprite de ícones -->
+<!-- O MERGULHO: camadas de fundo que escurecem conforme você desce -->
+<div class="dive" aria-hidden="true">
+  <div class="dive-bg dive-bg--surface"></div>
+  <div class="dive-bg dive-bg--mid"></div>
+  <div class="dive-bg dive-bg--deep"></div>
+  <div class="dive-caustics"></div>
+  <div class="dive-shafts"></div>
+  <div class="dive-bubbles"></div>
+</div>
+<div class="dive-surface" aria-hidden="true">
+  <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <defs><linearGradient id="wsg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eafcf7" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#eafcf7" stop-opacity="0"/>
+    </linearGradient></defs>
+    <path d="M0,74 C150,44 320,104 600,74 C880,44 1050,104 1200,74 L1200,0 L0,0 Z" fill="url(#wsg)"/>
+    <g fill="#ffffff">
+      <ellipse class="glint" cx="180" cy="60" rx="34" ry="3"/>
+      <ellipse class="glint" cx="520" cy="72" rx="26" ry="2.5" style="animation-delay:.6s"/>
+      <ellipse class="glint" cx="860" cy="58" rx="40" ry="3.4" style="animation-delay:1.1s"/>
+      <ellipse class="glint" cx="1080" cy="70" rx="22" ry="2.4" style="animation-delay:1.7s"/>
+    </g>
+  </svg>
+</div>
+
+<nav class="depth-rail" aria-label="Ir para uma seção">
+  <div class="track"><span class="diver" aria-hidden="true"></span></div>
+  <span class="cap" aria-hidden="true">↓</span>
+</nav>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-13h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-<symbol id="i-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></g></symbol>
-<symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></g></symbol>
-<symbol id="i-reply" viewBox="0 0 24 24"><path d="M9 7 4 12l5 5M4 12h11a5 5 0 0 1 5 5v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l.9-5.3A8 8 0 1 1 21 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 2.1.55 4.06 1.6 5.8L2 22l4.44-1.68a9.9 9.9 0 0 0 5.6 1.72h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-2.63 1 .7-2.57-.2-.32a8.14 8.14 0 0 1-1.26-4.7c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.86 5.8 2.41a8.16 8.16 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.2 8.2zm4.5-6.13c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.16 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" fill="currentColor"/></symbol>
 <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" fill="currentColor"/></symbol>
 </defs></svg>
 
-<!-- ================= HEADER ================= -->
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand-lockup" href="/" aria-label="WasFit — página inicial">
@@ -58,16 +83,17 @@
       <span>WasFit</span>
     </a>
     <nav class="nav" aria-label="Principal">
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#ias">As 7 IAs</a>
+      <a href="#ias">As IAs</a>
       <a href="#planos">Planos</a>
+      <a href="#implantacao">Implantação</a>
+      <a href="#faq">Perguntas</a>
       <a href="/ein/">EIN 2026</a>
     </nav>
     <div class="header-actions">
-      <a class="btn btn--ghost" data-wa data-pos="header" href="https://wa.me/" aria-label="Falar no WhatsApp">
+      <a class="btn btn--ghost" data-wa data-pos="header" href="https://wa.me/">
         <svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
       </a>
-      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -76,174 +102,256 @@
 
 <main id="conteudo">
 
-  <!-- ================= HERO ================= -->
-  <section class="hero container">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow"><svg width="12" height="12" aria-hidden="true"><use href="#i-check"/></svg> <span data-cfg="home.hero.selo">API oficial da Meta</span></span>
-        <h1 class="display-1">
-          <span data-cfg="home.hero.titulo[0]">Sua escola vende</span><br>
-          <span class="accent" data-cfg="home.hero.titulo[1]">enquanto você dorme.</span>
-        </h1>
-        <p class="lead" data-cfg="home.hero.subtitulo">Atendimento 24/7 no WhatsApp com a inteligência da sua operação e o acolhimento que cada família espera. Menos fila, mais matrícula.</p>
-        <div class="btn-row">
-          <a class="btn btn--grad" href="#planos" data-evt="clique_teste_gratis" data-plano="essencial">Testar grátis por 7 dias</a>
-          <a class="btn btn--ghost" data-wa data-pos="header" href="https://wa.me/" data-evt="clique_contato" data-plano="rede">Falar com a gente</a>
-        </div>
-        <div class="stat-row">
-          <div class="stat"><b>11 anos</b><span>de mercado fitness</span></div>
-          <div class="stat"><b>24/7</b><span>IA sempre ativa</span></div>
-          <div class="stat"><b>1 nicho</b><span>fitness e natação</span></div>
-        </div>
+  <!-- ================= BLOCO 1 — HERO ================= -->
+  <section class="ein-hero">
+    <div class="bubbles" data-n="3" aria-hidden="true"></div>
+    <div class="container inner rise">
+      <span class="pill-live"><span class="dot"></span> <span data-cfg="home.hero.selo">API oficial da Meta · Integração nativa com o EVO</span></span>
+      <h1 class="display-1">
+        <span data-cfg="home.hero.titulo[0]">A IA de WhatsApp que fala a</span><br>
+        <span class="accent" data-cfg="home.hero.titulo[1]">língua da sua escola de natação</span>
+      </h1>
+      <p class="lead" data-cfg="home.hero.subtitulo">Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.</p>
+      <div class="node-row">
+        <span class="node">Touca</span>
+        <span class="node">Nível</span>
+        <span class="node">Experimental</span>
+        <span class="node">Reposição</span>
+        <span class="node">Rematrícula</span>
       </div>
-      <div class="hero-art">
-        <img src="/assets/img/wavi.png" alt="Wavi, o assistente de IA da WasFit, com tentáculos conectados a WhatsApp, agenda, cobrança e atendimento" width="780" height="551" fetchpriority="high">
+      <div class="btn-row mt-m">
+        <a class="btn btn--grad btn--lg" href="#planos" data-evt="clique_teste_gratis" data-plano="essencial">Testar grátis por 7 dias</a>
+        <a class="btn btn--ghost btn--lg" href="#" data-agendamento data-evt="clique_raiox" data-plano="rede">Peça um raio-x da sua escola</a>
       </div>
+      <p class="mono-label mt-s">Sem cartão · No ar em 30 minutos</p>
+    </div>
+    <div class="hero-art-wrap" aria-hidden="true">
+      <img src="/assets/img/wavi.png" alt="" width="460" height="325">
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Mergulhe</span>
+      <span class="cue-row">
+        <span class="arw"></span>
+        <svg class="cue-hand" viewBox="0 0 44 50" fill="none">
+          <path d="M23 48c-6.2 0-10.6-3-13.2-7.6l-4.6-8.2c-1.2-2.1 1.2-4.3 3.2-2.8L12 32V14a3 3 0 0 1 6 0v8h1V8a3 3 0 0 1 6 0v14h1V11a3 3 0 0 1 6 0v11h1v-7a3 3 0 0 1 6 0v18c0 7-5 13-13 13z" fill="currentColor"/>
+        </svg>
+      </span>
     </div>
   </section>
 
-  <!-- ================= DEMO ================= -->
-  <section class="section section--tight container" aria-labelledby="demo-h">
-    <div class="section-head section-head--center reveal">
-      <span class="eyebrow">Demonstração</span>
-      <h2 id="demo-h" class="display-2 mt-s">A IA escuta <span class="accent">antes de vender</span></h2>
-      <p class="lead">Uma conversa real: a IA identifica o objetivo da família, apresenta o diferencial certo e conduz para o próximo passo.</p>
-    </div>
-    <div class="demo-frame reveal" data-demo data-demo-key="home" data-evt-demo="viu_demo" role="button" tabindex="0" aria-label="Reproduzir vídeo de demonstração">
-      <div class="demo-poster">
-        <div class="demo-play"><svg aria-hidden="true"><use href="#i-play"/></svg></div>
-        <p class="mono-label">Demonstração · ~2 min</p>
-      </div>
-    </div>
-  </section>
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>O problema</em></span></span>
+  </div>
 
-  <!-- ================= COMO FUNCIONA ================= -->
-  <section id="como-funciona" class="section container" aria-labelledby="cf-h">
-    <div class="section-head reveal">
-      <span class="eyebrow">Como funciona</span>
-      <h2 id="cf-h" class="display-2 mt-s">Do primeiro "oi" <span class="accent">à matrícula.</span></h2>
-      <p class="lead">Cada conversa ganha um próximo passo claro — velocidade e processo, sem depender de quem está de plantão.</p>
-    </div>
-    <div class="grid grid-4">
-      <div class="card card--num reveal" data-delay="1"><span class="num">01</span><h3>Responde</h3><p>Imediatamente, a qualquer hora.</p></div>
-      <div class="card card--num reveal" data-delay="2"><span class="num">02</span><h3>Entende</h3><p>Objetivo e perfil de quem chega.</p></div>
-      <div class="card card--num reveal" data-delay="3"><span class="num">03</span><h3>Organiza</h3><p>Histórico e etapa no kanban.</p></div>
-      <div class="card card--num reveal" data-delay="4"><span class="num">04</span><h3>Converte</h3><p>Com contexto, até a matrícula.</p></div>
-    </div>
-    <div class="cta-bar reveal mt-m">Velocidade&nbsp;+&nbsp;processo</div>
-  </section>
-
-  <!-- ================= AS 7 IAs ================= -->
-  <section id="ias" class="section container" aria-labelledby="ias-h">
-    <div class="section-head reveal">
-      <span class="eyebrow">As 7 IAs do ciclo do aluno</span>
-      <h2 id="ias-h" class="display-2 mt-s">Uma IA para cada etapa. <span class="accent">Nenhuma conversa perdida.</span></h2>
+  <!-- ================= BLOCO 2 — O PROBLEMA ================= -->
+  <section id="problema" class="section container" aria-labelledby="pr-h">
+    <div class="bubbles" data-n="3" aria-hidden="true"></div>
+    <div class="section-head rise">
+      <h2 id="pr-h" class="display-2">O que acontece hoje quando alguém manda mensagem para a sua escola<br><span class="accent">no domingo à noite?</span></h2>
     </div>
     <div class="grid grid-3">
-      <div class="ia-item card reveal" data-delay="1"><span class="ic"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div><h3>Recepção</h3><p>Responde todo primeiro contato na hora, a qualquer hora.</p></div></div>
-      <div class="ia-item card reveal" data-delay="1"><span class="ic"><svg aria-hidden="true"><use href="#i-target"/></svg></span><div><h3>Qualificação</h3><p>Entende objetivo, nível e perfil de quem chega.</p></div></div>
-      <div class="ia-item card reveal" data-delay="2"><span class="ic"><svg aria-hidden="true"><use href="#i-calendar"/></svg></span><div><h3>Agendamento</h3><p>Marca a aula experimental e sincroniza a agenda.</p></div></div>
-      <div class="ia-item card reveal" data-delay="2"><span class="ic"><svg aria-hidden="true"><use href="#i-reply"/></svg></span><div><h3>Follow-up</h3><p>Reativa quem disse "vou pensar" antes de esfriar.</p></div></div>
-      <div class="ia-item card reveal" data-delay="3"><span class="ic"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><h3>Matrícula</h3><p>Conduz da experimental ao contrato, com contexto.</p></div></div>
-      <div class="ia-item card reveal" data-delay="3"><span class="ic"><svg aria-hidden="true"><use href="#i-chat"/></svg></span><div><h3>Onboarding</h3><p>Acompanha as primeiras semanas do novo aluno.</p></div></div>
-      <div class="ia-item card reveal" data-delay="4"><span class="ic"><svg aria-hidden="true"><use href="#i-refresh"/></svg></span><div><h3>Rematrícula</h3><p>Antecipa a renovação antes do vencimento.</p></div></div>
+      <div class="card card--num is-01 rise" data-delay="1"><span class="num">01</span><p><b>A mensagem fica esperando até segunda.</b> Quando alguém responde, o pai já falou com outra escola.</p></div>
+      <div class="card card--num is-02 rise" data-delay="2"><span class="num">02</span><p><b>Alguém pergunta o preço, some no meio da conversa,</b> e ninguém percebe que sumiu.</p></div>
+      <div class="card card--num is-03 rise" data-delay="3"><span class="num">03</span><p><b>No fim do mês, você não sabe</b> quantas pessoas procuraram a escola e não fecharam.</p></div>
+    </div>
+    <p class="lead rise mt-m">Nenhum desses três é problema de esforço da sua equipe. É problema de não ter quem esteja acordado às onze da noite e quem registre tudo.</p>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>As IAs</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 3 — AS IAs DO CICLO DO ALUNO ================= -->
+  <section id="ias" class="section container" aria-labelledby="ias-h">
+    <div class="section-head rise">
+      <span class="eyebrow">As IAs do ciclo do aluno</span>
+      <h2 id="ias-h" class="display-2 mt-s">Uma IA especialista <span class="accent">para cada momento do aluno</span></h2>
+      <p class="lead">Cada uma cuida de um momento do aluno. Todas incluídas em qualquer plano.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="ia-item card rise" data-delay="1"><span class="ic">01</span><div><h3>Atendimento</h3><p>Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="1"><span class="ic">02</span><div><h3>Vendas</h3><p>Qualifica o interessado, apresenta os planos e agenda a experimental no horário que tem vaga.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="2"><span class="ic">03</span><div><h3>Após cadastro de oportunidade</h3><p>Assim que a oportunidade entra no seu EVO, o contato já começa — sem esperar alguém puxar.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="2"><span class="ic">04</span><div><h3>Rematrícula / matrícula</h3><p>Recebe quem acabou de fechar contrato ou rematricular com uma mensagem de boas-vindas.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="3"><span class="ic">05</span><div><h3>Sem presença</h3><p>Percebe quem some das aulas por 7 dias e entra em contato antes que vire desistência.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="3"><span class="ic">06</span><div><h3>Feliz aniversário ativo</h3><p>Parabeniza o aluno ativo na data, sem ninguém precisar lembrar.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="4"><span class="ic">07</span><div><h3>Feliz aniversário inativo</h3><p>Também lembra do aluno que já saiu — mantendo a porta aberta.</p><p class="mono-label" style="margin-top:8px">No ar no primeiro dia</p></div></div>
+      <div class="ia-item card rise" data-delay="4"><span class="ic">08</span><div><h3>Cobrança</h3><p>Cobra quem está em atraso, com o tom certo — insistindo o quanto for preciso.</p><p class="mono-label" style="margin-top:8px;color:var(--amber)">Depois de conferir a sua base</p></div></div>
+      <div class="ia-item card rise" data-delay="4"><span class="ic">09</span><div><h3>Após vencimento do contrato</h3><p>Quando o contrato encerra, já chama o cliente para renovar — sem deixar o silêncio virar perda.</p><p class="mono-label" style="margin-top:8px;color:var(--amber)">Depois de conferir a sua base</p></div></div>
+      <div class="ia-item card rise" data-delay="4"><span class="ic">10</span><div><h3>Cancelamento automático</h3><p>Quando o contrato é cancelado por inadimplência, avisa o cliente da pendência e dos próximos passos.</p><p class="mono-label" style="margin-top:8px;color:var(--amber)">Depois de conferir a sua base</p></div></div>
+    </div>
+    <div class="card rise mt-m" style="max-width:780px">
+      <h3>Por que três delas esperam</h3>
+      <p>Cobrança, aviso de vencimento e cancelamento por inadimplência mexem com dinheiro e com contrato. Uma cobrança disparada para quem já pagou, ou um aviso de pendência com o dado errado, não é um erro de sistema na cabeça do seu cliente — é a sua escola fazendo papel ruim. Por isso a gente confere os seus dados antes de ligar essas três. Se estiver tudo certo, elas entram na quarta semana.</p>
     </div>
   </section>
 
-  <!-- ================= RESOLVE SOZINHO x COM VOCÊ ================= -->
-  <section class="section container" aria-labelledby="rv-h">
-    <div class="section-head reveal">
-      <span class="eyebrow">O que é e o que resolve</span>
-      <h2 id="rv-h" class="display-2 mt-s">A IA resolve sozinha. <span class="accent">O time faz com você.</span></h2>
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Resolve × estratégia</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 4 — RESOLVE × DEPENDE DE ESTRATÉGIA ================= -->
+  <section id="resolve" class="section container" aria-labelledby="rv-h">
+    <div class="section-head rise">
+      <h2 id="rv-h" class="display-2">O que ela resolve sozinha,<br><span class="accent">e o que depende de estratégia</span></h2>
+      <p class="lead">Ferramenta nenhuma conserta operação. Esta é a parte que quase ninguém escreve no site.</p>
     </div>
     <div class="compare">
-      <div class="col col--good reveal">
-        <h3>A IA resolve sozinha</h3>
+      <div class="col col--good rise">
+        <h3>Resolve sozinha</h3>
         <ul class="check-list">
-          <li>Responde na hora, 24/7, no WhatsApp</li>
-          <li>Qualifica cada lead pelo objetivo</li>
-          <li>Agenda a aula experimental</li>
-          <li>Faz o follow-up de quem sumiu</li>
-          <li>Registra a origem de cada contato</li>
-          <li>Organiza o funil no kanban</li>
-          <li>Comunicação em escala pela API oficial da Meta</li>
+          <li>Ninguém fica sem resposta, a qualquer hora</li>
+          <li>Nenhum contato se perde no meio da conversa</li>
+          <li>Os dados do aluno entram certos, no ato</li>
+          <li>Você sabe de onde veio cada contato</li>
+          <li>Você consegue filtrar quem te procurou e não fechou</li>
+          <li>Você vê em que etapa cada lead parou</li>
         </ul>
       </div>
-      <div class="col col--good reveal" data-delay="1">
-        <h3 style="color:var(--lime)">O que fazemos com você</h3>
+      <div class="col col--good rise" data-delay="1">
+        <h3 style="color:var(--lime)">Depende de estratégia</h3>
         <ul class="check-list">
-          <li>Desenho do funil e das filas de atendimento</li>
-          <li>Treino da IA com a linguagem da sua escola</li>
-          <li>Integração com o seu EVO</li>
-          <li>Migração da plataforma que você usa hoje</li>
-          <li>Acompanhamento nas primeiras semanas</li>
+          <li>Dar continuidade ao lead que a IA qualificou</li>
+          <li>Fazer campanha que dá resultado, e não só disparo</li>
+          <li>Definir o que oferecer para quem quer cancelar</li>
+          <li>Ler o que os seus números estão dizendo</li>
+          <li>Manter a sua base de dados confiável</li>
         </ul>
       </div>
     </div>
+    <p class="lead rise mt-m">A primeira coluna está inclusa no plano. A segunda a gente faz com você, ou te ensina a fazer — e você decide se quer.</p>
+    <p class="migracao-line rise"><a href="#">Ver o que fazemos com você →</a></p>
   </section>
 
-  <!-- ================= EVO ================= -->
-  <section class="section container" aria-labelledby="evo-h">
-    <div class="evo-wrap">
-      <div class="reveal">
-        <span class="eyebrow">Para quem usa EVO</span>
-        <h2 id="evo-h" class="display-2 mt-s">O que muda para quem já roda no <span class="accent">EVO.</span></h2>
-        <p class="badge-integracao mt-s"><svg width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg> Integração nativa com o EVO</p>
+  <div class="lane-sep lane-sep--mgb" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Fala a língua da natação</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 5 — FALA A LÍNGUA DA NATAÇÃO (identidade MGB) ================= -->
+  <section id="lingua" class="section mgb-section" aria-labelledby="lg-h">
+    <div class="bubbles bubbles--mgb" data-n="5" aria-hidden="true"></div>
+    <img class="mgb-mascot mgb-mascot--1" src="/assets/img/mgb-mascot-polwerine.png" alt="" aria-hidden="true">
+    <img class="mgb-mascot mgb-mascot--2" src="/assets/img/mgb-mascot-flipo.png" alt="" aria-hidden="true">
+    <img class="mgb-mascot mgb-mascot--3" src="/assets/img/mgb-mascot-glover.png" alt="" aria-hidden="true">
+
+    <div class="container">
+      <div class="mgb-head rise">
+        <div class="mgb-brandline">
+          <img class="mgb-logo" src="/assets/img/mgb-credenciado.png" alt="Metodologia Gustavo Borges" width="76" height="76">
+          <span class="eyebrow eyebrow--mgb">Fala a língua da natação</span>
+        </div>
+        <h2 id="lg-h" class="display-2 mt-s">Ela não foi adaptada para natação.<br><span class="accent-mgb">Ela nasceu dentro de uma.</span></h2>
+        <p class="lead" style="max-width:64ch">A nossa IA sabe o que é troca de touca, o que é nível, o que é aula experimental, o que é reposição e o que é rematrícula. Não porque alguém escreveu isso num manual — porque ela foi treinada dentro de escolas de natação em operação, desde o primeiro dia de desenvolvimento.</p>
       </div>
-      <div class="grid grid-2">
-        <div class="card reveal" data-delay="1"><h3>Sem digitação dupla</h3><p>Cadastro, agenda e cobrança conversam com o WhatsApp.</p></div>
-        <div class="card reveal" data-delay="1"><h3>Lead vira aluno direto</h3><p>O contato qualificado entra no EVO sem retrabalho.</p></div>
-        <div class="card reveal" data-delay="2"><h3>A IA sabe quem é quem</h3><p>Distingue aluno ativo, ex-aluno e lead novo.</p></div>
-        <div class="card reveal" data-delay="2"><h3>Status em tempo real</h3><p>Pagamento e presença puxados automaticamente.</p></div>
+
+      <div class="mgb-aguas rise" data-delay="1">
+        <span>Treinada na Metodologia Gustavo Borges</span>
+        <span class="mgb-toucas" title="Cada touca, um nível"><i></i><i></i><i></i><i></i><i></i></span>
+        <span>a IA fala a língua de cada nível</span>
       </div>
+
+      <div class="wa-chat rise" data-delay="1" style="margin-top:36px">
+        <div class="bar">
+          <span class="av">P</span>
+          <span class="who">Pai de aluno<span>online agora</span></span>
+        </div>
+        <div class="wa-body">
+          <div class="msg lead">boa noite! o Théo pode trocar de touca esse mês?</div>
+          <div class="msg ia">Boa noite! O Théo está no nível 3, touca verde. A troca acontece quando a professora valida os objetivos do nível — no caso dele, flutuação e nado com respiração lateral.</div>
+          <div class="msg ia">A avaliação da turma dele é na próxima quarta. Se fechar os dois pontos, já sai com a touca do nível 4. Quer que eu te avise o resultado por aqui?</div>
+          <div class="msg lead">quero sim, obrigado</div>
+        </div>
+      </div>
+
+      <div class="chips rise mt-l" data-delay="2">
+        <span class="chip">Touca</span><span class="chip">Nível</span><span class="chip">Experimental</span>
+        <span class="chip">Reposição</span><span class="chip">Rematrícula</span><span class="chip">Adaptação</span>
+        <span class="chip">Avaliação</span><span class="chip">Autossalvamento</span>
+      </div>
+      <p class="mono-label rise" style="margin-top:14px;color:#9fc9ee">Vocabulário da natação que já faz parte da IA — desde o primeiro dia.</p>
     </div>
   </section>
 
-  <!-- ================= FAIXA DE LANÇAMENTO ================= -->
-  <section id="lancamento" class="section--tight container" aria-labelledby="lc-h">
-    <div class="launch reveal" data-launch>
-      <div class="launch-inner">
-        <div>
-          <span class="eyebrow">Condição de lançamento</span>
-          <h3 id="lc-h" class="display-3" data-launch-title>Condição de lançamento — Fundador</h3>
-          <p class="destaque" data-launch-destaque>Implantação grátis — você não paga nada de entrada</p>
-          <ul data-launch-beneficios>
-            <li>Preço travado enquanto for cliente</li>
-            <li>Garantia de 30 dias</li>
-            <li>Sem fidelidade</li>
-          </ul>
-          <p class="prazo" data-launch-prazo>Válido até 31 de outubro de 2026</p>
-        </div>
-        <div class="counter-box">
-          <div class="counter-num"><span data-launch-num>20</span></div>
-          <div class="counter-label" data-launch-contador>de 20 vagas restantes</div>
-          <a class="btn btn--grad btn--block" href="/ein/#vaga" data-launch-cta data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
-        </div>
-      </div>
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Para quem usa EVO</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 6 — PARA QUEM USA EVO ================= -->
+  <section id="evo" class="section container" aria-labelledby="evo-h">
+    <div class="bubbles" data-n="3" aria-hidden="true"></div>
+    <div class="section-head rise">
+      <span class="eyebrow">Para quem usa EVO</span>
+      <h2 id="evo-h" class="display-2 mt-s">Se a sua escola usa EVO,<br><span class="accent">ela faz mais.</span></h2>
+    </div>
+    <div class="col col--good rise" data-delay="1" style="max-width:640px">
+      <ul class="check-list">
+        <li>Cria o cadastro do aluno direto no EVO</li>
+        <li>Agenda a aula na grade, no horário que tem vaga</li>
+        <li>Dispara a cobrança a partir do que está no sistema</li>
+        <li>Lê a situação do aluno antes de responder</li>
+      </ul>
+    </div>
+    <p class="lead rise mt-m">E se a sua escola não usa EVO, tudo o que está nesta página continua funcionando igual.</p>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Quem construiu</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 7 — QUEM CONSTRUIU ================= -->
+  <section id="quem-construiu" class="section container" aria-labelledby="qc-h">
+    <div class="section-head rise" style="max-width:52rem">
+      <span class="eyebrow">Quem construiu</span>
+      <h2 id="qc-h" class="display-2 mt-s">Construímos para as nossas quatro unidades<br><span class="accent">antes de vender para a sua</span></h2>
+      <p class="lead" style="max-width:64ch">São onze anos operando academia e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
     </div>
   </section>
 
-  <!-- ================= PLANOS ================= -->
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Planos</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 8 — PLANOS (com a faixa de lançamento) ================= -->
   <section id="planos" class="section container" aria-labelledby="pl-h">
-    <div class="section-head section-head--center reveal">
-      <span class="eyebrow">Planos</span>
-      <h2 id="pl-h" class="display-2 mt-s">Sem fidelidade. Preço único. <span class="accent">Cancele quando quiser.</span></h2>
+    <div class="section-head section-head--center rise">
+      <h2 id="pl-h" class="display-2">Sem fidelidade. Preço único. <span class="accent">Cancele quando quiser.</span></h2>
     </div>
 
+    <!-- 8.1 / 8.2 — faixa da condição de lançamento -->
+    <div class="launch-band rise" data-launch data-delay="1">
+      <div class="lb-main">
+        <span class="eyebrow">Condição de lançamento</span>
+        <h3 class="display-3" data-launch-title style="margin:10px 0 6px">Implantação grátis para as 20 primeiras escolas</h3>
+        <p class="lb-headline" data-launch-destaque>Você entra sem pagar nada de entrada. A implantação, com o treinamento da sua recepção, é por nossa conta.</p>
+        <ul class="lb-benefits" data-launch-beneficios>
+          <li>Preço travado enquanto você for cliente</li>
+          <li>Garantia de 30 dias</li>
+          <li>Sem fidelidade</li>
+        </ul>
+        <p class="lb-prazo" data-launch-prazo>Válido até 31 de outubro de 2026</p>
+      </div>
+      <div class="lb-side">
+        <div class="lb-count"><span data-launch-num>20</span></div>
+        <div class="lb-count-label" data-launch-contador>Restam 20 das 20 vagas</div>
+        <a class="btn btn--grad btn--block" data-agendamento href="#" data-launch-cta data-evt="clique_vaga" data-plano="fundador" data-faixa="fundador">Quero minha vaga</a>
+      </div>
+    </div>
+
+    <!-- 8.3 — os três cartões -->
     <div class="plans">
       <!-- Essencial -->
-      <div class="plan reveal">
+      <div class="plan rise">
         <div>
           <div class="plan-name">Essencial</div>
-          <div class="plan-sub">para escolas de uma unidade</div>
+          <div class="plan-sub">Para escolas de uma unidade</div>
         </div>
         <div class="plan-price">R$ 597 <span>/mês</span></div>
         <div class="plan-note">Sem fidelidade. Cancele quando quiser.</div>
-        <div class="plan-impl">+ R$ 1.900 de implantação, uma única vez</div>
+        <div class="plan-impl"><s>+ R$ 1.900 de implantação, uma única vez</s><b class="impl-free">grátis na condição de lançamento</b></div>
         <ul class="plan-features">
           <li>1 unidade</li>
           <li>Até 2 números de WhatsApp</li>
-          <li>As 7 IAs do ciclo do aluno</li>
+          <li>Todas as IAs do ciclo do aluno</li>
           <li>Kanban de leads com a etapa visível</li>
           <li>Etiquetas e filtro da base</li>
           <li>Registro de origem de cada contato</li>
@@ -256,16 +364,15 @@
         <a class="btn btn--ghost btn--block" href="#" data-agendamento data-evt="clique_teste_gratis" data-plano="essencial">Testar grátis por 7 dias</a>
       </div>
 
-      <!-- Escola (destaque) -->
-      <div class="plan plan--featured reveal" data-delay="1">
-        <span class="selo">Mais escolhido</span>
+      <!-- Escola (destaque visual, sem selo) -->
+      <div class="plan plan--featured rise" data-delay="1">
         <div>
           <div class="plan-name">Escola</div>
-          <div class="plan-sub">para escolas com mais de um endereço</div>
+          <div class="plan-sub">Para escolas com mais de um endereço</div>
         </div>
         <div class="plan-price">R$ 997 <span>/mês</span></div>
         <div class="plan-note">Sem fidelidade. Cancele quando quiser.</div>
-        <div class="plan-impl">+ R$ 2.900 de implantação, uma única vez</div>
+        <div class="plan-impl"><s>+ R$ 2.900 de implantação, uma única vez</s><b class="impl-free">grátis na condição de lançamento</b></div>
         <ul class="plan-features">
           <li class="ft-title">Tudo do Essencial, e mais:</li>
           <li>Até 2 unidades</li>
@@ -276,14 +383,15 @@
       </div>
 
       <!-- Rede -->
-      <div class="plan reveal" data-delay="2">
+      <div class="plan rise" data-delay="2">
         <div>
           <div class="plan-name">Rede</div>
-          <div class="plan-sub">para redes com três unidades ou mais</div>
+          <div class="plan-sub">Para redes com três unidades ou mais</div>
         </div>
         <div class="plan-price">A partir de R$ 1.347 <span>/mês</span></div>
-        <div class="plan-note">R$ 1.347 para 3 unidades, mais R$ 350 por unidade adicional</div>
-        <div class="plan-impl">+ R$ 3.800 de implantação, mais R$ 900 por unidade adicional</div>
+        <div class="plan-note">R$ 1.347 para 3 unidades, mais R$ 350 por unidade adicional.</div>
+        <div class="plan-note">Sem fidelidade. Cancele quando quiser.</div>
+        <div class="plan-impl"><s>+ R$ 3.800 de implantação, mais R$ 900 por unidade adicional</s><b class="impl-free">grátis na condição de lançamento</b></div>
         <ul class="plan-features">
           <li class="ft-title">Tudo do Escola, e mais:</li>
           <li>3 unidades ou mais</li>
@@ -294,8 +402,8 @@
         <div class="calc" data-calc>
           <label for="calc-unidades">Quantas unidades?</label>
           <div class="calc-input">
-            <input id="calc-unidades" type="number" min="3" max="6" step="1" value="3" inputmode="numeric">
-            <span class="mono-label">3 a 6 unidades</span>
+            <input id="calc-unidades" type="number" min="1" max="12" step="1" value="3" inputmode="numeric">
+            <span class="mono-label">a partir de 3 unidades</span>
           </div>
           <p class="calc-out" data-calc-out>3 unidades: <b>R$ 1.347</b>/mês · implantação <b>R$ 3.800</b></p>
         </div>
@@ -303,73 +411,115 @@
       </div>
     </div>
 
-    <p class="migracao-line reveal">Já usa outra plataforma? A implantação com migração custa R$ 1.000 a mais. <a href="#migracao">Como funciona a migração →</a></p>
+    <p class="migracao-line rise">Já usa outra plataforma? A implantação com migração custa R$ 1.000 a mais. &nbsp;·&nbsp; <a href="#">Ver o que fazemos com você →</a></p>
     <div data-viu-planos aria-hidden="true"></div>
   </section>
 
-  <!-- ================= GARANTIA ================= -->
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Implantação</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 9 — COMO FUNCIONA A IMPLANTAÇÃO ================= -->
+  <section id="implantacao" class="section container" aria-labelledby="im-h">
+    <div class="bubbles" data-n="3" aria-hidden="true"></div>
+    <div class="section-head rise">
+      <span class="eyebrow">Como funciona a implantação</span>
+      <h2 id="im-h" class="display-2 mt-s">O que acontece nas suas<br><span class="accent">primeiras quatro semanas</span></h2>
+      <p class="lead">Implantação não é uma taxa. É o que faz a sua equipe usar de verdade.</p>
+    </div>
+    <div class="grid">
+      <div class="card card--num rise" data-delay="1"><span class="num">Dia 1</span><h3>Ativação</h3><p>60 minutos. Conectamos o número e ligamos as quatro primeiras IAs. Você sai com a IA respondendo.</p></div>
+      <div class="card card--num rise" data-delay="1"><span class="num">Semana 1</span><h3>Ajuste fino</h3><p>Lemos as conversas reais todo dia e corrigimos o que saiu fora. Seu tempo: nenhum.</p></div>
+      <div class="card card--num rise" data-delay="2"><span class="num">Semana 2</span><h3>O seu funil</h3><p>Montamos o Kanban com as etapas da sua escola e treinamos o ponto focal.</p></div>
+      <div class="card card--num rise" data-delay="2"><span class="num">Semana 3</span><h3>Treinamento da recepção</h3><p>Três horas com a sua equipe. É a parte que decide se a ferramenta vai ser usada.</p></div>
+      <div class="card card--num rise" data-delay="3"><span class="num">Semana 4</span><h3>As três IAs que faltam</h3><p>Conferimos os seus dados e ligamos cobrança, aviso de vencimento e cancelamento.</p></div>
+    </div>
+    <p class="lead rise mt-m">Total do seu tempo nas quatro semanas: cerca de 5 horas.</p>
+    <p class="lead rise">Já usa outra plataforma? A gente leva a sua base, as suas etiquetas, o seu histórico e o seu número. Você não começa do zero.</p>
+  </section>
+
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Garantia</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 10 — SEM FIDELIDADE E GARANTIA ================= -->
   <section id="garantia" class="section container" aria-labelledby="gr-h">
-    <div class="guarantee reveal">
-      <span class="eyebrow">Garantia</span>
-      <h2 id="gr-h" class="display-3 mt-s">Garantia de 30 dias, escrita por extenso.</h2>
-      <p class="lead" style="max-width:60ch">Se em 30 dias o Assist não estiver rodando na sua operação do jeito que combinamos, devolvemos o valor da implantação. Sem letra miúda, sem fidelidade, sem pegadinha.</p>
+    <div class="section-head rise">
+      <span class="eyebrow">Sem peso na decisão</span>
+      <h2 id="gr-h" class="display-2 mt-s">Sem fidelidade <span class="accent">e garantia.</span></h2>
+    </div>
+    <div class="grid grid-3" data-trust>
+      <div class="card rise"><h3>Sem fidelidade</h3><p>Não tem contrato de permanência. Você cancela no mês que quiser, sem multa.</p></div>
+      <div class="card rise" data-delay="1" data-garantia-col><h3>Garantia de 30 dias</h3><p>Nas 20 primeiras escolas: se em 30 dias não servir, devolvemos a mensalidade. Uma mensagem no WhatsApp, sem formulário.</p></div>
+      <div class="card rise" data-delay="2"><h3>Preço travado</h3><p>O seu preço não sobe enquanto você for cliente.</p></div>
     </div>
   </section>
 
-  <!-- ================= MIGRAÇÃO (placeholder de conteúdo — texto até 04/09) ================= -->
-  <section id="migracao" class="section--tight container" aria-labelledby="mg-h">
-    <div class="section-head reveal">
-      <span class="eyebrow">Migração</span>
-      <h2 id="mg-h" class="display-3 mt-s">Vindo de outra plataforma?</h2>
-      <p class="lead">A gente traz sua base, suas etiquetas e seu histórico de conversas. A implantação com migração custa R$ 1.000 a mais e mantém sua operação no ar durante a troca. <em>Conteúdo detalhado desta seção será enviado até 04/09.</em></p>
+  <div class="lane-sep" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Perguntas</em></span></span>
+  </div>
+
+  <!-- ================= BLOCO 11 — PERGUNTAS FREQUENTES ================= -->
+  <section id="faq" class="section container" aria-labelledby="fq-h">
+    <div class="section-head rise">
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2 id="fq-h" class="display-2 mt-s">As dúvidas que <span class="accent">chegam primeiro</span></h2>
+    </div>
+    <div class="faq rise" data-delay="1">
+      <details class="faq-item">
+        <summary>Preciso trocar o meu número de WhatsApp?</summary>
+        <p>Não. O número que os seus alunos já têm salvo continua o mesmo. O que muda é por onde ele é atendido — passa a ser pela conexão oficial da Meta.</p>
+      </details>
+      <details class="faq-item">
+        <summary>E se eu já uso outra plataforma?</summary>
+        <p>A migração é nossa. Levamos a sua base, as suas etiquetas, o seu histórico e o seu número, e você aprova o mapeamento por escrito antes de qualquer coisa ser ligada. A implantação com migração custa R$ 1.000 a mais.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Minha escola não usa EVO. Funciona?</summary>
+        <p>Funciona igual. A integração com o EVO acrescenta coisas, mas nada do que está nesta página depende dela.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A IA vai falar errado com o meu aluno?</summary>
+        <p>Na primeira semana a gente lê todas as conversas e ajusta o que sair fora do esperado. E as IAs que mexem com dinheiro só entram depois de conferirmos os seus dados — justamente para não cobrar quem já pagou.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Isso substitui a minha recepção?</summary>
+        <p>Não. A IA cuida do repetitivo e entrega o interessado qualificado. Quem acolhe, conduz e fecha continua sendo a sua equipe — com mais tempo para isso.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo até estar funcionando?</summary>
+        <p>A IA começa a responder no mesmo dia da ativação, que leva cerca de 30 minutos. As quatro semanas seguintes são para ela responder bem e para a sua equipe saber usar.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso cancelar quando quiser?</summary>
+        <p>Pode, no mês que quiser, sem multa. Não existe contrato de permanência.</p>
+      </details>
     </div>
   </section>
 
-  <!-- ================= CONTATO ================= -->
-  <section id="contato" class="section container" aria-labelledby="fo-h">
-    <div class="section-head section-head--center reveal">
-      <span class="eyebrow">Fale com a gente</span>
-      <h2 id="fo-h" class="display-2 mt-s">Conta pra gente da <span class="accent">sua operação.</span></h2>
-      <p class="lead">Deixe seu contato e a gente retorna com uma demonstração — sem compromisso.</p>
-    </div>
-    <form class="lead-form reveal" data-lead-form data-origem="home_form" novalidate>
-      <div class="row2">
-        <div class="field">
-          <label for="f-nome">Nome</label>
-          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="f-escola">Escola / rede</label>
-          <input id="f-escola" name="escola" type="text" autocomplete="organization">
-        </div>
-      </div>
-      <div class="row2">
-        <div class="field">
-          <label for="f-wpp">WhatsApp</label>
-          <input id="f-wpp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required>
-        </div>
-        <div class="field">
-          <label for="f-unidades">Nº de unidades</label>
-          <input id="f-unidades" name="unidades" type="number" min="1" inputmode="numeric">
-        </div>
-      </div>
-      <div class="field">
-        <label for="f-msg">Mensagem (opcional)</label>
-        <textarea id="f-msg" name="mensagem"></textarea>
-      </div>
-      <button class="btn btn--grad btn--block" type="submit">Enviar</button>
-      <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-    </form>
-  </section>
+  <div class="lane-sep lane-sep--ein" aria-hidden="true">
+    <span class="lane-swim"><span class="lane-swim__fig"></span><span class="lane-sign"><b>Próxima</b><em>Como começar</em></span></span>
+  </div>
 
-  <!-- ================= CTA FINAL ================= -->
-  <section class="section container" aria-labelledby="ct-h">
-    <div class="section-head section-head--center reveal">
-      <h2 id="ct-h" class="display-2">Pronto para tirar a sua escola <span class="accent">da fila?</span></h2>
-      <p class="lead">Comece o teste grátis hoje ou fale com a gente sobre a sua rede.</p>
-      <div class="btn-row" style="justify-content:center">
-        <a class="btn btn--grad" href="#" data-agendamento data-evt="clique_teste_gratis" data-plano="essencial">Testar grátis por 7 dias</a>
-        <a class="btn btn--ghost" data-wa data-pos="footer" href="https://wa.me/" data-evt="clique_contato" data-plano="rede">Falar com a gente</a>
+  <!-- ================= BLOCO 12 — CHAMADA FINAL ================= -->
+  <section class="section container ein-final" aria-labelledby="cf-h">
+    <span class="halo" aria-hidden="true"></span>
+    <span class="dive-floor" aria-hidden="true"></span>
+    <div class="bubbles" data-n="8" aria-hidden="true"></div>
+    <div class="section-head section-head--center rise">
+      <span class="eyebrow">Fundo da piscina</span>
+      <h2 id="cf-h" class="display-1 mt-s">Duas formas <span class="accent">de começar</span></h2>
+    </div>
+    <div class="grid grid-2 rise" data-delay="1">
+      <div class="card">
+        <h3>Teste grátis por 7 dias</h3>
+        <p>Sem cartão. Em 30 minutos a sua IA está respondendo.</p>
+        <a class="btn btn--grad btn--block mt-s" href="#" data-agendamento data-evt="clique_teste_gratis" data-plano="essencial">Começar agora</a>
+      </div>
+      <div class="card">
+        <h3>Peça um raio-x da sua escola</h3>
+        <p>15 minutos por vídeo. A gente olha o seu atendimento e te mostra onde está vazando. Cortesia.</p>
+        <a class="btn btn--ghost btn--block mt-s" href="#" data-agendamento data-evt="clique_raiox" data-plano="rede">Agendar meu raio-x</a>
       </div>
     </div>
   </section>
@@ -378,25 +528,29 @@
 
 <div class="hairline"></div>
 
-<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="/assets/img/logo-wordmark.png" alt="WasFit" width="120">
-        <p>IA + WhatsApp para escolas de natação e academias.</p>
+        <p>IA de WhatsApp para escolas de natação, criada dentro de uma.</p>
+        <div class="footer-marks">
+          <img class="footer-ein" src="/assets/img/ein-logo.png" alt="Presente no Encontro Internacional de Natação 2026" loading="lazy">
+          <span class="footer-mgb-txt">IA treinada na<br>Metodologia Gustavo Borges</span>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Produto</h4>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#ias">As 7 IAs</a>
+        <a href="#ias">As IAs</a>
         <a href="#planos">Planos</a>
+        <a href="#implantacao">Implantação</a>
         <a href="#garantia">Garantia</a>
+        <a href="#faq">Perguntas frequentes</a>
       </div>
       <div class="footer-col">
         <h4>Campanha</h4>
         <a href="/ein/">EIN 2026</a>
-        <a href="#lancamento">Condição de lançamento</a>
+        <a href="#planos">Condição de lançamento</a>
       </div>
       <div class="footer-col">
         <h4>Contato</h4>
@@ -416,7 +570,8 @@
   <svg aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/config.js?v=9619aa5"></script>
-<script src="/assets/js/main.js?v=9619aa5" defer></script>
+<script src="/assets/js/config.js?v=20260828"></script>
+<script src="/assets/js/main.js?v=20260828" defer></script>
+<script src="/assets/js/ein.js?v=20260828" defer></script>
 </body>
 </html>

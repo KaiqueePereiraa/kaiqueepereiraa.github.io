@@ -307,14 +307,28 @@
     function fmt(n) { return 'R$ ' + n.toLocaleString('pt-BR'); }
     function render() {
       var u = parseInt(input.value, 10);
-      if (isNaN(u) || u < k.min) { out.innerHTML = 'Informe ao menos <b>' + k.min + '</b> unidades.'; return; }
-      if (u > k.max) { out.innerHTML = 'Para <b>' + u + '+</b> unidades, é <b>Falar com a gente</b> — condição sob medida.'; return; }
+      if (isNaN(u) || u < 1) { out.innerHTML = 'Informe o número de unidades.'; return; }
+      if (u < k.min) { out.innerHTML = 'Com <b>1 ou 2 unidades</b>, o plano é o <b>Escola</b>.'; return; }
+      if (u > k.max) { out.innerHTML = 'Acima de <b>6 unidades</b>: <b>Falar com a gente</b>.'; return; }
       var mensal = k.base + k.porUnidade * (u - k.min);
       var impl = k.implBase + k.implPorUnidade * (u - k.min);
       out.innerHTML = u + ' unidades: <b>' + fmt(mensal) + '</b>/mês &nbsp;·&nbsp; implantação <b>' + fmt(impl) + '</b>';
     }
     input.addEventListener('input', render);
     render();
+  });
+
+  /* ---------------------------------------------------------------- *
+   *  10c. BLOCO 10 — a coluna da garantia de 30 dias vale só para as *
+   *       20 primeiras (Fundador). Quando acabam, some a coluna.     *
+   * ---------------------------------------------------------------- */
+  safe(function trustGarantia() {
+    var band = $('[data-trust]');
+    if (!band) return;
+    var v = (CFG.home && CFG.home.vagas) || {};
+    if (v.fundador && v.fundador.restantes > 0) return;
+    var col = $('[data-garantia-col]', band);
+    if (col && col.parentNode) col.parentNode.removeChild(col);
   });
 
   /* ---------------------------------------------------------------- *

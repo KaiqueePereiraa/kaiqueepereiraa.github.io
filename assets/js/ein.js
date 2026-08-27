@@ -37,14 +37,22 @@
     var OFFSET = 84;                 // header
     var TOP = 4, SPAN = 84;          // faixa de posições dos marcos (%)
 
-    // os 5 pontos que mais pesam na decisão
-    var stops = [
+    // os pontos que mais pesam na decisão — a home (12 blocos comerciais) e a
+    // landing do EIN têm seções diferentes; cada uma escolhe os seus marcos.
+    var isHome = document.body.hasAttribute('data-home');
+    var stops = (isHome ? [
+      { d: '0 m',   label: 'Superfície',  sel: null },
+      { d: '1,5 m', label: 'As IAs',      sel: '#ias' },
+      { d: '3 m',   label: 'Metodologia', sel: '#lingua' },
+      { d: '4,5 m', label: 'Planos',      sel: '#planos' },
+      { d: '6 m',   label: 'Perguntas',   sel: '#faq' }
+    ] : [
       { d: '0 m',   label: 'Superfície', sel: null },
       { d: '1,5 m', label: 'Prova real', sel: '#prova' },
       { d: '3 m',   label: 'Resultado',  sel: '#prova-social' },
       { d: '4,5 m', label: 'Planos',     sel: '#planos' },
       { d: '6 m',   label: 'O evento',   sel: '#vaga' }
-    ].filter(function (s) { return !s.sel || $(s.sel); });
+    ]).filter(function (s) { return !s.sel || $(s.sel); });
 
     var doc = document.documentElement;
     function totalH() { return Math.max(1, doc.scrollHeight - window.innerHeight); }
