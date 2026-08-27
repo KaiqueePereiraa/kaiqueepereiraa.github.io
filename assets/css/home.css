@@ -8,9 +8,9 @@
 body[data-home] { --pad-section: clamp(40px, 5vw, 66px); }
 /* Raia mais compacta: reduzo a altura JUNTO com --rope-top e --rope-gap
    (a corda de baixo fica em rope-top + rope-gap + 14px; tem que caber). */
-body[data-home] .lane-sep { height: 116px; --rope-top: 20px; --rope-gap: 72px; }
+body[data-home] .lane-sep { height: 100px; --rope-top: 16px; --rope-gap: 62px; }
 @media (max-width: 560px) {
-  body[data-home] .lane-sep { height: 100px; --rope-top: 16px; --rope-gap: 60px; }
+  body[data-home] .lane-sep { height: 88px; --rope-top: 14px; --rope-gap: 52px; }
 }
 
 body[data-home] .section > p.lead { max-width: 62ch; color: #e2eefb; }
@@ -137,3 +137,39 @@ body[data-home] .ein-final .grid .card p { flex: 1; }
 /* ---- 10. Consistência geral ------------------------------- */
 body[data-home] .section .card h3 { margin-bottom: 6px; }
 body[data-home] [id] { scroll-margin-top: 92px; }
+
+/* ---- 11. Acabamento de designer — ritmo e presença ---------------- */
+
+/* cabeçalho de seção mais junto do conteúdo */
+body[data-home] .section-head { margin-bottom: clamp(26px, 3.6vw, 40px); }
+/* título-frase do bloco 2 é longo: fonte um tico menor pra não dominar */
+body[data-home] #problema .section-head { max-width: 46rem; }
+body[data-home] #problema .section-head h2 { font-size: clamp(1.65rem, 3.1vw, 2.35rem); }
+
+/* seção MGB (língua): tira o excesso de respiro do full-bleed */
+body[data-home] #lingua.mgb-section {
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: clamp(60px, 8vw, 100px);
+}
+
+/* Bloco 7 — "Quem construiu": era anêmico. Vira um depoimento do fundador. */
+body[data-home] #quem-construiu { --pad-section: clamp(48px, 6vw, 72px); }
+body[data-home] #quem-construiu .section-head { max-width: 60rem; margin-bottom: 0; }
+body[data-home] #quem-construiu .section-head > .lead {
+  max-width: 54ch;
+  font-size: clamp(1.12rem, 1.7vw, 1.4rem);
+  line-height: 1.6;
+  color: #eef6ff;
+  border-left: 3px solid var(--teal);
+  padding-left: clamp(16px, 2vw, 26px);
+  margin-top: 4px;
+}
+
+/* nós do hero e chips MGB: leitura um tico maior */
+body[data-home] .ein-hero .node { font-size: .74rem; }
+
+/* CTA final: cartão em destaque de verdade */
+body[data-home] .ein-final .grid .card:first-child {
+  border-color: var(--teal);
+  background: linear-gradient(180deg, rgba(21,234,158,.12), rgba(11,27,43,.5) 46%);
+}
