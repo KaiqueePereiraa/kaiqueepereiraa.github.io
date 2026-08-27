@@ -3,8 +3,8 @@
    ----------------------------------------------------------------------------
    Edite este arquivo e suba de novo. Nenhuma compilação é necessária.
    Procure por  "TROCAR"  para achar o que depende do Felipe / da operação.
-   A home (12 blocos) segue a spec "Conteúdo comercial do site" (25/08/2026):
-   todo texto entre aspas na spec é final. A /ein continua da versão v3.
+   A home (12 blocos) segue o "Documento Único Final" (27/08/2026).
+   O site é só a HOME + /servicos/ — a antiga /ein foi removida.
    ========================================================================== */
 window.WASFIT = {
 
@@ -61,7 +61,7 @@ window.WASFIT = {
       { label: 'As IAs',       href: '#ias' },
       { label: 'Planos',       href: '#planos' },
       { label: 'Implantação',  href: '#implantacao' },
-      { label: 'EIN 2026',     href: '/ein/' },
+      { label: 'Perguntas',    href: '#faq' },
     ],
 
     // BLOCO 1 — Hero. Headline A da spec comercial (25/08/2026).
@@ -330,177 +330,6 @@ window.WASFIT = {
     },
   },
 
-  /* ====================================================================== */
-  /*  PÁGINA DE CAMPANHA  /ein   (item 6)                                    */
-  /* ====================================================================== */
-  ein: {
-    selo: 'WasFit Assist · EIN 2026',
-
-    // Encontro Internacional de Natação (vemproein.com.br) — contador e blocos de evento.
-    evento: {
-      nome: 'Encontro Internacional de Natação',
-      sigla: 'EIN 2026',
-      // Data/hora de início (horário de Brasília). Contador regressivo aponta para cá.
-      inicioISO: '2026-10-15T09:00:00-03:00',          // TROCAR se o horário de abertura mudar
-      dias: '15, 16 e 17 de outubro de 2026',
-      local: 'Centro de Convenções Senac Santo Amaro · São Paulo',
-      estande: 'Estande WasFit',                       // TROCAR: nº / pavilhão do estande
-      site: 'https://vemproein.com.br',
-      cta: { label: 'Ver o Assist ao vivo no EIN', evento: 'clique_evento' },
-    },
-
-    hero: {
-      titulo: ['A inteligência que', 'mergulha na sua operação.'],
-      subtitulo: 'IA + WhatsApp treinada na linguagem da natação, por uma escola credenciada na Metodologia Gustavo Borges. Responde, entende, organiza e converte — 24/7.',
-      chips: ['Responde', 'Entende', 'Organiza', 'Converte'],
-      cta: { label: 'Quero minha vaga', evento: 'clique_vaga', plano: 'fundador' },
-    },
-
-    demo: {
-      eyebrow: 'Demonstração',
-      titulo: 'Do primeiro "oi" à matrícula',
-      texto: 'Veja a IA conduzir uma conversa real de natação: contexto, argumento e próximo passo.',
-      youtubeId: '',                                   // TROCAR
-      mp4: '',
-      evento: 'viu_demo',
-    },
-
-    // Conversa real anonimizada (deck "Prova real"). Vira um mock de chat animado.
-    conversa: {
-      eyebrow: 'Prova real',
-      titulo: ['Não é promessa.', 'É a IA respondendo de verdade.'],
-      subtitulo: 'Conversa real de um lead de natação, atendida pela IA do WasFit. Sem edição no conteúdo — nome e telefone anonimizados por privacidade.',
-      contato: 'Consultora aquática · online',
-      mensagens: [
-        { de: 'lead', t: 'oi, é da escola de natação?' },
-        { de: 'lead', t: 'meu filho é novo aqui em Serra, ele ainda não sabe nadar' },
-        { de: 'lead', t: 'quero que ele aprenda pra ter um esporte' },
-        { de: 'ia', t: 'Perfeito, Amaury! Aqui a gente oferece um ambiente seguro e acolhedor, ideal pro seu filho aprender a nadar do jeitinho que ele merece.' },
-        { de: 'ia', t: 'Seguimos a Metodologia Gustavo Borges, criada pelo medalhista olímpico: as turmas são organizadas por nível de habilidade, o que garante evolução rápida e segura.' },
-        { de: 'ia', t: 'Qual o principal motivo de começar a natação agora — alguma meta ou preocupação com o desenvolvimento dele?' },
-        { de: 'lead', t: 'aprender a nadar e autossalvamento' },
-        { de: 'ia', t: 'Isso é fundamental. Quer que eu já deixe agendada uma aula experimental pra ele conhecer a piscina e a professora?' },
-      ],
-      stats: [
-        { n: '100%', l: 'respostas sem edição' },
-        { n: 'MGB', l: 'vocabulário da metodologia' },
-        { n: '24/7', l: 'na conversa real' },
-      ],
-    },
-    problema: {
-      eyebrow: 'O problema',
-      titulo: ['O lead chega.', 'E a matrícula some.'],
-      subtitulo: 'Enquanto sua equipe cuida do presencial, a oportunidade fica esperando no WhatsApp.',
-      cards: [
-        { n: '01', t: 'Demora',        d: 'O responsável procura outra escola.' },
-        { n: '02', t: 'Sem follow-up', d: 'O "vou pensar" desaparece.' },
-        { n: '03', t: 'Sem controle',  d: 'Ninguém sabe onde o lead parou.' },
-      ],
-      remate: 'Dinheiro ficando na mesa.',
-    },
-    confianca: {
-      eyebrow: 'Por que confiar',
-      titulo: ['Não nasceu numa startup.', 'Nasceu na piscina.'],
-      texto: 'Tecnologia construída por quem já viveu a dor da recepção, da venda e da retenção. O Assist foi testado onde a operação trava — antes de chegar ao mercado.',
-      stats: [
-        { n: '11', l: 'anos de operação fitness na prática' },
-        { n: '4', l: 'unidades' },
-        { n: '+1 ano', l: 'de teste real' },
-        { n: '100%', l: 'fitness' },
-      ],
-    },
-    aquatica: {
-      eyebrow: 'Especialização aquática',
-      titulo: ['Uma IA genérica responde.', 'O Assist entende.'],
-      subtitulo: 'Natação tem uma linguagem própria. Ela já faz parte do vocabulário da IA — desde o primeiro dia.',
-      vocabulario: ['Idade', 'Nível', 'Touca', 'Avaliação', 'Experimental', 'Adaptação', 'Reposição', 'Rematrícula', 'Autossalvamento', 'Hidroginástica'],
-    },
-
-    // Conexão com a Metodologia Gustavo Borges (cores/mascotes autorizados pelo cliente).
-    // NÃO chamar a WasFit de "estabelecimento credenciado" — a IA é TREINADA na metodologia.
-    metodologia: {
-      eyebrow: 'Metodologia Gustavo Borges',
-      titulo: ['A IA foi treinada', 'na metodologia certa.'],
-      texto: 'O WasFit é feito por quem opera escolas na Metodologia Gustavo Borges — do maior medalhista olímpico brasileiro da natação. A IA fala a língua dessa metodologia desde o primeiro dia: turmas por nível, progressão segura e a experiência que a família espera, dentro e fora da água.',
-      pilares: [
-        { t: 'Nível', d: 'Turmas organizadas por habilidade, não por idade solta.' },
-        { t: 'Segurança', d: 'Progressão que respeita o tempo de cada aluno.' },
-        { t: 'Evolução', d: 'Marcos claros — a família enxerga o avanço.' },
-        { t: 'Experiência', d: 'Técnica com acolhimento, dentro e fora da água.' },
-      ],
-    },
-
-    // Kanban visual — mini board animado (deck "Como funciona na prática").
-    kanban: {
-      eyebrow: 'Como funciona na prática',
-      titulo: ['Do primeiro contato à matrícula,', 'tudo num só lugar.'],
-      subtitulo: 'Sua equipe vê, em tempo real, onde cada lead está. A IA cuida do repetitivo enquanto o time fecha.',
-      colunas: [
-        { nome: 'Interessado', cor: 'teal', cards: [
-          { nome: 'Ana P.', nota: 'Perguntou sobre turma de 4 anos' },
-          { nome: 'Carlos M.', nota: 'Veio do Instagram, quer hidro' },
-        ]},
-        { nome: 'Aula marcada', cor: 'amber', cards: [
-          { nome: 'Júlia R.', nota: 'IA agendou a experimental do filho' },
-          { nome: 'Marcos T.', nota: 'Follow-up enviado' },
-        ]},
-        { nome: 'Proposta enviada', cor: 'lime', cards: [
-          { nome: 'Fernanda L.', nota: 'Negociando plano família' },
-        ]},
-        { nome: 'Matrícula fechada', cor: 'white', cards: [
-          { nome: 'Beatriz S.', nota: '2 filhos matriculados' },
-        ]},
-      ],
-      // card que "viaja" pelas colunas ao rolar a seção
-      fluxo: { nome: 'Rafael D.', trajeto: ['Perguntou por WhatsApp às 22h', 'IA agendou experimental', 'Proposta enviada pela IA', 'Matriculado — sem fila'] },
-    },
-
-    // Autodiagnóstico interativo (deck "Checklist").
-    diagnostico: {
-      eyebrow: 'Autodiagnóstico',
-      titulo: ['Sua escola de natação', 'está pronta para automatizar?'],
-      perguntas: [
-        'Você sabe de onde vêm seus leads hoje?',
-        'Sua equipe registra todos os contatos em um só lugar?',
-        'Alguém faz follow-up de forma sistemática?',
-        'Você tem fluxo ativo de rematrícula e reposição?',
-        'Seu WhatsApp responde à noite e no fim de semana, quando as famílias pesquisam?',
-      ],
-      // resultado por nº de "Não" — 3 faixas: 0-1 / 2-3 / 4-5
-      resultados: [
-        { max: 1, titulo: 'Sua escola já está no caminho certo.', texto: 'Você tem uma base organizada — o Assist entra pra tirar o repetitivo do seu time e responder mais rápido do que hoje.' },
-        // [DADO FICTÍCIO] no plano: "...representa algumas matrículas por mês" — recolocar quando houver número real de matrículas perdidas/mês.
-        { max: 3, titulo: 'Você está perdendo matrícula sem perceber.', texto: 'Alguns leads estão escapando pela falta de resposta rápida ou de follow-up. É exatamente onde o Assist entra.' },
-        { max: 5, titulo: 'Sua escola está deixando dinheiro na mesa todo mês.', texto: 'Sem resposta rápida, sem follow-up e sem controle de onde o lead está, a maior parte da perda de matrícula acontece antes mesmo de alguém da equipe saber que o lead existiu.' },
-      ],
-      cta: { label: 'Ver os planos', evento: 'viu_planos' },
-    },
-    incluido: {
-      eyebrow: 'O que está incluído',
-      titulo: 'Automação que atende como gente',
-      itens: [
-        { n: '1', t: 'IA no WhatsApp', d: 'Qualifica, responde e agenda.' },
-        { n: '2', t: 'Kanban visual', d: 'Organiza cada etapa do lead.' },
-        { n: '3', t: 'Conexão WhatsApp flexível', d: 'API oficial, não oficial ou as duas juntas.' },
-        { n: '4', t: 'Integração EVO', d: 'Conecta cadastro, agenda e cobrança.' },
-        { n: '5', t: 'As 7 IAs do ciclo do aluno', d: 'Da recepção à rematrícula.' },
-        { n: '6', t: 'Comunicação em escala', d: 'Pela API oficial da Meta.' },
-      ],
-    },
-    transformacao: {
-      eyebrow: 'A transformação',
-      titulo: ['Menos fila.', 'Mais matrícula.'],
-      subtitulo: 'A tecnologia assume a repetição. A equipe recupera tempo para acolher e fechar.',
-      sem: { titulo: 'Sem Assist', itens: ['Fila de conversas', 'Lead esquecido', 'Resposta genérica', 'Gestão no escuro'] },
-      com: { titulo: 'Com Assist', itens: ['Resposta imediata', 'Follow-up ativo', 'Argumento contextual', 'Funil visível'] },
-    },
-    ctaFinal: {
-      selo: 'Lançamento EIN 2026',
-      titulo: ['Sua escola pode vender', 'enquanto você dorme.'],
-      subtitulo: 'Atendimento 24/7 com a inteligência do seu negócio e o acolhimento que cada família espera.',
-      cta: { label: 'Quero minha vaga', evento: 'clique_vaga', plano: 'fundador' },
-    },
-  },
 
   /* ---- Rodapé --------------------------------------------------------------- */
   footer: {
@@ -512,14 +341,7 @@ window.WASFIT = {
         { label: 'Implantação',           href: '/#implantacao' },
         { label: 'Garantia',              href: '/#garantia' },
         { label: 'Perguntas frequentes',  href: '/#faq' },
-      ]},
-      { titulo: 'Campanha', links: [
-        { label: 'EIN 2026',            href: '/ein/' },
-        { label: 'Condição de lançamento', href: '/#lancamento' },
-      ]},
-      { titulo: 'Legal', links: [
-        { label: 'Política de privacidade', href: '/privacidade/' },
-        { label: 'Termos de uso',           href: '/termos/' },
+        { label: 'Serviços',              href: '/servicos/' },
       ]},
     ],
     copyright: '© ' + new Date().getFullYear() + ' WasFit. Todos os direitos reservados.',
