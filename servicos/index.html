@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className += ' js';</script>
+<title>O que a gente faz com você — WasFit</title>
+<meta name="description" content="Os serviços da WasFit que dependem de estratégia: raio-x, diagnóstico comercial, higienização da base, campanhas, IA exclusiva. Você contrata só se quiser.">
+<link rel="canonical" href="https://wasfit.com.br/servicos/">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WasFit">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://wasfit.com.br/servicos/">
+<meta property="og:title" content="O que a gente faz com você — WasFit">
+<meta property="og:description" content="A ferramenta resolve sozinha o que não pode falhar. Isto aqui é o que depende de estratégia.">
+<meta name="theme-color" content="#06101B">
+<link rel="icon" href="/assets/img/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/icon-512.png">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260830">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260830">
+<style>
+  .svc-head { max-width: 46rem; padding-top: clamp(120px, 16vh, 168px); }
+  .svc-list { display: grid; gap: 14px; margin-top: clamp(30px, 5vw, 48px); }
+  .svc {
+    display: grid; grid-template-columns: 1fr auto;
+    grid-template-areas: "name price" "desc price";
+    gap: 6px 28px; align-items: center;
+    padding: clamp(20px, 3vw, 30px);
+    border: 1px solid var(--line-soft); border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--surface), rgba(15,30,48,.92));
+    transition: border-color .18s var(--ease), transform .18s var(--ease);
+  }
+  .svc:hover { border-color: var(--line); transform: translateY(-2px); }
+  .svc h3 { grid-area: name; align-self: end; font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-size: 1.12rem; font-weight: 600; color: #fff; }
+  .svc p { grid-area: desc; align-self: start; color: var(--muted); font-size: .95rem; }
+  .svc .price {
+    grid-area: price; text-align: right; white-space: nowrap;
+    font-family: var(--font-display); font-weight: 700; color: var(--teal); font-size: 1.05rem;
+  }
+  .svc .price small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  .svc--free .price { color: var(--lime); }
+  @media (max-width: 560px) {
+    .svc { grid-template-columns: 1fr; grid-template-areas: "name" "desc" "price"; gap: 8px; }
+    .svc h3, .svc p { align-self: start; }
+    .svc .price { text-align: left; margin-top: 4px; }
+  }
+  .svc-back { display: inline-flex; align-items: center; gap: 8px; margin-top: clamp(36px, 6vw, 56px); font-family: var(--font-mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); border-bottom: 1px solid var(--line); }
+</style>
+</head>
+<body data-page="ein">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="dive" aria-hidden="true">
+  <div class="dive-bg dive-bg--surface"></div>
+  <div class="dive-bg dive-bg--mid"></div>
+  <div class="dive-bg dive-bg--deep"></div>
+  <div class="dive-caustics"></div>
+  <div class="dive-shafts"></div>
+  <div class="dive-bubbles"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 2.1.55 4.06 1.6 5.8L2 22l4.44-1.68a9.9 9.9 0 0 0 5.6 1.72h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-2.63 1 .7-2.57-.2-.32a8.14 8.14 0 0 1-1.26-4.7c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.86 5.8 2.41a8.16 8.16 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.2 8.2zm4.5-6.13c-.25-.13-1.46-.72-1.68-.8-.23-.08-.39-.13-.56.13-.16.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42l-.48-.01c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.16 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" fill="currentColor"/></symbol>
+</defs></svg>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-lockup" href="/" aria-label="WasFit — página inicial">
+      <img src="/assets/img/logo-icon.png" alt="" width="30" height="30">
+      <span>WasFit</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="/#planos">Planos</a>
+      <a href="/#faq">Perguntas</a>
+      <a href="/">Voltar ao site</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--ghost" data-wa data-pos="header" href="https://wa.me/">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="section container">
+    <div class="section-head svc-head rise">
+      <span class="eyebrow">Serviços</span>
+      <h1 class="display-2 mt-s">O que a gente faz <span class="accent">com você</span></h1>
+      <p class="lead">A ferramenta resolve sozinha o que não pode falhar. Isto aqui é o que depende de estratégia — e você contrata só se quiser.</p>
+    </div>
+
+    <div class="svc-list">
+      <div class="svc svc--free rise">
+        <h3>Raio-X da escola</h3>
+        <p>15 minutos por vídeo, olhando o seu atendimento.</p>
+        <div class="price">Cortesia</div>
+      </div>
+      <div class="svc rise" data-delay="1">
+        <h3>Diagnóstico de Operação Comercial</h3>
+        <p>Auditoria do seu funil em oito indicadores, com plano de 90 dias. Metade volta em crédito de mensalidade.</p>
+        <div class="price">A partir de R$ 3.700</div>
+      </div>
+      <div class="svc rise" data-delay="1">
+        <h3>Higienização da base</h3>
+        <p>Conferimos e corrigimos os seus dados para liberar as IAs de cobrança.</p>
+        <div class="price">R$ 690</div>
+      </div>
+      <div class="svc rise" data-delay="2">
+        <h3>Campanha avulsa</h3>
+        <p>Estratégia, sequência e disparo de uma campanha.</p>
+        <div class="price">R$ 890</div>
+      </div>
+      <div class="svc rise" data-delay="2">
+        <h3>Ativação da base</h3>
+        <p>Análise do seu banco e calendário de campanhas para 90 dias.</p>
+        <div class="price">R$ 2.900</div>
+      </div>
+      <div class="svc rise" data-delay="3">
+        <h3>IA exclusiva</h3>
+        <p>Uma IA sob medida para um fluxo que não está nas dez.</p>
+        <div class="price">R$ 2.400 <small>+ R$ 190/mês</small></div>
+      </div>
+      <div class="svc rise" data-delay="3">
+        <h3>Hora de consultoria</h3>
+        <p>Conversa sobre a operação comercial da sua escola.</p>
+        <div class="price">R$ 490<small>por hora</small></div>
+      </div>
+      <div class="svc rise" data-delay="3">
+        <h3>Hora de suporte</h3>
+        <p>Atendimento humano fora da plataforma de treinamento.</p>
+        <div class="price">R$ 290<small>por hora</small></div>
+      </div>
+    </div>
+
+    <a class="svc-back rise" href="/#planos">← Voltar para os planos</a>
+  </section>
+</main>
+
+<div class="hairline"></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/assets/img/logo-wordmark.png" alt="WasFit" width="120">
+        <p>IA de WhatsApp para escolas de natação, criada dentro de uma.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <a href="/#ias">As IAs</a>
+        <a href="/#planos">Planos</a>
+        <a href="/#implantacao">Implantação</a>
+        <a href="/#faq">Perguntas frequentes</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <a data-wa data-pos="footer" href="https://wa.me/">WhatsApp</a>
+        <a data-email href="mailto:">E-mail</a>
+        <a data-instagram href="https://instagram.com/">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-year>2026</span> WasFit. Todos os direitos reservados.</p>
+      <p>wasfit.com.br/servicos</p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa data-pos="flutuante" href="https://wa.me/" aria-label="Falar no WhatsApp">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<script src="/assets/js/config.js?v=20260830"></script>
+<script src="/assets/js/main.js?v=20260830" defer></script>
+<script src="/assets/js/ein.js?v=20260830" defer></script>
+<script>
+(function () {
+  function showAll() { document.querySelectorAll('.rise:not(.in)').forEach(function (e) { e.classList.add('in'); }); }
+  window.addEventListener('load', function () { setTimeout(showAll, 1200); });
+  setTimeout(showAll, 3500);
+})();
+</script>
+</body>
+</html>

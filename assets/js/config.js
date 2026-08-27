@@ -66,7 +66,7 @@ window.WASFIT = {
 
     // BLOCO 1 — Hero. Headline A da spec comercial (25/08/2026).
     hero: {
-      selo: 'API oficial da Meta · Integração nativa com o EVO',
+      selo: 'API oficial ou não oficial da Meta — você escolhe · Integração nativa com o EVO',
       titulo: ['A IA de WhatsApp que fala a', 'língua da sua escola de natação'],
       subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.',
       ctaPrimario: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
@@ -201,7 +201,7 @@ window.WASFIT = {
             'Etiquetas e filtro da base',
             'Registro de origem de cada contato',
             'Painel de controle de atendimento',
-            'Comunicação em escala pela API oficial da Meta',
+            'Conexão por API oficial ou não oficial da Meta — você escolhe, ou usa as duas ao mesmo tempo',
             'Integração nativa com o EVO',
             'No ar em 30 minutos',
             'Plataforma de treinamento em vídeo e IA de suporte no WhatsApp',
@@ -311,7 +311,7 @@ window.WASFIT = {
 
     // BLOCO 11 — Perguntas frequentes (acordeão, todas fechadas por padrão)
     faq: [
-      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. O número que os seus alunos já têm salvo continua o mesmo. O que muda é por onde ele é atendido — passa a ser pela conexão oficial da Meta.' },
+      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. O número que os seus alunos já têm salvo continua o mesmo. Você escolhe como ele é atendido: pela conexão oficial da Meta, pela não oficial, ou pelas duas ao mesmo tempo — o que fizer mais sentido pra sua operação.' },
       { q: 'E se eu já uso outra plataforma?', a: 'A migração é nossa. Levamos a sua base, as suas etiquetas, o seu histórico e o seu número, e você aprova o mapeamento por escrito antes de qualquer coisa ser ligada. A implantação com migração custa R$ 1.000 a mais.' },
       { q: 'Minha escola não usa EVO. Funciona?', a: 'Funciona igual. A integração com o EVO acrescenta coisas, mas nada do que está nesta página depende dela.' },
       { q: 'A IA vai falar errado com o meu aluno?', a: 'Na primeira semana a gente lê todas as conversas e ajusta o que sair fora do esperado. E as IAs que mexem com dinheiro só entram depois de conferirmos os seus dados — justamente para não cobrar quem já pagou.' },

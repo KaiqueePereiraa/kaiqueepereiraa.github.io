@@ -15,11 +15,12 @@ body[data-home] .lane-sep { height: 100px; --rope-top: 16px; --rope-gap: 62px; }
 
 body[data-home] .section > p.lead { max-width: 62ch; color: #e2eefb; }
 
-/* ---- 2. Hero: alinhado à ESQUERDA (não centralizado), altura enxuta -- */
+/* ---- 2. Hero: alinhado à ESQUERDA (não centralizado) -----------------
+   Item 6 do doc final: min-height e padding-bottom são valores fixos. */
 body[data-home] .ein-hero {
-  min-height: 540px;
+  min-height: clamp(680px, 92svh, 920px);
   padding-top: clamp(108px, 13vh, 138px);
-  padding-bottom: clamp(44px, 6vh, 68px);
+  padding-bottom: 48px;
   align-items: flex-start;      /* conteúdo no topo, não boiando no meio */
 }
 body[data-home] .ein-hero .inner {
@@ -88,30 +89,56 @@ body[data-home] .launch-band .lb-headline {
   color: #eafcf7; margin: 8px 0 14px;
 }
 
-/* ---- 7. Bloco 9 — linha do tempo da implantação ---------------- */
+/* ---- 7. Bloco 9 — LINHA DO TEMPO HORIZONTAL (doc final, item 7) --------
+   Deixa de ser lista vertical: 5 etapas lado a lado, trilho no topo com
+   barra de progresso que preenche conforme o scroll (JS: --impl-progress). */
 body[data-home] #implantacao > .grid {
-  max-width: 720px; gap: 0;
-  border-left: 2px solid rgba(21,234,158,.35);
-  margin-left: 6px;
+  position: relative;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 44px;
+  padding-top: 36px;
+}
+body[data-home] #implantacao > .grid::before {   /* trilho */
+  content: ""; position: absolute; left: 6px; right: 6px; top: 6px; height: 3px;
+  background: var(--line); border-radius: 3px;
+}
+body[data-home] #implantacao > .grid::after {    /* progresso animado */
+  content: ""; position: absolute; left: 6px; top: 6px; height: 3px;
+  width: calc(var(--impl-progress, 0%) * 0.985);
+  background: var(--grad); border-radius: 3px;
+  transition: width .2s linear;
 }
 body[data-home] #implantacao > .grid .card--num {
   position: relative;
   border: 0; background: none; border-radius: 0;
-  padding: 2px 0 30px 30px;
+  padding: 0 16px 0 0;
 }
-body[data-home] #implantacao > .grid .card--num:last-child { padding-bottom: 4px; }
-body[data-home] #implantacao > .grid .card--num::before {
-  content: ""; position: absolute; left: -9px; top: 5px;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--grad); box-shadow: 0 0 0 4px rgba(21,234,158,.14);
+body[data-home] #implantacao > .grid .card--num::before {   /* marcador na trilha */
+  content: ""; position: absolute; left: 6px; top: -35px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--teal);
 }
 body[data-home] #implantacao .card--num .num {
-  border: 0; padding: 0; margin-bottom: 4px;
-  font-size: .72rem; letter-spacing: .16em;
+  border: 0; padding: 0; margin-bottom: 6px;
+  font-size: .72rem; letter-spacing: .14em; color: var(--teal);
 }
 body[data-home] #implantacao .card--num h3 {
   font-family: var(--font-body); text-transform: none; letter-spacing: 0;
-  font-size: 1.08rem; font-weight: 600; color: #fff; margin-bottom: 4px;
+  font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 6px;
+}
+body[data-home] #implantacao .card--num p { font-size: .9rem; }
+@media (max-width: 760px) {
+  body[data-home] #implantacao > .grid {
+    grid-template-columns: 1fr; margin-top: 24px; padding-top: 0;
+    margin-left: 6px; border-left: 2px solid var(--line);
+  }
+  body[data-home] #implantacao > .grid::before { display: none; }
+  body[data-home] #implantacao > .grid::after {
+    left: -2px; top: 0; width: 2px; height: var(--impl-progress, 0%);
+  }
+  body[data-home] #implantacao > .grid .card--num { padding: 2px 0 26px 26px; }
+  body[data-home] #implantacao > .grid .card--num::before { left: -9px; top: 4px; }
 }
 
 /* ---- 8. Bloco 10 — garantia --------------------------------- */
@@ -160,9 +187,13 @@ body[data-home] .ein-final .grid .card:first-child {
    AJUSTES DE DESIGN — doc "Ajustes_Design_Site_WasFit" (27/08/2026)
    ========================================================================== */
 
-/* --- Item 1: card "Por que três delas esperam" — fundo OPACO + texto legível */
+/* --- Item 1 (doc final): fundo do .card com último stop em .92 --------------
+   "só esse valor, nesse seletor" — deixa todo card legível sobre a água clara. */
+body[data-home] .card {
+  background: linear-gradient(180deg, var(--surface), rgba(15,30,48,.92));
+}
 body[data-home] .card--callout {
-  background: linear-gradient(100deg, rgba(245,184,65,.12), var(--surface) 46%);
+  background: linear-gradient(100deg, rgba(245,184,65,.12), rgba(15,30,48,.92) 46%);
   border: 1px solid var(--line-soft);
   border-left: 3px solid var(--amber);
 }
@@ -180,9 +211,9 @@ body[data-home] #resolve .col--scope {
 }
 body[data-home] .col--scope { border-left: 3px solid var(--lime); }
 body[data-home] .col--scope h3 { color: var(--lime); }
-/* marcador losango lima em vez do check verde */
+/* Item 2 (doc final): marcador de SETA lima em vez do check verde */
 body[data-home] .col--scope .check-list li::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239EEA4E' stroke-width='2.4' stroke-linejoin='round'%3E%3Cpath d='M12 3 21 12 12 21 3 12z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239EEA4E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: center;
 }
 
@@ -251,8 +282,7 @@ body[data-home] .qc-figure figcaption span {
 }
 @media (prefers-reduced-motion: reduce) { body[data-home] .qc-figure .qc-pins g { animation: none; } }
 
-/* --- Item 6: hero sem tela vazia depois dele --------------------------- */
-body[data-home] .ein-hero { min-height: clamp(560px, 82vh, 780px); }
+/* Item 6: min-height / padding-bottom do hero ficam na seção 2 (valores do doc). */
 
 /* --- Item 7: menos repetição — Bloco 10 vira faixa, não mais 3 cards --- */
 body[data-home] .trust-band {
@@ -296,11 +326,4 @@ body[data-home] .faq-item {
   transition: transform .18s var(--ease), border-color .18s var(--ease);
 }
 body[data-home] .ia-item.card:hover { transform: translateY(-3px); border-color: var(--line); }
-
-/* --- Item 7: movimento — trilho da implantação com preenchimento por scroll */
-body[data-home] #implantacao > .grid { position: relative; }
-body[data-home] #implantacao > .grid::before {
-  content: ""; position: absolute; left: -2px; top: 0; width: 2px;
-  height: var(--impl-progress, 0%);
-  background: var(--grad); transition: height .2s linear;
-}
+/* a barra de progresso da linha do tempo horizontal está na seção 7 acima */
