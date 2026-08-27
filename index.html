@@ -29,10 +29,10 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css?v=20260829">
-<link rel="stylesheet" href="/assets/css/styles.css?v=20260829">
-<link rel="stylesheet" href="/assets/css/ein.css?v=20260829">
-<link rel="stylesheet" href="/assets/css/home.css?v=20260829">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260830">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260830">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260830">
 
 <!-- GTM é injetado por main.js quando analytics.gtmId estiver preenchido no config.js (item 4) -->
 </head>
@@ -180,7 +180,7 @@
       <div class="ia-item card rise" data-delay="4"><span class="ic">09</span><div><h3>Após vencimento do contrato</h3><p>Quando o contrato encerra, já chama o cliente para renovar — sem deixar o silêncio virar perda.</p><p class="mono-label" style="margin-top:8px;color:var(--amber)">Depois de conferir a sua base</p></div></div>
       <div class="ia-item card rise" data-delay="4"><span class="ic">10</span><div><h3>Cancelamento automático</h3><p>Quando o contrato é cancelado por inadimplência, avisa o cliente da pendência e dos próximos passos.</p><p class="mono-label" style="margin-top:8px;color:var(--amber)">Depois de conferir a sua base</p></div></div>
     </div>
-    <div class="card rise mt-m" style="max-width:780px">
+    <div class="card card--callout rise mt-m" style="max-width:780px">
       <h3>Por que três delas esperam</h3>
       <p>Cobrança, aviso de vencimento e cancelamento por inadimplência mexem com dinheiro e com contrato. Uma cobrança disparada para quem já pagou, ou um aviso de pendência com o dado errado, não é um erro de sistema na cabeça do seu cliente — é a sua escola fazendo papel ruim. Por isso a gente confere os seus dados antes de ligar essas três. Se estiver tudo certo, elas entram na quarta semana.</p>
     </div>
@@ -208,8 +208,8 @@
           <li>Você vê em que etapa cada lead parou</li>
         </ul>
       </div>
-      <div class="col col--good rise" data-delay="1">
-        <h3 style="color:var(--lime)">Depende de estratégia</h3>
+      <div class="col col--scope rise" data-delay="1">
+        <h3>Depende de estratégia</h3>
         <ul class="check-list">
           <li>Dar continuidade ao lead que a IA qualificou</li>
           <li>Fazer campanha que dá resultado, e não só disparo</li>
@@ -300,10 +300,37 @@
 
   <!-- ================= BLOCO 7 — QUEM CONSTRUIU ================= -->
   <section id="quem-construiu" class="section container" aria-labelledby="qc-h">
-    <div class="section-head rise" style="max-width:52rem">
-      <span class="eyebrow">Quem construiu</span>
-      <h2 id="qc-h" class="display-2 mt-s">Construímos para as nossas quatro unidades<br><span class="accent">antes de vender para a sua</span></h2>
-      <p class="lead" style="max-width:64ch">São onze anos operando academia e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
+    <div class="qc-wrap">
+      <div class="section-head rise" style="margin-bottom:0">
+        <span class="eyebrow">Quem construiu</span>
+        <h2 id="qc-h" class="display-2 mt-s">Construímos para as nossas quatro unidades<br><span class="accent">antes de vender para a sua</span></h2>
+        <p class="lead">São onze anos operando academia e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
+      </div>
+      <!-- gráfico provisório: 4 unidades próprias (trocar por foto real quando houver) -->
+      <figure class="qc-figure rise" data-delay="1" aria-label="Quatro unidades próprias, onze anos de operação">
+        <svg viewBox="0 0 320 260" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="qcg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#15EA9E"/><stop offset="1" stop-color="#9EEA4E"/>
+            </linearGradient>
+          </defs>
+          <g stroke="rgba(255,255,255,.10)" stroke-width="1">
+            <path d="M0 65 H320 M0 130 H320 M0 195 H320 M80 0 V260 M160 0 V260 M240 0 V260" />
+          </g>
+          <path class="qc-route" d="M58 176 C 90 120, 120 120, 150 78 S 220 60, 262 96" fill="none" stroke="rgba(21,234,158,.5)" stroke-width="2" stroke-dasharray="4 6"/>
+          <g class="qc-pins">
+            <g transform="translate(58 176)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
+            <g transform="translate(150 78)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
+            <g transform="translate(262 96)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
+            <g transform="translate(206 200)"><path d="M0 0 C-13 -18 -13 -30 0 -30 C13 -30 13 -18 0 0 Z" fill="url(#qcg)"/><circle cy="-20" r="4.5" fill="#06231a"/></g>
+          </g>
+        </svg>
+        <figcaption>
+          <b>4</b><span>unidades próprias</span>
+          <b>11</b><span>anos operando</span>
+          <b>+1</b><span>ano rodando antes do mercado</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -448,10 +475,10 @@
       <span class="eyebrow">Sem peso na decisão</span>
       <h2 id="gr-h" class="display-2 mt-s">Sem fidelidade <span class="accent">e garantia.</span></h2>
     </div>
-    <div class="grid grid-3" data-trust>
-      <div class="card rise"><h3>Sem fidelidade</h3><p>Não tem contrato de permanência. Você cancela no mês que quiser, sem multa.</p></div>
-      <div class="card rise" data-delay="1" data-garantia-col><h3>Garantia de 30 dias</h3><p>Nas 20 primeiras escolas: se em 30 dias não servir, devolvemos a mensalidade. Uma mensagem no WhatsApp, sem formulário.</p></div>
-      <div class="card rise" data-delay="2"><h3>Preço travado</h3><p>O seu preço não sobe enquanto você for cliente.</p></div>
+    <div class="trust-band rise" data-trust>
+      <div class="trust-col"><span class="trust-ic" aria-hidden="true">∞</span><h3>Sem fidelidade</h3><p>Não tem contrato de permanência. Você cancela no mês que quiser, sem multa.</p></div>
+      <div class="trust-col" data-garantia-col><span class="trust-ic" aria-hidden="true">30</span><h3>Garantia de 30 dias</h3><p>Nas 20 primeiras escolas: se em 30 dias não servir, devolvemos a mensalidade. Uma mensagem no WhatsApp, sem formulário.</p></div>
+      <div class="trust-col"><span class="trust-ic" aria-hidden="true">=</span><h3>Preço travado</h3><p>O seu preço não sobe enquanto você for cliente.</p></div>
     </div>
   </section>
 
@@ -570,9 +597,9 @@
   <svg aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/config.js?v=20260829"></script>
-<script src="/assets/js/main.js?v=20260829" defer></script>
-<script src="/assets/js/ein.js?v=20260829" defer></script>
+<script src="/assets/js/config.js?v=20260830"></script>
+<script src="/assets/js/main.js?v=20260830" defer></script>
+<script src="/assets/js/ein.js?v=20260830" defer></script>
 <script>
 /* Home: rede de segurança do reveal. O ein.js revela os blocos .rise com
    IntersectionObserver ao rolar; se em algum navegador isso não pegar, todo
@@ -584,6 +611,25 @@
   }
   window.addEventListener('load', function () { setTimeout(showAll, 1400); });
   setTimeout(showAll, 4000);
+
+  /* Movimento (doc "Ajustes de design", item 7): o trilho da linha do tempo
+     da implantação preenche conforme a seção passa pela tela. */
+  try {
+    var grid = document.querySelector('#implantacao > .grid');
+    if (grid && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var raf = 0;
+      var tick = function () {
+        raf = 0;
+        var r = grid.getBoundingClientRect(), vh = window.innerHeight || 1;
+        var p = (vh * 0.75 - r.top) / (r.height + vh * 0.25);
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        grid.style.setProperty('--impl-progress', (p * 100).toFixed(1) + '%');
+      };
+      addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      addEventListener('resize', tick, { passive: true });
+      tick();
+    }
+  } catch (e) {}
 })();
 </script>
 </body>

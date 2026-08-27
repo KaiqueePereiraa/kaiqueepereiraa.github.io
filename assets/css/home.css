@@ -64,21 +64,16 @@ body[data-home] #problema .card--num p b { color: #fff; font-weight: 600; displa
 }
 body[data-home] #ias .ia-item h3 { font-size: 1.02rem; }
 
-/* nota "por que três delas esperam" = aviso, não card comum */
-body[data-home] #ias > .card {
-  border: 1px solid var(--line-soft);
-  border-left: 3px solid var(--amber);
-  background: linear-gradient(100deg, rgba(245,184,65,.07), rgba(11,27,43,.35) 62%);
-}
+/* nota "por que três delas esperam" — ver Item 1 dos Ajustes de design
+   (fundo OPACO). O detalhe visual mora em .card--callout, abaixo. */
 body[data-home] #ias > .card h3 { color: #fff; }
 
-/* ---- 5. Bloco 4 e 6 — colunas soltas ganham corpo de card ------- */
-body[data-home] #resolve .col,
+/* ---- 5. Bloco 6 — coluna solta do EVO ganha corpo de card ------- */
 body[data-home] #evo .col--good {
   padding: clamp(22px, 3vw, 32px);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
-  background: rgba(11,27,43,.42);
+  background: rgba(11,27,43,.5);
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
 }
 body[data-home] #evo .check-list li { font-size: 1rem; }
@@ -152,19 +147,6 @@ body[data-home] #lingua.mgb-section {
   padding-bottom: clamp(60px, 8vw, 100px);
 }
 
-/* Bloco 7 — "Quem construiu": era anêmico. Vira um depoimento do fundador. */
-body[data-home] #quem-construiu { --pad-section: clamp(48px, 6vw, 72px); }
-body[data-home] #quem-construiu .section-head { max-width: 60rem; margin-bottom: 0; }
-body[data-home] #quem-construiu .section-head > .lead {
-  max-width: 54ch;
-  font-size: clamp(1.12rem, 1.7vw, 1.4rem);
-  line-height: 1.6;
-  color: #eef6ff;
-  border-left: 3px solid var(--teal);
-  padding-left: clamp(16px, 2vw, 26px);
-  margin-top: 4px;
-}
-
 /* nós do hero e chips MGB: leitura um tico maior */
 body[data-home] .ein-hero .node { font-size: .74rem; }
 
@@ -172,4 +154,153 @@ body[data-home] .ein-hero .node { font-size: .74rem; }
 body[data-home] .ein-final .grid .card:first-child {
   border-color: var(--teal);
   background: linear-gradient(180deg, rgba(21,234,158,.12), rgba(11,27,43,.5) 46%);
+}
+
+/* ============================================================================
+   AJUSTES DE DESIGN — doc "Ajustes_Design_Site_WasFit" (27/08/2026)
+   ========================================================================== */
+
+/* --- Item 1: card "Por que três delas esperam" — fundo OPACO + texto legível */
+body[data-home] .card--callout {
+  background: linear-gradient(100deg, rgba(245,184,65,.12), var(--surface) 46%);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--amber);
+}
+body[data-home] .card--callout h3 { color: #fff; }
+body[data-home] .card--callout p { color: #cfdae7; }   /* AA contra --surface */
+
+/* --- Item 2: coluna "Depende de estratégia" = outro escopo, não "ruim" ----- */
+body[data-home] #resolve .col--good,
+body[data-home] #resolve .col--scope {
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: rgba(11,27,43,.5);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+}
+body[data-home] .col--scope { border-left: 3px solid var(--lime); }
+body[data-home] .col--scope h3 { color: var(--lime); }
+/* marcador losango lima em vez do check verde */
+body[data-home] .col--scope .check-list li::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239EEA4E' stroke-width='2.4' stroke-linejoin='round'%3E%3Cpath d='M12 3 21 12 12 21 3 12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+
+/* --- Item 3: mascotes MGB nas quinas, nunca sobre o texto ----------------- */
+body[data-home] #lingua.mgb-section { padding-top: clamp(96px, 12vw, 156px); }
+body[data-home] #lingua .mgb-head { position: relative; z-index: 3; }
+body[data-home] #lingua .mgb-mascot { z-index: 0; }
+body[data-home] #lingua .mgb-mascot--1 { width: clamp(96px, 12vw, 175px); top: 2%;  right: 1%; }
+body[data-home] #lingua .mgb-mascot--2 { width: clamp(80px, 9vw, 140px);  left: clamp(4px, 1.5vw, 22px);  bottom: 3%; }
+body[data-home] #lingua .mgb-mascot--3 { width: clamp(72px, 8vw, 120px);  right: 2%; bottom: 4%; }
+@media (max-width: 1100px) {
+  body[data-home] #lingua .mgb-mascot--1 { width: 96px; top: 1.5%; right: 0; }
+  body[data-home] #lingua .mgb-mascot--3 { display: none; }
+}
+@media (max-width: 720px) {
+  body[data-home] #lingua .mgb-mascot--2 { width: 70px; }
+}
+
+/* --- Item 4: plano "Escola" claramente o principal ----------------------- */
+body[data-home] .plan--featured {
+  border-width: 2px;
+  box-shadow: 0 26px 64px -20px rgba(21,234,158,.6), 0 0 0 1px rgba(21,234,158,.28);
+  overflow: hidden;                       /* pra faixa do topo respeitar o raio */
+}
+body[data-home] .plan--featured::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
+  background: var(--grad);
+}
+
+/* --- Item 5: "Quem construiu" — texto + gráfico provisório lado a lado --- */
+body[data-home] #quem-construiu { --pad-section: clamp(48px, 6vw, 76px); }
+body[data-home] .qc-wrap {
+  display: grid; grid-template-columns: 1.15fr .85fr;
+  gap: clamp(28px, 5vw, 56px); align-items: center;
+}
+@media (max-width: 860px) { body[data-home] .qc-wrap { grid-template-columns: 1fr; } }
+body[data-home] #quem-construiu .section-head { max-width: none; }
+body[data-home] #quem-construiu .section-head > .lead {
+  max-width: 52ch; font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+  line-height: 1.6; color: #eef6ff;
+  border-left: 3px solid var(--teal); padding-left: clamp(16px, 2vw, 24px); margin-top: 6px;
+}
+body[data-home] .qc-figure {
+  margin: 0; padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(21,234,158,.08), rgba(11,27,43,.55) 60%);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+}
+body[data-home] .qc-figure svg { width: 100%; height: auto; display: block; }
+body[data-home] .qc-figure .qc-pins g { animation: qc-bob 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+body[data-home] .qc-figure .qc-pins g:nth-child(2) { animation-delay: -1s; }
+body[data-home] .qc-figure .qc-pins g:nth-child(3) { animation-delay: -2s; }
+body[data-home] .qc-figure .qc-pins g:nth-child(4) { animation-delay: -3s; }
+@keyframes qc-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+body[data-home] .qc-figure figcaption {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 14px;
+  margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line-soft);
+}
+body[data-home] .qc-figure figcaption b {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--teal); line-height: 1;
+}
+body[data-home] .qc-figure figcaption span {
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted); align-self: start;
+}
+@media (prefers-reduced-motion: reduce) { body[data-home] .qc-figure .qc-pins g { animation: none; } }
+
+/* --- Item 6: hero sem tela vazia depois dele --------------------------- */
+body[data-home] .ein-hero { min-height: clamp(560px, 82vh, 780px); }
+
+/* --- Item 7: menos repetição — Bloco 10 vira faixa, não mais 3 cards --- */
+body[data-home] .trust-band {
+  display: flex; flex-wrap: wrap;
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: linear-gradient(100deg, rgba(21,234,158,.07), rgba(11,27,43,.4) 62%);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  overflow: hidden;
+}
+body[data-home] .trust-col {
+  flex: 1 1 240px; padding: clamp(24px, 3.2vw, 38px);
+  border-left: 1px solid var(--line-soft);
+}
+body[data-home] .trust-col:first-child { border-left: 0; }
+@media (max-width: 720px) {
+  body[data-home] .trust-col { flex-basis: 100%; border-left: 0; border-top: 1px solid var(--line-soft); }
+  body[data-home] .trust-col:first-child { border-top: 0; }
+}
+body[data-home] .trust-ic {
+  display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 12px;
+  border: 1px solid var(--line); border-radius: 10px; background: rgba(21,234,158,.06);
+  font-family: var(--font-display); font-weight: 700; color: var(--teal); font-size: 1rem;
+}
+body[data-home] .trust-col h3 {
+  font-family: var(--font-body); text-transform: none; letter-spacing: 0;
+  font-size: 1.06rem; font-weight: 600; color: #fff; margin-bottom: 6px;
+}
+body[data-home] .trust-col p { color: var(--muted); font-size: .95rem; }
+
+/* --- Item 7: movimento — números de "O problema" entram com um "pop" --- */
+body[data-home] #problema .card--num .num {
+  display: inline-block; transition: transform .5s var(--ease), opacity .5s var(--ease);
+}
+body[data-home] #problema .card--num.rise:not(.in) .num { opacity: 0; transform: translateY(8px) scale(.7); }
+body[data-home] #problema .card--num.rise.in .num { opacity: 1; transform: none; }
+
+/* --- Item 7: movimento — micro-elevação nos cartões de conteúdo -------- */
+body[data-home] .ia-item.card,
+body[data-home] #evo .card,
+body[data-home] .faq-item {
+  transition: transform .18s var(--ease), border-color .18s var(--ease);
+}
+body[data-home] .ia-item.card:hover { transform: translateY(-3px); border-color: var(--line); }
+
+/* --- Item 7: movimento — trilho da implantação com preenchimento por scroll */
+body[data-home] #implantacao > .grid { position: relative; }
+body[data-home] #implantacao > .grid::before {
+  content: ""; position: absolute; left: -2px; top: 0; width: 2px;
+  height: var(--impl-progress, 0%);
+  background: var(--grad); transition: height .2s linear;
 }
