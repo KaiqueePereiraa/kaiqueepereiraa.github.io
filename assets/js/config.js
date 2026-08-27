@@ -66,7 +66,7 @@ window.WASFIT = {
 
     // BLOCO 1 — Hero. Headline A da spec comercial (25/08/2026).
     hero: {
-      selo: 'API oficial ou não oficial da Meta — você escolhe · Integração nativa com o EVO',
+      selo: 'Nascido na borda da piscina, não numa startup',
       titulo: ['A IA de WhatsApp que fala a', 'língua da sua escola de natação'],
       subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.',
       ctaPrimario: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
