@@ -416,6 +416,27 @@ body[data-home] #resultados .depo cite {
 /* -- §15 Garantia: 4º card (LGPD) cabe na faixa ---------------------- */
 body[data-home] #garantia .trust-band .trust-col { flex-basis: 220px; }
 
+/* -- §02 Prova real: linha de sistema (ação da IA no CRM) dentro do chat -- */
+body[data-home] .wa-body .msg--sys {
+  align-self: center; max-width: 94%; text-align: center;
+  background: rgba(255,255,255,.04); color: var(--muted);
+  border: 1px solid var(--line-soft); border-radius: 8px;
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .03em;
+  padding: 7px 12px;
+}
+body[data-home] .wa-body .msg--sys b { color: var(--teal); font-weight: 700; }
+
+/* -- §04 Quem construiu: foto real no lugar do gráfico provisório -------- */
+body[data-home] .qc-figure--photo { padding: 0; overflow: hidden; }
+body[data-home] .qc-figure--photo img {
+  display: block; width: 100%; height: auto;
+  max-height: 540px; object-fit: cover; object-position: center 32%;
+}
+body[data-home] .qc-figure--photo figcaption {
+  margin-top: 0; border-top: 0;
+  padding: clamp(16px, 2.4vw, 22px) clamp(20px, 3vw, 30px) clamp(20px, 3vw, 30px);
+}
+
 /* -- §13 Planos: nota do modelo de 2 conexões (1 oficial + 1 não oficial) -- */
 body[data-home] .plans-note {
   max-width: 62ch; margin: 0 auto clamp(22px, 3.5vw, 34px);

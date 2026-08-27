@@ -29,10 +29,10 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css?v=20260901d">
-<link rel="stylesheet" href="/assets/css/styles.css?v=20260901d">
-<link rel="stylesheet" href="/assets/css/ein.css?v=20260901d">
-<link rel="stylesheet" href="/assets/css/home.css?v=20260901d">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260901e">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260901e">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260901e">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260901e">
 
 <!-- GTM é injetado por main.js quando analytics.gtmId estiver preenchido no config.js (item 4) -->
 </head>
@@ -149,7 +149,7 @@
   <section id="prova" class="section container" aria-labelledby="prova-h">
     <div class="section-head section-head--center rise">
       <h2 id="prova-h" class="display-2">Não é promessa.<br><span class="accent">É a IA respondendo de verdade.</span></h2>
-      <p class="lead">Uma conversa real de um lead de natação, atendida pela IA do WasFit. Sem edição no conteúdo — nome e telefone trocados por privacidade.</p>
+      <p class="lead">Conversa real de um lead de natação atendido pela IA. Encurtamos para caber aqui e trocamos o nome — o resto é como aconteceu.</p>
     </div>
     <div class="prova-grid rise" data-delay="1">
       <div class="demo-frame" data-demo data-demo-key="home" data-evt-demo="viu_demo" role="button" tabindex="0" aria-label="Reproduzir vídeo de demonstração">
@@ -162,15 +162,18 @@
       </div>
       <div class="wa-chat">
         <div class="bar">
-          <span class="av">P</span>
-          <span class="who">Pai de aluno<span>online agora</span></span>
+          <span class="av">R</span>
+          <span class="who">Responsável<span>online agora</span></span>
         </div>
         <div class="wa-body">
-          <div class="msg lead">oi, é da escola de natação? meu filho tem 5 anos e ainda não sabe nadar</div>
-          <div class="msg ia">[ Trecho ilustrativo temporário — colar aqui a CONVERSA REAL anonimizada, do primeiro contato até a aula experimental agendada, quando estiver disponível. ]</div>
-          <div class="msg lead">quero que ele aprenda com segurança, e talvez autossalvamento</div>
-          <div class="msg ia">Perfeito! Aqui as turmas seguem a Metodologia Gustavo Borges, organizadas por nível de habilidade. Quer que eu já deixe agendada uma aula experimental para ele conhecer a piscina e a professora?</div>
-          <div class="msg lead">quero sim</div>
+          <div class="msg ia">Oi! Pra eu te ajudar direitinho: você procura natação pra você, pro seu filho, ou está pensando em hidroginástica?</div>
+          <div class="msg lead">filho</div>
+          <div class="msg msg--sys">IA moveu o contato para <b>Vendas</b> · etiqueta “Em espera”</div>
+          <div class="msg ia">Que ótimo! Qual o principal motivo de começar a natação com ele agora? Alguma meta ou preocupação com o desenvolvimento?</div>
+          <div class="msg lead">aprender a nadar</div>
+          <div class="msg lead">autossalvamento</div>
+          <div class="msg ia">Perfeito — os dois andam juntos, e fazem toda a diferença na segurança da criança. Aqui as turmas são organizadas por nível de habilidade, na Metodologia Gustavo Borges, então ele evolui no ritmo dele.</div>
+          <div class="msg ia">Turmas pequenas, com atenção individual. Quer que eu veja um horário para uma aula experimental?</div>
         </div>
       </div>
     </div>
@@ -213,12 +216,9 @@
         <p class="lead" data-cfg="home.quemConstruiu.texto">São onze anos operando escolas de natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
       </div>
       <!-- FOTO REAL a adicionar: piscinas/fachadas/equipe. Enquanto não vem, fica o placeholder. -->
-      <figure class="qc-figure rise" data-delay="1" aria-label="As nossas unidades de natação">
-        <div class="ph-media">
-          <p class="ph-kind">Foto</p>
-          <p class="ph-desc">Piscina(s) da rede em aula, fachada das unidades ou a equipe — de preferência com pessoas.</p>
-          <p class="ph-note">[ mensagem: adicionar a foto real depois · ~1600×900 ]</p>
-        </div>
+      <figure class="qc-figure qc-figure--photo rise" data-delay="1">
+        <img src="/assets/img/unidade-aula.webp?v=20260901e" width="765" height="1020" loading="lazy"
+             alt="Aula de natação em uma das nossas unidades: professor e crianças na piscina aquecida, com os mascotes da Metodologia Gustavo Borges na parede.">
         <figcaption>
           <b>4</b><span>unidades próprias</span>
           <b>11</b><span>anos operando</span>
@@ -777,9 +777,9 @@
   <svg aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/config.js?v=20260901d"></script>
-<script src="/assets/js/main.js?v=20260901d" defer></script>
-<script src="/assets/js/ein.js?v=20260901d" defer></script>
+<script src="/assets/js/config.js?v=20260901e"></script>
+<script src="/assets/js/main.js?v=20260901e" defer></script>
+<script src="/assets/js/ein.js?v=20260901e" defer></script>
 <script>
 /* Home: rede de segurança do reveal. O ein.js revela os blocos .rise com
    IntersectionObserver ao rolar; se em algum navegador isso não pegar, todo
