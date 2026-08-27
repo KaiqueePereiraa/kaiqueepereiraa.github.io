@@ -5,31 +5,43 @@
    ========================================================================== */
 
 /* ---- 1. Ritmo vertical: a página tem 12 blocos + 11 raias. Menos ar. -- */
-body[data-home] { --pad-section: clamp(44px, 5.5vw, 78px); }
+body[data-home] { --pad-section: clamp(40px, 5vw, 66px); }
 /* Raia mais compacta: reduzo a altura JUNTO com --rope-top e --rope-gap
    (a corda de baixo fica em rope-top + rope-gap + 14px; tem que caber). */
-body[data-home] .lane-sep { height: 150px; --rope-top: 24px; --rope-gap: 90px; }
+body[data-home] .lane-sep { height: 116px; --rope-top: 20px; --rope-gap: 72px; }
 @media (max-width: 560px) {
-  body[data-home] .lane-sep { height: 118px; --rope-top: 20px; --rope-gap: 70px; }
+  body[data-home] .lane-sep { height: 100px; --rope-top: 16px; --rope-gap: 60px; }
 }
 
 body[data-home] .section > p.lead { max-width: 62ch; color: #e2eefb; }
 
-/* ---- 2. Hero: altura sob controle, texto livre do mascote ----------- */
+/* ---- 2. Hero: alinhado à ESQUERDA (não centralizado), altura enxuta -- */
 body[data-home] .ein-hero {
-  min-height: min(86vh, 760px);
-  padding-top: clamp(112px, 14vh, 144px);
+  min-height: 540px;
+  padding-top: clamp(108px, 13vh, 138px);
   padding-bottom: clamp(44px, 6vh, 68px);
+  align-items: flex-start;      /* conteúdo no topo, não boiando no meio */
 }
-body[data-home] .ein-hero .inner { max-width: 38rem; }
-body[data-home] .ein-hero h1 { margin: 16px 0 18px; font-size: clamp(2rem, 4.6vw, 3.35rem); }
-body[data-home] .ein-hero .lead { max-width: 44ch; }
+body[data-home] .ein-hero .inner {
+  max-width: 47rem;
+  margin-inline: 0;             /* .container centraliza por herança — aqui NÃO */
+}
+body[data-home] .ein-hero h1 { margin: 14px 0 16px; font-size: clamp(2rem, 4.2vw, 3.15rem); }
+body[data-home] .ein-hero .lead { max-width: 52ch; }
+body[data-home] .ein-hero .node-row { margin-top: 20px; }
+body[data-home] .ein-hero .btn-row { margin-top: 24px; }
 body[data-home] .ein-hero .mono-label { opacity: .8; }
 
-body[data-home] .hero-art-wrap { width: min(31vw, 340px); right: -3%; top: 57%; opacity: .5; }
+/* mascote ancorada na borda direita do container (não no fim da tela) */
+body[data-home] .hero-art-wrap {
+  width: min(30vw, 350px);
+  right: max(0px, calc((100vw - 1160px) / 2));
+  top: 56%;
+  opacity: .5;
+}
 @media (max-width: 1180px) { body[data-home] .hero-art-wrap { opacity: .3; } }
 @media (max-width: 980px) {
-  body[data-home] .hero-art-wrap { position: static; transform: none; width: 180px; margin: 8px auto 0; opacity: .8; }
+  body[data-home] .hero-art-wrap { position: static; transform: none; width: 170px; margin: 10px auto 0; opacity: .8; }
 }
 
 /* pill do hero: sem "ao vivo" na home — ponto verde calmo, sem sonar */
