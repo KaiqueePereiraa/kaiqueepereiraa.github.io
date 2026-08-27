@@ -573,5 +573,18 @@
 <script src="/assets/js/config.js?v=20260828"></script>
 <script src="/assets/js/main.js?v=20260828" defer></script>
 <script src="/assets/js/ein.js?v=20260828" defer></script>
+<script>
+/* Home: rede de segurança do reveal. O ein.js revela os blocos .rise com
+   IntersectionObserver ao rolar; se em algum navegador isso não pegar, todo
+   o conteúdo continua visível. Não afeta a animação de quem rola normalmente. */
+(function () {
+  function showAll() {
+    var n = document.querySelectorAll('.rise:not(.in)');
+    for (var i = 0; i < n.length; i++) n[i].classList.add('in');
+  }
+  window.addEventListener('load', function () { setTimeout(showAll, 1400); });
+  setTimeout(showAll, 4000);
+})();
+</script>
 </body>
 </html>
