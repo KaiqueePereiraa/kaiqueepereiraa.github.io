@@ -23,25 +23,31 @@ body[data-home] .ein-hero {
   align-items: flex-start;      /* conteúdo no topo, não boiando no meio */
 }
 body[data-home] .ein-hero .inner {
-  max-width: 47rem;
+  max-width: 54rem;
   margin-inline: 0;             /* .container centraliza por herança — aqui NÃO */
 }
-body[data-home] .ein-hero h1 { margin: 14px 0 16px; font-size: clamp(2rem, 4.2vw, 3.15rem); }
-body[data-home] .ein-hero .lead { max-width: 52ch; }
+/* headline: "A IA de WhatsApp que fala a" numa linha; o verde quebra depois */
+body[data-home] .ein-hero h1 {
+  margin: 14px 0 16px;
+  font-size: clamp(1.9rem, 3.4vw, 2.65rem);
+}
+body[data-home] .ein-hero .lead { max-width: 48ch; }
 body[data-home] .ein-hero .node-row { margin-top: 20px; }
 body[data-home] .ein-hero .btn-row { margin-top: 24px; }
 body[data-home] .ein-hero .mono-label { opacity: .8; }
 
-/* mascote ancorada na borda direita do container (não no fim da tela) */
+/* mascote: cor cheia (sem transparência), grande à direita mas sem invadir o texto */
 body[data-home] .hero-art-wrap {
-  width: min(30vw, 350px);
-  right: max(0px, calc((100vw - 1160px) / 2));
-  top: 56%;
-  opacity: .5;
+  width: clamp(220px, 22vw, 420px);
+  right: clamp(8px, 2.5vw, 110px);
+  top: 50%;
+  opacity: 1;
 }
-@media (max-width: 1180px) { body[data-home] .hero-art-wrap { opacity: .3; } }
-@media (max-width: 980px) {
-  body[data-home] .hero-art-wrap { position: static; transform: none; width: 170px; margin: 10px auto 0; opacity: .8; }
+body[data-home] .hero-art-wrap img {
+  filter: drop-shadow(0 30px 90px rgba(21, 234, 158, .42));
+}
+@media (max-width: 900px) {
+  body[data-home] .hero-art-wrap { position: static; transform: none; width: 210px; margin: 12px auto 0; }
 }
 
 /* pill do hero: sem "ao vivo" na home — ponto verde calmo, sem sonar */
