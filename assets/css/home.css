@@ -82,6 +82,27 @@ body[data-home] #ias .ias-group-note {
   max-width: 60ch; margin: -6px 0 14px;
 }
 
+/* abertura: o split 2 / 8 antes das duas listas */
+body[data-home] #ias .ias-tiers {
+  display: grid; gap: 12px; max-width: 62ch;
+  margin: clamp(18px, 3vw, 26px) 0 clamp(24px, 4vw, 36px);
+}
+@media (min-width: 680px) {
+  body[data-home] #ias .ias-tiers { grid-template-columns: 1fr 1fr; align-items: stretch; }
+}
+body[data-home] #ias .ias-tier {
+  display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start;
+  padding: 16px 18px; border-radius: 14px;
+  border: 1px solid var(--line-soft); background: rgba(11,27,43,.42);
+}
+body[data-home] #ias .ias-tier b {
+  font-family: var(--font-display); font-weight: 700; line-height: 1;
+  font-size: clamp(1.7rem, 3.6vw, 2.15rem); color: var(--teal);
+}
+body[data-home] #ias .ias-tier p {
+  margin: 0; color: #cfe0ee; font-size: .95rem; line-height: 1.5;
+}
+
 /* ---- 6. Bloco 8 — faixa de lançamento: título + subtítulo enxutos -- */
 body[data-home] .launch-band [data-launch-title] {
   font-family: var(--font-display); font-weight: 700; color: #fff;
