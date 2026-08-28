@@ -78,7 +78,7 @@ body[data-home] #ias .ias-group {
 }
 body[data-home] #ias .ias-group.mt-m { margin-top: clamp(28px, 4vw, 44px); }
 body[data-home] #ias .ias-group-note {
-  color: var(--muted); font-size: .92rem; line-height: 1.5;
+  color: #cfe0ee; font-size: .92rem; line-height: 1.5;
   max-width: 60ch; margin: -6px 0 14px;
 }
 
