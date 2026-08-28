@@ -41,18 +41,49 @@ body[data-home] .ein-hero .mono-label { opacity: .8; }
 body[data-home] .scroll-cue { bottom: clamp(64px, 8vh, 104px); }
 @media (max-height: 780px) { body[data-home] .scroll-cue { display: none; } }
 
-/* mascote: cor cheia (sem transparência), grande à direita mas sem invadir o texto */
+/* mascote: protagonista do lado direito da hero — ~1,9x maior, empurrado
+   para a direita e um pouco para baixo, com glow difuso atrás (sem virar
+   círculo) e flutuação bem lenta. Segundo ponto de atenção depois do H1. */
 body[data-home] .hero-art-wrap {
-  width: clamp(220px, 22vw, 420px);
-  right: clamp(8px, 2.5vw, 110px);
-  top: 50%;
+  width: clamp(300px, 42vw, 660px);
+  right: clamp(-14px, 1vw, 28px);
+  top: 56%;
   opacity: 1;
+  z-index: 1;
+}
+/* glow: elipse muito suave e borrada, respirando devagar. Nunca um disco. */
+body[data-home] .hero-art-wrap::before {
+  content: "";
+  position: absolute; inset: -14% -10% -10% -10%;
+  z-index: -1; pointer-events: none;
+  background: radial-gradient(58% 54% at 52% 48%,
+      rgba(21, 234, 158, .30) 0%,
+      rgba(43, 209, 255, .15) 44%,
+      rgba(21, 234, 158, 0) 72%);
+  filter: blur(48px);
+  animation: mascot-glow 9s ease-in-out infinite;
 }
 body[data-home] .hero-art-wrap img {
-  filter: drop-shadow(0 30px 90px rgba(21, 234, 158, .42));
+  filter: drop-shadow(0 34px 92px rgba(21, 234, 158, .34));
+  animation: mascot-float 11s ease-in-out infinite;
+}
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+  50%      { transform: translateY(-9px) rotate(0.5deg); }
+}
+@keyframes mascot-glow {
+  0%, 100% { opacity: .5;  transform: scale(1); }
+  50%      { opacity: .88; transform: scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-home] .hero-art-wrap::before { animation: none; }
 }
 @media (max-width: 900px) {
-  body[data-home] .hero-art-wrap { position: static; transform: none; width: 210px; margin: 12px auto 0; }
+  body[data-home] .hero-art-wrap {
+    position: static; transform: none; right: auto; top: auto;
+    width: clamp(240px, 64vw, 360px); margin: 16px auto 0;
+  }
+  body[data-home] .hero-art-wrap::before { inset: -6%; filter: blur(34px); }
 }
 
 /* pill do hero: sem "ao vivo" na home — ponto verde calmo, sem sonar */
