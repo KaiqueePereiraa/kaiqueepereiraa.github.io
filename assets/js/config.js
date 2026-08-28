@@ -196,7 +196,7 @@ window.WASFIT = {
           itensTitulo: null,
           itens: [
             '1 unidade',
-            '2 números de WhatsApp — 1 na conexão oficial da Meta, 1 na não oficial',
+            '2 números de WhatsApp',
             'Todas as IAs do ciclo do aluno',
             'Kanban de leads com a etapa visível',
             'Etiquetas e filtro da base',
@@ -219,7 +219,7 @@ window.WASFIT = {
           itensTitulo: 'Tudo do Essencial, e mais:',
           itens: [
             'Até 2 unidades',
-            '4 números de WhatsApp — 1 oficial + 1 não oficial por unidade',
+            '4 números de WhatsApp — 2 por unidade',
             'Visão consolidada entre as unidades',
           ],
           cta: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'escola' },
@@ -236,7 +236,7 @@ window.WASFIT = {
           itensTitulo: 'Tudo do Escola, e mais:',
           itens: [
             '3 unidades ou mais',
-            'Por unidade: 1 número oficial + 1 não oficial',
+            '2 números de WhatsApp por unidade',
             'IA configurada por unidade',
             'Painel unificado',
           ],

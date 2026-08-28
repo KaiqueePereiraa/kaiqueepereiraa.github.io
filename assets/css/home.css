@@ -65,19 +65,22 @@ body[data-home] #problema .card--num p b { color: #fff; font-weight: 600; displa
 }
 body[data-home] #ias .ia-item h3 { font-size: 1.02rem; }
 
-/* nota "por que três delas esperam" — ver Item 1 dos Ajustes de design
+/* nota "por que essas três esperam" — ver Item 1 dos Ajustes de design
    (fundo OPACO). O detalhe visual mora em .card--callout, abaixo. */
 body[data-home] #ias > .card h3 { color: #fff; }
 
-/* ---- 5. Bloco 6 — coluna solta do EVO ganha corpo de card ------- */
-body[data-home] #evo .col--good {
-  padding: clamp(22px, 3vw, 32px);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius);
-  background: rgba(11,27,43,.5);
-  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+/* rótulos que separam as IAs por quando entram no ar (dia 1 / com EVO / com EVO + base) */
+body[data-home] #ias .ias-group {
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--teal);
+  margin: 8px 0 14px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
 }
-body[data-home] #evo .check-list li { font-size: 1rem; }
+body[data-home] #ias .ias-group.mt-m { margin-top: clamp(28px, 4vw, 44px); }
+body[data-home] #ias .ias-group-note {
+  color: var(--muted); font-size: .92rem; line-height: 1.5;
+  max-width: 60ch; margin: -6px 0 14px;
+}
 
 /* ---- 6. Bloco 8 — faixa de lançamento: título + subtítulo enxutos -- */
 body[data-home] .launch-band [data-launch-title] {
@@ -269,8 +272,11 @@ body[data-home] .qc-figure .qc-pins g:nth-child(3) { animation-delay: -2s; }
 body[data-home] .qc-figure .qc-pins g:nth-child(4) { animation-delay: -3s; }
 @keyframes qc-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 body[data-home] .qc-figure figcaption {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 14px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 14px;
   margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line-soft);
+}
+body[data-home] .qc-figure figcaption .qc-stat {
+  display: flex; flex-direction: column; gap: 6px;
 }
 body[data-home] .qc-figure figcaption b {
   font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem);
@@ -278,7 +284,10 @@ body[data-home] .qc-figure figcaption b {
 }
 body[data-home] .qc-figure figcaption span {
   font-family: var(--font-mono); font-size: .62rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted); align-self: start;
+  text-transform: uppercase; color: var(--muted); line-height: 1.35;
+}
+@media (max-width: 440px) {
+  body[data-home] .qc-figure figcaption { grid-template-columns: 1fr 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { body[data-home] .qc-figure .qc-pins g { animation: none; } }
 
@@ -321,7 +330,6 @@ body[data-home] #problema .card--num.rise.in .num { opacity: 1; transform: none;
 
 /* --- Item 7: movimento — micro-elevação nos cartões de conteúdo -------- */
 body[data-home] .ia-item.card,
-body[data-home] #evo .card,
 body[data-home] .faq-item {
   transition: transform .18s var(--ease), border-color .18s var(--ease);
 }
@@ -391,6 +399,14 @@ body[data-home] #prova .shot-frame {
 body[data-home] #prova .shot-frame img { display: block; width: 100%; height: auto; }
 body[data-home] #prova .shot-frame:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 
+/* -- §02 Prova real: a faixa de números no rodapé precisa ser legível -- */
+body[data-home] #prova .stat-row { gap: clamp(24px, 5vw, 52px); }
+body[data-home] #prova .stat span {
+  font-size: .8rem; letter-spacing: .08em; text-transform: none;
+  color: #cfe6f2;
+}
+body[data-home] #prova .stat b { font-size: clamp(1.6rem, 3.6vw, 2.2rem); }
+
 /* -- chat marcado como EXEMPLO (§05 MGB) ----------------------------- */
 body[data-home] .chat-tag {
   display: inline-block; margin-bottom: 10px;
@@ -441,7 +457,6 @@ body[data-home] .wa-body .msg--sys b { color: var(--teal); font-weight: 700; }
 body[data-home] .qc-figure--photo { padding: 0; overflow: hidden; }
 body[data-home] .qc-figure--photo img {
   display: block; width: 100%; height: auto;
-  max-height: 540px; object-fit: cover; object-position: center 32%;
 }
 body[data-home] .qc-figure--photo figcaption {
   margin-top: 0; border-top: 0;
