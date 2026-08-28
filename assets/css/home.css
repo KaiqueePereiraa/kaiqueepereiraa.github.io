@@ -372,18 +372,24 @@ body[data-home] .hero-link {
 }
 body[data-home] .hero-link:hover { color: #fff; border-color: #fff; }
 
-/* -- §02 Prova real: vídeo no topo + duas transcrições reais ----------- */
+/* -- §02 Prova real: vídeo no topo + dois prints reais de WhatsApp ----- */
 body[data-home] #prova .demo-frame { margin: 0 auto clamp(28px, 4.5vw, 44px); max-width: 760px; }
-body[data-home] #prova .prova-chats { display: grid; gap: clamp(24px, 4vw, 40px); }
-@media (min-width: 860px) {
-  body[data-home] #prova .prova-chats { grid-template-columns: 1fr 1fr; align-items: start; }
+body[data-home] #prova .prova-shots { display: grid; gap: clamp(24px, 4vw, 40px); }
+@media (min-width: 780px) {
+  body[data-home] #prova .prova-shots { grid-template-columns: 1fr 1fr; align-items: start; }
 }
-body[data-home] #prova .prova-chat { margin: 0; }
-body[data-home] #prova .prova-chat .wa-chat { margin: 0; max-width: none; }
-body[data-home] #prova .prova-chat figcaption {
+body[data-home] #prova .prova-shot { margin: 0; }
+body[data-home] #prova .prova-shot figcaption {
   font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em;
   text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
 }
+body[data-home] #prova .shot-frame {
+  max-height: 600px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line); border-radius: 14px; background: #fff;
+  box-shadow: 0 20px 50px -24px rgba(0,0,0,.5);
+}
+body[data-home] #prova .shot-frame img { display: block; width: 100%; height: auto; }
+body[data-home] #prova .shot-frame:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 
 /* -- chat marcado como EXEMPLO (§05 MGB) ----------------------------- */
 body[data-home] .chat-tag {
