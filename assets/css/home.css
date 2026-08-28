@@ -36,6 +36,10 @@ body[data-home] .ein-hero .lead { max-width: 48ch; }
 body[data-home] .ein-hero .node-row { margin-top: 20px; }
 body[data-home] .ein-hero .btn-row { margin-top: 24px; }
 body[data-home] .ein-hero .mono-label { opacity: .8; }
+/* a mãozinha "Mergulhe" estava encostando na borda de baixo da tela — sobe.
+   Em telas baixas o hero já ocupa tudo: aí a dica some (é só decorativa). */
+body[data-home] .scroll-cue { bottom: clamp(64px, 8vh, 104px); }
+@media (max-height: 780px) { body[data-home] .scroll-cue { display: none; } }
 
 /* mascote: cor cheia (sem transparência), grande à direita mas sem invadir o texto */
 body[data-home] .hero-art-wrap {
