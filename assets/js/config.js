@@ -70,7 +70,7 @@ window.WASFIT = {
       titulo: ['A IA de WhatsApp que fala a', 'língua da sua escola de natação'],
       subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.',
       ctaPrimario: { label: 'Ver a condição de lançamento', evento: 'clique_ver_oferta', plano: 'escola' },
-      raioX:       { label: 'Ou peça um raio-x da sua escola em 15 minutos', evento: 'clique_raiox', plano: 'rede' },
+      raioX:       { label: 'Ou agende um raio-x da sua escola em 15 minutos', evento: 'clique_raiox', plano: 'rede' },
     },
 
     // Vídeo de 45 s. Acima da dobra no desktop, abaixo da subheadline no celular.
@@ -343,7 +343,7 @@ window.WASFIT = {
       titulo: 'Duas formas de começar',
       portas: [
         { titulo: 'Garanta sua vaga', texto: 'Você entra sem pagar implantação, com preço travado e 30 dias de garantia. Restam 20 vagas.', cta: { label: 'Garantir minha vaga', evento: 'clique_vaga', plano: 'escola' } },
-        { titulo: 'Peça um raio-x da sua escola', texto: '15 minutos por vídeo. A gente olha o seu atendimento e te mostra onde está vazando. Cortesia.', cta: { label: 'Agendar meu raio-x', evento: 'clique_raiox', plano: 'rede' } },
+        { titulo: 'Agende um raio-x da sua escola', texto: '15 minutos por vídeo. A gente olha o seu atendimento e te mostra onde está vazando. Cortesia.', cta: { label: 'Agendar meu raio-x', evento: 'clique_raiox', plano: 'rede' } },
       ],
     },
   },
