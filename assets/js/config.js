@@ -69,7 +69,7 @@ window.WASFIT = {
       selo: 'Nascido na borda da piscina, não numa startup',
       titulo: ['A IA de WhatsApp que fala a', 'língua da sua escola de natação'],
       subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.',
-      ctaPrimario: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
+      ctaPrimario: { label: 'Ver a condição de lançamento', evento: 'clique_ver_oferta', plano: 'escola' },
       raioX:       { label: 'Ou peça um raio-x da sua escola em 15 minutos', evento: 'clique_raiox', plano: 'rede' },
     },
 
@@ -207,7 +207,7 @@ window.WASFIT = {
             'No ar em 30 minutos',
             'Plataforma de treinamento em vídeo e IA de suporte no WhatsApp',
           ],
-          cta: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'essencial' },
+          cta: { label: 'Garantir condição de lançamento', evento: 'clique_vaga', plano: 'escola' },
         },
         {
           id: 'escola',
@@ -223,7 +223,7 @@ window.WASFIT = {
             '4 números de WhatsApp — 2 por unidade',
             'Visão consolidada entre as unidades',
           ],
-          cta: { label: 'Testar grátis por 7 dias', evento: 'clique_teste_gratis', plano: 'escola' },
+          cta: { label: 'Garantir condição de lançamento', evento: 'clique_vaga', plano: 'rede' },
         },
         {
           id: 'rede',
@@ -338,11 +338,11 @@ window.WASFIT = {
       ],
     },
 
-    // BLOCO — Chamada final. Duas portas: testar ou pedir o raio-x.
+    // BLOCO — Chamada final. Duas portas: garantir a vaga ou pedir o raio-x.
     ctaFinal: {
       titulo: 'Duas formas de começar',
       portas: [
-        { titulo: 'Teste grátis por 7 dias', texto: 'Sem cartão. Em 30 minutos a sua IA está respondendo.', cta: { label: 'Começar agora', evento: 'clique_teste_gratis', plano: 'essencial' } },
+        { titulo: 'Garanta sua vaga', texto: 'Você entra sem pagar implantação, com preço travado e 30 dias de garantia. Restam 20 vagas.', cta: { label: 'Garantir minha vaga', evento: 'clique_vaga', plano: 'escola' } },
         { titulo: 'Peça um raio-x da sua escola', texto: '15 minutos por vídeo. A gente olha o seu atendimento e te mostra onde está vazando. Cortesia.', cta: { label: 'Agendar meu raio-x', evento: 'clique_raiox', plano: 'rede' } },
       ],
     },

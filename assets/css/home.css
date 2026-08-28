@@ -222,6 +222,31 @@ body[data-home] .offer-band .offer-cta { justify-self: center; }
 body[data-home] [data-vagas-esgotado] .offer-vagas__bar i { background: var(--muted); }
 body[data-home] [data-vagas-esgotado] .impl-free { display: none; }
 
+/* âncora de economia: risca o valor da implantação, "R$ 0" grande */
+body[data-home] .offer-save {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
+  gap: 6px 12px; line-height: 1;
+}
+body[data-home] .offer-save s {
+  color: var(--muted); font-size: .9rem; text-decoration-thickness: 1px;
+}
+body[data-home] .offer-save b {
+  font-family: var(--font-display); font-weight: 700; color: var(--lime);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+body[data-home] .offer-save span {
+  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .12em;
+  text-transform: uppercase; color: #cfe0ee;
+}
+/* caminho secundário, discreto (attention ratio ~1:1) */
+body[data-home] .offer-secondary {
+  justify-self: center; margin-top: -4px;
+  font-family: var(--font-mono); font-size: .78rem; letter-spacing: .02em;
+  color: #cdeef3; border-bottom: 1px solid rgba(255,255,255,.28);
+}
+body[data-home] .offer-secondary:hover { color: #fff; border-color: #fff; }
+body[data-home] [data-vagas-esgotado] .offer-save b { color: var(--muted); }
+
 /* --- os 2 cards --- */
 body[data-home] .plans--2 {
   grid-template-columns: repeat(2, 1fr); gap: 22px;
@@ -447,6 +472,13 @@ body[data-home] .plan--featured {
 body[data-home] .plan--featured::after {
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px;
   background: var(--grad);
+}
+/* selo de recomendação (in-flow, pra não bater no overflow:hidden do card) */
+body[data-home] .plan-badge {
+  align-self: flex-start; margin: 2px 0 -6px;
+  font-family: var(--font-mono); font-weight: 700; font-size: .64rem;
+  letter-spacing: .16em; text-transform: uppercase; color: #06231a;
+  background: var(--grad); border-radius: 999px; padding: .5em 1em;
 }
 
 /* --- Item 5: "Quem construiu" — texto + gráfico provisório lado a lado --- */
