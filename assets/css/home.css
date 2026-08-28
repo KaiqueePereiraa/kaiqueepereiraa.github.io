@@ -152,15 +152,116 @@ body[data-home] #ias .ias-car__dots button[aria-current="true"] {
   background: var(--teal); transform: scale(1.45);
 }
 
-/* ---- 6. Bloco 8 — faixa de lançamento: título + subtítulo enxutos -- */
-body[data-home] .launch-band [data-launch-title] {
+/* ==== Bloco 13 — PLANOS: oferta primeiro, 2 cards, expertise depois ==== */
+
+/* --- a oferta de lançamento --- */
+body[data-home] .offer-band {
+  display: grid; gap: clamp(18px, 3vw, 26px);
+  max-width: 720px; margin: clamp(24px, 4vw, 36px) auto clamp(28px, 4.5vw, 44px);
+  padding: clamp(22px, 3.5vw, 34px); text-align: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(21,234,158,.38);
+  background: linear-gradient(155deg, rgba(21,234,158,.14), rgba(10,44,64,.5) 60%);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+body[data-home] .offer-checks {
+  list-style: none; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px 22px; font-size: .96rem; color: #eafcf7;
+}
+body[data-home] .offer-checks li { display: flex; align-items: center; gap: 8px; }
+body[data-home] .offer-checks li::before {
+  content: ""; flex: none; width: 18px; height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2315EA9E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+body[data-home] .offer-vagas { display: grid; gap: 8px; justify-items: center; }
+body[data-home] .offer-vagas__label {
+  font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em;
+  text-transform: uppercase; color: #cfe0ee;
+}
+body[data-home] .offer-vagas__label b { color: var(--teal); font-size: 1rem; }
+body[data-home] .offer-vagas__bar {
+  width: min(320px, 80%); height: 8px; border-radius: 999px;
+  background: rgba(255,255,255,.12); overflow: hidden;
+}
+body[data-home] .offer-vagas__bar i { display: block; height: 100%; background: var(--grad); border-radius: 999px; }
+body[data-home] .offer-vagas__prazo {
+  font-size: .82rem; color: var(--muted); max-width: 44ch;
+}
+body[data-home] .offer-band .offer-cta { justify-self: center; }
+body[data-home] [data-vagas-esgotado] .offer-vagas__bar i { background: var(--muted); }
+body[data-home] [data-vagas-esgotado] .impl-free { display: none; }
+
+/* --- os 2 cards --- */
+body[data-home] .plans--2 {
+  grid-template-columns: repeat(2, 1fr); gap: 22px;
+  max-width: 860px; margin-inline: auto;
+}
+@media (max-width: 860px) {
+  body[data-home] .plans--2 { grid-template-columns: 1fr; max-width: 440px; }
+}
+
+/* --- calculadora com stepper --- */
+body[data-home] .calc-stepper {
+  display: flex; align-items: center; gap: 10px;
+}
+body[data-home] .calc-stepper button {
+  width: 34px; height: 34px; flex: none; border-radius: 9px;
+  border: 1px solid var(--line); background: var(--navy); color: var(--teal);
+  font-size: 1.25rem; line-height: 1; cursor: pointer;
+}
+body[data-home] .calc-stepper button:disabled { opacity: .3; cursor: default; }
+body[data-home] .calc-stepper button:hover:not(:disabled) { border-color: var(--teal); color: #fff; }
+body[data-home] .calc-stepper input {
+  width: 56px; text-align: center; -moz-appearance: textfield;
+  background: var(--navy); border: 1px solid var(--line); border-radius: 10px;
+  padding: 8px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: #fff;
+}
+body[data-home] .calc-stepper input::-webkit-outer-spin-button,
+body[data-home] .calc-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+body[data-home] .calc-stepper__suffix { font-size: .9rem; color: var(--muted); }
+body[data-home] .calc-out span { color: var(--muted); font-family: var(--font-body); font-weight: 400; }
+body[data-home] .calc-out em { font-style: normal; font-size: .8rem; color: var(--muted); }
+
+/* --- expertise das conexões (bloco horizontal, menor que a oferta) --- */
+body[data-home] .conex-expertise {
+  max-width: 760px; margin: clamp(30px, 5vw, 48px) auto 0;
+  padding: clamp(22px, 3.5vw, 32px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-soft); background: rgba(11,27,43,.42);
+}
+body[data-home] .conex-expertise__h {
   font-family: var(--font-display); font-weight: 700; color: #fff;
-  font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.15;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.2; margin: 8px 0 12px;
 }
-body[data-home] .launch-band .lb-headline {
-  font-size: clamp(.98rem, 1.7vw, 1.1rem); font-weight: 500;
-  color: #eafcf7; margin: 8px 0 14px;
+body[data-home] .conex-expertise p {
+  color: #cfe0ee; font-size: .96rem; line-height: 1.6; max-width: 64ch;
 }
+body[data-home] .conex-expertise p b { color: var(--teal); }
+body[data-home] .conex-pair {
+  display: flex; flex-wrap: wrap; align-items: stretch; justify-content: center;
+  gap: 12px; margin: 20px 0 14px;
+}
+body[data-home] .conex-one {
+  flex: 1 1 200px; max-width: 300px; display: grid; gap: 3px;
+  padding: 14px 16px; border-radius: 12px;
+  border: 1px solid var(--line-soft); background: rgba(21,234,158,.06);
+}
+body[data-home] .conex-one b { color: #fff; font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; font-family: var(--font-mono); }
+body[data-home] .conex-one span { color: var(--muted); font-size: .9rem; }
+body[data-home] .conex-plus { align-self: center; color: var(--teal); font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; }
+body[data-home] .conex-tag {
+  font-family: var(--font-display); font-weight: 700; color: var(--lime);
+  font-size: 1.02rem;
+}
+
+/* --- volta para a urgência --- */
+body[data-home] .offer-repeat {
+  max-width: 620px; margin: clamp(30px, 5vw, 48px) auto 0;
+  display: grid; gap: 12px; justify-items: center; text-align: center;
+}
+body[data-home] .offer-repeat__lead { color: #eafcf7; font-size: 1rem; line-height: 1.55; }
+body[data-home] .offer-repeat__lead b { color: #fff; }
+body[data-home] .offer-repeat .mono-label { color: var(--muted); }
 
 /* ---- 7. Bloco 9 — LINHA DO TEMPO HORIZONTAL (doc final, item 7) --------
    Deixa de ser lista vertical: 5 etapas lado a lado, trilho no topo com
@@ -533,9 +634,3 @@ body[data-home] .qc-figure--photo figcaption {
   padding: clamp(16px, 2.4vw, 22px) clamp(20px, 3vw, 30px) clamp(20px, 3vw, 30px);
 }
 
-/* -- §13 Planos: nota do modelo de 2 conexões (1 oficial + 1 não oficial) -- */
-body[data-home] .plans-note {
-  max-width: 62ch; margin: 0 auto clamp(22px, 3.5vw, 34px);
-  text-align: center; font-size: .96rem; line-height: 1.6; color: #d7e6f4;
-}
-body[data-home] .plans-note b { color: var(--teal); font-weight: 700; }

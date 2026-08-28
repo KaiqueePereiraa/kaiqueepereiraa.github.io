@@ -241,26 +241,29 @@ window.WASFIT = {
             'IA configurada por unidade',
             'Painel unificado',
           ],
-          cta: { label: 'Falar com a gente', evento: 'clique_contato', plano: 'rede' },
-          // 8.4 — Calculadora. mensalidade = 1.347 + 350/un. acima de 3. Implantação = 3.800 + 900/un.
-          // 1 ou 2 unidades => "o plano é o Escola". Acima de 6 => "Falar com a gente".
+          cta: { label: 'Garantir condição de lançamento', evento: 'clique_vaga', plano: 'rede' },
+          // 8.4 — Calculadora (a ÚNICA parte de planos.cards que o main.js lê).
+          // mensalidade = 997 + 350/un. acima de 2 unidades. 2 un. = R$ 997 ... 6 un. = R$ 2.397.
+          // Implantação (só informativa no card): R$ 2.900 + R$ 900 por unidade adicional.
           calc: {
-            base: 1347, porUnidade: 350,
-            implBase: 3800, implPorUnidade: 900,
-            min: 3, max: 6,
+            base: 997, porUnidade: 350,
+            implBase: 2900, implPorUnidade: 900,
+            min: 2, max: 6,
           },
         },
       ],
     },
 
-    // ---- BLOCO 8.1 / 8.2 — Faixa da condição de lançamento ---------------
-    // O contador é editável SEM deploy: mude os números em `vagas` abaixo.
-    // Quando fundador.restantes chega a 0, a faixa vira automaticamente Pioneiro
-    // (sem garantia de 30 dias) e o BLOCO 10 perde a coluna da garantia.
+    // ---- Condição de lançamento — contador de vagas ---------------------
+    // NÚMERO REAL, editado à mão. Mude `restantes` e suba de novo; o main.js
+    // atualiza "Restam X de 20 vagas" e a barra em todos os pontos de #planos.
+    // Quando restantes chega a 0: contador vira "esgotadas" e o BLOCO 15
+    // perde a coluna da garantia de 30 dias. Nada de contador automático.
     vagas: {
       fundador: { total: 20, restantes: 20 },
-      pioneiro: { total: 40, restantes: 40 },
     },
+    // LEGADO: a oferta agora é escrita direto no index.html (#planos).
+    // Mantido só para não quebrar leituras antigas; o main.js não usa mais.
     faixaLancamento: {
       prazo: 'Válido até 31 de outubro de 2026',
       cta: { label: 'Quero minha vaga', evento: 'clique_vaga', plano: 'fundador' },

@@ -227,56 +227,28 @@
   });
 
   /* ---------------------------------------------------------------- *
-   *  9. Faixa da condição de lançamento + contador (item 7.4 / 8)    *
+   *  9. Contador de vagas da condição de lançamento                 *
+   *  Número REAL, editado à mão em config.js -> home.vagas.fundador *
+   *  Sem animação decrescente nem contagem falsa. Preenche todos os *
+   *  pontos [data-vagas-label] / [data-vagas-bar] da seção #planos. *
    * ---------------------------------------------------------------- */
-  safe(function launchBand() {
-    var band = $('[data-launch]');
-    if (!band) return;
-    var home = CFG.home || {};
-    var vagas = home.vagas || { fundador: { total: 20, restantes: 20 }, pioneiro: { total: 40, restantes: 40 } };
-    var fx = home.faixaLancamento || {};
-    var faixa, restantes, total, key;
+  safe(function vagasCounter() {
+    var sec = $('[data-planos]');
+    if (!sec) return;
+    var f = (CFG.home && CFG.home.vagas && CFG.home.vagas.fundador) || { total: 20, restantes: 20 };
+    var total = f.total || 20;
+    var left = f.restantes == null ? total : Math.max(0, f.restantes);
+    var esgotado = left <= 0;
 
-    if (vagas.fundador && vagas.fundador.restantes > 0) {
-      key = 'fundador'; faixa = fx.fundador; restantes = vagas.fundador.restantes; total = vagas.fundador.total;
-    } else if (vagas.pioneiro && vagas.pioneiro.restantes > 0) {
-      key = 'pioneiro'; faixa = fx.pioneiro; restantes = vagas.pioneiro.restantes; total = vagas.pioneiro.total;
-    } else {
-      key = 'esgotado'; faixa = fx.esgotado || {}; restantes = 0; total = 0;
-    }
-    if (!faixa) return;
-
-    function setText(sel, val) { var n = $(sel, band); if (n != null && val != null) n.textContent = val; }
-    setText('[data-launch-title]', faixa.titulo);
-    setText('[data-launch-destaque]', faixa.destaque);
-    setText('[data-launch-prazo]', fx.prazo || '');
-
-    var ul = $('[data-launch-beneficios]', band);
-    if (ul && faixa.beneficios) {
-      ul.innerHTML = '';
-      faixa.beneficios.forEach(function (b) { var li = document.createElement('li'); li.textContent = b; ul.appendChild(li); });
-    }
-
-    var label = $('[data-launch-contador]', band);
-    var numEl = $('[data-launch-num]', band);
-    if (key === 'esgotado') {
-      if (numEl) numEl.parentNode && (numEl.parentNode.style.display = 'none');
-      if (label) label.textContent = '';
-    } else {
-      if (label && faixa.contador) label.textContent = faixa.contador.replace('{X}', restantes).replace('{TOTAL}', total);
-      // anima o número
-      if (numEl) countUp(numEl, restantes);
-    }
-
-    // botão da faixa recebe a faixa certa
-    var btn = $('[data-launch-cta]', band);
-    if (btn && fx.cta) {
-      btn.textContent = fx.cta.label;
-      btn.setAttribute('data-evt', fx.cta.evento || 'clique_vaga');
-      btn.setAttribute('data-plano', key === 'esgotado' ? 'rede' : key);
-      btn.setAttribute('data-faixa', key);
-      if (key === 'esgotado') btn.setAttribute('data-evt', 'clique_contato');
-    }
+    $all('[data-vagas-label]', sec).forEach(function (n) {
+      n.innerHTML = esgotado
+        ? 'Vagas de lançamento esgotadas'
+        : 'Restam <b>' + left + '</b> de ' + total + ' vagas';
+    });
+    $all('[data-vagas-bar]', sec).forEach(function (b) {
+      b.style.width = (total ? (left / total) * 100 : 0).toFixed(1) + '%';
+    });
+    if (esgotado) sec.setAttribute('data-vagas-esgotado', '');
   });
 
   function countUp(el, to) {
@@ -294,27 +266,36 @@
   }
 
   /* ---------------------------------------------------------------- *
-   *  10. Calculadora do plano Rede (item 7.2)                        *
+   *  10. Calculadora do plano Rede — stepper 2..6 unidades          *
+   *  mensalidade = base + porUnidade * (u - min)                    *
    * ---------------------------------------------------------------- */
   safe(function redeCalc() {
     var box = $('[data-calc]');
     if (!box) return;
     var cardCfg = ((CFG.home && CFG.home.planos && CFG.home.planos.cards) || []).filter(function (c) { return c.id === 'rede'; })[0];
-    var k = (cardCfg && cardCfg.calc) || { base: 1347, porUnidade: 350, implBase: 3800, implPorUnidade: 900, min: 3, max: 6 };
+    var k = (cardCfg && cardCfg.calc) || { base: 997, porUnidade: 350, min: 2, max: 6 };
     var input = $('input', box), out = $('[data-calc-out]', box);
     if (!input || !out) return;
 
     function fmt(n) { return 'R$ ' + n.toLocaleString('pt-BR'); }
+    function clamp(u) { return isNaN(u) ? k.min : Math.max(k.min, Math.min(k.max, u)); }
     function render() {
-      var u = parseInt(input.value, 10);
-      if (isNaN(u) || u < 1) { out.innerHTML = 'Informe o número de unidades.'; return; }
-      if (u < k.min) { out.innerHTML = 'Com <b>1 ou 2 unidades</b>, o plano é o <b>Escola</b>.'; return; }
-      if (u > k.max) { out.innerHTML = 'Acima de <b>6 unidades</b>: <b>Falar com a gente</b>.'; return; }
+      var u = clamp(parseInt(input.value, 10));
+      input.value = u;
       var mensal = k.base + k.porUnidade * (u - k.min);
-      var impl = k.implBase + k.implPorUnidade * (u - k.min);
-      out.innerHTML = u + ' unidades: <b>' + fmt(mensal) + '</b>/mês &nbsp;·&nbsp; implantação <b>' + fmt(impl) + '</b>';
+      out.innerHTML = '<b>' + fmt(mensal) + '</b> <span>/mês</span>'
+        + (u >= k.max ? ' &nbsp;·&nbsp; <em>acima de ' + k.max + ' unidades, fale com a gente</em>' : '');
+      var dec = $('[data-calc-step="-1"]', box), inc = $('[data-calc-step="1"]', box);
+      if (dec) dec.disabled = u <= k.min;
+      if (inc) inc.disabled = u >= k.max;
     }
     input.addEventListener('input', render);
+    $all('[data-calc-step]', box).forEach(function (b) {
+      b.addEventListener('click', function () {
+        input.value = clamp(parseInt(input.value, 10) + parseInt(b.getAttribute('data-calc-step'), 10));
+        render();
+      });
+    });
     render();
   });
 
