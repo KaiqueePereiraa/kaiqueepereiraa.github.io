@@ -197,6 +197,7 @@ window.WASFIT = {
           itens: [
             '1 unidade',
             '2 números de WhatsApp',
+            'Comunicação em escala pela API oficial da Meta',
             'Todas as IAs do ciclo do aluno',
             'Kanban de leads com a etapa visível',
             'Etiquetas e filtro da base',
