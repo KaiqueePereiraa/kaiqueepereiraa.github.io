@@ -45,9 +45,9 @@ body[data-home] .scroll-cue { bottom: clamp(64px, 8vh, 104px); }
    para a direita e um pouco para baixo, com glow difuso atrás (sem virar
    círculo) e flutuação bem lenta. Segundo ponto de atenção depois do H1. */
 body[data-home] .hero-art-wrap {
-  width: clamp(280px, 39vw, 600px);
-  right: clamp(12px, 4vw, 92px);
-  top: 52%;
+  width: clamp(300px, 42vw, 660px);
+  right: clamp(-14px, 1vw, 28px);
+  top: 56%;
   opacity: 1;
   z-index: 1;
 }
@@ -63,87 +63,20 @@ body[data-home] .hero-art-wrap::before {
   filter: blur(48px);
   animation: mascot-glow 9s ease-in-out infinite;
 }
+body[data-home] .hero-art-wrap img {
+  filter: drop-shadow(0 34px 92px rgba(21, 234, 158, .34));
+  animation: mascot-float 11s ease-in-out infinite;
+}
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+  50%      { transform: translateY(-9px) rotate(0.5deg); }
+}
 @keyframes mascot-glow {
   0%, 100% { opacity: .5;  transform: scale(1); }
   50%      { opacity: .88; transform: scale(1.05); }
 }
-
-/* ---- mascote em camadas: corpo + 8 tentáculos + 10 ícones ----------------
-   Cada peça é posicionada em % dentro do quadro .wavi e tem sua própria
-   micro-animação (leve, defasada) para dar vida sem distrair. */
-body[data-home] .hero-art-wrap .wavi {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  filter: drop-shadow(0 34px 92px rgba(21, 234, 158, .30));
-  animation: mascot-float 11s ease-in-out infinite;
-}
-@keyframes mascot-float {
-  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
-  50%      { transform: translateY(-10px) rotate(0.4deg); }
-}
-body[data-home] .wavi img {
-  position: absolute; display: block;
-  width: auto;            /* anula o width:100% herdado de .hero-art-wrap img */
-  filter: none;           /* a sombra fica só no contêiner .wavi */
-  animation: none;        /* cada peça declara a sua logo abaixo */
-}
-
-/* corpo (cabeça + tronco) — âncora central */
-body[data-home] .wavi img.wavi__body {
-  width: 42%; left: 30%; top: 18%; z-index: 3;
-}
-
-/* tentáculos: atrás do corpo, irradiando do tronco (~50%/50% do quadro).
-   --rot gira a peça; --flip espelha os lados. A animação repete o transform
-   inteiro porque keyframes sobrescrevem a base. */
-body[data-home] .wavi img.wavi__arm {
-  width: 46%; left: 27%; top: 26%;
-  transform-origin: 50% 38%;
-  transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg)) scaleX(var(--flip, 1));
-  z-index: 1;
-  animation: arm-sway 6.5s ease-in-out infinite;
-  animation-delay: var(--d, 0s);
-}
-@keyframes arm-sway {
-  0%, 100% { transform: translate(var(--tx,0), var(--ty,0))            rotate(var(--rot,0deg))               scaleX(var(--flip,1)); }
-  50%      { transform: translate(var(--tx,0), calc(var(--ty,0) - 4px)) rotate(calc(var(--rot,0deg) + 2.6deg)) scaleX(var(--flip,1)); }
-}
-body[data-home] .wavi__arm--1 { --rot: -34deg;  --tx: -30%; --ty: -12%; --d: -0.2s; }
-body[data-home] .wavi__arm--2 { --rot: -58deg;  --tx: -40%; --ty:   2%; --d: -1.1s; }
-body[data-home] .wavi__arm--3 { --rot: -20deg;  --tx: -34%; --ty:  22%; --d: -2.0s; }
-body[data-home] .wavi__arm--4 { --rot:  12deg;  --tx: -14%; --ty:  34%; --d: -3.1s; }
-body[data-home] .wavi__arm--5 { --rot: -14deg;  --flip: -1; --tx: 16%;  --ty:  34%; --d: -0.7s; }
-body[data-home] .wavi__arm--6 { --rot:  22deg;  --flip: -1; --tx: 38%;  --ty:  22%; --d: -1.7s; }
-body[data-home] .wavi__arm--7 { --rot:  48deg;  --flip: -1; --tx: 44%;  --ty:   2%; --d: -2.6s; }
-body[data-home] .wavi__arm--8 { --rot:  32deg;  --flip: -1; --tx: 32%;  --ty: -12%; --d: -3.6s; }
-
-/* ícones: na frente de tudo, flutuando com defasagem */
-body[data-home] .wavi img.wavi__ic {
-  width: 13%; z-index: 4;
-  animation: ic-bob 5s ease-in-out infinite;
-  animation-delay: var(--d, 0s);
-}
-@keyframes ic-bob {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-9px) rotate(-1.5deg); }
-}
-body[data-home] .wavi__ic--whatsapp { left: 27%; top:  2%;  --d: -0.3s; }
-body[data-home] .wavi__ic--check    { left: 62%; top:  0%;  --d: -2.4s; }
-body[data-home] .wavi__ic--user     { left:  9%; top: 22%;  --d: -1.2s; }
-body[data-home] .wavi__ic--chat     { left:  2%; top: 43%;  --d: -3.0s; }
-body[data-home] .wavi__ic--chart    { left:  6%; top: 64%;  --d: -1.8s; }
-body[data-home] .wavi__ic--loading  { left: 33%; top: 84%;  --d: -0.9s; }
-body[data-home] .wavi__ic--share    { left: 57%; top: 82%;  --d: -2.7s; }
-body[data-home] .wavi__ic--calendar { left: 78%; top: 23%;  --d: -3.4s; }
-body[data-home] .wavi__ic--dollar   { left: 84%; top: 45%;  --d: -1.5s; }
-body[data-home] .wavi__ic--bot      { left: 79%; top: 64%;  --d: -0.6s; }
-
 @media (prefers-reduced-motion: reduce) {
-  body[data-home] .hero-art-wrap::before,
-  body[data-home] .wavi,
-  body[data-home] .wavi__arm,
-  body[data-home] .wavi__ic { animation: none; }
+  body[data-home] .hero-art-wrap::before { animation: none; }
 }
 @media (max-width: 900px) {
   body[data-home] .hero-art-wrap {
