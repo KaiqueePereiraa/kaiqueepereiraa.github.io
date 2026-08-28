@@ -103,6 +103,32 @@ body[data-home] #ias .ias-tier p {
   margin: 0; color: #cfe0ee; font-size: .95rem; line-height: 1.5;
 }
 
+/* grupo do EVO recolhido: as 8 IAs ficam atrás de um "ver todas" */
+body[data-home] #ias .ias-evo {
+  margin-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid var(--line-soft);
+}
+body[data-home] #ias .ias-evo > summary {
+  list-style: none; cursor: pointer; position: relative;
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 14px 40px 14px 0;
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--teal);
+}
+body[data-home] #ias .ias-evo > summary::-webkit-details-marker { display: none; }
+body[data-home] #ias .ias-evo > summary::after {
+  content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-body); font-weight: 400; font-size: 1.6rem; line-height: 1;
+  color: var(--teal); transition: transform .2s var(--ease);
+}
+body[data-home] #ias .ias-evo[open] > summary::after { transform: translateY(-50%) rotate(45deg); }
+body[data-home] #ias .ias-evo > summary:hover { color: #fff; }
+body[data-home] #ias .ias-evo__count {
+  font-weight: 400; color: var(--muted); letter-spacing: .06em;
+}
+body[data-home] #ias .ias-evo__body { padding-top: 4px; }
+body[data-home] #ias .ias-evo__body .ias-group-note { margin-top: 0; }
+
 /* ---- 6. Bloco 8 — faixa de lançamento: título + subtítulo enxutos -- */
 body[data-home] .launch-band [data-launch-title] {
   font-family: var(--font-display); font-weight: 700; color: #fff;
