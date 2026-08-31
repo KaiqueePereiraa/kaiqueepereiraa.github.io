@@ -736,3 +736,19 @@ body[data-home] .footer-bottom { margin-top: 28px; }
     margin: 30px auto 2px;
   }
 }
+
+/* --- Mobile: seções que ficavam tortas ao quebrar linha --------------- */
+@media (max-width: 560px) {
+  /* #prova: os 3 números (2 prints / MGB / 24/7) empilhados e centrados */
+  body[data-home] #prova .stat-row {
+    flex-direction: column; align-items: center; gap: 18px; padding-top: 24px;
+  }
+  body[data-home] #prova .stat { padding-right: 0; text-align: center; }
+  body[data-home] #prova .stat::after { display: none; }
+
+  /* #kanban: a trilha do Rafael D. vira lista vertical (setas apontando pra baixo) */
+  body[data-home] .ktrace { flex-direction: column; align-items: stretch; gap: 8px; }
+  body[data-home] .ktrace .mono-label { align-self: flex-start; }
+  body[data-home] .ktrace .step { text-align: center; }
+  body[data-home] .ktrace .sep { align-self: center; transform: rotate(90deg); line-height: 1; }
+}
