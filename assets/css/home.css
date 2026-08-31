@@ -297,8 +297,15 @@ body[data-home] .hero-launch {
 
 /* --- Bloco 8: kanban com a cara do produto real (avatar, hora, tag, #id) --- */
 body[data-home] .kanban { gap: 16px; }
-body[data-home] .kcol { background: rgba(9,22,36,.55); padding: 12px; }
+body[data-home] .kcol { display: flex; flex-direction: column; background: rgba(9,22,36,.55); padding: 12px; }
 body[data-home] .kcol h4 { justify-content: flex-start; gap: 8px; }
+body[data-home] .kmore {
+  order: 99; margin-top: 2px; padding: 7px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .04em; color: var(--muted);
+  border: 1px dashed var(--line-soft); border-radius: 8px;
+}
+body[data-home] .kmore i { font-style: normal; opacity: .8; }
 body[data-home] .kdot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
 body[data-home] .kcol h4 span {
   margin-left: auto; font-family: var(--font-mono); font-size: .72rem; color: var(--muted);
