@@ -208,6 +208,13 @@ h1, h2, h3, .display {
 .nav a { font-size: 0.9rem; color: var(--ink); transition: color 0.18s; }
 .nav a:hover { color: var(--teal); }
 .header-actions { display: flex; align-items: center; gap: 14px; }
+.header-login {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; color: var(--white);
+  padding: 8px 16px; border-radius: 10px; border: 1px solid var(--line);
+  transition: border-color 0.16s, background-color 0.16s;
+}
+.header-login:hover { border-color: var(--teal); background: rgba(21, 234, 158, 0.09); }
 .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 10px; padding: 9px; cursor: pointer; }
 .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--white); margin: 4px 0; transition: 0.25s var(--ease); }
 .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
