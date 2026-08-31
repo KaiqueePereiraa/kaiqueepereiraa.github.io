@@ -723,3 +723,14 @@ body[data-home] .footer-bottom { margin-top: 28px; }
   body[data-home] .hero-trust span:first-child { padding-left: 0; }
   body[data-home] .hero-trust span:not(:last-child)::after { content: "·"; margin-left: 10px; opacity: .5; }
 }
+
+/* --- Mobile: sem mascote no hero; no lugar, a dica "Mergulhe" com a mãozinha - */
+@media (max-width: 620px) {
+  body[data-home] .hero-art-wrap { display: none; }
+  body[data-home] .ein-hero { min-height: auto; padding-bottom: 30px; }
+  body[data-home] .scroll-cue {
+    display: flex;              /* vence o hide de max-height:780px em telas baixas */
+    position: static; transform: none; bottom: auto;
+    margin: 30px auto 2px;
+  }
+}
