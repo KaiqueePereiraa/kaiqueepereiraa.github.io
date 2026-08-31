@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.className += ' js';</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; connect-src 'self'; frame-src https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>O que a gente faz com você — WasFit</title>
 <meta name="description" content="Os serviços da WasFit que dependem de estratégia: raio-x, diagnóstico comercial, higienização da base, campanhas, IA exclusiva. Você contrata só se quiser.">
 <link rel="canonical" href="https://wasfit.com.br/servicos/">
@@ -19,9 +21,9 @@
 <link rel="apple-touch-icon" href="/assets/img/icon-512.png">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830-ein26">
-<link rel="stylesheet" href="/assets/css/styles.css?v=20260830-ein26">
-<link rel="stylesheet" href="/assets/css/ein.css?v=20260830-ein26">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830-ein27">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260830-ein27">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260830-ein27">
 <style>
   .svc-head { max-width: 46rem; padding-top: clamp(120px, 16vh, 168px); }
   .svc-list { display: grid; gap: 14px; margin-top: clamp(30px, 5vw, 48px); }
@@ -79,7 +81,7 @@
       <a href="/">Voltar ao site</a>
     </nav>
     <div class="header-actions">
-      <a class="header-login" href="https://app.wasfit.com.br/" target="_blank" rel="noopener">Entrar</a>
+      <a class="header-login" href="https://app.wasfit.com.br/" target="_blank" rel="noopener noreferrer">Entrar</a>
       <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -176,15 +178,9 @@
   <svg aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/config.js?v=20260830-ein26"></script>
-<script src="/assets/js/main.js?v=20260830-ein26" defer></script>
-<script src="/assets/js/ein.js?v=20260830-ein26" defer></script>
-<script>
-(function () {
-  function showAll() { document.querySelectorAll('.rise:not(.in)').forEach(function (e) { e.classList.add('in'); }); }
-  window.addEventListener('load', function () { setTimeout(showAll, 1200); });
-  setTimeout(showAll, 3500);
-})();
-</script>
+<script src="/assets/js/config.js?v=20260830-ein27"></script>
+<script src="/assets/js/main.js?v=20260830-ein27" defer></script>
+<script src="/assets/js/ein.js?v=20260830-ein27" defer></script>
+<script src="/assets/js/page.js?v=20260830-ein27" defer></script>
 </body>
 </html>

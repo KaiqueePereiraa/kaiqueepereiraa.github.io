@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.className += ' js';</script>
+<!-- Segurança. Cabeçalhos "de verdade" (HSTS, X-Frame-Options, etc.) ficam no
+     .htaccess / _headers / netlify.toml — no GitHub Pages só valem estas metas.
+     CSP: ao ativar GTM/GA (analytics.gtmId), some 'unsafe-inline' não é usado;
+     acrescentar https://www.googletagmanager.com em script-src, e
+     https://www.google-analytics.com https://www.googletagmanager.com em
+     connect-src e img-src. Ao definir contato.formEndpoint, pôr o host dele
+     em connect-src. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; connect-src 'self'; frame-src https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>WasFit — a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -29,10 +38,10 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/worksans-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830-ein26">
-<link rel="stylesheet" href="/assets/css/styles.css?v=20260830-ein26">
-<link rel="stylesheet" href="/assets/css/ein.css?v=20260830-ein26">
-<link rel="stylesheet" href="/assets/css/home.css?v=20260830-ein26">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830-ein27">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260830-ein27">
+<link rel="stylesheet" href="/assets/css/ein.css?v=20260830-ein27">
+<link rel="stylesheet" href="/assets/css/home.css?v=20260830-ein27">
 
 <!-- GTM é injetado por main.js quando analytics.gtmId estiver preenchido no config.js (item 4) -->
 </head>
@@ -89,7 +98,7 @@
       <a href="#faq">Perguntas</a>
     </nav>
     <div class="header-actions">
-      <a class="header-login" href="https://app.wasfit.com.br/" target="_blank" rel="noopener">Entrar</a>
+      <a class="header-login" href="https://app.wasfit.com.br/" target="_blank" rel="noopener noreferrer">Entrar</a>
       <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -162,13 +171,13 @@
       <figure class="prova-shot">
         <figcaption>Conversa 1 · qualifica e move o lead no funil</figcaption>
         <div class="shot-frame" tabindex="0" role="img" aria-label="Print de WhatsApp: a IA qualifica um lead (natação para o filho, aprender a nadar e autossalvamento), muda a fila para Vendas, adiciona a etiqueta Em espera e explica a Metodologia Gustavo Borges. Role para ler tudo.">
-          <img src="/assets/img/conversa-1.jpg?v=20260830-ein26" width="900" height="1599" loading="lazy" alt="">
+          <img src="/assets/img/conversa-1.jpg?v=20260830-ein27" width="900" height="1599" loading="lazy" alt="">
         </div>
       </figure>
       <figure class="prova-shot">
         <figcaption>Conversa 2 · primeira dúvida de uma família nova</figcaption>
         <div class="shot-frame" tabindex="0" role="img" aria-label="Print de WhatsApp: um responsável que acabou de se mudar conta que a filha ainda não sabe nadar e quer que ela aprenda um esporte; a IA responde citando ambiente seguro, piscina aquecida e a Metodologia Gustavo Borges. Role para ler tudo.">
-          <img src="/assets/img/conversa-2.jpg?v=20260830-ein26" width="900" height="1599" loading="lazy" alt="">
+          <img src="/assets/img/conversa-2.jpg?v=20260830-ein27" width="900" height="1599" loading="lazy" alt="">
         </div>
       </figure>
     </div>
@@ -210,7 +219,7 @@
         <p class="lead" data-cfg="home.quemConstruiu.texto">São onze anos operando escolas de natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.</p>
       </div>
       <figure class="qc-figure qc-figure--photo rise" data-delay="1">
-        <img src="/assets/img/unidade-positiva.jpg?v=20260830-ein26" width="1400" height="933" loading="lazy"
+        <img src="/assets/img/unidade-positiva.jpg?v=20260830-ein27" width="1400" height="933" loading="lazy"
              alt="Colagem de fotos de uma das nossas unidades, a Positiva Aqua: a piscina coberta e aquecida, uma aula com o professor e crianças de touca laranja, a fachada com o letreiro Positiva Aqua e os mascotes da Metodologia Gustavo Borges pintados na parede.">
         <figcaption>
           <div class="qc-stat"><b>11</b><span>anos de operação</span></div>
@@ -785,95 +794,9 @@
   <svg aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/config.js?v=20260830-ein26"></script>
-<script src="/assets/js/main.js?v=20260830-ein26" defer></script>
-<script src="/assets/js/ein.js?v=20260830-ein26" defer></script>
-<script>
-/* Home: rede de segurança do reveal. O ein.js revela os blocos .rise com
-   IntersectionObserver ao rolar; se em algum navegador isso não pegar, todo
-   o conteúdo continua visível. Não afeta a animação de quem rola normalmente. */
-(function () {
-  function showAll() {
-    var n = document.querySelectorAll('.rise:not(.in)');
-    for (var i = 0; i < n.length; i++) n[i].classList.add('in');
-  }
-  window.addEventListener('load', function () { setTimeout(showAll, 1400); });
-  setTimeout(showAll, 4000);
-
-  /* Movimento (doc "Ajustes de design", item 7): o trilho da linha do tempo
-     da implantação preenche conforme a seção passa pela tela. */
-  try {
-    var grid = document.querySelector('#implantacao > .grid');
-    if (grid && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      var raf = 0;
-      var tick = function () {
-        raf = 0;
-        var r = grid.getBoundingClientRect(), vh = window.innerHeight || 1;
-        var p = (vh * 0.75 - r.top) / (r.height + vh * 0.25);
-        p = p < 0 ? 0 : p > 1 ? 1 : p;
-        grid.style.setProperty('--impl-progress', (p * 100).toFixed(1) + '%');
-      };
-      addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
-      addEventListener('resize', tick, { passive: true });
-      tick();
-    }
-  } catch (e) {}
-
-  /* Carrossel das 8 IAs do EVO (#ias). Scroll-snap nativo faz o alinhamento;
-     o JS só liga as setas, gera as bolinhas e mantém tudo em sincronia com
-     o scroll. Sem autoplay — o ritmo é do usuário. */
-  try {
-    var car = document.querySelector('#ias [data-carousel]');
-    if (car) {
-      var track = car.querySelector('[data-car-track]');
-      var slides = [].slice.call(track.querySelectorAll('[data-car-slide]'));
-      var prevBtn = car.querySelector('.ias-car__arrow--prev');
-      var nextBtn = car.querySelector('.ias-car__arrow--next');
-      var dotsWrap = car.querySelector('[data-car-dots]');
-
-      var dots = slides.map(function (s, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.setAttribute('aria-label', 'Ir para a IA ' + (i + 1) + ' de ' + slides.length);
-        b.addEventListener('click', function () { go(i); });
-        dotsWrap.appendChild(b);
-        return b;
-      });
-
-      function currentIdx() {
-        var best = 0, bestD = Infinity, x = track.scrollLeft;
-        for (var i = 0; i < slides.length; i++) {
-          var d = Math.abs(slides[i].offsetLeft - x);
-          if (d < bestD) { bestD = d; best = i; }
-        }
-        return best;
-      }
-      function go(i) {
-        i = i < 0 ? 0 : i > slides.length - 1 ? slides.length - 1 : i;
-        track.scrollTo({ left: slides[i].offsetLeft, behavior: 'smooth' });
-      }
-      function sync() {
-        var atStart = track.scrollLeft <= 2;
-        var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-        var i = atEnd ? slides.length - 1 : atStart ? 0 : currentIdx();
-        for (var d = 0; d < dots.length; d++) {
-          dots[d].setAttribute('aria-current', d === i ? 'true' : 'false');
-        }
-        if (prevBtn) prevBtn.disabled = atStart;
-        if (nextBtn) nextBtn.disabled = atEnd;
-      }
-      if (prevBtn) prevBtn.addEventListener('click', function () { go(currentIdx() - 1); });
-      if (nextBtn) nextBtn.addEventListener('click', function () { go(currentIdx() + 1); });
-
-      var craf = 0;
-      track.addEventListener('scroll', function () {
-        if (!craf) craf = requestAnimationFrame(function () { craf = 0; sync(); });
-      }, { passive: true });
-      addEventListener('resize', function () { if (!craf) craf = requestAnimationFrame(function () { craf = 0; sync(); }); }, { passive: true });
-      sync();
-    }
-  } catch (e) {}
-})();
-</script>
+<script src="/assets/js/config.js?v=20260830-ein27"></script>
+<script src="/assets/js/main.js?v=20260830-ein27" defer></script>
+<script src="/assets/js/ein.js?v=20260830-ein27" defer></script>
+<script src="/assets/js/page.js?v=20260830-ein27" defer></script>
 </body>
 </html>

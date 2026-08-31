@@ -67,6 +67,7 @@
 
   function withUTMs(url) {
     if (!url || !Object.keys(utms).length) return url;
+    if (/^\s*(javascript|data|vbscript|blob):/i.test(url)) return url; // nunca processa esquemas ativos
     try {
       var abs = new URL(url, location.origin);
       // só repassa para o próprio site e para o destino de agendamento
@@ -106,18 +107,20 @@
       if (!c.whatsapp) return '';
       return 'https://wa.me/' + c.whatsapp + (msg ? '?text=' + encodeURIComponent(msg) : '');
     }
+    function extLink(a, href) {
+      a.setAttribute('href', href);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+    }
     $all('[data-wa]').forEach(function (a) {
       // data-wa-msg troca a mensagem padrão para aquele botão (ex.: raio-x)
       var href = waLink(a.getAttribute('data-wa-msg') || c.whatsappMsg);
-      if (href) a.setAttribute('href', href);
-      a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
+      if (href) extLink(a, href);
     });
     $all('[data-email]').forEach(function (a) { if (c.email) a.setAttribute('href', 'mailto:' + c.email); });
-    $all('[data-cadastro]').forEach(function (a) {
-      if (c.cadastro) { a.setAttribute('href', c.cadastro); a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
-    });
+    $all('[data-cadastro]').forEach(function (a) { if (c.cadastro) extLink(a, c.cadastro); });
     $all('[data-agendamento]').forEach(function (a) { if (c.agendamento) a.setAttribute('href', withUTMs(c.agendamento)); });
-    $all('[data-instagram]').forEach(function (a) { if (c.instagram) a.setAttribute('href', c.instagram); });
+    $all('[data-instagram]').forEach(function (a) { if (c.instagram) extLink(a, c.instagram); });
   });
 
   /* ---------------------------------------------------------------- *
@@ -215,11 +218,13 @@
       function load() {
         if (frame.getAttribute('data-loaded')) return;
         frame.setAttribute('data-loaded', '1');
-        if (yt) {
+        if (yt && /^[A-Za-z0-9_-]{11}$/.test(yt)) {
           var ifr = document.createElement('iframe');
-          ifr.src = 'https://www.youtube.com/embed/' + yt + '?autoplay=1&rel=0&enablejsapi=1';
+          // domínio "no-cookie" + só o ID validado (11 chars) na URL
+          ifr.src = 'https://www.youtube-nocookie.com/embed/' + yt + '?autoplay=1&rel=0';
           ifr.title = 'Demonstração WasFit';
           ifr.allow = 'autoplay; encrypted-media; picture-in-picture';
+          ifr.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
           ifr.setAttribute('allowfullscreen', '');
           frame.innerHTML = ''; frame.appendChild(ifr);
           // sem YT API: aproxima "viu_demo" 12s após dar play
