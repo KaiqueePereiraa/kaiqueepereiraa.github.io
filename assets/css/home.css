@@ -295,6 +295,36 @@ body[data-home] .hero-launch {
   text-transform: uppercase; color: #cfe0ee;
 }
 
+/* --- Bloco 8: kanban com a cara do produto real (avatar, hora, tag, #id) --- */
+body[data-home] .kanban { gap: 16px; }
+body[data-home] .kcol { background: rgba(9,22,36,.55); padding: 12px; }
+body[data-home] .kcol h4 { justify-content: flex-start; gap: 8px; }
+body[data-home] .kdot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+body[data-home] .kcol h4 span {
+  margin-left: auto; font-family: var(--font-mono); font-size: .72rem; color: var(--muted);
+  background: rgba(255,255,255,.06); border-radius: 999px; padding: 1px 8px; letter-spacing: .02em;
+}
+body[data-home] .kcard { display: grid; gap: 7px; padding: 10px 11px; }
+body[data-home] .kcard__hd { display: flex; align-items: center; gap: 8px; }
+body[data-home] .kav {
+  flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: .58rem; font-weight: 700; color: #cfe0ee;
+  background: rgba(255,255,255,.08); letter-spacing: .02em;
+}
+body[data-home] .kcard__hd b { flex: 1; min-width: 0; font-size: .84rem; color: #fff;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body[data-home] .kcard__hd time { flex: none; font-family: var(--font-mono); font-size: .66rem; color: var(--muted); }
+body[data-home] .kmsg { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+body[data-home] .kft { display: flex; align-items: center; justify-content: space-between; }
+body[data-home] .ktag {
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--teal); border: 1px solid rgba(21,234,158,.3); border-radius: 999px; padding: 1px 7px;
+}
+body[data-home] .kcol[data-cor="amber"] .ktag { color: var(--amber); border-color: rgba(245,179,90,.32); }
+body[data-home] .kcol[data-cor="lime"]  .ktag { color: var(--lime);  border-color: rgba(158,234,78,.34); }
+body[data-home] .kcol[data-cor="white"] .ktag { color: #cfe0ee; border-color: var(--line-soft); }
+body[data-home] .kid { font-family: var(--font-mono); font-size: .64rem; color: var(--muted); opacity: .7; }
+
 /* ---- 7. Bloco 9 — LINHA DO TEMPO HORIZONTAL (doc final, item 7) --------
    Deixa de ser lista vertical: 5 etapas lado a lado, trilho no topo com
    barra de progresso que preenche conforme o scroll (JS: --impl-progress). */
