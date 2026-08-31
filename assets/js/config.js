@@ -23,9 +23,9 @@ window.WASFIT = {
      O WhatsApp aparece em 3 posições (header, footer, botão flutuante).
      Cada clique dispara o evento clique_whatsapp com a posição. */
   contato: {
-    whatsapp: '5527000000000',                       // TROCAR: número oficial (só dígitos, com DDI 55)
+    whatsapp: '5527998932954',                       // só dígitos, com DDI 55
     whatsappMsg: 'Oi! Vim pelo site da WasFit e quero entender o Assist.',
-    email: 'comercial@wasfit.com.br',                 // TROCAR
+    email: 'adm.wasfit@gmail.com',
     // Link de agendamento de demonstração. Os UTMs são repassados automaticamente.
     agendamento: 'https://cal.com/wasfit/demo',       // TROCAR
     instagram: 'https://instagram.com/wasfit',        // TROCAR
@@ -43,6 +43,13 @@ window.WASFIT = {
     ga4_hint: 'Configurar a tag GA4 dentro do container do GTM',
     pixel_hint: 'Configurar o Pixel da Meta dentro do container do GTM',
     debug: false,              // true = também joga os eventos no console
+  },
+
+  /* ---- Dados da empresa (rodapé) ---------------------------------------- */
+  empresa: {
+    cidade: 'Serra',
+    uf: 'ES',
+    cnpj: '',                  // TROCAR: 'XX.XXX.XXX/0001-XX' — só aparece no rodapé quando preenchido
   },
 
   /* ---- Open Graph / preview de link no WhatsApp (item 12) ----------------- */
