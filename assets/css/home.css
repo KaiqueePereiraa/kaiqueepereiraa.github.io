@@ -185,23 +185,24 @@ body[data-home] #ias .ias-car__dots button[aria-current="true"] {
 
 /* ==== Bloco 13 — PLANOS: 2 cards primeiro, faixa de oferta depois ==== */
 
-/* --- faixa do lançamento no EIN, acima do H2 --- */
-body[data-home] .launch-band {
-  display: grid; gap: 3px; justify-items: center; text-align: center;
-  max-width: 460px; margin: 0 auto clamp(22px, 4vw, 34px);
-  padding: 14px 22px;
+/* --- faixa do lançamento no EIN, acima do H2 ---
+   classe PRÓPRIA (ein-band): o ein.css já tem um .launch-band de 2 colunas,
+   não reaproveitar aquele. */
+body[data-home] .ein-band {
+  display: grid; gap: 4px; justify-items: center; text-align: center;
+  max-width: 440px; margin: 0 auto clamp(22px, 4vw, 34px);
+  padding: 16px 24px;
   border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
   background: rgba(11,27,43,.42);
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
 }
-body[data-home] .launch-band__logo { height: 52px; width: auto; display: block; margin-bottom: 6px; }
-body[data-home] .launch-band__kicker {
+body[data-home] .ein-band__logo { height: 46px; width: auto; display: block; margin-bottom: 6px; }
+body[data-home] .ein-band__kicker {
   font-family: var(--font-mono); font-size: .7rem; letter-spacing: .16em;
   text-transform: uppercase; color: var(--teal);
 }
-body[data-home] .launch-band > span { font-size: .95rem; color: #eafcf7; line-height: 1.4; }
-body[data-home] .launch-band > span.launch-band__meta {
-  font-family: var(--font-mono); font-size: .74rem; letter-spacing: .03em; color: var(--muted);
+body[data-home] .ein-band__meta {
+  font-family: var(--font-mono); font-size: .78rem; letter-spacing: .03em; color: #cfe0ee;
 }
 
 /* --- a faixa de oferta (funde oferta + garantia + urgência) --- */
