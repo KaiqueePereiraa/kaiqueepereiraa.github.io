@@ -281,7 +281,7 @@
   safe(function redeCalc() {
     var box = $('[data-calc]');
     if (!box) return;
-    var k = (CFG.home && CFG.home.calcRede) || { base: 997, porUnidade: 400, min: 2, max: 6 };
+    var k = (CFG.home && CFG.home.calcRede) || { base: 997, porUnidade: 400, implBase: 2900, implPorUnidade: 900, min: 2, max: 6 };
     var input = $('input', box), out = $('[data-calc-out]', box);
     if (!input || !out) return;
 
@@ -291,8 +291,10 @@
       var u = clamp(parseInt(input.value, 10));
       input.value = u;
       var mensal = k.base + k.porUnidade * (u - k.min);
+      var impl = (k.implBase || 0) + (k.implPorUnidade || 0) * (u - k.min);
       out.innerHTML = '<b>' + fmt(mensal) + '</b> <span>/mês</span>'
-        + (u >= k.max ? ' &nbsp;·&nbsp; <em>acima de ' + k.max + ' unidades, fale com a gente</em>' : '');
+        + (u >= k.max ? ' &nbsp;·&nbsp; <em>acima de ' + k.max + ' unidades, fale com a gente</em>' : '')
+        + (impl ? '<span class="calc-impl"><s>' + fmt(impl) + ' de implantação</s> grátis no lançamento</span>' : '');
       var dec = $('[data-calc-step="-1"]', box), inc = $('[data-calc-step="1"]', box);
       if (dec) dec.disabled = u <= k.min;
       if (inc) inc.disabled = u >= k.max;

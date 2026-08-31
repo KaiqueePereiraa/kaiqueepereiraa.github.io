@@ -277,6 +277,11 @@ body[data-home] .calc-stepper input::-webkit-inner-spin-button { -webkit-appeara
 body[data-home] .calc-stepper__suffix { font-size: .9rem; color: var(--muted); }
 body[data-home] .calc-out span { color: var(--muted); font-family: var(--font-body); font-weight: 400; }
 body[data-home] .calc-out em { font-style: normal; font-size: .8rem; color: var(--muted); }
+body[data-home] .calc-out .calc-impl {
+  display: block; margin-top: 5px;
+  font-family: var(--font-body); font-weight: 400; font-size: .8rem; color: var(--muted);
+}
+body[data-home] .calc-out .calc-impl s { opacity: .85; }
 
 /* --- nota compacta: como as conexões ao WhatsApp funcionam (fecha #planos) --- */
 body[data-home] .conex-note {
