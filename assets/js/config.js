@@ -176,115 +176,33 @@ window.WASFIT = {
       texto: 'São onze anos operando escolas de natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Rodou mais de um ano dentro da nossa operação antes de a gente abrir para o mercado.',
     },
 
-    // BLOCO 8 — Planos. SEM seletor de prazo. Um preço por cartão. Rede = "Falar com a gente".
-    planos: {
-      eyebrow: 'Planos',
-      titulo: 'Sem fidelidade. Preço único. Cancele quando quiser.',
-      // 8.3 — linha de migração que aparece em TODOS os cartões, abaixo da implantação.
-      migracaoCard: 'Já usa outra plataforma? A implantação com migração custa R$ 1.000 a mais.',
-      // Linha abaixo da grade dos três cartões.
-      rodape: { texto: 'Precisa de mais do que a ferramenta?', link: 'Ver o que fazemos com você →', href: '#' },
-      cards: [
-        {
-          id: 'essencial',
-          nome: 'Essencial',
-          subtitulo: 'Para escolas de uma unidade',
-          preco: 'R$ 597', periodo: '/mês',
-          semFidelidade: 'Sem fidelidade. Cancele quando quiser.',
-          implantacao: '+ R$ 1.900 de implantação, uma única vez',
-          destaque: false,
-          itensTitulo: null,
-          itens: [
-            '1 unidade',
-            '2 números de WhatsApp',
-            'Comunicação em escala pela API oficial da Meta',
-            'Todas as IAs do ciclo do aluno',
-            'Kanban de leads com a etapa visível',
-            'Etiquetas e filtro da base',
-            'Registro de origem de cada contato',
-            'Painel de controle de atendimento',
-            'Integração nativa com o EVO',
-            'No ar em 30 minutos',
-            'Plataforma de treinamento em vídeo e IA de suporte no WhatsApp',
-          ],
-          cta: { label: 'Garantir condição de lançamento', evento: 'clique_vaga', plano: 'escola' },
-        },
-        {
-          id: 'escola',
-          nome: 'Escola',
-          subtitulo: 'Para escolas com mais de um endereço',
-          preco: 'R$ 997', periodo: '/mês',
-          semFidelidade: 'Sem fidelidade. Cancele quando quiser.',
-          implantacao: '+ R$ 2.900 de implantação, uma única vez',
-          destaque: true,        // cartão do meio recebe o destaque visual. SEM selo.
-          itensTitulo: 'Tudo do Essencial, e mais:',
-          itens: [
-            'Até 2 unidades',
-            '4 números de WhatsApp — 2 por unidade',
-            'Visão consolidada entre as unidades',
-          ],
-          cta: { label: 'Garantir condição de lançamento', evento: 'clique_vaga', plano: 'rede' },
-        },
-        {
-          id: 'rede',
-          nome: 'Rede',
-          subtitulo: 'Para redes com três unidades ou mais',
-          preco: 'A partir de R$ 1.347', periodo: '/mês',
-          precoDetalhe: 'R$ 1.347 para 3 unidades, mais R$ 350 por unidade adicional.',
-          semFidelidade: 'Sem fidelidade. Cancele quando quiser.',
-          implantacao: '+ R$ 3.800 de implantação, mais R$ 900 por unidade adicional',
-          destaque: false,
-          itensTitulo: 'Tudo do Escola, e mais:',
-          itens: [
-            '3 unidades ou mais',
-            '2 números de WhatsApp por unidade',
-            'IA configurada por unidade',
-            'Painel unificado',
-          ],
-          cta: { label: 'Garantir condição de lançamento', evento: 'clique_vaga', plano: 'rede' },
-          // 8.4 — Calculadora (a ÚNICA parte de planos.cards que o main.js lê).
-          // mensalidade = 997 + 350/un. acima de 2 unidades. 2 un. = R$ 997 ... 6 un. = R$ 2.397.
-          // Implantação (só informativa no card): R$ 2.900 + R$ 900 por unidade adicional.
-          calc: {
-            base: 997, porUnidade: 350,
-            implBase: 2900, implPorUnidade: 900,
-            min: 2, max: 6,
-          },
-        },
-      ],
+    // BLOCO 8 — Lançamento no EIN + planos.
+    // A oferta e os 2 cartões são escritos direto no index.html (#planos).
+    // Aqui ficam só os dados editáveis que o main.js / as peças de texto usam.
+
+    // Evento-âncora do lançamento — eyebrow de #planos, selo do hero, FAQ.
+    evento: {
+      nome:  'Encontro Internacional de Natação',
+      datas: '15 a 17 de outubro de 2026',
+      local: 'São Paulo',
+      logo:  '/assets/img/ein-logo.png',
+      prazo: '31 de outubro de 2026',   // fim da condição de lançamento
+    },
+
+    // Calculadora do plano Rede (stepper 2..6 unidades).
+    // mensalidade = base + porUnidade * (u - min).  2 un. = R$ 997 ... 6 un. = R$ 2.397.
+    calcRede: {
+      base: 997, porUnidade: 350,
+      min: 2, max: 6,
     },
 
     // ---- Condição de lançamento — contador de vagas ---------------------
     // NÚMERO REAL, editado à mão. Mude `restantes` e suba de novo; o main.js
-    // atualiza "Restam X de 20 vagas" e a barra em todos os pontos de #planos.
-    // Quando restantes chega a 0: contador vira "esgotadas" e o BLOCO 15
-    // perde a coluna da garantia de 30 dias. Nada de contador automático.
+    // atualiza "Restam X de 20 vagas" e a barra na faixa de oferta de #planos.
+    // Quando `restantes` chega a 0: o rótulo vira "esgotadas" e o selo
+    // "30 dias de garantia" some da faixa. Nada de contador automático.
     vagas: {
       fundador: { total: 20, restantes: 20 },
-    },
-    // LEGADO: a oferta agora é escrita direto no index.html (#planos).
-    // Mantido só para não quebrar leituras antigas; o main.js não usa mais.
-    faixaLancamento: {
-      prazo: 'Válido até 31 de outubro de 2026',
-      cta: { label: 'Quero minha vaga', evento: 'clique_vaga', plano: 'fundador' },
-      fundador: {
-        titulo: 'Implantação grátis para as 20 primeiras escolas',
-        destaque: 'Você entra sem pagar nada de entrada. A implantação, com o treinamento da sua recepção, é por nossa conta.',
-        beneficios: ['Preço travado enquanto você for cliente', 'Garantia de 30 dias', 'Sem fidelidade'],
-        contador: 'Restam {X} das {TOTAL} vagas',
-      },
-      pioneiro: {
-        titulo: 'Implantação pela metade',
-        destaque: 'As 20 vagas de fundador acabaram. A condição de pioneiro vale até 31 de outubro.',
-        beneficios: ['Preço travado por 12 meses', 'Sem fidelidade'],
-        contador: 'Restam {X} das {TOTAL} vagas',
-      },
-      esgotado: {
-        titulo: 'Condição de lançamento',
-        destaque: 'As vagas de lançamento acabaram.',
-        beneficios: ['Fale com a gente para conhecer as condições atuais'],
-        contador: '',
-      },
     },
 
     // BLOCO 9 — Como funciona a implantação
@@ -305,8 +223,9 @@ window.WASFIT = {
       ],
     },
 
-    // BLOCO 10 — Sem fidelidade e garantia. A coluna da garantia some quando as
-    // 20 vagas de fundador acabam (main.js -> data-garantia-col).
+    // BLOCO 10 — Sem fidelidade e garantia.
+    // LEGADO: a home escreve isso direto na faixa de oferta de #planos (index.html);
+    // o selo "30 dias de garantia" some sozinho quando as 20 vagas acabam.
     trust: [
       { titulo: 'Sem fidelidade', texto: 'Não tem contrato de permanência. Você cancela no mês que quiser, sem multa.' },
       { titulo: 'Garantia de 30 dias', texto: 'Nas 20 primeiras escolas: se em 30 dias não servir, devolvemos a mensalidade. Uma mensagem no WhatsApp, sem formulário.', somenteFundador: true },

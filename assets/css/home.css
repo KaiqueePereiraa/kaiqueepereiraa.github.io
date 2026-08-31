@@ -183,17 +183,26 @@ body[data-home] #ias .ias-car__dots button[aria-current="true"] {
   background: var(--teal); transform: scale(1.45);
 }
 
-/* ==== Bloco 13 — PLANOS: oferta primeiro, 2 cards, expertise depois ==== */
+/* ==== Bloco 13 — PLANOS: 2 cards primeiro, faixa de oferta depois ==== */
 
-/* --- a oferta de lançamento --- */
-body[data-home] .offer-band {
-  display: grid; gap: clamp(18px, 3vw, 26px);
-  max-width: 720px; margin: clamp(24px, 4vw, 36px) auto clamp(28px, 4.5vw, 44px);
+/* logo do EIN dentro do eyebrow da seção */
+body[data-home] .eyebrow--ein img {
+  width: 18px; height: 18px; object-fit: contain; flex: none;
+}
+
+/* --- a faixa de oferta (funde oferta + garantia + urgência) --- */
+body[data-home] .offer-strip {
+  display: grid; gap: clamp(18px, 3vw, 24px); justify-items: center;
+  max-width: 720px; margin: clamp(26px, 4.5vw, 44px) auto 0;
   padding: clamp(22px, 3.5vw, 34px); text-align: center;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(21,234,158,.38);
   background: linear-gradient(155deg, rgba(21,234,158,.14), rgba(10,44,64,.5) 60%);
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+body[data-home] .offer-strip__cta {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 12px 16px;
 }
 body[data-home] .offer-checks {
   list-style: none; display: flex; flex-wrap: wrap; justify-content: center;
@@ -218,38 +227,14 @@ body[data-home] .offer-vagas__bar i { display: block; height: 100%; background: 
 body[data-home] .offer-vagas__prazo {
   font-size: .82rem; color: var(--muted); max-width: 44ch;
 }
-body[data-home] .offer-band .offer-cta { justify-self: center; }
 body[data-home] [data-vagas-esgotado] .offer-vagas__bar i { background: var(--muted); }
 body[data-home] [data-vagas-esgotado] .impl-free { display: none; }
-
-/* âncora de economia: risca o valor da implantação, "R$ 0" grande */
-body[data-home] .offer-save {
-  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
-  gap: 6px 12px; line-height: 1;
-}
-body[data-home] .offer-save s {
-  color: var(--muted); font-size: .9rem; text-decoration-thickness: 1px;
-}
-body[data-home] .offer-save b {
-  font-family: var(--font-display); font-weight: 700; color: var(--lime);
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-}
-body[data-home] .offer-save span {
-  font-family: var(--font-mono); font-size: .7rem; letter-spacing: .12em;
-  text-transform: uppercase; color: #cfe0ee;
-}
-/* caminho secundário, discreto (attention ratio ~1:1) */
-body[data-home] .offer-secondary {
-  justify-self: center; margin-top: -4px;
-  font-family: var(--font-mono); font-size: .78rem; letter-spacing: .02em;
-  color: #cdeef3; border-bottom: 1px solid rgba(255,255,255,.28);
-}
-body[data-home] .offer-secondary:hover { color: #fff; border-color: #fff; }
-body[data-home] [data-vagas-esgotado] .offer-save b { color: var(--muted); }
+/* quando as 20 vagas acabam, o selo da garantia de 30 dias sai da faixa */
+body[data-home] [data-vagas-esgotado] .offer-checks__garantia { display: none; }
 
 /* --- os 2 cards --- */
 body[data-home] .plans--2 {
-  grid-template-columns: repeat(2, 1fr); gap: 22px;
+  grid-template-columns: repeat(2, 1fr); gap: 22px; align-items: stretch;
   max-width: 860px; margin-inline: auto;
 }
 @media (max-width: 860px) {
@@ -310,14 +295,12 @@ body[data-home] .conex-tag {
   font-size: 1.02rem;
 }
 
-/* --- volta para a urgência --- */
-body[data-home] .offer-repeat {
-  max-width: 620px; margin: clamp(30px, 5vw, 48px) auto 0;
-  display: grid; gap: 12px; justify-items: center; text-align: center;
+/* --- selo do lançamento no EIN, abaixo do CTA do hero --- */
+body[data-home] .hero-launch {
+  margin-top: 14px;
+  font-family: var(--font-mono); font-size: .74rem; letter-spacing: .12em;
+  text-transform: uppercase; color: #cfe0ee;
 }
-body[data-home] .offer-repeat__lead { color: #eafcf7; font-size: 1rem; line-height: 1.55; }
-body[data-home] .offer-repeat__lead b { color: #fff; }
-body[data-home] .offer-repeat .mono-label { color: var(--muted); }
 
 /* ---- 7. Bloco 9 — LINHA DO TEMPO HORIZONTAL (doc final, item 7) --------
    Deixa de ser lista vertical: 5 etapas lado a lado, trilho no topo com
@@ -527,34 +510,6 @@ body[data-home] .qc-figure figcaption span {
 
 /* Item 6: min-height / padding-bottom do hero ficam na seção 2 (valores do doc). */
 
-/* --- Item 7: menos repetição — Bloco 10 vira faixa, não mais 3 cards --- */
-body[data-home] .trust-band {
-  display: flex; flex-wrap: wrap;
-  border: 1px solid var(--line); border-radius: var(--radius-lg);
-  background: linear-gradient(100deg, rgba(21,234,158,.07), rgba(11,27,43,.4) 62%);
-  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
-  overflow: hidden;
-}
-body[data-home] .trust-col {
-  flex: 1 1 240px; padding: clamp(24px, 3.2vw, 38px);
-  border-left: 1px solid var(--line-soft);
-}
-body[data-home] .trust-col:first-child { border-left: 0; }
-@media (max-width: 720px) {
-  body[data-home] .trust-col { flex-basis: 100%; border-left: 0; border-top: 1px solid var(--line-soft); }
-  body[data-home] .trust-col:first-child { border-top: 0; }
-}
-body[data-home] .trust-ic {
-  display: inline-grid; place-items: center; width: 40px; height: 40px; margin-bottom: 12px;
-  border: 1px solid var(--line); border-radius: 10px; background: rgba(21,234,158,.06);
-  font-family: var(--font-display); font-weight: 700; color: var(--teal); font-size: 1rem;
-}
-body[data-home] .trust-col h3 {
-  font-family: var(--font-body); text-transform: none; letter-spacing: 0;
-  font-size: 1.06rem; font-weight: 600; color: #fff; margin-bottom: 6px;
-}
-body[data-home] .trust-col p { color: var(--muted); font-size: .95rem; }
-
 /* --- Item 7: movimento — números de "O problema" entram com um "pop" --- */
 body[data-home] #problema .card--num .num {
   display: inline-block; transition: transform .5s var(--ease), opacity .5s var(--ease);
@@ -673,9 +628,6 @@ body[data-home] #resultados .depo cite {
   text-transform: uppercase; color: var(--muted);
 }
 @media (max-width: 560px) { body[data-home] #resultados .depo { grid-template-columns: 1fr; } }
-
-/* -- §15 Garantia: 4º card (LGPD) cabe na faixa ---------------------- */
-body[data-home] #garantia .trust-band .trust-col { flex-basis: 220px; }
 
 /* -- §02 Prova real: linha de sistema (ação da IA no CRM) dentro do chat -- */
 body[data-home] .wa-body .msg--sys {

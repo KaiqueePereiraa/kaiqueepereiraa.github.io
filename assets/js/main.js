@@ -272,8 +272,7 @@
   safe(function redeCalc() {
     var box = $('[data-calc]');
     if (!box) return;
-    var cardCfg = ((CFG.home && CFG.home.planos && CFG.home.planos.cards) || []).filter(function (c) { return c.id === 'rede'; })[0];
-    var k = (cardCfg && cardCfg.calc) || { base: 997, porUnidade: 350, min: 2, max: 6 };
+    var k = (CFG.home && CFG.home.calcRede) || { base: 997, porUnidade: 350, min: 2, max: 6 };
     var input = $('input', box), out = $('[data-calc-out]', box);
     if (!input || !out) return;
 
@@ -297,19 +296,6 @@
       });
     });
     render();
-  });
-
-  /* ---------------------------------------------------------------- *
-   *  10c. BLOCO 10 — a coluna da garantia de 30 dias vale só para as *
-   *       20 primeiras (Fundador). Quando acabam, some a coluna.     *
-   * ---------------------------------------------------------------- */
-  safe(function trustGarantia() {
-    var band = $('[data-trust]');
-    if (!band) return;
-    var v = (CFG.home && CFG.home.vagas) || {};
-    if (v.fundador && v.fundador.restantes > 0) return;
-    var col = $('[data-garantia-col]', band);
-    if (col && col.parentNode) col.parentNode.removeChild(col);
   });
 
   /* ---------------------------------------------------------------- *
