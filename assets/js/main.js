@@ -343,12 +343,12 @@
             body: JSON.stringify(data)
           }).then(function (r) {
             if (status) {
-              status.textContent = r.ok ? 'Recebido! A gente já retorna.' : 'Não foi dessa vez — tente pelo WhatsApp.';
+              status.textContent = r.ok ? 'Recebido! A gente já retorna.' : 'Não foi dessa vez. Tente pelo WhatsApp.';
               status.style.color = r.ok ? 'var(--teal)' : 'var(--red)';
             }
             if (r.ok) form.reset();
           }).catch(function () {
-            if (status) { status.textContent = 'Sem conexão — tente pelo WhatsApp.'; status.style.color = 'var(--red)'; }
+            if (status) { status.textContent = 'Sem conexão. Tente pelo WhatsApp.'; status.style.color = 'var(--red)'; }
           });
         } else {
           // fallback: abre o WhatsApp com a mensagem montada

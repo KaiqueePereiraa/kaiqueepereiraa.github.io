@@ -55,7 +55,7 @@ window.WASFIT = {
 
   /* ---- Open Graph / preview de link no WhatsApp (item 12) ----------------- */
   og: {
-    titulo: 'WasFit — a IA de WhatsApp que fala a língua da sua escola de natação',
+    titulo: 'WasFit · a IA de WhatsApp que fala a língua da sua escola de natação',
     descricao: 'Criada por quem opera quatro unidades há onze anos. Touca, nível, experimental, reposição, rematrícula. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.',
     // URL ABSOLUTA, imagem >= 1200x630, < 300 KB.
     imagem: 'https://wasfit.com.br/assets/img/og-cover.png',
@@ -76,7 +76,7 @@ window.WASFIT = {
     hero: {
       selo: 'Nascido na borda da piscina, não numa startup',
       titulo: ['A IA de WhatsApp que fala a', 'língua da sua escola de natação'],
-      subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos — e no ar em 30 minutos.',
+      subtitulo: 'Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos, e no ar em 30 minutos.',
       ctaPrimario: { label: 'Ver a condição de lançamento', evento: 'clique_ver_oferta', plano: 'escola' },
       raioX:       { label: 'Ou agende um raio-x da sua escola em 15 minutos', evento: 'clique_raiox', plano: 'rede' },
     },
@@ -109,18 +109,18 @@ window.WASFIT = {
       itens: [
         { nome: 'Atendimento', desc: 'Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola.', etiqueta: 'No ar no primeiro dia' },
         { nome: 'Vendas', desc: 'Qualifica o interessado, apresenta os planos e agenda a experimental no horário que tem vaga.', etiqueta: 'No ar no primeiro dia' },
-        { nome: 'Após cadastro de oportunidade', desc: 'Assim que a oportunidade entra no seu EVO, o contato já começa — sem esperar alguém puxar.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Após cadastro de oportunidade', desc: 'Assim que a oportunidade entra no seu EVO, o contato já começa, sem esperar alguém puxar.', etiqueta: 'No ar no primeiro dia' },
         { nome: 'Rematrícula / matrícula', desc: 'Recebe quem acabou de fechar contrato ou rematricular com uma mensagem de boas-vindas.', etiqueta: 'No ar no primeiro dia' },
         { nome: 'Sem presença', desc: 'Percebe quem some das aulas por 7 dias e entra em contato antes que vire desistência.', etiqueta: 'No ar no primeiro dia' },
         { nome: 'Feliz aniversário ativo', desc: 'Parabeniza o aluno ativo na data, sem ninguém precisar lembrar.', etiqueta: 'No ar no primeiro dia' },
-        { nome: 'Feliz aniversário inativo', desc: 'Também lembra do aluno que já saiu — mantendo a porta aberta.', etiqueta: 'No ar no primeiro dia' },
-        { nome: 'Cobrança', desc: 'Cobra quem está em atraso, com o tom certo — insistindo o quanto for preciso.', etiqueta: 'Depois de conferir a sua base' },
-        { nome: 'Após vencimento do contrato', desc: 'Quando o contrato encerra, já chama o cliente para renovar — sem deixar o silêncio virar perda.', etiqueta: 'Depois de conferir a sua base' },
+        { nome: 'Feliz aniversário inativo', desc: 'Também lembra do aluno que já saiu, mantendo a porta aberta.', etiqueta: 'No ar no primeiro dia' },
+        { nome: 'Cobrança', desc: 'Cobra quem está em atraso, com o tom certo, insistindo o quanto for preciso.', etiqueta: 'Depois de conferir a sua base' },
+        { nome: 'Após vencimento do contrato', desc: 'Quando o contrato encerra, já chama o cliente para renovar, sem deixar o silêncio virar perda.', etiqueta: 'Depois de conferir a sua base' },
         { nome: 'Cancelamento automático', desc: 'Quando o contrato é cancelado por inadimplência, avisa o cliente da pendência e dos próximos passos.', etiqueta: 'Depois de conferir a sua base' },
       ],
       porqueEsperam: {
         titulo: 'Por que três delas esperam',
-        texto: 'Cobrança, aviso de vencimento e cancelamento por inadimplência mexem com dinheiro e com contrato. Uma cobrança disparada para quem já pagou, ou um aviso de pendência com o dado errado, não é um erro de sistema na cabeça do seu cliente — é a sua escola fazendo papel ruim. Por isso a gente confere os seus dados antes de ligar essas três. Se estiver tudo certo, elas entram na quarta semana.',
+        texto: 'Cobrança, aviso de vencimento e cancelamento por inadimplência mexem com dinheiro e com contrato. Uma cobrança disparada para quem já pagou, ou um aviso de pendência com o dado errado, não é um erro de sistema na cabeça do seu cliente: é a sua escola fazendo papel ruim. Por isso a gente confere os seus dados antes de ligar essas três. Se estiver tudo certo, elas entram na quarta semana.',
       },
     },
 
@@ -149,7 +149,7 @@ window.WASFIT = {
           'Manter a sua base de dados confiável',
         ],
       },
-      remate: 'A primeira coluna está inclusa no plano. A segunda a gente faz com você, ou te ensina a fazer — e você decide se quer.',
+      remate: 'A primeira coluna está inclusa no plano. A segunda a gente faz com você, ou te ensina a fazer, e você decide se quer.',
       link: { label: 'Ver o que fazemos com você', href: '#' },   // TROCAR: /servicos/ quando a página existir
     },
 
@@ -157,7 +157,7 @@ window.WASFIT = {
     linguaNatacao: {
       eyebrow: 'Fala a língua da natação',
       titulo: 'Ela não foi adaptada para natação. Ela nasceu dentro de uma.',
-      texto: 'A nossa IA sabe o que é troca de touca, o que é nível, o que é aula experimental, o que é reposição e o que é rematrícula. Não porque alguém escreveu isso num manual — porque ela foi treinada dentro de escolas de natação em operação, desde o primeiro dia de desenvolvimento.',
+      texto: 'A nossa IA sabe o que é troca de touca, o que é nível, o que é aula experimental, o que é reposição e o que é rematrícula. Não porque alguém escreveu isso num manual. É porque ela foi treinada dentro de escolas de natação em operação, desde o primeiro dia de desenvolvimento.',
       // Aprovação MGB concedida — citar a metodologia nominalmente.
       mgb: 'Treinada na Metodologia Gustavo Borges, desde o primeiro dia.',
     },
@@ -245,11 +245,11 @@ window.WASFIT = {
 
     // BLOCO 11 — Perguntas frequentes (acordeão, todas fechadas por padrão)
     faq: [
-      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. Os dois números são da sua escola — a gente só faz a conexão. Você mantém o número que os seus alunos já conhecem e conecta um segundo número seu; se hoje você só tem um, basta ativar mais um chip. Um fica na conexão oficial da Meta, para comunicação em escala, e o outro na não oficial, para a conversa do dia a dia. Os dois no mesmo painel.' },
+      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. Os dois números são da sua escola; a gente só faz a conexão. Você mantém o número que os seus alunos já conhecem e conecta um segundo número seu; se hoje você só tem um, basta ativar mais um chip. Um fica na conexão oficial da Meta, para comunicação em escala, e o outro na não oficial, para a conversa do dia a dia. Os dois no mesmo painel.' },
       { q: 'E se eu já uso outra plataforma?', a: 'A migração é nossa. Levamos a sua base, as suas etiquetas, o seu histórico e o seu número, e você aprova o mapeamento por escrito antes de qualquer coisa ser ligada. A implantação com migração custa R$ 1.000 a mais.' },
       { q: 'Minha escola não usa EVO. Funciona?', a: 'Funciona igual. A integração com o EVO acrescenta coisas, mas nada do que está nesta página depende dela.' },
-      { q: 'A IA vai falar errado com o meu aluno?', a: 'Pode acontecer — nenhuma IA acerta tudo logo de cara. É exatamente para isso que serve a primeira semana: a gente lê todas as conversas reais, vê onde ela saiu do esperado e ajusta. No fim dessa semana ela já está respondendo no tom e no vocabulário da sua escola.' },
-      { q: 'Isso substitui a minha recepção?', a: 'Não. A IA cuida do repetitivo e entrega o interessado qualificado. Quem acolhe, conduz e fecha continua sendo a sua equipe — com mais tempo para isso.' },
+      { q: 'A IA vai falar errado com o meu aluno?', a: 'Pode acontecer: nenhuma IA acerta tudo logo de cara. É exatamente para isso que serve a primeira semana: a gente lê todas as conversas reais, vê onde ela saiu do esperado e ajusta. No fim dessa semana ela já está respondendo no tom e no vocabulário da sua escola.' },
+      { q: 'Isso substitui a minha recepção?', a: 'Não. A IA cuida do repetitivo e entrega o interessado qualificado. Quem acolhe, conduz e fecha continua sendo a sua equipe, com mais tempo para isso.' },
       { q: 'Quanto tempo até estar funcionando?', a: 'A IA começa a responder no mesmo dia da ativação, que leva cerca de 30 minutos. As quatro semanas seguintes são para ela responder bem e para a sua equipe saber usar.' },
       { q: 'Posso cancelar quando quiser?', a: 'Pode, no mês que quiser, sem multa. Não existe contrato de permanência.' },
     ],
@@ -262,7 +262,7 @@ window.WASFIT = {
         { max: 1, titulo: 'Sua operação já é organizada.',
           texto: 'O básico está de pé. O ganho aqui é de escala: responder na hora, à noite e no fim de semana, sem depender de ninguém acordado. É onde a automação rende mais para quem já tem processo.' },
         { max: 3, titulo: 'Tem furo no meio do caminho.',
-          texto: 'Você não perde matrícula por falta de esforço, e sim porque contato some e ninguém percebe. Comece pelo atendimento 24/7 e pelo funil visível — os dois juntos tapam o maior vazamento.' },
+          texto: 'Você não perde matrícula por falta de esforço, e sim porque contato some e ninguém percebe. Comece pelo atendimento 24/7 e pelo funil visível: os dois juntos tapam o maior vazamento.' },
         { max: 5, titulo: 'Está vazando lead em vários pontos.',
           texto: 'A boa notícia: quase todo lead que você já recebe dá para recuperar. Um raio-x de 15 minutos mostra por onde começar sem virar a sua operação de cabeça para baixo.' },
       ],
