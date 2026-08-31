@@ -133,16 +133,13 @@ body[data-page="ein"] .site-header.scrolled { padding-bottom: 18px; }
 @media (prefers-reduced-motion: reduce) {
   body[data-page="ein"] .site-header { animation: none; }
 }
-/* o menu mobile é filho do header; a máscara de onda recortava tudo o que
-   passava da caixa do header, escondendo o dropdown. Em telas com menu
-   (<=900px) o header vira um retângulo simples com fio embaixo. */
-@media (max-width: 900px) {
-  body[data-page="ein"] .site-header,
-  body[data-page="ein"] .site-header.scrolled {
-    -webkit-mask: none; mask: none; animation: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 14px;
-  }
+/* o menu mobile é filho do header; a máscara de onda recorta tudo o que
+   passa da caixa do header. Só quando o menu está aberto o header perde a
+   onda e vira retângulo simples — a onda continua no header o resto do tempo. */
+body[data-page="ein"] .site-header.menu-open,
+body[data-page="ein"] .site-header.menu-open.scrolled {
+  -webkit-mask: none; mask: none; animation: none;
+  border-bottom: 1px solid var(--line);
 }
 
 /* ---- Régua de profundidade (indicador de scroll temático) --------------

@@ -728,6 +728,8 @@ body[data-home] .footer-bottom { margin-top: 28px; }
 @media (max-width: 620px) {
   body[data-home] .hero-art-wrap { display: none; }
   body[data-home] .ein-hero { min-height: auto; padding-bottom: 30px; }
+  /* os chips repetem a frase do subtítulo (touca, nível, experimental...) */
+  body[data-home] .ein-hero .node-row { display: none; }
   body[data-home] .scroll-cue {
     display: flex;              /* vence o hide de max-height:780px em telas baixas */
     position: static; transform: none; bottom: auto;

@@ -143,12 +143,15 @@
 
     var toggle = $('.nav-toggle'), nav = $('.nav');
     if (toggle && nav) {
-      toggle.addEventListener('click', function () {
-        var open = nav.classList.toggle('open');
+      var setMenu = function (open) {
+        nav.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+        // a onda do header (máscara CSS) recorta o dropdown; tira a onda só com o menu aberto
+        if (h) h.classList.toggle('menu-open', open);
+      };
+      toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
       $all('a', nav).forEach(function (a) {
-        a.addEventListener('click', function () { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); });
+        a.addEventListener('click', function () { setMenu(false); });
       });
     }
   });
