@@ -102,9 +102,14 @@
    * ---------------------------------------------------------------- */
   safe(function wireContact() {
     var c = CFG.contato || {};
-    var waBase = c.whatsapp ? ('https://wa.me/' + c.whatsapp + (c.whatsappMsg ? '?text=' + encodeURIComponent(c.whatsappMsg) : '')) : '';
+    function waLink(msg) {
+      if (!c.whatsapp) return '';
+      return 'https://wa.me/' + c.whatsapp + (msg ? '?text=' + encodeURIComponent(msg) : '');
+    }
     $all('[data-wa]').forEach(function (a) {
-      if (waBase) a.setAttribute('href', waBase);
+      // data-wa-msg troca a mensagem padrão para aquele botão (ex.: raio-x)
+      var href = waLink(a.getAttribute('data-wa-msg') || c.whatsappMsg);
+      if (href) a.setAttribute('href', href);
       a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
     });
     $all('[data-email]').forEach(function (a) { if (c.email) a.setAttribute('href', 'mailto:' + c.email); });
@@ -121,14 +126,15 @@
       if (!el) return;
       if (el.hasAttribute('data-wa')) {
         track('clique_whatsapp', { posicao: el.getAttribute('data-pos') || 'desconhecida' });
-        return;
       }
-      var params = {};
-      if (el.dataset.plano) params.plano = el.dataset.plano;
-      if (el.dataset.faixa) params.faixa = el.dataset.faixa;
-      if (el.dataset.origem) params.origem = el.dataset.origem;
-      if (el.dataset.posicao) params.posicao = el.dataset.posicao;
-      track(el.dataset.evt, params);
+      if (el.dataset.evt) {
+        var params = {};
+        if (el.dataset.plano) params.plano = el.dataset.plano;
+        if (el.dataset.faixa) params.faixa = el.dataset.faixa;
+        if (el.dataset.origem) params.origem = el.dataset.origem;
+        if (el.dataset.posicao) params.posicao = el.dataset.posicao;
+        track(el.dataset.evt, params);
+      }
     }, false);
   });
 
