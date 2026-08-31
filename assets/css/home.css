@@ -705,3 +705,21 @@ body[data-home] .footer-cta .btn { margin-left: auto; }
   body[data-home] .footer-cta .btn { margin-left: 0; width: 100%; text-align: center; }
 }
 body[data-home] .footer-bottom { margin-top: 28px; }
+
+/* --- Acabamento mobile do hero (<=560px) --------------------------------- */
+@media (max-width: 560px) {
+  /* selo: não caber numa linha vira caixa arredondada, não pílula quebrada */
+  body[data-home] .pill-live {
+    font-size: .6rem; letter-spacing: .09em; line-height: 1.45;
+    padding: .5em .85em; border-radius: 14px; align-items: flex-start;
+  }
+  body[data-home] .pill-live .dot { margin-top: .35em; }
+  /* headline um pouco menor pra não colar nas bordas */
+  body[data-home] .ein-hero h1 { font-size: 1.6rem; line-height: 1.16; }
+  body[data-home] .ein-hero .lead { font-size: 1rem; }
+  /* faixa de confiança: separadores viram ponto, sem bordas soltas ao quebrar */
+  body[data-home] .hero-trust { gap: 4px 10px; font-size: .64rem; letter-spacing: .05em; }
+  body[data-home] .hero-trust span { padding: 0; border-left: 0; }
+  body[data-home] .hero-trust span:first-child { padding-left: 0; }
+  body[data-home] .hero-trust span:not(:last-child)::after { content: "·"; margin-left: 10px; opacity: .5; }
+}

@@ -113,6 +113,12 @@ h1, h2, h3, .display {
 .display-1 { font-size: clamp(2.4rem, 6.6vw, 4.35rem); font-weight: 700; }
 .display-2 { font-size: clamp(1.95rem, 4.6vw, 3.05rem); }
 .display-3 { font-size: clamp(1.4rem, 2.6vw, 1.85rem); }
+/* no celular os títulos display estavam grandes demais (5-6 linhas, colando nas bordas) */
+@media (max-width: 560px) {
+  .display-1 { font-size: 1.95rem; line-height: 1.12; }
+  .display-2 { font-size: 1.55rem; line-height: 1.18; }
+  .display-3 { font-size: 1.28rem; }
+}
 .accent { color: var(--teal); }
 .accent-lime { color: var(--lime); }
 
@@ -231,11 +237,10 @@ h1, h2, h3, .display {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background: rgba(10, 18, 24, 0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: #0a1218;
     border-bottom: 1px solid var(--line);
-    padding: 8px var(--gutter) 20px;
+    box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.7);
+    padding: 6px clamp(16px, 5vw, 28px) 18px;
     transform: translateY(-12px);
     opacity: 0;
     pointer-events: none;
