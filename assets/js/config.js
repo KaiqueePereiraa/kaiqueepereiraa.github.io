@@ -234,7 +234,7 @@ window.WASFIT = {
 
     // BLOCO 11 — Perguntas frequentes (acordeão, todas fechadas por padrão)
     faq: [
-      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. Você mantém o número que os seus alunos já têm. A gente soma um segundo: um fica na conexão oficial da Meta, para comunicação em escala, e o outro na não oficial, para a conversa do dia a dia. Os dois no mesmo painel.' },
+      { q: 'Preciso trocar o meu número de WhatsApp?', a: 'Não. Os dois números são da sua escola — a gente só faz a conexão. Você mantém o número que os seus alunos já conhecem e conecta um segundo número seu; se hoje você só tem um, basta ativar mais um chip. Um fica na conexão oficial da Meta, para comunicação em escala, e o outro na não oficial, para a conversa do dia a dia. Os dois no mesmo painel.' },
       { q: 'E se eu já uso outra plataforma?', a: 'A migração é nossa. Levamos a sua base, as suas etiquetas, o seu histórico e o seu número, e você aprova o mapeamento por escrito antes de qualquer coisa ser ligada. A implantação com migração custa R$ 1.000 a mais.' },
       { q: 'Minha escola não usa EVO. Funciona?', a: 'Funciona igual. A integração com o EVO acrescenta coisas, mas nada do que está nesta página depende dela.' },
       { q: 'A IA vai falar errado com o meu aluno?', a: 'Na primeira semana a gente lê todas as conversas e ajusta o que sair fora do esperado. E as IAs que mexem com dinheiro só entram depois de conferirmos os seus dados — justamente para não cobrar quem já pagou.' },
