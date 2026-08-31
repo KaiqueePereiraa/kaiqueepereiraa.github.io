@@ -283,15 +283,81 @@ body[data-home] .calc-out .calc-impl {
 }
 body[data-home] .calc-out .calc-impl s { opacity: .85; }
 
-/* --- nota compacta: como as conexões ao WhatsApp funcionam (fecha #planos) --- */
-body[data-home] .conex-note {
-  max-width: 600px; margin: clamp(22px, 4vw, 32px) auto 0;
-  text-align: center;
+/* --- #conexoes — argumento de custo das duas conexões ao WhatsApp --- */
+body[data-home] .cx-table-wrap {
+  max-width: 780px; margin: clamp(28px, 5vw, 46px) auto 0;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
 }
-body[data-home] .conex-note p {
-  color: #cfe0ee; font-size: .92rem; line-height: 1.55;
+body[data-home] .cx-table {
+  width: 100%; min-width: 520px; border-collapse: collapse;
 }
-body[data-home] .conex-note p b { color: var(--teal); }
+body[data-home] .cx-table th,
+body[data-home] .cx-table td {
+  padding: 14px clamp(12px, 2.4vw, 20px); text-align: left;
+  border-bottom: 1px solid var(--line-soft); font-size: .92rem; vertical-align: top;
+}
+body[data-home] .cx-table tr:last-child th,
+body[data-home] .cx-table tr:last-child td { border-bottom: 0; }
+body[data-home] .cx-table thead th {
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em;
+  text-transform: uppercase; color: #cfe0ee; font-weight: 700;
+  border-bottom: 1px solid var(--line); background: rgba(255,255,255,.03);
+}
+body[data-home] .cx-table tbody th[scope="row"] {
+  font-family: var(--font-body); font-weight: 600; color: #fff;
+  width: 40%; background: rgba(255,255,255,.02);
+}
+body[data-home] .cx-table tbody td { color: var(--muted); }
+body[data-home] .cx-table td.cx-good { color: var(--lime); font-weight: 600; }
+body[data-home] .cx-table tbody tr:last-child th,
+body[data-home] .cx-table tbody tr:last-child td { border-top: 1px solid var(--line); }
+
+body[data-home] #conexoes .cx-copy {
+  max-width: 640px; margin: clamp(26px, 4.5vw, 40px) auto 0;
+  display: grid; gap: 16px;
+}
+body[data-home] #conexoes .cx-copy p { color: #cfe0ee; font-size: .96rem; line-height: 1.65; }
+body[data-home] #conexoes .cx-copy .cx-date {
+  border-left: 2px solid var(--amber); padding-left: 16px;
+}
+body[data-home] #conexoes .cx-copy .cx-date b { color: var(--amber); }
+body[data-home] #conexoes .cx-copy .cx-rule {
+  border: 1px solid rgba(255,92,92,.28); border-radius: 12px;
+  padding: 16px 18px; background: rgba(255,92,92,.05); color: #eafcf7;
+}
+body[data-home] #conexoes .cx-copy .cx-rule span {
+  display: block; margin-bottom: 6px;
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--red);
+}
+/* mobile: a tabela de 3 colunas vira cartões empilhados (nada de scroll lateral
+   escondendo a coluna que mais importa) */
+@media (max-width: 560px) {
+  body[data-home] .cx-table-wrap { overflow: visible; border: 0; }
+  body[data-home] .cx-table { min-width: 0; }
+  body[data-home] .cx-table thead { display: none; }
+  body[data-home] .cx-table tbody,
+  body[data-home] .cx-table tr,
+  body[data-home] .cx-table th,
+  body[data-home] .cx-table td { display: block; }
+  body[data-home] .cx-table tbody tr {
+    border: 1px solid var(--line-soft); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 12px; background: rgba(255,255,255,.02);
+  }
+  body[data-home] .cx-table tbody tr:last-child { margin-bottom: 0; }
+  body[data-home] .cx-table tbody th[scope="row"] {
+    width: auto; background: none; padding: 0 0 10px; font-size: 1rem;
+  }
+  body[data-home] .cx-table tbody td {
+    border: 0; border-top: 1px solid var(--line-soft); padding: 10px 0 0; margin-top: 10px;
+  }
+  body[data-home] .cx-table tbody td::before {
+    content: attr(data-label); display: block; margin-bottom: 2px;
+    font-family: var(--font-mono); font-size: .58rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted);
+  }
+}
 
 /* --- selo do lançamento no EIN, abaixo do CTA do hero --- */
 body[data-home] .hero-launch {
