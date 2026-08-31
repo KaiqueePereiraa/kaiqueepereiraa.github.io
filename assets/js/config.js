@@ -28,7 +28,7 @@ window.WASFIT = {
     email: 'adm.wasfit@gmail.com',
     // Link de agendamento de demonstração. Os UTMs são repassados automaticamente.
     agendamento: 'https://cal.com/wasfit/demo',       // TROCAR
-    instagram: 'https://instagram.com/wasfit',        // TROCAR
+    instagram: 'https://instagram.com/wasfit.ia',
     // Endpoint do formulário de contato (ex.: Formspree, Getform, n8n webhook).
     // Vazio => o formulário monta uma mensagem e abre o WhatsApp.
     formEndpoint: '',                                 // TROCAR ex.: 'https://formspree.io/f/xxxx'
@@ -49,7 +49,6 @@ window.WASFIT = {
   empresa: {
     cidade: 'Serra',
     uf: 'ES',
-    cnpj: '',                  // TROCAR: 'XX.XXX.XXX/0001-XX' — só aparece no rodapé quando preenchido
   },
 
   /* ---- Open Graph / preview de link no WhatsApp (item 12) ----------------- */

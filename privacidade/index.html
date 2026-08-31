@@ -4,24 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Política de Privacidade — WasFit</title>
-<meta name="description" content="Como a WasFit trata os dados da sua escola e dos seus alunos.">
+<meta name="description" content="Como a WasFit trata os dados da sua escola e dos seus alunos, à luz da LGPD.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://wasfit.com.br/privacidade/">
 <meta name="theme-color" content="#06101B">
 <link rel="icon" href="/assets/img/favicon-64.png" sizes="64x64" type="image/png">
-<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830-ein12">
-<link rel="stylesheet" href="/assets/css/styles.css?v=20260830-ein12">
+<link rel="stylesheet" href="/assets/css/fonts.css?v=20260830-ein13">
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260830-ein13">
 <style>
   body { background: var(--navy-deep); }
   .doc { max-width: 44rem; margin-inline: auto; padding: clamp(90px,14vh,140px) 0 clamp(60px,10vw,110px); }
   .doc h1 { font-size: clamp(1.8rem,4vw,2.4rem); color: #fff; }
   .doc .doc-meta { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 10px 0 30px; }
-  .doc .doc-draft { border: 1px dashed var(--line); border-radius: var(--radius); padding: 16px 18px; color: #eafcf7; font-size: .92rem; margin-bottom: 32px; background: rgba(21,234,158,.05); }
-  .doc h2 { font-size: 1.1rem; color: #fff; margin: 30px 0 10px; }
+  .doc .doc-intro { color: #eafcf7; font-size: .98rem; line-height: 1.7; margin-bottom: 32px; }
+  .doc h2 { font-size: 1.06rem; color: #fff; margin: 34px 0 10px; }
+  .doc h3 { font-size: .96rem; color: #eafcf7; margin: 18px 0 6px; }
   .doc p, .doc li { color: var(--ink); font-size: .96rem; line-height: 1.7; }
-  .doc ul { padding-left: 1.2em; display: grid; gap: 6px; }
+  .doc ul { padding-left: 1.2em; display: grid; gap: 6px; margin: 6px 0; }
   .doc a { color: var(--teal); border-bottom: 1px solid var(--line); }
-  .doc-back { display: inline-flex; align-items: center; gap: 8px; margin-top: 40px; font-family: var(--font-mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); border-bottom: 1px solid var(--line); }
+  .doc-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .92rem; }
+  .doc-table th, .doc-table td { text-align: left; vertical-align: top; padding: 9px 10px; border: 1px solid var(--line-soft); color: var(--ink); }
+  .doc-table th { color: #eafcf7; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+  .doc-back { display: inline-flex; align-items: center; gap: 8px; margin-top: 44px; font-family: var(--font-mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); border-bottom: 1px solid var(--line); }
 </style>
 </head>
 <body>
@@ -29,24 +33,65 @@
 <main class="container">
   <article class="doc">
     <h1>Política de Privacidade</h1>
-    <p class="doc-meta">Última atualização: agosto de 2026</p>
+    <p class="doc-meta">Vigência: 1º de setembro de 2026 · Última atualização: setembro de 2026</p>
 
-    <p class="doc-draft">Este documento está em finalização com apoio jurídico. O texto abaixo descreve os princípios que a WasFit já segue; a versão completa, com base legal da LGPD e prazos de retenção, entra aqui antes do lançamento. Dúvidas: <a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a>.</p>
+    <p class="doc-intro">Esta Política explica como a WasFit coleta, usa, compartilha e protege dados pessoais no fornecimento da sua plataforma de atendimento por WhatsApp para escolas de natação. Ela se aplica ao site <a href="https://wasfit.com.br">wasfit.com.br</a> e ao serviço contratado pelas escolas clientes. O tratamento observa a Lei nº 13.709/2018 (LGPD).</p>
 
-    <h2>Quais dados a gente trata</h2>
-    <p>Dados de contato e de atendimento dos leads e alunos da sua escola (nome, telefone, mensagens de WhatsApp) e os dados que vêm do seu EVO quando você conecta a integração (cadastro, grade de aulas, situação de contrato). Também tratamos os dados da sua escola como cliente (responsáveis, faturamento).</p>
+    <h2>1. Quem é o responsável pelo tratamento</h2>
+    <p>A WasFit, sediada em Serra, Espírito Santo, é a <strong>controladora</strong> dos dados relativos ao site e à relação comercial com as escolas clientes. Em relação aos dados dos leads e alunos que a escola insere ou conecta na plataforma, a escola é a <strong>controladora</strong> e a WasFit atua como <strong>operadora</strong>, tratando esses dados apenas conforme as instruções da escola e esta Política.</p>
+    <p>Contato do encarregado (DPO) e canal de privacidade: <a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a>.</p>
 
-    <h2>Para que a gente usa</h2>
-    <p>Exclusivamente para operar a ferramenta: responder no WhatsApp, organizar o funil, executar as automações que você ativou e integrar com o seu EVO. Não vendemos, alugamos nem compartilhamos esses dados com terceiros para fins de marketing.</p>
+    <h2>2. Dados que tratamos</h2>
+    <table class="doc-table">
+      <tr><th>Categoria</th><th>Exemplos</th><th>Origem</th></tr>
+      <tr><td>Contato de visitantes do site</td><td>Nome, WhatsApp, e-mail, escola, mensagem</td><td>Formulário de contato e cliques de WhatsApp</td></tr>
+      <tr><td>Navegação</td><td>Páginas vistas, origem do acesso, identificadores de campanha (UTM), dados de dispositivo</td><td>Coletados no site quando a medição está ativa</td></tr>
+      <tr><td>Dados da escola cliente</td><td>Responsáveis, contatos, dados de faturamento</td><td>Fornecidos na contratação</td></tr>
+      <tr><td>Dados de leads e alunos da escola</td><td>Nome, telefone, conteúdo das conversas de WhatsApp, etapa no funil, etiquetas</td><td>Inseridos pela escola e trocados nas conversas</td></tr>
+      <tr><td>Dados vindos do EVO</td><td>Cadastro do aluno, grade de aulas, situação de contrato e pagamento</td><td>Integração autorizada pela escola</td></tr>
+    </table>
+    <p>A WasFit não coleta intencionalmente dados de crianças e adolescentes diretamente. Quando a escola cadastra alunos menores de idade, é responsabilidade da escola obter o consentimento dos pais ou responsáveis, nos termos do art. 14 da LGPD.</p>
 
-    <h2>Quem tem acesso</h2>
-    <p>A equipe da WasFit responsável por operar e dar suporte à sua conta, e os provedores de infraestrutura estritamente necessários para o serviço funcionar (por exemplo, hospedagem e a API oficial da Meta).</p>
+    <h2>3. Para que usamos e com qual base legal</h2>
+    <ul>
+      <li><strong>Responder contatos do site e apresentar a solução</strong> — base legal: procedimentos preliminares relacionados a contrato, a pedido do titular (art. 7º, V), e legítimo interesse (art. 7º, IX).</li>
+      <li><strong>Fornecer e operar o serviço contratado</strong> (atendimento, funil, automações, integração com o EVO) — base legal: execução de contrato (art. 7º, V).</li>
+      <li><strong>Cobrança, aviso de vencimento e gestão de contrato dos alunos</strong>, quando a escola ativa essas automações — base legal: execução de contrato entre a escola e o aluno e legítimo interesse da escola, sob a responsabilidade da escola como controladora.</li>
+      <li><strong>Medir e melhorar o site e o produto</strong> — base legal: legítimo interesse (art. 7º, IX), com uso de dados agregados sempre que possível.</li>
+      <li><strong>Cumprir obrigações legais e regulatórias</strong> e exercer direitos em processos — base legal: art. 7º, II e VI.</li>
+    </ul>
 
-    <h2>Os dados são seus</h2>
-    <p>A base de dados e o histórico são da sua escola. Você pode solicitar exportação ou exclusão a qualquer momento, e ao encerrar o contrato você leva a sua base com você.</p>
+    <h2>4. Compartilhamento</h2>
+    <p>Não vendemos nem alugamos dados pessoais. Compartilhamos dados apenas com:</p>
+    <ul>
+      <li><strong>Provedores de infraestrutura</strong> (hospedagem, banco de dados, e-mail) que processam dados por nossa conta e sob contrato.</li>
+      <li><strong>Meta Platforms</strong>, para envio e recebimento de mensagens pelo WhatsApp, incluindo a API oficial (WhatsApp Business Platform), conforme os termos da Meta.</li>
+      <li><strong>EVO</strong>, quando a escola conecta a integração, para leitura e escrita dos dados necessários às automações.</li>
+      <li><strong>Ferramentas de medição</strong> (por exemplo, Google Analytics via Google Tag Manager e Pixel da Meta), somente quando ativadas.</li>
+      <li><strong>Autoridades públicas</strong>, quando exigido por lei ou ordem judicial.</li>
+    </ul>
 
-    <h2>Direitos do titular (LGPD)</h2>
-    <p>Titulares de dados podem solicitar confirmação de tratamento, acesso, correção, anonimização, portabilidade e eliminação, nos termos da Lei nº 13.709/2018. Os pedidos podem ser feitos pelo e-mail <a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a>.</p>
+    <h2>5. Transferência internacional</h2>
+    <p>Alguns dos provedores acima, em especial a Meta e ferramentas de medição, podem tratar dados fora do Brasil. Nesses casos, adotamos as salvaguardas previstas na LGPD (art. 33), como cláusulas contratuais e a verificação de que o provedor oferece grau de proteção adequado.</p>
+
+    <h2>6. Cookies e tecnologias semelhantes</h2>
+    <p>O site funciona sem cookies de terceiros por padrão. Quando a medição está ativa, são usados cookies e identificadores para análise de audiência e atribuição de campanhas. Você pode bloquear cookies nas configurações do seu navegador; isso pode afetar partes não essenciais do site.</p>
+
+    <h2>7. Por quanto tempo guardamos</h2>
+    <p>Dados de contato do site são mantidos enquanto houver interesse comercial ativo e, depois, pelo prazo necessário para defesa de direitos. Dados de leads e alunos são mantidos enquanto durar o contrato da escola com a WasFit; encerrado o contrato, a escola pode exportar a base e os dados são eliminados ou anonimizados em prazo razoável, salvo obrigação legal de retenção.</p>
+
+    <h2>8. Segurança</h2>
+    <p>Adotamos medidas técnicas e organizacionais para proteger os dados, incluindo controle de acesso restrito a quem opera cada conta, uso de conexões criptografadas e registro de atividades. Nenhum sistema é totalmente imune a incidentes; em caso de incidente de segurança relevante, comunicaremos a escola e, quando aplicável, a ANPD e os titulares, nos termos da LGPD.</p>
+
+    <h2>9. Direitos do titular</h2>
+    <p>Nos termos do art. 18 da LGPD, o titular pode solicitar: confirmação da existência de tratamento; acesso aos dados; correção de dados incompletos, inexatos ou desatualizados; anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade; portabilidade; informação sobre compartilhamentos; e revogação do consentimento, quando for a base utilizada.</p>
+    <p>Pedidos podem ser feitos por <a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a>. Quando o pedido envolver dados de alunos de uma escola cliente, ele será encaminhado à escola, que é a controladora desses dados.</p>
+
+    <h2>10. Alterações desta Política</h2>
+    <p>Podemos atualizar esta Política para refletir mudanças no serviço ou na legislação. A data de última atualização acima indica a versão vigente; mudanças relevantes serão comunicadas às escolas clientes.</p>
+
+    <h2>11. Contato</h2>
+    <p>Dúvidas sobre privacidade e proteção de dados: <a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a>.</p>
 
     <a class="doc-back" href="/">← Voltar ao site</a>
   </article>
