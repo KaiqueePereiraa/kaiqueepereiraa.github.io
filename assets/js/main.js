@@ -113,6 +113,9 @@
       a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener');
     });
     $all('[data-email]').forEach(function (a) { if (c.email) a.setAttribute('href', 'mailto:' + c.email); });
+    $all('[data-cadastro]').forEach(function (a) {
+      if (c.cadastro) { a.setAttribute('href', c.cadastro); a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+    });
     $all('[data-agendamento]').forEach(function (a) { if (c.agendamento) a.setAttribute('href', withUTMs(c.agendamento)); });
     $all('[data-instagram]').forEach(function (a) { if (c.instagram) a.setAttribute('href', c.instagram); });
   });

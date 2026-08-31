@@ -26,6 +26,8 @@ window.WASFIT = {
     whatsapp: '5527998932954',                       // só dígitos, com DDI 55
     whatsappMsg: 'Oi! Vim pelo site da WasFit e quero entender o Assist.',
     email: 'adm.wasfit@gmail.com',
+    // Para onde vão os CTAs de "garantir vaga / começar" (plataforma).
+    cadastro: 'https://app.wasfit.com.br/login',
     // Link de agendamento de demonstração. Os UTMs são repassados automaticamente.
     agendamento: 'https://cal.com/wasfit/demo',       // TROCAR
     instagram: 'https://instagram.com/wasfit.ia',
