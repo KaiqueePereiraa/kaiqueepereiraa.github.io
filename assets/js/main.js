@@ -281,7 +281,7 @@
   safe(function redeCalc() {
     var box = $('[data-calc]');
     if (!box) return;
-    var k = (CFG.home && CFG.home.calcRede) || { base: 997, porUnidade: 350, min: 2, max: 6 };
+    var k = (CFG.home && CFG.home.calcRede) || { base: 997, porUnidade: 400, min: 2, max: 6 };
     var input = $('input', box), out = $('[data-calc-out]', box);
     if (!input || !out) return;
 

@@ -196,9 +196,10 @@ window.WASFIT = {
     },
 
     // Calculadora do plano Rede (stepper 2..6 unidades).
-    // mensalidade = base + porUnidade * (u - min).  2 un. = R$ 997 ... 6 un. = R$ 2.397.
+    // mensalidade = base + porUnidade * (u - min).
+    // 2 un. = R$ 997 · 3 = R$ 1.397 · 4 = R$ 1.797 · 5 = R$ 2.197 · 6 = R$ 2.597.
     calcRede: {
-      base: 997, porUnidade: 350,
+      base: 997, porUnidade: 400,
       min: 2, max: 6,
     },
 
