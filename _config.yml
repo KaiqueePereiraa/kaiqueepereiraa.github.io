@@ -6,6 +6,12 @@ exclude:
   - README.md
   - netlify.toml
   - _redirects
+  - _headers
   - CNAME.production
   - robots.production.txt
   - .gitignore
+  - .htaccess
+
+# Jekyll pula pastas com "." no nome — forçar a publicação do security.txt.
+include:
+  - .well-known
