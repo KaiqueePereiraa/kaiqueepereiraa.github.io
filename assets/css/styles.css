@@ -201,9 +201,11 @@ h1, h2, h3, .display {
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--line);
 }
+/* cabeçalho ocupa a largura toda: logo encostada à esquerda, ações à direita */
+.site-header > .container { max-width: none; padding-inline: clamp(12px, 2vw, 22px); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.brand-lockup { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; text-transform: none; letter-spacing: 0.01em; color: var(--white); }
-.brand-lockup img { height: 30px; width: auto; }
+.brand-lockup { display: flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 700; font-size: 1.22rem; text-transform: none; letter-spacing: 0.01em; color: var(--white); }
+.brand-lockup img { height: 40px; width: auto; }
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a { font-size: 0.9rem; color: var(--ink); transition: color 0.18s; }
 .nav a:hover { color: var(--teal); }
