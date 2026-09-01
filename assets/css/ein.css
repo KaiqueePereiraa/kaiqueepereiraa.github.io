@@ -511,25 +511,6 @@ a.depth-rail__link, .depth-rail a.tick { pointer-events: auto; cursor: pointer; 
 .typing i:nth-child(2) { animation-delay: .16s; } .typing i:nth-child(3) { animation-delay: .32s; }
 @keyframes type { 0%,60%,100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
 
-/* ---- Kanban board -------------------------------------------------- */
-.kanban { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-@media (max-width: 900px) { .kanban { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; } .kanban .kcol { scroll-snap-align: start; } }
-.kcol { border: 1px solid var(--line-soft); border-radius: var(--radius); background: rgba(11,27,43,.5); padding: 14px; }
-.kcol h4 { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
-.kcol[data-cor="teal"] h4 { color: var(--teal); } .kcol[data-cor="amber"] h4 { color: var(--amber); }
-.kcol[data-cor="lime"] h4 { color: var(--lime); } .kcol[data-cor="white"] h4 { color: var(--white); }
-.kcard { border: 1px solid var(--line-soft); border-left: 2px solid var(--teal); border-radius: 10px; padding: 11px 12px; margin-bottom: 8px; background: var(--surface); }
-.kcol[data-cor="amber"] .kcard { border-left-color: var(--amber); }
-.kcol[data-cor="lime"] .kcard { border-left-color: var(--lime); }
-.kcol[data-cor="white"] .kcard { border-left-color: var(--white); }
-.kcard b { display: block; font-size: .88rem; color: var(--white); }
-.kcard span { font-size: .78rem; color: var(--muted); }
-.kcard--travel { position: relative; border-left-color: var(--lime); box-shadow: 0 0 0 1px rgba(158,234,78,.4), 0 14px 30px -12px rgba(158,234,78,.4); transition: opacity .4s ease, transform .4s ease; }
-.ktrace { margin-top: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; color: var(--muted); }
-.ktrace .step { padding: .5em .9em; border: 1px solid var(--line-soft); border-radius: 999px; transition: .3s var(--ease); }
-.ktrace .step.on { color: var(--lime); border-color: rgba(158,234,78,.5); background: rgba(158,234,78,.06); }
-.ktrace .sep { color: var(--teal); }
-
 /* ---- Autodiagnóstico -------------------------------------------- */
 .diag-q { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
 .diag-q p { flex: 1; font-size: .98rem; color: var(--ink); }
@@ -687,25 +668,6 @@ body[data-page="ein"] .section > *:not(.bubbles):not(.mgb-mascot) { position: re
 }
 .stat-card span {
   font-size: .9rem; color: #cfe6f5;
-}
-
-/* ---- A transformação: número de apoio por item -------------------- */
-#comparacao .check-list li { flex-wrap: wrap; }
-#comparacao .check-list li > span { flex: 1 1 auto; }
-#comparacao .check-list li > em {
-  flex-basis: 100%; margin-left: 32px; margin-top: 2px;
-  font-style: normal; font-size: .8rem; letter-spacing: .01em;
-  color: var(--muted);
-}
-#comparacao .col--good .check-list li > em { color: #9fd8c4; }
-.roi-line {
-  margin: 30px auto 0; max-width: 44ch; text-align: center;
-  font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(1.05rem, 2.6vw, 1.4rem); line-height: 1.3;
-  color: #eafff6;
-  padding: 18px 22px; border-radius: var(--radius);
-  border: 1px solid rgba(21,234,158,.3);
-  background: linear-gradient(120deg, rgba(21,234,158,.12), rgba(21,234,158,.03));
 }
 
 /* ---- Perguntas frequentes (#faq) --------------------------------- */

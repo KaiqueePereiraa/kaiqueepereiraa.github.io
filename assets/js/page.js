@@ -86,4 +86,122 @@
       sync();
     }
   } catch (e) {}
+
+  /* Jornada do lead (#historia) — stepper clicável + autoplay UMA vez.
+     Sem libs: estado nativo + classes CSS. Um único timer, sempre limpo
+     antes de reagendar; IntersectionObservers desligados ao concluir. */
+  try {
+    var lj = document.querySelector('[data-lj]');
+    if (lj) {
+      var ljReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var ljPanels = [].slice.call(lj.querySelectorAll('[data-lj-panel]'));
+      var ljSteps  = [].slice.call(lj.querySelectorAll('[data-lj-step]'));
+      var ljTitle  = lj.querySelector('[data-lj-title]');
+      var ljTime   = lj.querySelector('[data-lj-time]');
+      var ljCap    = lj.querySelector('[data-lj-caption]');
+      var LJ_META = [
+        { title: 'WasFit · Atendimento',      time: '22:47', cap: '22:47 · Uma família chama' },
+        { title: 'WasFit · Contexto do lead', time: '22:48', cap: '22:48 · A conversa já virou contexto' },
+        { title: 'WasFit · Funil',            time: '22:49', cap: '22:49 · Agora sua equipe consegue enxergar' },
+        { title: 'WasFit · Funil',            time: '09:00', cap: '09:00 · Sua equipe entra na hora certa' }
+      ];
+      var ljCur = 0, ljTimer = 0, ljAutoDone = false, ljLock = false, ljIO = null, ljTryStart = null;
+
+      var ljSetStep = function (i, viaUser) {
+        i = i < 0 ? 0 : i > ljPanels.length - 1 ? ljPanels.length - 1 : i;
+        ljCur = i;
+        ljPanels.forEach(function (p, k) {
+          var on = k === i;
+          p.classList.toggle('is-active', on);
+          p.setAttribute('aria-hidden', on ? 'false' : 'true');
+        });
+        ljSteps.forEach(function (b, k) {
+          var on = k === i;
+          b.classList.toggle('is-active', on);
+          if (on) b.setAttribute('aria-current', 'step');
+          else b.removeAttribute('aria-current');
+        });
+        var m = LJ_META[i] || LJ_META[0];
+        if (ljTitle) ljTitle.textContent = m.title;
+        if (ljTime) ljTime.textContent = m.time;
+        if (ljCap) ljCap.textContent = m.cap;
+        lj.style.setProperty('--lj-progress', (i / (ljPanels.length - 1) * 100).toFixed(1) + '%');
+        if (viaUser) {
+          try { (window.dataLayer = window.dataLayer || []).push({ event: 'lead_story_step_click', step: i + 1 }); } catch (e) {}
+        }
+      };
+
+      var ljStop = function () { if (ljTimer) { clearTimeout(ljTimer); ljTimer = 0; } };
+      var ljFinish = function () {
+        ljAutoDone = true; ljStop();
+        if (ljIO) { ljIO.disconnect(); ljIO = null; }
+        if (ljTryStart) { window.removeEventListener('scroll', ljTryStart); ljTryStart = null; }
+      };
+      var ljSchedule = function () {
+        ljStop();
+        if (ljAutoDone || ljLock) return;
+        ljTimer = setTimeout(function () {
+          ljTimer = 0;
+          if (ljAutoDone || ljLock) return;
+          if (ljCur >= ljPanels.length - 1) { ljFinish(); return; }
+          ljSetStep(ljCur + 1, false);
+          ljSchedule();
+        }, 2700);
+      };
+
+      ljSteps.forEach(function (b, k) {
+        b.addEventListener('click', function () { ljLock = true; ljFinish(); ljSetStep(k, true); });
+      });
+      lj.addEventListener('mouseenter', function () { if (!ljAutoDone && !ljLock) ljStop(); });
+      lj.addEventListener('mouseleave', function () { if (!ljAutoDone && !ljLock) ljSchedule(); });
+      lj.addEventListener('focusin',  function () { if (!ljAutoDone && !ljLock) ljStop(); });
+      lj.addEventListener('focusout', function () { if (!ljAutoDone && !ljLock) ljSchedule(); });
+
+      ljSetStep(0, false);
+
+      if (ljReduce) {
+        ljAutoDone = true;
+      } else {
+        /* dispara a história quando a demo entra ~35% na tela, UMA vez.
+           IntersectionObserver quando dá; um checador no scroll como
+           rede de segurança (alguns contextos engolem o observer). */
+        ljTryStart = function () {
+          if (ljAutoDone || ljLock || ljTimer) return;
+          var r = lj.getBoundingClientRect();
+          var vh = window.innerHeight || 1;
+          if (r.top < vh * 0.65 && r.bottom > vh * 0.15) ljSchedule();
+        };
+        if ('IntersectionObserver' in window) {
+          ljIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting && !ljAutoDone && !ljLock && !ljTimer) ljSchedule();
+            });
+          }, { rootMargin: '0px 0px -35% 0px', threshold: 0.01 });
+          ljIO.observe(lj);
+        }
+        window.addEventListener('scroll', ljTryStart, { passive: true });
+        setTimeout(function () { if (ljTryStart) ljTryStart(); }, 400);
+      }
+
+      /* count-up do R$ 36.000 — uma vez, respeitando reduced-motion */
+      var ljCountBox = lj.querySelector('[data-lj-count]');
+      var ljNum = lj.querySelector('[data-lj-num]');
+      if (ljCountBox && ljNum && !ljReduce && 'IntersectionObserver' in window) {
+        var ljTo = parseInt(ljNum.getAttribute('data-to'), 10) || 0;
+        var ljCIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            ljCIO.disconnect();
+            var t0 = performance.now(), dur = 1100;
+            (function frame(now) {
+              var p = Math.min(1, (now - t0) / dur);
+              ljNum.textContent = Math.round(ljTo * (1 - Math.pow(1 - p, 3))).toLocaleString('pt-BR');
+              if (p < 1) requestAnimationFrame(frame);
+            })(t0);
+          });
+        }, { threshold: 0.5 });
+        ljCIO.observe(ljCountBox);
+      }
+    }
+  } catch (e) {}
 })();

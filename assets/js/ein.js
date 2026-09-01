@@ -181,36 +181,7 @@
     });
   });
 
-  /* -- 5. Kanban: card que viaja pelas colunas ao rolar ------------- */
-  S(function () {
-    var sec = $('[data-kanban]');
-    if (!sec) return;
-    var cols = $$('.kcol', sec);
-    var steps = $$('.ktrace .step', sec);
-    var card = $('.kcard--travel', sec);
-    if (!cols.length || !card) return;
-    var placed = -1;
-    function place(idx) {
-      if (idx === placed) return;
-      placed = idx;
-      var target = cols[Math.min(idx, cols.length - 1)];
-      target.appendChild(card);
-      steps.forEach(function (s, k) { s.classList.toggle('on', k <= idx); });
-    }
-    place(0);
-    if (reduce) { place(cols.length - 1); return; }
-    function onScroll() {
-      var r = sec.getBoundingClientRect();
-      var vh = window.innerHeight;
-      var p = (vh - r.top) / (vh + r.height);
-      p = Math.min(1, Math.max(0, p));
-      place(Math.round(p * (cols.length - 1)));
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  });
-
-  /* -- 6. Autodiagnóstico interativo ------------------------------- */
+  /* -- 5. Autodiagnóstico interativo ------------------------------- */
   S(function () {
     var form = $('[data-diag]');
     if (!form) return;
