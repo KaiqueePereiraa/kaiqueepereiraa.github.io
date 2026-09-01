@@ -100,10 +100,10 @@
       var ljTime   = lj.querySelector('[data-lj-time]');
       var ljCap    = lj.querySelector('[data-lj-caption]');
       var LJ_META = [
-        { title: 'WasFit · Atendimento',      time: '22:47', cap: '22:47 · Uma família chama' },
-        { title: 'WasFit · Contexto do lead', time: '22:48', cap: '22:48 · A conversa já virou contexto' },
-        { title: 'WasFit · Funil',            time: '22:49', cap: '22:49 · Agora sua equipe consegue enxergar' },
-        { title: 'WasFit · Funil',            time: '09:00', cap: '09:00 · Sua equipe entra na hora certa' }
+        { title: 'WasFit · Atendimento', time: '22:47', cap: '22:47 · Uma família chama' },
+        { title: 'WasFit · Atendimento', time: '22:48', cap: '22:48 · A IA marca o lead' },
+        { title: 'WasFit · Funil',       time: '22:49', cap: '22:49 · Agora sua equipe consegue enxergar' },
+        { title: 'WasFit · Funil',       time: '09:00', cap: '09:00 · A equipe assume de onde a IA parou' }
       ];
       var ljCur = 0, ljTimer = 0, ljAutoDone = false, ljLock = false, ljIO = null, ljTryStart = null;
 

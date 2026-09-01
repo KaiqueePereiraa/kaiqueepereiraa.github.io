@@ -832,11 +832,17 @@ body[data-home] .lj-demo {
 }
 body[data-home] .lj-illus {
   grid-column: 1 / -1; justify-self: end;
-  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--muted);
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .12em;
+  text-transform: uppercase; color: #c3d7e2;
 }
 body[data-home] .lj-window { grid-column: 2; grid-row: 2; }
-body[data-home] .lj-aside  { grid-column: 1; grid-row: 2; align-self: start; }
+body[data-home] .lj-aside  {
+  grid-column: 1; grid-row: 2; align-self: start;
+  border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(9,20,32,.5), rgba(9,20,32,.32));
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  padding: 14px 14px 16px;
+}
 
 /* --- A janela do produto (protagonista visual) ---------------------------- */
 body[data-home] .lj-window {
@@ -867,7 +873,7 @@ body[data-home] .lj-window__time {
 
 /* --- O palco e as 4 etapas ---------------------------------------------- */
 body[data-home] .lj-stage { position: relative; min-height: 470px; }
-@media (min-width: 761px) { body[data-home] .lj-stage { min-height: 396px; } }
+@media (min-width: 761px) { body[data-home] .lj-stage { min-height: 420px; } }
 body[data-home] .lj-panel { padding: clamp(16px, 2.6vw, 24px); }
 body[data-home] .lj-panel + .lj-panel { border-top: 1px solid var(--line-soft); }
 body[data-home] .lj-panel__h {
@@ -918,22 +924,15 @@ body[data-home] .lj-msg--ia::after {
 .js body[data-home] .lj-panel[data-lj-panel="0"].is-active .lj-msg:nth-child(4) { transition-delay: .2s; }
 .js body[data-home] .lj-panel[data-lj-panel="0"].is-active .lj-msg:nth-child(5) { transition-delay: .3s; }
 
-/* --- Etapa 02 · contexto (chips) --------------------------------------- */
-body[data-home] .lj-chips {
-  list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 16px;
+/* --- Etapa 02 · a etiqueta entra ------------------------------------- */
+.js body[data-home] .lj-panel[data-lj-panel="1"] .lj-tag--wait {
+  opacity: 0; transform: translateY(4px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease); transition-delay: .15s;
 }
-.js body[data-home] .lj-panel[data-lj-panel="1"] .chip {
-  opacity: 0; transform: translateY(6px);
-  transition: opacity .4s var(--ease), transform .4s var(--ease);
-}
-.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .chip { opacity: 1; transform: none; }
-.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .chip:nth-child(2) { transition-delay: .08s; }
-.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .chip:nth-child(3) { transition-delay: .16s; }
-.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .chip:nth-child(4) { transition-delay: .24s; }
-.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .chip:nth-child(5) { transition-delay: .32s; }
+.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .lj-tag--wait { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .js body[data-home] .lj-panel[data-lj-panel="0"] .lj-msg,
-  .js body[data-home] .lj-panel[data-lj-panel="1"] .chip { opacity: 1; transform: none; transition: none; }
+  .js body[data-home] .lj-panel[data-lj-panel="1"] .lj-tag--wait { opacity: 1; transform: none; transition: none; }
 }
 
 body[data-home] .lj-note {
@@ -942,7 +941,7 @@ body[data-home] .lj-note {
 }
 body[data-home] .lj-note--soft {
   margin-top: 12px; font-family: var(--font-body); font-weight: 400;
-  font-size: .84rem; color: var(--muted);
+  font-size: .84rem; color: #a7bfcc;
 }
 
 /* --- Pipeline (Interessado -> Experimental -> Proposta -> Matrícula) ---- */
@@ -981,45 +980,53 @@ body[data-home] .lj-card__av {
   color: #06231a; background: var(--grad);
 }
 body[data-home] .lj-card__id b { display: block; font-size: .95rem; color: #fff; }
-body[data-home] .lj-card__id span { font-size: .8rem; color: var(--muted); }
-body[data-home] .lj-card__meta {
-  margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;
+body[data-home] .lj-card__id span { font-size: .8rem; color: #a9c3d6; }
+body[data-home] .lj-card__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line-soft);
 }
-@media (min-width: 560px) {
-  body[data-home] .lj-card__meta { grid-template-columns: repeat(3, 1fr); }
+body[data-home] .lj-card__foot time {
+  font-family: var(--font-mono); font-size: .66rem; color: #93aab8; font-variant-numeric: tabular-nums;
 }
-body[data-home] .lj-card__meta > div { min-width: 0; }
-body[data-home] .lj-card__meta dt {
-  margin: 0; font-family: var(--font-mono); font-size: .55rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted);
+body[data-home] .lj-card--done { border-left-color: var(--lime); }
+
+/* etiqueta aplicada pela IA — o que a organização faz é MARCAR o lead,
+   não deixar anotação: "Em espera" (aguarda follow-up humano) e
+   "Experimental agendada" (a IA marcou a experimental). */
+body[data-home] .lj-tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: .6rem; font-weight: 700; font-style: normal;
+  letter-spacing: .05em; text-transform: uppercase;
+  border-radius: 999px; padding: .34em .7em; white-space: nowrap;
 }
-body[data-home] .lj-card__meta dd { margin: 2px 0 0; font-size: .8rem; color: #dbe6f0; line-height: 1.35; }
-body[data-home] .lj-board__ghost { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; opacity: .4; }
+body[data-home] .lj-tag--wait { color: var(--amber); border: 1px solid rgba(245,184,65,.5); background: rgba(245,184,65,.12); }
+body[data-home] .lj-tag--done { color: var(--lime);  border: 1px solid rgba(158,234,78,.5); background: rgba(158,234,78,.12); }
+
+body[data-home] .lj-board__ghost { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; opacity: .5; }
 body[data-home] .lj-board__ghost span {
-  height: 32px; border-radius: 10px;
-  border: 1px solid var(--line-soft); border-left: 2px solid var(--muted);
+  min-height: 36px; display: flex; align-items: center; padding: 0 12px;
+  border-radius: 10px; border: 1px solid var(--line-soft); border-left: 2px solid var(--muted);
   background: rgba(15,30,48,.55);
 }
+body[data-home] .lj-board__ghost .lj-tag { opacity: .8; }
 @media (max-width: 559px) { body[data-home] .lj-board__ghost { display: none; } }
 
-/* --- Etapa 04 · retomada com contexto -------------------------------- */
+/* --- Etapa 02 · a IA marca o lead ---------------------------------- */
+body[data-home] .lj-mark { display: grid; gap: 12px; }
+body[data-home] .lj-mark__lead {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--line-soft); border-left: 2px solid var(--teal);
+  border-radius: 12px; background: var(--surface); padding: 12px 14px;
+}
+body[data-home] .lj-mark__line { margin: 0; font-size: .92rem; line-height: 1.5; color: #dbe6f0; }
+body[data-home] .lj-mark__alt  { margin: 0; font-size: .82rem; line-height: 1.5; color: #a9c3d6; }
+body[data-home] .lj-mark__line .lj-tag,
+body[data-home] .lj-mark__alt .lj-tag { margin-right: 5px; vertical-align: 1px; }
+
+/* --- Etapa 04 · retomada ------------------------------------------- */
 body[data-home] .lj-handoff { display: grid; gap: 12px; }
 @media (min-width: 620px) {
   body[data-home] .lj-handoff { grid-template-columns: 1fr 1.1fr; align-items: start; }
-}
-body[data-home] .lj-ctx {
-  border: 1px solid var(--line-soft); border-left: 2px solid var(--lime);
-  border-radius: 10px; padding: 12px 14px; background: rgba(11,27,43,.5);
-}
-body[data-home] .lj-ctx__k {
-  margin: 0 0 8px; font-family: var(--font-mono); font-size: .55rem; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--muted);
-}
-body[data-home] .lj-ctx ul { list-style: none; margin: 0; display: grid; gap: 6px; }
-body[data-home] .lj-ctx li { position: relative; padding-left: 16px; font-size: .82rem; color: #dbe6f0; }
-body[data-home] .lj-ctx li::before {
-  content: ""; position: absolute; left: 0; top: .5em;
-  width: 6px; height: 6px; border-radius: 50%; background: var(--lime);
 }
 body[data-home] .lj-hmsg {
   border: 1px solid rgba(21,234,158,.22); border-radius: 12px; padding: 12px 14px;
@@ -1044,7 +1051,7 @@ body[data-home] .lj-step {
   position: relative; width: 100%;
   display: flex; align-items: center; gap: 12px;
   padding: 10px 12px; border-radius: 12px;
-  border: 1px solid transparent; background: transparent; color: var(--muted);
+  border: 1px solid transparent; background: transparent; color: #b6cad6;
   cursor: pointer; text-align: left;
   transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
 }
@@ -1055,7 +1062,7 @@ body[data-home] .lj-step__n {
   width: 30px; height: 30px; border-radius: 50%;
   display: grid; place-items: center;
   font-family: var(--font-mono); font-weight: 700; font-size: .72rem;
-  border: 1px solid var(--line); background: var(--navy); color: var(--muted);
+  border: 1px solid var(--line); background: var(--navy); color: #b6cad6;
   transition: inherit;
 }
 body[data-home] .lj-step__t {
@@ -1090,7 +1097,7 @@ body[data-home] .lj-bridge {
 }
 body[data-home] .lj-bridge__lead {
   font-family: var(--font-mono); font-size: .76rem; letter-spacing: .06em;
-  text-transform: uppercase; color: #9fc9ee;
+  text-transform: uppercase; color: #cfe6f5;
 }
 body[data-home] .lj-bridge__punch {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
@@ -1101,8 +1108,11 @@ body[data-home] .lj-bridge__punch {
    O R$ 36.000 é o maior número da seção; o preço da WasFit (R$ 7.164) fica
    secundário. Textos obrigatórios, então o respiro entre eles é curto. */
 body[data-home] .lj-money {
-  max-width: 700px; margin: clamp(18px, 3vw, 26px) auto 0;
-  padding-top: clamp(16px, 2.5vw, 22px); border-top: 1px solid var(--line-soft);
+  max-width: 720px; margin: clamp(18px, 3vw, 26px) auto 0;
+  padding: clamp(22px, 4vw, 38px) clamp(18px, 4vw, 40px);
+  border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(9,20,32,.58), rgba(9,20,32,.36));
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
   text-align: center; display: grid; gap: clamp(9px, 1.2vw, 12px); justify-items: center;
 }
 body[data-home] .lj-money__intro,
@@ -1117,14 +1127,14 @@ body[data-home] .lj-money__step { font-size: .98rem; color: #dbe6f0; margin-top:
 body[data-home] .lj-fig { width: 100%; display: grid; gap: 3px; justify-items: center; }
 body[data-home] .lj-fig__calc {
   font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--muted);
+  text-transform: uppercase; color: #a7bfcc;
 }
-body[data-home] .lj-fig__calc span { color: #9fb9c9; }
+body[data-home] .lj-fig__calc span { color: #8fabbb; }
 body[data-home] .lj-fig__num {
   font-family: var(--font-display); font-weight: 700; line-height: 1;
   font-size: clamp(1.6rem, 4vw, 2.1rem); color: #fff; font-variant-numeric: tabular-nums;
 }
-body[data-home] .lj-fig__cap { font-size: .8rem; color: var(--muted); max-width: 30ch; }
+body[data-home] .lj-fig__cap { font-size: .8rem; color: #a7bfcc; max-width: 30ch; }
 
 /* R$ 36.000 — o clímax: caixa em destaque, maior número da seção */
 body[data-home] .lj-fig--year {
@@ -1150,7 +1160,7 @@ body[data-home] .lj-versus__box {
 }
 body[data-home] .lj-versus__k {
   font-family: var(--font-mono); font-size: .56rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted); line-height: 1.4;
+  text-transform: uppercase; color: #a7bfcc; line-height: 1.4;
 }
 body[data-home] .lj-versus__box b { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: #cfe0ee; }
 body[data-home] .lj-versus__box--lead {
@@ -1163,13 +1173,13 @@ body[data-home] .lj-ask {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   font-size: clamp(1.25rem, 3vw, 1.7rem); line-height: 1.2; color: #fff; max-width: 26ch; margin-top: 2px;
 }
-body[data-home] .lj-money__coda { font-size: .86rem; line-height: 1.5; color: var(--muted); max-width: 58ch; }
+body[data-home] .lj-money__coda { font-size: .86rem; line-height: 1.5; color: #a7bfcc; max-width: 58ch; }
 body[data-home] .lj-cta { justify-content: center; margin-top: 4px; }
-body[data-home] .lj-disclaimer { font-size: .76rem; line-height: 1.5; color: var(--muted); max-width: 72ch; }
+body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9fb7c4; max-width: 72ch; }
 
 /* --- Mobile: uma coluna; janela antes do stepper (ordem do DOM) --------- */
 @media (max-width: 760px) {
-  body[data-home] .lj-demo { display: flex; flex-direction: column; gap: 16px; }
+  body[data-home] .lj-demo { display: flex; flex-direction: column; align-items: stretch; gap: 16px; }
   body[data-home] .lj-illus { align-self: flex-end; }
   body[data-home] .lj-steps { grid-template-columns: repeat(4, 1fr); gap: 6px; }
   body[data-home] .lj-step {
@@ -1183,11 +1193,11 @@ body[data-home] .lj-disclaimer { font-size: .76rem; line-height: 1.5; color: var
   body[data-home] .lj-cap { margin-top: 14px; }
 
   /* etapas mais compactas no celular pra caber sem rolagem interna */
-  body[data-home] .lj-stage { min-height: 500px; }
+  body[data-home] .lj-stage { min-height: 470px; }
   body[data-home] .lj-panel { padding: 15px 14px; }
-  body[data-home] .lj-chat { gap: 8px; }
-  body[data-home] .lj-msg { max-width: 92%; font-size: .86rem; }
+  body[data-home] .lj-chat { gap: 7px; }
+  body[data-home] .lj-msg { max-width: 92%; font-size: .83rem; line-height: 1.45; padding: 9px 12px; }
   body[data-home] .lj-handoff { gap: 10px; }
   body[data-home] .lj-hmsg p { font-size: .84rem; }
-  body[data-home] .lj-card__meta dd { font-size: .78rem; }
+  body[data-home] .lj-mark__line { font-size: .88rem; }
 }
