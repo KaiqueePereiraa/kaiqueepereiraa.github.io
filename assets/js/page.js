@@ -87,9 +87,8 @@
     }
   } catch (e) {}
 
-  /* Jornada do lead (#historia) — stepper clicável + autoplay UMA vez.
-     Sem libs: estado nativo + classes CSS. Um único timer, sempre limpo
-     antes de reagendar; IntersectionObservers desligados ao concluir. */
+  /* Jornada do lead (#historia) — stepper clicável. SEM autoplay: as
+     etapas só mudam quando a pessoa toca. Sem libs: estado nativo + CSS. */
   try {
     var lj = document.querySelector('[data-lj]');
     if (lj) {
@@ -105,8 +104,6 @@
         { title: 'WasFit · Atendimento', time: '09:04', cap: 'Sua equipe não recomeça. Ela continua de onde a IA parou.' },
         { title: 'WasFit · Kanban',      time: '09:08', cap: 'A situação mudou. A organização muda junto.' }
       ];
-      var LJ_DUR = [4600, 3600, 4200, 3600];  /* quanto tempo o autoplay fica em cada etapa */
-      var ljCur = 0, ljTimer = 0, ljAutoDone = false, ljLock = false, ljIO = null, ljTryStart = null;
 
       /* Kanban: rola a coluna em foco para a vista e, na etapa 4, faz o
          card viajar da coluna "Em Espera" para "Experimental Agendada". */
@@ -150,7 +147,6 @@
 
       var ljSetStep = function (i, viaUser) {
         i = i < 0 ? 0 : i > ljPanels.length - 1 ? ljPanels.length - 1 : i;
-        ljCur = i;
         ljPanels.forEach(function (p, k) {
           var on = k === i;
           p.classList.toggle('is-active', on);
@@ -177,57 +173,11 @@
         }
       };
 
-      var ljStop = function () { if (ljTimer) { clearTimeout(ljTimer); ljTimer = 0; } };
-      var ljFinish = function () {
-        ljAutoDone = true; ljStop();
-        if (ljIO) { ljIO.disconnect(); ljIO = null; }
-        if (ljTryStart) { window.removeEventListener('scroll', ljTryStart); ljTryStart = null; }
-      };
-      var ljSchedule = function () {
-        ljStop();
-        if (ljAutoDone || ljLock) return;
-        ljTimer = setTimeout(function () {
-          ljTimer = 0;
-          if (ljAutoDone || ljLock) return;
-          if (ljCur >= ljPanels.length - 1) { ljFinish(); return; }
-          ljSetStep(ljCur + 1, false);
-          ljSchedule();
-        }, LJ_DUR[ljCur] || 3000);
-      };
-
       ljSteps.forEach(function (b, k) {
-        b.addEventListener('click', function () { ljLock = true; ljFinish(); ljSetStep(k, true); });
+        b.addEventListener('click', function () { ljSetStep(k, true); });
       });
-      lj.addEventListener('mouseenter', function () { if (!ljAutoDone && !ljLock) ljStop(); });
-      lj.addEventListener('mouseleave', function () { if (!ljAutoDone && !ljLock) ljSchedule(); });
-      lj.addEventListener('focusin',  function () { if (!ljAutoDone && !ljLock) ljStop(); });
-      lj.addEventListener('focusout', function () { if (!ljAutoDone && !ljLock) ljSchedule(); });
 
       ljSetStep(0, false);
-
-      if (ljReduce) {
-        ljAutoDone = true;
-      } else {
-        /* dispara a história quando a demo entra ~35% na tela, UMA vez.
-           IntersectionObserver quando dá; um checador no scroll como
-           rede de segurança (alguns contextos engolem o observer). */
-        ljTryStart = function () {
-          if (ljAutoDone || ljLock || ljTimer) return;
-          var r = lj.getBoundingClientRect();
-          var vh = window.innerHeight || 1;
-          if (r.top < vh * 0.65 && r.bottom > vh * 0.15) ljSchedule();
-        };
-        if ('IntersectionObserver' in window) {
-          ljIO = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-              if (e.isIntersecting && !ljAutoDone && !ljLock && !ljTimer) ljSchedule();
-            });
-          }, { rootMargin: '0px 0px -35% 0px', threshold: 0.01 });
-          ljIO.observe(lj);
-        }
-        window.addEventListener('scroll', ljTryStart, { passive: true });
-        setTimeout(function () { if (ljTryStart) ljTryStart(); }, 400);
-      }
 
       /* count-up dos números da conta (R$ 3.000 / 36.000 / 28.836) —
          uma vez cada, respeitando reduced-motion */
