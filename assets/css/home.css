@@ -1358,6 +1358,9 @@ body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9f
 /* --- Mobile: uma coluna. Ordem: stepper -> janela -> explicação ------- */
 @media (max-width: 760px) {
   body[data-home] .lj-demo { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
+  body[data-home] .lj-nav,
+  body[data-home] .lj-guide,
+  body[data-home] .lj-window { align-self: stretch; }
   body[data-home] .lj-illus { align-self: flex-end; }
   body[data-home] .lj-steps { grid-template-columns: repeat(4, 1fr); gap: 6px; }
   body[data-home] .lj-step {
@@ -1369,20 +1372,22 @@ body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9f
   body[data-home] .lj-step.is-active { border-color: var(--teal); box-shadow: 0 0 0 1px rgba(21,234,158,.3); }
   body[data-home] .lj-step.is-active .lj-step__t { text-decoration: underline; text-underline-offset: 3px; }
 
-  body[data-home] .lj-stage { min-height: 380px; }
+  body[data-home] .lj-stage { min-height: 336px; }
+  body[data-home] .lj-window, body[data-home] .lj-stage,
+  body[data-home] .lj-panel, body[data-home] .lj-kb { min-width: 0; }
   body[data-home] .lj-panel { padding: 14px 13px; }
   body[data-home] .lj-chat { gap: 6px; }
   body[data-home] .lj-msg { max-width: 92%; font-size: .83rem; line-height: 1.4; padding: 8px 11px; }
   body[data-home] .lj-offer { max-width: 92%; }
 
-  /* pista de que a janela tem conteúdo que rola / muda */
-  body[data-home] .lj-window::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40px;
+  /* pista de rolagem no chat: só nas etapas de conversa */
+  body[data-home] .lj-demo.is-chat .lj-window::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38px;
     background: linear-gradient(rgba(6,14,24,0), rgba(6,14,24,.92));
     pointer-events: none; z-index: 3;
   }
 
-  /* Kanban no celular: colunas mais largas, rolagem horizontal + pista */
+  /* Kanban no celular: colunas com o vizinho espiando + fade lateral */
   body[data-home] .lj-kb { position: relative; }
   body[data-home] .lj-kb::after {
     content: ""; position: absolute; right: 0; top: 42px; bottom: 0; width: 34px;
@@ -1391,7 +1396,7 @@ body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9f
   }
   body[data-home] .lj-kb__board { gap: 10px; scroll-snap-type: x proximity; }
   body[data-home] .lj-kb__col {
-    flex: 0 0 76%; scroll-snap-align: start;
+    flex: 0 0 70%; scroll-snap-align: start;
   }
   body[data-home] .lj-kb__col-hd { font-size: .58rem; }
   body[data-home] .lj-kb__name { font-size: .78rem; }

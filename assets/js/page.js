@@ -115,13 +115,15 @@
         if (!p) return;
         var board = p.querySelector('[data-lj-board]');
         if (board) {
-          var focus = board.querySelector('[data-lj-focus]');
-          if (focus) {
-            var delta = focus.getBoundingClientRect().left - board.getBoundingClientRect().left - 12;
+          // no celular a etapa só ganha layout depois do display:block; rAF garante medida válida
+          requestAnimationFrame(function () {
+            var focus = board.querySelector('[data-lj-focus]');
+            if (!focus) return;
+            var delta = focus.getBoundingClientRect().left - board.getBoundingClientRect().left - 10;
             var left = Math.max(0, board.scrollLeft + delta);
             try { board.scrollTo({ left: left, behavior: (viaUser || ljReduce) ? 'auto' : 'smooth' }); }
             catch (e) { board.scrollLeft = left; }
-          }
+          });
         }
         // reseta qualquer transform pendente do card em todas as etapas
         ljPanels.forEach(function (pp) {
@@ -163,6 +165,7 @@
         [].forEach.call(lj.querySelectorAll('[data-lj-ex]'), function (ex) {
           ex.classList.toggle('is-active', +ex.getAttribute('data-lj-ex') === i);
         });
+        lj.classList.toggle('is-chat', i === 0 || i === 2);
         var m = LJ_META[i] || LJ_META[0];
         if (ljTitle) ljTitle.textContent = m.title;
         if (ljTime) ljTime.textContent = m.time;
