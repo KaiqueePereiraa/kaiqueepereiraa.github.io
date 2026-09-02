@@ -806,25 +806,33 @@ body[data-home] #historia .section-head .lead { max-width: 66ch; }
 body[data-home] .lj-demo {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(16px, 2.4vw, 26px);
+  grid-template-rows: auto auto 1fr;
+  gap: clamp(14px, 2.2vw, 22px);
   align-items: start;
   max-width: 1000px; margin-inline: auto;
 }
 body[data-home] .lj-illus {
-  grid-column: 1 / -1; justify-self: end;
+  grid-column: 1 / -1; grid-row: 1; justify-self: end;
   font-family: var(--font-mono); font-size: .64rem; letter-spacing: .12em;
   text-transform: uppercase; color: #c3d7e2;
 }
-body[data-home] .lj-window { grid-column: 2; grid-row: 2; }
-body[data-home] .lj-guide  {
-  grid-column: 1; grid-row: 2; align-self: start;
+body[data-home] .lj-window { grid-column: 2; grid-row: 2 / 4; align-self: start; }
+body[data-home] .lj-nav   { grid-column: 1; grid-row: 2; align-self: start; }
+body[data-home] .lj-guide {
+  grid-column: 1; grid-row: 3; align-self: start;
   border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
   background: linear-gradient(180deg, rgba(9,20,32,.5), rgba(9,20,32,.32));
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
-  padding: 16px 15px 18px;
+  padding: 15px 15px 17px;
+}
+/* pista de que dá para tocar e de que o conteúdo muda */
+body[data-home] .lj-nav__hint {
+  margin: 9px 0 0; text-align: center;
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .06em;
+  text-transform: uppercase; color: #9fc0d0;
 }
 body[data-home] .lj-guide__title {
-  margin: 14px 0 12px;
+  margin: 0 0 12px;
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
   letter-spacing: .01em; line-height: 1.22;
   font-size: clamp(1rem, 2.1vw, 1.15rem); color: #fff;
@@ -876,6 +884,7 @@ body[data-home] .lj-ex__checks li::before {
 
 /* --- A janela do produto (protagonista visual) ---------------------------- */
 body[data-home] .lj-window {
+  position: relative;
   border: 1px solid var(--line); border-radius: var(--radius-lg);
   background: linear-gradient(180deg, var(--surface), rgba(11,27,43,.72));
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
@@ -1107,17 +1116,24 @@ body[data-home] .lj-kb__open {
 }
 body[data-home] .lj-kb__from { display: block; height: 0; margin: 0; padding: 0; }
 
-/* --- O stepper (aside) ---------------------------------------------- */
+/* --- O stepper: navegação da demo (fica claramente tocável) --------- */
+body[data-home] .lj-nav {
+  border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(9,20,32,.5), rgba(9,20,32,.32));
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  padding: 12px 13px 13px;
+}
 body[data-home] .lj-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; position: relative; }
 body[data-home] .lj-step {
   position: relative; width: 100%;
   display: flex; align-items: center; gap: 12px;
   padding: 10px 12px; border-radius: 12px;
-  border: 1px solid transparent; background: transparent; color: #b6cad6;
+  border: 1px solid var(--line-soft); background: rgba(255,255,255,.02); color: #cddde7;
   cursor: pointer; text-align: left;
-  transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+  transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .12s var(--ease);
 }
-body[data-home] .lj-step:hover { color: var(--ink); background: rgba(255,255,255,.03); }
+body[data-home] .lj-step:hover { color: #fff; background: rgba(21,234,158,.06); border-color: var(--line); }
+body[data-home] .lj-step:active { transform: scale(.985); }
 body[data-home] .lj-step:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 body[data-home] .lj-step__n {
   position: relative; z-index: 1; flex: none;
@@ -1339,27 +1355,40 @@ body[data-home] .lj-money__coda { font-size: .88rem; line-height: 1.55; color: #
 body[data-home] .lj-cta { justify-content: center; margin-top: 6px; }
 body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9fb7c4; max-width: 68ch; }
 
-/* --- Mobile: uma coluna. Guia (stepper + explicação) antes da janela --- */
+/* --- Mobile: uma coluna. Ordem: stepper -> janela -> explicação ------- */
 @media (max-width: 760px) {
-  body[data-home] .lj-demo { display: flex; flex-direction: column; align-items: stretch; gap: 16px; }
+  body[data-home] .lj-demo { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
   body[data-home] .lj-illus { align-self: flex-end; }
   body[data-home] .lj-steps { grid-template-columns: repeat(4, 1fr); gap: 6px; }
   body[data-home] .lj-step {
-    flex-direction: column; gap: 6px; padding: 10px 4px;
-    min-height: 64px; justify-content: center; text-align: center;
+    flex-direction: column; gap: 6px; padding: 9px 3px;
+    min-height: 62px; justify-content: center; text-align: center;
   }
-  body[data-home] .lj-step__t { font-size: .62rem; letter-spacing: .02em; }
+  body[data-home] .lj-step__t { font-size: .6rem; letter-spacing: .02em; }
   body[data-home] .lj-step.is-active::before { display: none; }
-  body[data-home] .lj-step.is-active { border-color: var(--line); }
+  body[data-home] .lj-step.is-active { border-color: var(--teal); box-shadow: 0 0 0 1px rgba(21,234,158,.3); }
   body[data-home] .lj-step.is-active .lj-step__t { text-decoration: underline; text-underline-offset: 3px; }
 
-  body[data-home] .lj-stage { min-height: 500px; }
-  body[data-home] .lj-panel { padding: 15px 13px; }
-  body[data-home] .lj-chat { gap: 7px; }
-  body[data-home] .lj-msg { max-width: 92%; font-size: .83rem; line-height: 1.45; padding: 9px 12px; }
+  body[data-home] .lj-stage { min-height: 380px; }
+  body[data-home] .lj-panel { padding: 14px 13px; }
+  body[data-home] .lj-chat { gap: 6px; }
+  body[data-home] .lj-msg { max-width: 92%; font-size: .83rem; line-height: 1.4; padding: 8px 11px; }
   body[data-home] .lj-offer { max-width: 92%; }
 
-  /* Kanban no celular: colunas mais largas com rolagem horizontal */
+  /* pista de que a janela tem conteúdo que rola / muda */
+  body[data-home] .lj-window::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 40px;
+    background: linear-gradient(rgba(6,14,24,0), rgba(6,14,24,.92));
+    pointer-events: none; z-index: 3;
+  }
+
+  /* Kanban no celular: colunas mais largas, rolagem horizontal + pista */
+  body[data-home] .lj-kb { position: relative; }
+  body[data-home] .lj-kb::after {
+    content: ""; position: absolute; right: 0; top: 42px; bottom: 0; width: 34px;
+    background: linear-gradient(to right, rgba(6,14,24,0), rgba(6,14,24,.9));
+    pointer-events: none; z-index: 3;
+  }
   body[data-home] .lj-kb__board { gap: 10px; scroll-snap-type: x proximity; }
   body[data-home] .lj-kb__col {
     flex: 0 0 76%; scroll-snap-align: start;
