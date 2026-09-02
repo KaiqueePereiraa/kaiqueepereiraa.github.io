@@ -873,7 +873,7 @@ body[data-home] .lj-window__time {
 
 /* --- O palco e as 4 etapas ---------------------------------------------- */
 body[data-home] .lj-stage { position: relative; min-height: 470px; }
-@media (min-width: 761px) { body[data-home] .lj-stage { min-height: 420px; } }
+@media (min-width: 761px) { body[data-home] .lj-stage { min-height: 452px; } }
 body[data-home] .lj-panel { padding: clamp(16px, 2.6vw, 24px); }
 body[data-home] .lj-panel + .lj-panel { border-top: 1px solid var(--line-soft); }
 body[data-home] .lj-panel__h {
@@ -895,7 +895,7 @@ body[data-home] .lj-panel__h {
   .js body[data-home] .lj-stage > .lj-panel { transition: opacity .001s; transform: none; }
 }
 
-/* --- Etapa 01 · conversa (ecoa .msg do ein.css, sem tocar naquele bloco) -- */
+/* --- Conversa (etapas 01 e 03) — ecoa .msg do ein.css ------------------ */
 body[data-home] .lj-chat { display: flex; flex-direction: column; gap: 10px; }
 body[data-home] .lj-msg {
   max-width: 84%; margin: 0; padding: 10px 13px; border-radius: 14px;
@@ -905,145 +905,184 @@ body[data-home] .lj-msg--in {
   align-self: flex-start; background: #10202f; color: var(--ink);
   border-bottom-left-radius: 4px;
 }
+body[data-home] .lj-msg--ia,
+body[data-home] .lj-msg--team {
+  align-self: flex-end; border-bottom-right-radius: 4px;
+}
 body[data-home] .lj-msg--ia {
-  align-self: flex-end; color: #eafff6;
+  color: #eafff6;
   background: linear-gradient(180deg, rgba(21,234,158,.16), rgba(21,234,158,.09));
-  border: 1px solid rgba(21,234,158,.25); border-bottom-right-radius: 4px;
+  border: 1px solid rgba(21,234,158,.25);
 }
-body[data-home] .lj-msg--ia::after {
-  content: "WasFit IA"; display: block; margin-top: 5px;
-  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--teal);
+body[data-home] .lj-msg--ia::after { content: "WasFit IA"; color: var(--teal); }
+body[data-home] .lj-msg--team {
+  color: #eef4fb;
+  background: rgba(255,255,255,.07); border: 1px solid var(--line-soft);
 }
-.js body[data-home] .lj-panel[data-lj-panel="0"] .lj-msg {
+body[data-home] .lj-msg--team::after { content: "Equipe"; color: #b6cad6; }
+body[data-home] .lj-msg--ia::after,
+body[data-home] .lj-msg--team::after {
+  display: block; margin-top: 5px;
+  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .12em; text-transform: uppercase;
+}
+.js body[data-home] .lj-chat > .lj-msg,
+.js body[data-home] .lj-chat > .lj-offer {
   opacity: 0; transform: translateY(6px);
   transition: opacity .4s var(--ease), transform .4s var(--ease);
 }
-.js body[data-home] .lj-panel[data-lj-panel="0"].is-active .lj-msg { opacity: 1; transform: none; }
-.js body[data-home] .lj-panel[data-lj-panel="0"].is-active .lj-msg:nth-child(3) { transition-delay: .1s; }
-.js body[data-home] .lj-panel[data-lj-panel="0"].is-active .lj-msg:nth-child(4) { transition-delay: .2s; }
-.js body[data-home] .lj-panel[data-lj-panel="0"].is-active .lj-msg:nth-child(5) { transition-delay: .3s; }
-
-/* --- Etapa 02 · a etiqueta entra ------------------------------------- */
-.js body[data-home] .lj-panel[data-lj-panel="1"] .lj-tag--wait {
-  opacity: 0; transform: translateY(4px);
-  transition: opacity .4s var(--ease), transform .4s var(--ease); transition-delay: .15s;
-}
-.js body[data-home] .lj-panel[data-lj-panel="1"].is-active .lj-tag--wait { opacity: 1; transform: none; }
+.js body[data-home] .lj-panel.is-active .lj-chat > .lj-msg,
+.js body[data-home] .lj-panel.is-active .lj-chat > .lj-offer { opacity: 1; transform: none; }
+.js body[data-home] .lj-panel.is-active .lj-chat > *:nth-child(2) { transition-delay: .08s; }
+.js body[data-home] .lj-panel.is-active .lj-chat > *:nth-child(3) { transition-delay: .16s; }
+.js body[data-home] .lj-panel.is-active .lj-chat > *:nth-child(4) { transition-delay: .24s; }
 @media (prefers-reduced-motion: reduce) {
-  .js body[data-home] .lj-panel[data-lj-panel="0"] .lj-msg,
-  .js body[data-home] .lj-panel[data-lj-panel="1"] .lj-tag--wait { opacity: 1; transform: none; transition: none; }
+  .js body[data-home] .lj-chat > .lj-msg,
+  .js body[data-home] .lj-chat > .lj-offer { opacity: 1; transform: none; transition: none; }
 }
+
+/* bloco compacto de horários/valor dentro da conversa */
+body[data-home] .lj-offer {
+  align-self: flex-end; max-width: 84%;
+  border: 1px solid rgba(21,234,158,.22); border-radius: 14px;
+  border-bottom-right-radius: 4px; padding: 11px 13px;
+  background: linear-gradient(180deg, rgba(21,234,158,.09), rgba(21,234,158,.03));
+  display: grid; gap: 4px;
+}
+body[data-home] .lj-offer__k {
+  margin: 0; font-family: var(--font-mono); font-size: .58rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--teal);
+}
+body[data-home] .lj-offer__row {
+  margin: 0; display: flex; justify-content: space-between; gap: 12px;
+  font-size: .82rem; color: #dbe6f0;
+}
+body[data-home] .lj-offer__row span { color: #9fb9c9; }
+body[data-home] .lj-offer__row b { color: #fff; font-weight: 600; }
+
+/* linha de sistema: etiqueta adicionada */
+body[data-home] .lj-sys {
+  align-self: center; margin: 4px 0 0; text-align: center;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; justify-content: center;
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .03em; color: #a7bfcc;
+}
+body[data-home] .lj-sys__dot {
+  width: 7px; height: 7px; border-radius: 50%; flex: none; background: var(--amber);
+}
+body[data-home] .lj-sys__dot--done { background: var(--lime); }
 
 body[data-home] .lj-note {
   margin: 0; font-family: var(--font-display); font-weight: 700;
   font-size: clamp(1rem, 2.2vw, 1.18rem); line-height: 1.3; color: #eafff6;
 }
 body[data-home] .lj-note--soft {
-  margin-top: 12px; font-family: var(--font-body); font-weight: 400;
-  font-size: .84rem; color: #a7bfcc;
+  margin: 12px 0 0; font-family: var(--font-body); font-weight: 400;
+  font-size: .82rem; color: #a7bfcc;
 }
 
-/* --- Pipeline (Interessado -> Experimental -> Proposta -> Matrícula) ---- */
-body[data-home] .lj-pipe {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 16px;
+/* --- Transição conversa -> Kanban ------------------------------------- */
+body[data-home] .lj-kb-intro {
+  margin: 0 0 12px; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1rem, 2.2vw, 1.22rem); line-height: 1.3; color: #cfe0ee;
 }
-body[data-home] .lj-pipe__s {
-  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .05em;
-  text-transform: uppercase; color: var(--muted);
-  padding: .5em .8em; border: 1px solid var(--line-soft); border-radius: 999px;
-  transition: color .4s var(--ease), background-color .4s var(--ease), border-color .4s var(--ease);
-}
-body[data-home] .lj-pipe__a { color: var(--teal); font-size: .68rem; opacity: .7; }
-body[data-home] .lj-pipe__s.is-on {
-  color: #06231a; background: var(--grad); border-color: transparent; font-weight: 700;
-}
-body[data-home] .lj-pipe__s.is-next { border-style: dashed; color: #9fb9c9; }
-body[data-home] .lj-sr {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-}
+body[data-home] .lj-kb-intro b { color: #fff; }
 
-/* --- Etapa 03 · o card do lead no Kanban ------------------------------- */
-body[data-home] .lj-board { position: relative; }
-body[data-home] .lj-card {
-  position: relative; z-index: 1;
-  border: 1px solid var(--line-soft); border-left: 2px solid var(--teal);
-  border-radius: 12px; background: var(--surface); padding: 14px 15px;
-  box-shadow: 0 16px 34px -20px rgba(0,0,0,.5);
+/* --- Kanban por etiquetas — miniatura do produto real ---------------- */
+body[data-home] .lj-kb {
+  border: 1px solid var(--line-soft); border-radius: 12px;
+  background: rgba(6,14,24,.5); overflow: hidden;
 }
-body[data-home] .lj-card__hd { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-body[data-home] .lj-card__av {
-  flex: none; width: 30px; height: 30px; border-radius: 50%;
+body[data-home] .lj-kb__bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 9px 11px; border-bottom: 1px solid var(--line-soft); background: rgba(255,255,255,.02);
+}
+body[data-home] .lj-kb__tabs {
+  display: inline-flex; border: 1px solid var(--line-soft); border-radius: 8px; overflow: hidden;
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase;
+}
+body[data-home] .lj-kb__tabs span { padding: .5em .8em; color: #8fabbb; }
+body[data-home] .lj-kb__tabs span.is-on { background: rgba(21,234,158,.14); color: var(--teal); }
+body[data-home] .lj-kb__search {
+  flex: 1; min-width: 140px; display: flex; align-items: center; gap: 7px;
+  padding: 6px 10px; border: 1px solid var(--line-soft); border-radius: 8px;
+  background: var(--navy); font-size: .74rem; color: #7f97a6;
+}
+body[data-home] .lj-kb__mag {
+  width: 11px; height: 11px; flex: none; border-radius: 50%;
+  border: 1.5px solid #7f97a6; position: relative;
+}
+body[data-home] .lj-kb__mag::after {
+  content: ""; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 1.5px;
+  background: #7f97a6; transform: rotate(45deg);
+}
+body[data-home] .lj-kb__board {
+  position: relative;
+  display: flex; gap: 8px; padding: 10px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+body[data-home] .lj-kb__board::-webkit-scrollbar { display: none; }
+body[data-home] .lj-kb__col {
+  flex: 1 1 0; min-width: 0;
+  border: 1px solid var(--line-soft); border-radius: 10px; padding: 8px;
+  background: rgba(255,255,255,.02);
+  display: flex; flex-direction: column; gap: 7px;
+}
+body[data-home] .lj-kb__col--focus {
+  border-color: rgba(21,234,158,.35); background: rgba(21,234,158,.05);
+}
+body[data-home] .lj-kb__col-hd {
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: .53rem; letter-spacing: .04em; text-transform: uppercase;
+  color: #b6cad6; line-height: 1.3;
+}
+body[data-home] .lj-kb__col-hd b {
+  margin-left: auto; flex: none; color: #8fabbb; font-weight: 700;
+  background: rgba(255,255,255,.06); border-radius: 999px; padding: 0 5px; font-size: .92em;
+}
+body[data-home] .lj-kb__dot {
+  width: 6px; height: 6px; border-radius: 50%; flex: none; background: #6f8496;
+}
+body[data-home] .lj-kb__dot--wait { background: var(--amber); }
+body[data-home] .lj-kb__dot--done { background: var(--lime); }
+body[data-home] .lj-kb__card {
+  background: #fff; color: #14202b; border-radius: 7px; padding: 8px 9px;
+  box-shadow: 0 6px 14px -8px rgba(0,0,0,.5);
+  display: grid; gap: 5px; will-change: transform;
+}
+body[data-home] .lj-kb__card--ghost { opacity: .5; box-shadow: none; }
+body[data-home] .lj-kb__card--wait { border-left: 3px solid var(--amber); }
+body[data-home] .lj-kb__card--done { border-left: 3px solid #6db33f; }
+body[data-home] .lj-kb__ch { display: flex; align-items: center; gap: 6px; }
+body[data-home] .lj-kb__av {
+  flex: none; width: 18px; height: 18px; border-radius: 50%;
   display: grid; place-items: center;
-  font-family: var(--font-mono); font-weight: 700; font-size: .64rem; letter-spacing: .02em;
-  color: #06231a; background: var(--grad);
+  font-family: var(--font-mono); font-weight: 700; font-size: .5rem; letter-spacing: .02em;
+  color: #06231a; background: linear-gradient(120deg, var(--teal), var(--lime));
 }
-body[data-home] .lj-card__id b { display: block; font-size: .95rem; color: #fff; }
-body[data-home] .lj-card__id span { font-size: .8rem; color: #a9c3d6; }
-body[data-home] .lj-card__foot {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line-soft);
+body[data-home] .lj-kb__card--ghost .lj-kb__av { background: #cdd8e0; color: #5b6b78; }
+body[data-home] .lj-kb__name {
+  flex: 1; min-width: 0; font-size: .72rem; font-weight: 700; color: #14202b;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-body[data-home] .lj-card__foot time {
-  font-family: var(--font-mono); font-size: .66rem; color: #93aab8; font-variant-numeric: tabular-nums;
+body[data-home] .lj-kb__prev {
+  margin: 0; font-size: .68rem; line-height: 1.35; color: #566673;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-body[data-home] .lj-card--done { border-left-color: var(--lime); }
-
-/* etiqueta aplicada pela IA — o que a organização faz é MARCAR o lead,
-   não deixar anotação: "Em espera" (aguarda follow-up humano) e
-   "Experimental agendada" (a IA marcou a experimental). */
-body[data-home] .lj-tag {
-  display: inline-block;
-  font-family: var(--font-mono); font-size: .6rem; font-weight: 700; font-style: normal;
-  letter-spacing: .05em; text-transform: uppercase;
-  border-radius: 999px; padding: .34em .7em; white-space: nowrap;
+body[data-home] .lj-kb__cf { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+body[data-home] .lj-kb__time {
+  font-family: var(--font-mono); font-size: .58rem; color: #7c8b98; font-variant-numeric: tabular-nums; flex: none;
 }
-body[data-home] .lj-tag--wait { color: var(--amber); border: 1px solid rgba(245,184,65,.5); background: rgba(245,184,65,.12); }
-body[data-home] .lj-tag--done { color: var(--lime);  border: 1px solid rgba(158,234,78,.5); background: rgba(158,234,78,.12); }
-
-body[data-home] .lj-board__ghost { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; opacity: .5; }
-body[data-home] .lj-board__ghost span {
-  min-height: 36px; display: flex; align-items: center; padding: 0 12px;
-  border-radius: 10px; border: 1px solid var(--line-soft); border-left: 2px solid var(--muted);
-  background: rgba(15,30,48,.55);
+body[data-home] .lj-kb__cf .lj-tag {
+  flex: none; font-size: .47rem; padding: .22em .5em;
+  color: #8a6a12; background: #fdeecb; border: 1px solid #f2d99a;
 }
-body[data-home] .lj-board__ghost .lj-tag { opacity: .8; }
-@media (max-width: 559px) { body[data-home] .lj-board__ghost { display: none; } }
-
-/* --- Etapa 02 · a IA marca o lead ---------------------------------- */
-body[data-home] .lj-mark { display: grid; gap: 12px; }
-body[data-home] .lj-mark__lead {
-  display: flex; align-items: center; gap: 10px;
-  border: 1px solid var(--line-soft); border-left: 2px solid var(--teal);
-  border-radius: 12px; background: var(--surface); padding: 12px 14px;
+body[data-home] .lj-kb__cf .lj-tag--done { color: #3d6b0e; background: #e7f6d3; border-color: #c8e6a0; }
+body[data-home] .lj-kb__open {
+  display: block; text-align: center; margin-top: 1px;
+  font-family: var(--font-mono); font-size: .54rem; letter-spacing: .04em; text-transform: uppercase;
+  color: #0f6b52; background: #eef5f2; border: 1px solid #d9e6e1; border-radius: 5px; padding: 3px 7px;
 }
-body[data-home] .lj-mark__line { margin: 0; font-size: .92rem; line-height: 1.5; color: #dbe6f0; }
-body[data-home] .lj-mark__alt  { margin: 0; font-size: .82rem; line-height: 1.5; color: #a9c3d6; }
-body[data-home] .lj-mark__line .lj-tag,
-body[data-home] .lj-mark__alt .lj-tag { margin-right: 5px; vertical-align: 1px; }
-
-/* --- Etapa 04 · retomada ------------------------------------------- */
-body[data-home] .lj-handoff { display: grid; gap: 12px; }
-@media (min-width: 620px) {
-  body[data-home] .lj-handoff { grid-template-columns: 1fr 1.1fr; align-items: start; }
-}
-body[data-home] .lj-hmsg {
-  border: 1px solid rgba(21,234,158,.22); border-radius: 12px; padding: 12px 14px;
-  background: linear-gradient(180deg, rgba(21,234,158,.1), rgba(21,234,158,.04));
-}
-body[data-home] .lj-hmsg__who {
-  display: block; margin-bottom: 6px;
-  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--teal);
-}
-body[data-home] .lj-hmsg p { margin: 0; font-size: .88rem; line-height: 1.5; color: #eafff6; }
-body[data-home] .lj-handoff__tag {
-  display: flex; align-items: center; gap: 8px; margin: 14px 0 0;
-  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--lime);
-}
-body[data-home] .lj-handoff__tag span { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+body[data-home] .lj-kb__from { display: block; height: 0; margin: 0; padding: 0; }
 
 /* --- O stepper (aside) ---------------------------------------------- */
 body[data-home] .lj-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; position: relative; }
@@ -1107,13 +1146,22 @@ body[data-home] .lj-headline-note {
 }
 body[data-home] .lj-headline-note b { color: var(--lime); font-weight: 700; }
 
-/* --- Quebra de narrativa: "Agora faça uma conta simples" --------------- */
+/* --- Fecho da demo + quebra para o argumento financeiro --------------- */
 body[data-home] .lj-turn {
-  max-width: 640px; margin: clamp(20px, 3.5vw, 32px) auto 0; text-align: center;
-  padding-top: clamp(16px, 2.6vw, 22px); border-top: 1px solid var(--line-soft);
+  max-width: 640px; margin: clamp(22px, 3.8vw, 36px) auto 0; text-align: center;
+  padding-top: clamp(18px, 2.8vw, 26px); border-top: 1px solid var(--line-soft);
   display: grid; gap: 10px;
 }
+body[data-home] .lj-turn__echo {
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .01em; line-height: 1.2;
+  font-size: clamp(1.12rem, 2.6vw, 1.5rem); color: #fff;
+}
+body[data-home] .lj-turn__lead {
+  font-size: .95rem; line-height: 1.55; color: #cfe0ee; max-width: 46ch; margin-inline: auto;
+}
 body[data-home] .lj-turn__kicker {
+  margin-top: clamp(8px, 1.8vw, 14px);
   font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em;
   text-transform: uppercase; color: #cfe6f5;
 }
@@ -1248,12 +1296,18 @@ body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9f
   body[data-home] .lj-step.is-active .lj-step__t { text-decoration: underline; text-underline-offset: 3px; }
   body[data-home] .lj-cap { margin-top: 14px; }
 
-  /* etapas mais compactas no celular pra caber sem rolagem interna */
-  body[data-home] .lj-stage { min-height: 470px; }
-  body[data-home] .lj-panel { padding: 15px 14px; }
+  body[data-home] .lj-stage { min-height: 500px; }
+  body[data-home] .lj-panel { padding: 15px 13px; }
   body[data-home] .lj-chat { gap: 7px; }
   body[data-home] .lj-msg { max-width: 92%; font-size: .83rem; line-height: 1.45; padding: 9px 12px; }
-  body[data-home] .lj-handoff { gap: 10px; }
-  body[data-home] .lj-hmsg p { font-size: .84rem; }
-  body[data-home] .lj-mark__line { font-size: .88rem; }
+  body[data-home] .lj-offer { max-width: 92%; }
+
+  /* Kanban no celular: colunas mais largas com rolagem horizontal */
+  body[data-home] .lj-kb__board { gap: 10px; scroll-snap-type: x proximity; }
+  body[data-home] .lj-kb__col {
+    flex: 0 0 76%; scroll-snap-align: start;
+  }
+  body[data-home] .lj-kb__col-hd { font-size: .58rem; }
+  body[data-home] .lj-kb__name { font-size: .78rem; }
+  body[data-home] .lj-kb__prev { font-size: .74rem; }
 }

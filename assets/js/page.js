@@ -100,12 +100,51 @@
       var ljTime   = lj.querySelector('[data-lj-time]');
       var ljCap    = lj.querySelector('[data-lj-caption]');
       var LJ_META = [
-        { title: 'WasFit · Atendimento', time: '22:47', cap: '22:47 · Uma família chama' },
-        { title: 'WasFit · Atendimento', time: '22:48', cap: '22:48 · A IA marca o lead' },
-        { title: 'WasFit · Funil',       time: '22:49', cap: '22:49 · Agora sua equipe consegue enxergar' },
-        { title: 'WasFit · Funil',       time: '09:00', cap: '09:00 · A equipe assume de onde a IA parou' }
+        { title: 'WasFit · Atendimento', time: '22:45', cap: '22:45 · A cliente chama pela filha' },
+        { title: 'WasFit · Kanban',      time: '22:48', cap: '22:48 · Sem resposta. Entra em Em Espera · Laranjeiras' },
+        { title: 'WasFit · Atendimento', time: '09:05', cap: '09:05 · A equipe retoma pela coluna Em Espera' },
+        { title: 'WasFit · Kanban',      time: '09:14', cap: '09:14 · Experimental agendada. O card muda de coluna' }
       ];
+      var LJ_DUR = [4200, 3200, 4000, 3400];  /* quanto tempo o autoplay fica em cada etapa */
       var ljCur = 0, ljTimer = 0, ljAutoDone = false, ljLock = false, ljIO = null, ljTryStart = null;
+
+      /* Kanban: rola a coluna em foco para a vista e, na etapa 4, faz o
+         card viajar da coluna "Em Espera" para "Experimental Agendada". */
+      var ljKanban = function (i, viaUser) {
+        var p = ljPanels[i];
+        if (!p) return;
+        var board = p.querySelector('[data-lj-board]');
+        if (board) {
+          var focus = board.querySelector('[data-lj-focus]');
+          if (focus) {
+            var delta = focus.getBoundingClientRect().left - board.getBoundingClientRect().left - 12;
+            var left = Math.max(0, board.scrollLeft + delta);
+            try { board.scrollTo({ left: left, behavior: (viaUser || ljReduce) ? 'auto' : 'smooth' }); }
+            catch (e) { board.scrollLeft = left; }
+          }
+        }
+        // reseta qualquer transform pendente do card em todas as etapas
+        ljPanels.forEach(function (pp) {
+          var t = pp.querySelector('[data-lj-ticket]');
+          if (t && pp !== p) { t.style.transition = 'none'; t.style.transform = 'none'; }
+        });
+        if (i !== 3 || ljReduce || window.innerWidth < 760) return;
+        var tk = p.querySelector('[data-lj-ticket]');
+        var from = p.querySelector('[data-lj-from]');
+        if (!tk || !from) return;
+        tk.style.transition = 'none'; tk.style.transform = 'none';
+        requestAnimationFrame(function () {
+          var a = from.getBoundingClientRect(), b = tk.getBoundingClientRect();
+          var dx = Math.round(a.left - b.left), dy = Math.round(a.top - b.top);
+          if (!dx && !dy) return;
+          tk.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+          tk.getBoundingClientRect();
+          requestAnimationFrame(function () {
+            tk.style.transition = 'transform .55s cubic-bezier(.22,1,.36,1)';
+            tk.style.transform = 'translate(0,0)';
+          });
+        });
+      };
 
       var ljSetStep = function (i, viaUser) {
         i = i < 0 ? 0 : i > ljPanels.length - 1 ? ljPanels.length - 1 : i;
@@ -126,6 +165,7 @@
         if (ljTime) ljTime.textContent = m.time;
         if (ljCap) ljCap.textContent = m.cap;
         lj.style.setProperty('--lj-progress', (i / (ljPanels.length - 1) * 100).toFixed(1) + '%');
+        ljKanban(i, viaUser);
         if (viaUser) {
           try { (window.dataLayer = window.dataLayer || []).push({ event: 'lead_story_step_click', step: i + 1 }); } catch (e) {}
         }
@@ -146,7 +186,7 @@
           if (ljCur >= ljPanels.length - 1) { ljFinish(); return; }
           ljSetStep(ljCur + 1, false);
           ljSchedule();
-        }, 2700);
+        }, LJ_DUR[ljCur] || 3000);
       };
 
       ljSteps.forEach(function (b, k) {
