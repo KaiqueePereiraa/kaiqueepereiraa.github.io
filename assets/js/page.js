@@ -100,12 +100,12 @@
       var ljTime   = lj.querySelector('[data-lj-time]');
       var ljCap    = lj.querySelector('[data-lj-caption]');
       var LJ_META = [
-        { title: 'WasFit · Atendimento', time: '22:45', cap: '22:45 · A cliente chama pela filha' },
-        { title: 'WasFit · Kanban',      time: '22:48', cap: '22:48 · Sem resposta. Entra em Em Espera · Laranjeiras' },
-        { title: 'WasFit · Atendimento', time: '09:05', cap: '09:05 · A equipe retoma pela coluna Em Espera' },
-        { title: 'WasFit · Kanban',      time: '09:14', cap: '09:14 · Experimental agendada. O card muda de coluna' }
+        { title: 'WasFit · Atendimento', time: '22:47', cap: 'Ela parou de responder. A IA organiza o que acontece depois.' },
+        { title: 'WasFit · Kanban',      time: '22:55', cap: 'Quando a equipe abre o Kanban, não precisa procurar quem ficou para trás.' },
+        { title: 'WasFit · Atendimento', time: '09:04', cap: 'Sua equipe não recomeça. Ela continua de onde a IA parou.' },
+        { title: 'WasFit · Kanban',      time: '09:08', cap: 'A situação mudou. A organização muda junto.' }
       ];
-      var LJ_DUR = [4200, 3200, 4000, 3400];  /* quanto tempo o autoplay fica em cada etapa */
+      var LJ_DUR = [4600, 3600, 4200, 3600];  /* quanto tempo o autoplay fica em cada etapa */
       var ljCur = 0, ljTimer = 0, ljAutoDone = false, ljLock = false, ljIO = null, ljTryStart = null;
 
       /* Kanban: rola a coluna em foco para a vista e, na etapa 4, faz o
@@ -159,6 +159,9 @@
           b.classList.toggle('is-active', on);
           if (on) b.setAttribute('aria-current', 'step');
           else b.removeAttribute('aria-current');
+        });
+        [].forEach.call(lj.querySelectorAll('[data-lj-ex]'), function (ex) {
+          ex.classList.toggle('is-active', +ex.getAttribute('data-lj-ex') === i);
         });
         var m = LJ_META[i] || LJ_META[0];
         if (ljTitle) ljTitle.textContent = m.title;
