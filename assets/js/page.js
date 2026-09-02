@@ -183,24 +183,25 @@
         setTimeout(function () { if (ljTryStart) ljTryStart(); }, 400);
       }
 
-      /* count-up do R$ 36.000 — uma vez, respeitando reduced-motion */
-      var ljCountBox = lj.querySelector('[data-lj-count]');
-      var ljNum = lj.querySelector('[data-lj-num]');
-      if (ljCountBox && ljNum && !ljReduce && 'IntersectionObserver' in window) {
-        var ljTo = parseInt(ljNum.getAttribute('data-to'), 10) || 0;
-        var ljCIO = new IntersectionObserver(function (entries) {
+      /* count-up dos números da conta (R$ 3.000 / 36.000 / 28.836) —
+         uma vez cada, respeitando reduced-motion */
+      var ljNums = [].slice.call(lj.querySelectorAll('[data-lj-num]'));
+      if (ljNums.length && !ljReduce && 'IntersectionObserver' in window) {
+        var ljNIO = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
             if (!e.isIntersecting) return;
-            ljCIO.disconnect();
-            var t0 = performance.now(), dur = 1100;
+            var el = e.target;
+            ljNIO.unobserve(el);
+            var to = parseInt(el.getAttribute('data-to'), 10) || 0;
+            var t0 = performance.now(), dur = 1000;
             (function frame(now) {
               var p = Math.min(1, (now - t0) / dur);
-              ljNum.textContent = Math.round(ljTo * (1 - Math.pow(1 - p, 3))).toLocaleString('pt-BR');
+              el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString('pt-BR');
               if (p < 1) requestAnimationFrame(frame);
             })(t0);
           });
-        }, { threshold: 0.5 });
-        ljCIO.observe(ljCountBox);
+        }, { threshold: 0.6 });
+        ljNums.forEach(function (n) { ljNIO.observe(n); });
       }
     }
   } catch (e) {}

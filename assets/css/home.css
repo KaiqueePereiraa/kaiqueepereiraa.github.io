@@ -1090,38 +1090,73 @@ body[data-home] .lj-cap {
   font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; color: #cfe0ee;
 }
 
-/* --- Transição curta (mesma seção) -------------------------------- */
-body[data-home] .lj-bridge {
-  max-width: 680px; margin: clamp(24px, 4vw, 36px) auto 0; text-align: center;
-  display: grid; gap: 8px;
+/* --- Subtítulo + frase de destaque no cabeçalho ------------------------- */
+body[data-home] .lj-subhead {
+  margin-top: 10px;
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .01em; line-height: 1.15;
+  font-size: clamp(1.08rem, 2.5vw, 1.5rem); color: var(--lime);
 }
-body[data-home] .lj-bridge__lead {
-  font-family: var(--font-mono); font-size: .76rem; letter-spacing: .06em;
+body[data-home] .lj-headline-note {
+  margin-top: clamp(16px, 2.4vw, 22px);
+  border-left: 3px solid var(--teal); padding: 12px 18px;
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(100deg, rgba(21,234,158,.09), transparent 70%);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.02rem, 2.2vw, 1.3rem); line-height: 1.3; color: #e6f4ee;
+}
+body[data-home] .lj-headline-note b { color: var(--lime); font-weight: 700; }
+
+/* --- Quebra de narrativa: "Agora faça uma conta simples" --------------- */
+body[data-home] .lj-turn {
+  max-width: 640px; margin: clamp(20px, 3.5vw, 32px) auto 0; text-align: center;
+  padding-top: clamp(16px, 2.6vw, 22px); border-top: 1px solid var(--line-soft);
+  display: grid; gap: 10px;
+}
+body[data-home] .lj-turn__kicker {
+  font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em;
   text-transform: uppercase; color: #cfe6f5;
 }
-body[data-home] .lj-bridge__punch {
+body[data-home] .lj-turn__q {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  font-size: clamp(1.1rem, 2.8vw, 1.55rem); line-height: 1.25; color: #fff;
+  font-size: clamp(1.22rem, 3.1vw, 1.72rem); line-height: 1.24; color: #fff;
+  max-width: 36ch; margin-inline: auto;
 }
 
-/* --- Momento financeiro ---------------------------------------------------
-   O R$ 36.000 é o maior número da seção; o preço da WasFit (R$ 7.164) fica
-   secundário. Textos obrigatórios, então o respiro entre eles é curto. */
+/* --- A conta ----------------------------------------------------------
+   Um único bloco em destaque (R$ 36.000). O resto são linhas limpas,
+   sem excesso de caixas. Pressão vem da clareza dos números. */
 body[data-home] .lj-money {
-  max-width: 720px; margin: clamp(18px, 3vw, 26px) auto 0;
+  max-width: 720px; margin: clamp(16px, 2.6vw, 22px) auto 0;
   padding: clamp(22px, 4vw, 38px) clamp(18px, 4vw, 40px);
   border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
   background: linear-gradient(180deg, rgba(9,20,32,.58), rgba(9,20,32,.36));
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
-  text-align: center; display: grid; gap: clamp(9px, 1.2vw, 12px); justify-items: center;
+  text-align: center; display: grid; gap: clamp(9px, 1.3vw, 13px); justify-items: center;
 }
-body[data-home] .lj-money__intro,
-body[data-home] .lj-money__step { max-width: 36ch; }
-body[data-home] .lj-money__intro {
-  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  font-size: clamp(1.02rem, 2.2vw, 1.28rem); line-height: 1.3; color: #eafff6;
+
+/* passo 1 — uma matrícula (sem caixa) */
+body[data-home] .lj-calc { display: grid; gap: 3px; justify-items: center; }
+body[data-home] .lj-calc__premise {
+  font-family: var(--font-mono); font-size: .68rem; letter-spacing: .06em;
+  text-transform: uppercase; color: #a7bfcc;
 }
-body[data-home] .lj-money__step { font-size: .98rem; color: #dbe6f0; margin-top: 2px; }
+body[data-home] .lj-calc__premise b { color: #dbe6f0; }
+body[data-home] .lj-calc__tag {
+  margin-top: 4px;
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--teal);
+}
+body[data-home] .lj-calc__op { font-family: var(--font-mono); font-size: .78rem; color: #8fabbb; }
+body[data-home] .lj-calc__eq {
+  font-family: var(--font-display); font-weight: 700; line-height: 1;
+  font-size: clamp(1.7rem, 4.4vw, 2.3rem); color: #fff; font-variant-numeric: tabular-nums;
+}
+body[data-home] .lj-calc__eq em {
+  display: block; margin-top: 6px;
+  font-family: var(--font-body); font-weight: 400; font-style: normal;
+  font-size: .78rem; letter-spacing: 0; text-transform: none; color: #a7bfcc;
+}
 
 /* R$ 3.000 — beat de apoio: compacto, sem caixa */
 body[data-home] .lj-fig { width: 100%; display: grid; gap: 3px; justify-items: center; }
@@ -1168,14 +1203,35 @@ body[data-home] .lj-versus__box--lead {
   background: linear-gradient(160deg, rgba(21,234,158,.12), rgba(11,27,43,.5) 60%);
 }
 body[data-home] .lj-versus__box--lead b { font-size: clamp(1.5rem, 4vw, 1.9rem); color: #fff; }
-body[data-home] .lj-money__prose { font-size: .92rem; line-height: 1.55; color: #cfe0ee; max-width: 62ch; }
+
+/* o número: R$ 28.836 (2º clímax, sem gradiente pra não competir com o 36k) */
+body[data-home] .lj-net {
+  width: 100%; display: grid; gap: 4px; justify-items: center;
+  margin-top: 4px; padding-top: clamp(12px, 2vw, 18px); border-top: 1px solid var(--line-soft);
+}
+body[data-home] .lj-net__num {
+  font-family: var(--font-display); font-weight: 700; line-height: 1;
+  font-size: clamp(2.3rem, 6.5vw, 3.5rem); color: #fff; font-variant-numeric: tabular-nums;
+}
+body[data-home] .lj-net__cap { font-size: .84rem; color: #a7bfcc; max-width: 34ch; }
+
+body[data-home] .lj-money__prose { font-size: .94rem; line-height: 1.6; color: #cfe0ee; max-width: 58ch; }
+body[data-home] .lj-hl { color: var(--lime); font-weight: 700; }
+
+/* "E estamos falando de uma." — isolada, com pausa antes e depois */
+body[data-home] .lj-solo {
+  margin: clamp(6px, 1.8vw, 14px) 0;
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .01em; line-height: 1.2;
+  font-size: clamp(1.3rem, 3.4vw, 1.95rem); color: #fff;
+}
 body[data-home] .lj-ask {
   font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
-  font-size: clamp(1.25rem, 3vw, 1.7rem); line-height: 1.2; color: #fff; max-width: 26ch; margin-top: 2px;
+  font-size: clamp(1.28rem, 3.2vw, 1.8rem); line-height: 1.2; color: #fff; max-width: 28ch; margin-top: 4px;
 }
-body[data-home] .lj-money__coda { font-size: .86rem; line-height: 1.5; color: #a7bfcc; max-width: 58ch; }
-body[data-home] .lj-cta { justify-content: center; margin-top: 4px; }
-body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9fb7c4; max-width: 72ch; }
+body[data-home] .lj-money__coda { font-size: .88rem; line-height: 1.55; color: #a7bfcc; max-width: 54ch; }
+body[data-home] .lj-cta { justify-content: center; margin-top: 6px; }
+body[data-home] .lj-disclaimer { font-size: .78rem; line-height: 1.5; color: #9fb7c4; max-width: 68ch; }
 
 /* --- Mobile: uma coluna; janela antes do stepper (ordem do DOM) --------- */
 @media (max-width: 760px) {
