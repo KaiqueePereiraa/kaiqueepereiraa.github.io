@@ -1,4 +1,4 @@
-# AMBIENTE DE TESTE (github.io) — NÃO INDEXAR.
-# Antes de ir para producao (wasfit.com.br): substituir por robots.production.txt
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://wasfit.com.br/sitemap.xml
