@@ -95,7 +95,7 @@ footer a{color:var(--mint)}
 .wavi-fx .say{max-width:150px;background:#fff;color:var(--navy-deep);font-size:12.5px;line-height:1.35;padding:10px 13px;border-radius:4px 14px 14px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .3s;pointer-events:none}
 .wavi-fx .say b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#0B8A5C;margin-bottom:2px}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
-@media(max-width:860px){.wavi-fx{top:68px;right:6px}.wavi-fx a{width:88px;height:88px}.wavi-fx .say{max-width:min(50vw,152px);font-size:11px;line-height:1.3;padding:8px 10px}}
+@media(max-width:860px){.wavi-fx{top:68px;right:6px}.wavi-fx a{width:88px;height:88px}.wavi-fx .say{max-width:min(50vw,152px);font-size:11px;line-height:1.3;padding:8px 10px;opacity:0}}
 @media(prefers-reduced-motion:reduce){.wavi-fx a{animation:none}}
 .crest{padding-top:96px}
 .crest::before{content:"";position:absolute;left:0;right:0;top:-1px;height:18px;background:var(--crest);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 18' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H1440 V6 Q1395 16 1350 6 T1260 6 T1170 6 T1080 6 T990 6 T900 6 T810 6 T720 6 T630 6 T540 6 T450 6 T360 6 T270 6 T180 6 T90 6 T0 6 Z'/%3E%3C/svg%3E") center/100% 18px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 18' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H1440 V6 Q1395 16 1350 6 T1260 6 T1170 6 T1080 6 T990 6 T900 6 T810 6 T720 6 T630 6 T540 6 T450 6 T360 6 T270 6 T180 6 T90 6 T0 6 Z'/%3E%3C/svg%3E") center/100% 18px no-repeat}
@@ -163,6 +163,35 @@ footer a{color:var(--mint)}
 <script>
 (function(){var WA='5527998932954';document.querySelectorAll('.js-wa').forEach(function(a){var svc=a.getAttribute('data-svc');a.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Oi! Vim pela página de serviços da WasFit e quero saber mais sobre: '+svc+'.');a.target='_blank';a.rel='noopener';a.addEventListener('click',function(){window.dataLayer.push({event:'clique_servico',servico:svc})})})})();
 </script>
-<script>(function(){var WEBHOOK_TESTAR='bb3452eb-82dd-4954-80e4-b9db32951c45';/* mesmo do index.html */var WA_DEMO='5527998932954';/* mesmo número do index.html (decisão 06/09: a demo atende no comercial) */var m='Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';var a=document.querySelector('.js-demo');/* com webhook ligado no index.html, o mascote leva ao formulário lá (?testar=1); sem webhook, segue abrindo o WhatsApp como antes */if(WEBHOOK_TESTAR){a.href='/?testar=1'}else{a.href='https://wa.me/'+WA_DEMO+'?text='+encodeURIComponent(m);a.target='_blank';a.rel='noopener'}a.addEventListener('click',function(){window.dataLayer.push({event:'clique_testar',local:'mascote_'+location.pathname})});var say=document.getElementById('waviSay');setTimeout(function(){say.style.opacity=0},6000)})();</script>
+<script>(function(){var WEBHOOK_TESTAR='bb3452eb-82dd-4954-80e4-b9db32951c45';/* mesmo do index.html */var WA_DEMO='5527998932954';/* mesmo número do index.html (decisão 06/09: a demo atende no comercial) */var m='Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';var a=document.querySelector('.js-demo');/* com webhook ligado no index.html, o mascote leva ao formulário lá (?testar=1); sem webhook, segue abrindo o WhatsApp como antes */if(WEBHOOK_TESTAR){a.href='/?testar=1'}else{a.href='https://wa.me/'+WA_DEMO+'?text='+encodeURIComponent(m);a.target='_blank';a.rel='noopener'}a.addEventListener('click',function(){window.dataLayer.push({event:'clique_testar',local:'mascote_'+location.pathname})});var say=document.getElementById('waviSay');
+/* mesma regra do index.html: no mobile o balao so aparece se a area embaixo dele estiver livre, e some quando texto sobe por baixo */
+var waviMob=window.matchMedia('(max-width:860px)');
+function waviLivre(){
+  if(!waviMob.matches)return true;
+  var r=say.getBoundingClientRect();if(!r.width||!r.height)return true;
+  for(var y=r.top+5;y<r.bottom-3;y+=13){
+    if(y<0||y>innerHeight)continue;
+    for(var x=r.left+7;x<r.right-5;x+=24){
+      var el=document.elementFromPoint(x,y);
+      if(!el||el.closest('.wavi-fx'))continue;
+      if(el.closest('img,picture,video,canvas,svg,iframe'))return false;/* print de conversa tambem e leitura */
+      var c=el.childNodes;
+      for(var i=0;i<c.length;i++){
+        if(c[i].nodeType!==3||!c[i].nodeValue.trim())continue;
+        var rg=document.createRange();rg.selectNodeContents(c[i]);var rs=rg.getClientRects();
+        for(var j=0;j<rs.length;j++){var q=rs[j];if(x>=q.left&&x<=q.right&&y>=q.top&&y<=q.bottom)return false}
+      }
+    }
+  }
+  return true;
+}
+var h;setTimeout(function(){if(!waviLivre()){say.style.opacity=0;return}say.style.opacity=1;h=setTimeout(function(){say.style.opacity=0},6000)},250);
+var waviT=0;
+addEventListener('scroll',function(){
+  if(!waviMob.matches||say.style.opacity==='0')return;
+  var n=Date.now();if(n-waviT<90)return;waviT=n;
+  if(!waviLivre()){say.style.opacity=0;clearTimeout(h)}
+},{passive:true});
+})();</script>
 </body>
 </html>

@@ -459,7 +459,7 @@ footer .badges img{height:28px;width:auto}
 .wavi-fx .say{max-width:150px;background:#fff;color:var(--navy-deep);font-size:12.5px;line-height:1.35;padding:10px 13px;border-radius:4px 14px 14px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .3s;pointer-events:none}
 .wavi-fx .say b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#0B8A5C;margin-bottom:2px}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
-@media(max-width:860px){.wavi-fx{top:68px;right:6px}.wavi-fx a{width:88px;height:88px}.wavi-fx .say{max-width:min(50vw,152px);font-size:11px;line-height:1.3;padding:8px 10px}}
+@media(max-width:860px){.wavi-fx{top:68px;right:6px}.wavi-fx a{width:88px;height:88px}.wavi-fx .say{max-width:min(50vw,152px);font-size:11px;line-height:1.3;padding:8px 10px;opacity:0}}
 @media(prefers-reduced-motion:reduce){.wavi-fx a{animation:none}}
 /* ===== STICKY MOBILE ===== */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(4,18,27,.95);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08);display:none;gap:10px}
@@ -989,12 +989,53 @@ footer .badges img{height:28px;width:auto}
   /* vagas: /vagas.json {"restam":17} editável sem deploy */
   if(location.protocol!=='file:')fetch('/vagas.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){var n=Math.max(0,Math.min(20,parseInt(j.restam,10)));if(!isNaN(n)){document.getElementById('vagasN').textContent=n;document.getElementById('vagasBar').style.width=((20-n)/20*100)+'%'}}).catch(function(){});
   /* reveal + régua */
-  var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.ruler a');var fx=document.getElementById('waviFx'),say=document.getElementById('waviSay');say._h=setTimeout(function(){say.style.opacity=0},6000);
+  var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.ruler a');var fx=document.getElementById('waviFx'),say=document.getElementById('waviSay');
+  /* No mobile o balao so vive enquanto a faixa embaixo dele estiver livre (as ondas entre secoes).
+     Assim que texto sobe por baixo, ele some na hora, em vez de esperar o timer. */
+  var waviMob=window.matchMedia('(max-width:860px)');
+  function waviLivre(){
+    if(!waviMob.matches)return true;
+    var r=say.getBoundingClientRect();if(!r.width||!r.height)return true;
+    for(var y=r.top+5;y<r.bottom-3;y+=13){
+      if(y<0||y>innerHeight)continue;
+      for(var x=r.left+7;x<r.right-5;x+=24){
+        var el=document.elementFromPoint(x,y);
+        if(!el||el.closest('.wavi-fx'))continue;
+        if(el.closest('img,picture,video,canvas,svg,iframe'))return false;/* print de conversa tambem e leitura */
+        var c=el.childNodes;
+        for(var i=0;i<c.length;i++){
+          if(c[i].nodeType!==3||!c[i].nodeValue.trim())continue;
+          var rg=document.createRange();rg.selectNodeContents(c[i]);var rs=rg.getClientRects();
+          for(var j=0;j<rs.length;j++){var q=rs[j];if(x>=q.left&&x<=q.right&&y>=q.top&&y<=q.bottom)return false}
+        }
+      }
+    }
+    return true;
+  }
+  function waviFala(t,ms){
+    clearTimeout(say._h);clearTimeout(say._d);clearInterval(say._t);say.style.opacity=0;
+    say._d=setTimeout(function(){
+      if(t)say.innerHTML='<b>Wavi</b>'+t;
+      var n=0;
+      function tenta(){
+        if(waviLivre()){clearInterval(say._t);say.style.opacity=1;say._h=setTimeout(function(){say.style.opacity=0},ms||5000);return}
+        if(++n>8)clearInterval(say._t);/* ~1,2s esperando a onda passar embaixo; depois desiste dessa fala */
+      }
+      tenta();if(say.style.opacity!=='1')say._t=setInterval(tenta,150);
+    },250);
+  }
+  waviFala(null,6000);/* a fala de abertura passa pela mesma regra: no mobile ela cobre o H1, entao nao aparece */
+  var waviT=0;
+  addEventListener('scroll',function(){
+    if(!waviMob.matches||say.style.opacity==='0')return;
+    var n=Date.now();if(n-waviT<90)return;waviT=n;
+    if(!waviLivre()){say.style.opacity=0;clearTimeout(say._h)}
+  },{passive:true});
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
     var map={topo:'topo',problema:'problema',prova:'prova',historia:'prova',quem:'quem',ias:'quem',resolve:'quem',professor:'quem',preco:'preco',faq:'faq',raiox:'faq'};
-    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k=map[e.target.id];links.forEach(function(l){l.classList.toggle('act',l.getAttribute('data-sec')===k)});var t=e.target.getAttribute('data-say');if(t){say.style.opacity=0;clearTimeout(say._h);setTimeout(function(){say.innerHTML='<b>Wavi</b>'+t;say.style.opacity=1;say._h=setTimeout(function(){say.style.opacity=0},5000)},250)}}})},{rootMargin:'-40% 0px -50% 0px'});
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k=map[e.target.id];links.forEach(function(l){l.classList.toggle('act',l.getAttribute('data-sec')===k)});var t=e.target.getAttribute('data-say');if(t)waviFala(t)}})},{rootMargin:'-40% 0px -50% 0px'});
     secs.forEach(function(s){io2.observe(s)});
   }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
   /* régua: marcador contínuo */
