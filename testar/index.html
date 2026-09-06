@@ -84,6 +84,7 @@ p.sub{color:var(--muted);font-size:15.5px}
   /* ===== CONFIG — manter igual ao index.html ===== */
   var WEBHOOK_TESTAR='bb3452eb-82dd-4954-80e4-b9db32951c45';   // mesmo do WEBHOOK.testar no index.html
   var WEBHOOK_BASE='https://v1.api.wasfit.com.br/wb/';
+  var SHEET_ENDPOINT='';                     // [COLAR URL] mesma do index.html (/exec do Apps Script)
   var WA_DEMO='5527998932954';               // fallback: sem webhook, ou se o envio falhar
   var MSG='Oi! Vim pelo QR da WasFit no EIN e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';
 
@@ -139,12 +140,27 @@ p.sub{color:var(--muted);font-size:15.5px}
       utm_source:utmSource,utm_medium:'',utm_campaign:'',utm_content:'',
       data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
     }};
+    var copiado=false;
+    function copiar(status){
+      if(copiado||!SHEET_ENDPOINT)return; copiado=true;
+      payload.data.status_plataforma=status;
+      try{fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})}catch(e){}
+    }
+    setTimeout(function(){
+      if(copiado)return;
+      copiar('sem resposta');
+      if(!document.getElementById('step-form').hidden){
+        document.getElementById('step-form').hidden=true;
+        document.getElementById('step-err').hidden=false;
+        window.dataLayer.push({event:'testar_lead_timeout',local:'qr_estande'});}
+    },4000);
+
     fetch(WEBHOOK_BASE+WEBHOOK_TESTAR,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
+      .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);copiar('ok');
         document.getElementById('step-form').hidden=true;
         document.getElementById('step-ok').hidden=false;
         window.dataLayer.push({event:'testar_lead',local:'qr_estande',utm_source:utmSource});})
-      .catch(function(err){console.error('webhook testar:',err);
+      .catch(function(err){console.error('webhook testar:',err);copiar('FALHOU');
         document.getElementById('step-form').hidden=true;
         document.getElementById('step-err').hidden=false;
         window.dataLayer.push({event:'testar_lead_erro',local:'qr_estande',utm_source:utmSource});});

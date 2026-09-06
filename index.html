@@ -947,6 +947,12 @@ footer .badges img{height:28px;width:auto}
   };
   var WEBHOOK_BASE='https://v1.api.wasfit.com.br/wb/';
 
+  /* Cópia de segurança em planilha do Google (Apps Script).
+     Destino paralelo e independente: se a plataforma falhar, o lead não se
+     perde, e a planilha guarda também os campos que ela não mapeia.
+     Cole a URL /exec da implantação. Vazio = só a plataforma.            */
+  var SHEET_ENDPOINT='';   // [COLAR URL] https://script.google.com/macros/s/…/exec
+
   var MSGS={
     testar:'Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?',
     raiox:'Oi! Fiz o raio-x no site da WasFit e quero aprofundar em 15 min por vídeo.',
@@ -1057,11 +1063,32 @@ footer .badges img{height:28px;width:auto}
          é estável e não depende de o visitante ter chegado com UTM */
       ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){payload.data[k]=utm[k]||''});
 
+      /* Cópia na planilha: sai UMA vez, com o status real da plataforma.
+         O timeout garante a linha mesmo se a plataforma travar sem responder. */
+      var copiado=false;
+      function copiar(status){
+        if(copiado||!SHEET_ENDPOINT)return; copiado=true;
+        payload.data.status_plataforma=status;
+        /* text/plain evita o preflight, que o Apps Script não responde.
+           É cego por natureza: não dá para ler a resposta. */
+        try{fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})}catch(e){}
+      }
+      /* se a plataforma não responder em 4 s, salva a cópia E destrava a tela:
+         sem isto a pessoa fica olhando "Enviando…" para sempre */
+      setTimeout(function(){
+        if(copiado)return;
+        copiar('sem resposta');
+        if(!elForm.hidden){elForm.hidden=true;elErr.hidden=false;
+          window.dataLayer.push(objEvento('testar_lead_timeout'));}
+      },4000);
+
       fetch(WEBHOOK_BASE+WEBHOOK.testar,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
         .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
+          copiar('ok');
           elForm.hidden=true;elOk.hidden=false;
           window.dataLayer.push(objEvento('testar_lead'));})
         .catch(function(err){console.error('webhook testar:',err);
+          copiar('FALHOU');
           elForm.hidden=true;elErr.hidden=false;
           window.dataLayer.push(objEvento('testar_lead_erro'));});
     });
