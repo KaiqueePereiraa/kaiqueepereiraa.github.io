@@ -64,11 +64,13 @@ p.sub{color:var(--muted);font-size:15.5px}
     </form>
   </div>
 
+  <!-- Sem botão de WhatsApp aqui de propósito: a IA já está abrindo a
+       conversa; um segundo link começaria um atendimento em paralelo. -->
   <div id="step-ok" hidden>
     <div class="ico">✓</div>
     <h1>Pronto. Olha o WhatsApp.</h1>
-    <p class="sub">A IA está te chamando agora. Se em um minuto não chegar, confira o número ou fale com a gente.</p>
-    <a class="btn btn-ghost" id="okWa" href="#">Falar com a WasFit</a>
+    <p class="sub">A IA está te chamando agora, no número que você deixou. Responda como um pai responderia: pergunte horário, valor, turma, experimental.</p>
+    <p class="fine">Não chegou em alguns minutos? Confira o número e preencha de novo.</p>
   </div>
 
   <div id="step-err" hidden>
@@ -92,19 +94,20 @@ p.sub{color:var(--muted);font-size:15.5px}
   var utmSource=new URLSearchParams(location.search).get('utm_source')||'';
   window.dataLayer=window.dataLayer||[];
   window.dataLayer.push({event:'qr_testar',utm_source:utmSource});
-  document.getElementById('okWa').href=waUrl;
-  document.getElementById('errWa').href=waUrl;
-  [document.getElementById('okWa'),document.getElementById('errWa')].forEach(function(a){a.target='_blank';a.rel='noopener'});
+  var errWa=document.getElementById('errWa');
+  errWa.href=waUrl;errWa.target='_blank';errWa.rel='noopener';
 
   /* Sem webhook configurado, a página volta a ser o atalho de antes:
      manda direto para o WhatsApp, como o QR do estande sempre fez. */
   if(!WEBHOOK_TESTAR){
     document.getElementById('step-form').hidden=true;
     document.getElementById('step-ok').hidden=false;
-    document.querySelector('#step-ok h1').textContent='Abrindo o WhatsApp…';
-    document.querySelector('#step-ok .sub').textContent='Se não abrir sozinho, toque no botão.';
-    document.getElementById('okWa').className='btn btn-primary';
-    document.getElementById('okWa').textContent='Conversar com a IA';
+    var ok=document.getElementById('step-ok');
+    ok.querySelector('h1').textContent='Abrindo o WhatsApp…';
+    ok.querySelector('.sub').textContent='Se não abrir sozinho, toque no botão.';
+    var volta=document.createElement('a');
+    volta.className='btn btn-primary';volta.href=waUrl;volta.target='_blank';volta.rel='noopener';
+    volta.textContent='Conversar com a IA';ok.appendChild(volta);
     setTimeout(function(){location.replace(waUrl)},700);
     return;
   }
