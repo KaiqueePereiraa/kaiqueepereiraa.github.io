@@ -904,8 +904,8 @@ footer .badges img{height:28px;width:auto}
           <input id="tmFone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999" required>
         </div>
         <div class="tm-f">
-          <label for="tmEscola">Sua escola <span>(opcional)</span></label>
-          <input id="tmEscola" name="escola" type="text" placeholder="Acqua Vida Natação">
+          <label for="tmInsta">Instagram da escola <span>(opcional)</span></label>
+          <input id="tmInsta" name="instagram" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@acquavida">
         </div>
         <div class="tm-hp" aria-hidden="true"><label for="tmSite">Não preencha</label><input id="tmSite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn-primary" type="submit" id="tmSend"><span>Quero ver a IA me chamando</span><i class="tm-spin" hidden></i></button>
@@ -1005,7 +1005,7 @@ footer .badges img{height:28px;width:auto}
     if(!WEBHOOK.testar)return;
     var tm=document.getElementById('tm'),form=document.getElementById('tmFormEl'),
         elForm=document.getElementById('tmForm'),elOk=document.getElementById('tmOk'),elErr=document.getElementById('tmErr'),
-        nome=document.getElementById('tmNome'),fone=document.getElementById('tmFone'),escola=document.getElementById('tmEscola'),
+        nome=document.getElementById('tmNome'),fone=document.getElementById('tmFone'),insta=document.getElementById('tmInsta'),
         hp=document.getElementById('tmSite'),send=document.getElementById('tmSend'),spin=send.querySelector('.tm-spin'),
         rotulo=send.querySelector('span'),ultimo=null;
 
@@ -1023,6 +1023,12 @@ footer .badges img{height:28px;width:auto}
     }
     function fechar(){tm.hidden=true;document.body.classList.remove('tm-open');if(ultimo&&ultimo.focus)ultimo.focus()}
     function objEvento(ev,origem){var d={event:ev,local:origem||''};for(var k in utm)d[k]=utm[k];return d}
+    /* aceita "@x", "x", "instagram.com/x" e "https://www.instagram.com/x/" */
+    function arroba(v){
+      v=(v||'').trim().replace(/^https?:\/\//i,'').replace(/^www\./i,'')
+               .replace(/^instagram\.com\//i,'').replace(/[/?#].*$/,'').replace(/^@+/,'');
+      return v?'@'+v.substring(0,80):'Não informado';
+    }
 
     /* todo CTA de "testar" passa a abrir o modal em vez do WhatsApp */
     document.querySelectorAll('.js-wa[data-msg=testar]').forEach(function(a){
@@ -1057,7 +1063,10 @@ footer .badges img{height:28px;width:auto}
         customer:{name:n,phone:'55'+d},
         source:'site-wasfit',
         contexto:'testar-a-ia',
-        escola:escola.value.trim().substring(0,120)||'Não informado',
+        instagram:arroba(insta.value),
+        /* espelho temporário: o Apps Script implantado ainda lê "escola".
+           Remover depois que a planilha for reimplantada com o campo novo. */
+        escola:arroba(insta.value),
         origem_clique:document.querySelector('#tm').getAttribute('data-origem')||'',
         data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
       }};

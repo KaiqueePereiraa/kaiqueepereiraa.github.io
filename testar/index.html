@@ -57,7 +57,7 @@ p.sub{color:var(--muted);font-size:15.5px}
     <form id="form" novalidate>
       <div class="f"><label for="nome">Seu nome</label><input id="nome" type="text" autocomplete="name" placeholder="Ana" required></div>
       <div class="f"><label for="fone">Seu WhatsApp</label><input id="fone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999" required></div>
-      <div class="f"><label for="escola">Sua escola <span>(opcional)</span></label><input id="escola" type="text" placeholder="Acqua Vida Natação"></div>
+      <div class="f"><label for="insta">Instagram da escola <span>(opcional)</span></label><input id="insta" type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@acquavida"></div>
       <div class="hp" aria-hidden="true"><label for="site">Não preencha</label><input id="site" type="text" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-primary" type="submit" id="send"><span id="sendTxt">Quero ver a IA me chamando</span><i class="spin" id="spin" hidden></i></button>
       <p class="fine">Usamos o seu número só para a IA te chamar nesta demonstração.</p>
@@ -113,8 +113,15 @@ p.sub{color:var(--muted);font-size:15.5px}
   }
 
   var form=document.getElementById('form'),nome=document.getElementById('nome'),fone=document.getElementById('fone'),
-      escola=document.getElementById('escola'),hp=document.getElementById('site'),
+      insta=document.getElementById('insta'),hp=document.getElementById('site'),
       send=document.getElementById('send'),spin=document.getElementById('spin'),txt=document.getElementById('sendTxt');
+
+  /* aceita "@x", "x", "instagram.com/x" e "https://www.instagram.com/x/" */
+  function arroba(v){
+    v=(v||'').trim().replace(/^https?:\/\//i,'').replace(/^www\./i,'')
+             .replace(/^instagram\.com\//i,'').replace(/[/?#].*$/,'').replace(/^@+/,'');
+    return v?'@'+v.substring(0,80):'Não informado';
+  }
 
   fone.addEventListener('input',function(){
     var v=fone.value.replace(/\D/g,'');
@@ -139,7 +146,8 @@ p.sub{color:var(--muted);font-size:15.5px}
       customer:{name:n,phone:'55'+d},
       source:'qr-estande',
       contexto:'testar-a-ia',
-      escola:escola.value.trim().substring(0,120)||'Não informado',
+      instagram:arroba(insta.value),
+      escola:arroba(insta.value),   /* espelho temporário até reimplantar o Apps Script */
       utm_source:utmSource,utm_medium:'',utm_campaign:'',utm_content:'',
       data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
     }};
