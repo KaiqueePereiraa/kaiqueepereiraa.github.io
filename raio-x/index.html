@@ -115,7 +115,7 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     <div class="f">
       <div class="row2">
         <div><label for="nome">Seu nome</label><input id="nome" name="nome" required placeholder="Ana"></div>
-        <div><label for="escola">Escola</label><input id="escola" name="escola" required placeholder="Acqua Vida Natação"></div>
+        <div><label for="instagram">Instagram da escola</label><input id="instagram" name="instagram" required inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="@acquavida"></div>
       </div>
       <div class="row2">
         <div><label for="whats">Seu WhatsApp</label><input id="whats" name="whats" inputmode="tel" required placeholder="(27) 9 9999-9999"></div>
@@ -161,6 +161,12 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
 
   /* um id por sessão: liga a linha do passo 1 à do resultado */
   var LEAD_ID='rx-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);
+  /* aceita "@x", "x", "instagram.com/x" e a URL completa com parâmetros */
+  function arroba(v){
+    v=(v||'').trim().replace(/^https?:\/\//i,'').replace(/^www\./i,'')
+             .replace(/^instagram\.com\//i,'').replace(/[/?#].*$/,'').replace(/^@+/,'');
+    return v?'@'+v.substring(0,80):'';
+  }
   var utm={};(function(){var q=new URLSearchParams(location.search);
     ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){utm[k]=q.get(k)||''})})();
   var Q=[
@@ -179,7 +185,11 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
   function corpo(etapa,extra){
     var d={customer:{name:lead.nome||'',phone:'55'+String(lead.whats||'').replace(/\D/g,'')},
       source:'site-wasfit',contexto:'raio-x',etapa:etapa,id:LEAD_ID,
-      escola:lead.escola||'',cidade:lead.cidade||'',alunos:lead.alunos||'',cargo:lead.cargo||'',
+      instagram:arroba(lead.instagram),
+      /* espelho: a plataforma e o Apps Script implantados ainda leem "escola".
+         Remover quando os dois estiverem remapeados. */
+      escola:arroba(lead.instagram),
+      cidade:lead.cidade||'',alunos:lead.alunos||'',cargo:lead.cargo||'',
       data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})};
     for(var k in utm)d[k]=utm[k];
     for(var k2 in (extra||{}))d[k2]=extra[k2];
@@ -223,7 +233,7 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     var m=document.getElementById('money');
     if(vaz>0){var mat=Math.max(1,vaz);m.innerHTML='<strong>~R$ '+(mat*36000).toLocaleString('pt-BR')+' por ano em receita contratada</strong>'+(mat==1?'Se cada furo custar só 1 matrícula por mês.':'Se cada um dos '+vaz+' furos custar só 1 matrícula por mês (R$ 250 × 12 meses × 12).')+'<small>Conta ilustrativa. O raio-x por vídeo usa os números da sua escola.</small>'}
     else{m.innerHTML='<strong>A pergunta muda</strong>Não é o que vaza. É quantas matrículas a mais a mesma equipe fecha com a IA respondendo 24/7.'}
-    var resumo='Oi! Fiz o raio-x no site da WasFit.\nEscola: '+lead.escola+' ('+lead.cidade+')\nNome: '+lead.nome+' · '+lead.cargo+' · '+lead.alunos+' alunos\nResultado: '+n+'/'+tot+' · '+t+'\nFuros: '+(Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum')+'\nEVO: '+(ans.evo?'sim':'não')+'\nQuero aprofundar em 15 min por vídeo.';
+    var resumo='Oi! Fiz o raio-x no site da WasFit.\nEscola: '+arroba(lead.instagram)+' ('+lead.cidade+')\nNome: '+lead.nome+' · '+lead.cargo+' · '+lead.alunos+' alunos\nResultado: '+n+'/'+tot+' · '+t+'\nFuros: '+(Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum')+'\nEVO: '+(ans.evo?'sim':'não')+'\nQuero aprofundar em 15 min por vídeo.';
     document.getElementById('waBtn').href='https://wa.me/'+WA+'?text='+encodeURIComponent(resumo);
     document.getElementById('waBtn').addEventListener('click',function(){push('raiox_whatsapp',{score:n})});
     push('raiox_resultado',{score:n,vazamentos:vaz,evo:ans.evo?1:0});
