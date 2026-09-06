@@ -151,7 +151,18 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
 <script>
 (function(){
   var WA='5527998932954';
-  var LEAD_ENDPOINT='';   // [CONFIGURAR] URL que recebe o lead por POST (Google Apps Script, Formspree, n8n, webhook do WasFit). Vazio = só dataLayer + WhatsApp.
+  /* Planilha do Google (Apps Script): grava DESDE o passo 1, para não perder
+     quem desiste no meio. A mesma linha é atualizada no fim, pelo id. */
+  var SHEET_ENDPOINT='https://script.google.com/macros/s/AKfycbwWhq0QzQwoOnbka0ibugG223rFZ5PGwEopf2vdvBa5Ej7juTH3k1MEqWJMZyCm6q0P/exec';
+  /* Plataforma: dispara SÓ no resultado. No passo 1 a IA interromperia a
+     pessoa no meio das perguntas. */
+  var WEBHOOK_RAIOX='9bc60afd-92ec-45a1-be33-11f005cfa1e8';
+  var WEBHOOK_BASE='https://v1.api.wasfit.com.br/wb/';
+
+  /* um id por sessão: liga a linha do passo 1 à do resultado */
+  var LEAD_ID='rx-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8);
+  var utm={};(function(){var q=new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){utm[k]=q.get(k)||''})})();
   var Q=[
     {k:'origem',t:'Você sabe de onde vêm os seus leads hoje?',s:'Instagram, indicação, Google, passou na porta.',leak:'Sem origem, você investe no canal errado e não sabe qual campanha trouxe matrícula.',ok:'Você sabe onde investir.'},
     {k:'registro',t:'Todos os contatos ficam registrados em um só lugar?',s:'Não no celular de alguém, não em caderno.',leak:'Contato que fica no celular da recepção some quando a pessoa sai de férias, ou da empresa.',ok:'A base é da escola, não de uma pessoa.'},
@@ -164,11 +175,35 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
   var p1=document.getElementById('p1'),p2=document.getElementById('p2'),p3=document.getElementById('p3');
   function step(n){['s1','s2','s3'].forEach(function(id,i){document.getElementById(id).classList.toggle('on',i<n)});window.scrollTo({top:0,behavior:'smooth'})}
   function push(ev,extra){var d={event:ev};for(var k in (extra||{}))d[k]=extra[k];window.dataLayer.push(d)}
-  function send(payload){if(!LEAD_ENDPOINT)return;try{fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})}catch(e){}}
+  /* monta o corpo no mesmo formato que a plataforma reconhece */
+  function corpo(etapa,extra){
+    var d={customer:{name:lead.nome||'',phone:'55'+String(lead.whats||'').replace(/\D/g,'')},
+      source:'site-wasfit',contexto:'raio-x',etapa:etapa,id:LEAD_ID,
+      escola:lead.escola||'',cidade:lead.cidade||'',alunos:lead.alunos||'',cargo:lead.cargo||'',
+      data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})};
+    for(var k in utm)d[k]=utm[k];
+    for(var k2 in (extra||{}))d[k2]=extra[k2];
+    return {data:d};
+  }
+  /* cópia na planilha: cega por natureza (o Apps Script não responde preflight) */
+  function planilha(payload){if(!SHEET_ENDPOINT)return;
+    try{fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})}catch(e){}}
+  /* plataforma: só no fim, e a planilha registra se chegou lá */
+  function plataforma(payload){
+    if(!WEBHOOK_RAIOX){payload.data.status_plataforma='sem webhook';planilha(payload);return}
+    var feito=false;
+    function fecha(st){if(feito)return;feito=true;payload.data.status_plataforma=st;planilha(payload)}
+    setTimeout(function(){fecha('sem resposta')},4000);
+    fetch(WEBHOOK_BASE+WEBHOOK_RAIOX,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);fecha('ok')})
+      .catch(function(e){console.error('webhook raio-x:',e);fecha('FALHOU')});
+  }
   p1.addEventListener('submit',function(e){
     e.preventDefault();var fd=new FormData(p1);fd.forEach(function(v,k){lead[k]=String(v).trim()});
     lead.utm=location.search;lead.ts=new Date().toISOString();
-    push('raiox_lead',{alunos:lead.alunos,cargo:lead.cargo});send({tipo:'raiox_inicio',lead:lead});
+    push('raiox_lead',{alunos:lead.alunos,cargo:lead.cargo});
+    /* grava já: se a pessoa fechar a aba agora, o contato não se perde */
+    planilha(corpo('iniciou',{status_plataforma:'—'}));
     var qs=document.getElementById('qs');qs.innerHTML='';
     Q.forEach(function(q){var d=document.createElement('div');d.className='q';d.innerHTML='<p>'+q.t+'<small>'+q.s+'</small></p><div class="sn" data-k="'+q.k+'"><button type="button" data-v="1">Sim</button><button type="button" data-v="0">Não</button></div>';qs.appendChild(d)});
     qs.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var box=b.parentNode,k=box.getAttribute('data-k');ans[k]=+b.getAttribute('data-v');box.querySelectorAll('button').forEach(function(x){x.className=''});b.className=ans[k]?'s':'n';document.getElementById('verRes').disabled=Object.keys(ans).length<Q.length});
@@ -191,7 +226,14 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     var resumo='Oi! Fiz o raio-x no site da WasFit.\nEscola: '+lead.escola+' ('+lead.cidade+')\nNome: '+lead.nome+' · '+lead.cargo+' · '+lead.alunos+' alunos\nResultado: '+n+'/'+tot+' · '+t+'\nFuros: '+(Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum')+'\nEVO: '+(ans.evo?'sim':'não')+'\nQuero aprofundar em 15 min por vídeo.';
     document.getElementById('waBtn').href='https://wa.me/'+WA+'?text='+encodeURIComponent(resumo);
     document.getElementById('waBtn').addEventListener('click',function(){push('raiox_whatsapp',{score:n})});
-    push('raiox_resultado',{score:n,vazamentos:vaz,evo:ans.evo?1:0});send({tipo:'raiox_resultado',lead:lead,respostas:ans,score:n,titulo:t});
+    push('raiox_resultado',{score:n,vazamentos:vaz,evo:ans.evo?1:0});
+    /* agora sim a plataforma: a pessoa terminou e tem um resultado para
+       conversar. A planilha atualiza a mesma linha, pelo id. */
+    var furos=Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum';
+    plataforma(corpo('concluiu',{
+      score:n+'/'+tot, vazamentos:vaz, furos:furos,
+      usa_evo:ans.evo?'sim':'não', resultado:t
+    }));
     p2.hidden=true;p3.hidden=false;step(3);
   });
 })();
