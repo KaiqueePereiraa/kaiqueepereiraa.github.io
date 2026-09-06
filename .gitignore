@@ -23,3 +23,6 @@ README.internal.md
 
 # Snapshot local da antiga landing /ein (reconstruído) — não publicar
 _arquivo/
+
+# Backups locais da home v3 (comparação lado a lado) — não publicar
+*.bak

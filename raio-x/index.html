@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raio-X da escola · WasFit</title>
+<meta name="description" content="Em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula da sua escola de natação está vazando.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://wasfit.com.br/raio-x/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WasFit">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://wasfit.com.br/raio-x/">
+<meta property="og:title" content="Raio-X da escola · WasFit">
+<meta property="og:description" content="Em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula da sua escola de natação está vazando.">
+<meta property="og:image" content="https://wasfit.com.br/assets/img/unidade-positiva.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#04121B">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="/assets/img/logo-mark.png">
+<link rel="apple-touch-icon" href="/assets/img/icon-512.png">
+<script>window.dataLayer=window.dataLayer||[];</script>
+<style>
+@font-face{font-family:'Chakra Petch';font-weight:700;font-display:swap;src:url(/assets/fonts/chakra-petch-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Chakra Petch';font-weight:700;font-display:swap;src:url(/assets/fonts/chakra-petch-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+1E00-1EFF}
+@font-face{font-family:'Work Sans';font-weight:400;font-display:swap;src:url(/assets/fonts/work-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Work Sans';font-weight:400;font-display:swap;src:url(/assets/fonts/work-sans-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+1E00-1EFF}
+@font-face{font-family:'Work Sans';font-weight:600;font-display:swap;src:url(/assets/fonts/work-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Work Sans';font-weight:600;font-display:swap;src:url(/assets/fonts/work-sans-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+1E00-1EFF}
+@font-face{font-family:'JetBrains Mono';font-weight:500;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+:root{--navy:#0D1827;--navy-deep:#04121B;--surface:#0F1E30;--surface-2:#13283D;--abyss:#0A3A54;--water-2:#2F7FA3;--water-3:#1A5A7C;--teal:#15EA9E;--lime:#9EEA4E;--mint:#6BFFCF;--ink:#E4ECF4;--muted:#A9B8C8;--grad:linear-gradient(100deg,#15EA9E,#9EEA4E);--grad-ink:#06231A;--display:'Chakra Petch',Bahnschrift,'Arial Narrow',sans-serif;--text:'Work Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--text);color:var(--ink);background:linear-gradient(180deg,var(--water-3) 0,var(--abyss) 40%,var(--navy-deep) 100%) fixed;min-height:100vh;font-size:17px;line-height:1.55}
+.nav{background:rgba(4,18,27,.94);height:64px;display:flex;align-items:center}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:20px;color:#fff}
+.brand img{width:34px;height:34px}
+.nav a.back{font-size:14px;color:var(--muted);text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px;width:100%}
+main{padding:40px 0 90px}
+h1,h2{font-family:var(--display);text-transform:uppercase;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(30px,5vw,46px);color:#fff;margin-bottom:12px}
+h1 em{font-style:normal;color:var(--mint)}
+h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
+.label{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#C8FFE9;display:block;margin-bottom:10px}
+.lead{color:#EAF4F8;margin-bottom:26px}
+.steps{display:flex;gap:8px;margin-bottom:26px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.steps span{flex:1;padding:8px 0;border-top:3px solid rgba(255,255,255,.2)}
+.steps span.on{color:var(--teal);border-color:var(--teal)}
+.card{background:var(--surface);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.f{display:grid;gap:14px;margin-top:6px}
+.f label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.f input,.f select{width:100%;background:var(--surface-2);border:1px solid rgba(255,255,255,.12);color:#fff;font:inherit;padding:14px 16px;border-radius:12px;outline:0}
+.f input:focus,.f select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(21,234,158,.2)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.row2{grid-template-columns:1fr}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);text-transform:uppercase;font-size:17px;padding:16px 26px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;width:100%;margin-top:18px}
+.btn-primary{background:var(--grad);color:var(--grad-ink);box-shadow:0 8px 28px rgba(21,234,158,.28)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.fine{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.q{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;gap:16px;align-items:center;justify-content:space-between}
+.q:first-child{border-top:0}
+.q p{font-size:17px;color:#fff;max-width:440px}
+.q small{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+.sn{display:flex;gap:6px;flex:none}
+.sn button{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer}
+.sn button.s{background:var(--teal);color:var(--grad-ink);border-color:var(--teal)}
+.sn button.n{background:#FF6B6B;color:#2a0a0a;border-color:#FF6B6B}
+@media(max-width:560px){.q{flex-direction:column;align-items:flex-start}}
+/* resultado */
+.score{display:flex;align-items:center;gap:20px;margin:6px 0 20px}
+.gauge{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:34px;color:#fff;background:conic-gradient(var(--teal) calc(var(--p)*1%),rgba(255,255,255,.12) 0);position:relative;flex:none}
+.gauge::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--surface)}
+.gauge b{position:relative;z-index:1}
+.score h2{margin:0}
+.score p{color:var(--muted);font-size:15px}
+.leaks{list-style:none;margin:14px 0 6px}
+.leaks li{padding:14px 0 14px 30px;position:relative;border-top:1px solid rgba(255,255,255,.08)}
+.leaks li::before{content:"";position:absolute;left:0;top:19px;width:14px;height:14px;border-radius:50%;background:#FF6B6B}
+.leaks li.ok::before{background:var(--teal)}
+.leaks b{color:#fff;display:block}
+.leaks span{color:var(--muted);font-size:15px}
+.money{margin-top:18px;background:var(--grad);color:var(--grad-ink);border-radius:14px;padding:18px 20px;font-weight:600}
+.money strong{font-family:var(--display);font-size:24px;text-transform:uppercase;display:block}
+.money small{display:block;font-weight:400;font-size:12.5px;margin-top:6px;opacity:.8}
+[hidden]{display:none!important}
+/* ===== MASCOTE ===== */
+.wavi-fx{position:fixed;right:16px;top:74px;z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none}
+.wavi-fx a{display:block;width:110px;height:110px;text-decoration:none;filter:drop-shadow(0 0 18px rgba(21,234,158,.45));animation:float 3.2s ease-in-out infinite;pointer-events:auto}
+.wavi-fx a img{width:100%;height:100%;object-fit:contain}
+.wavi-fx .say{max-width:150px;background:#fff;color:var(--navy-deep);font-size:12.5px;line-height:1.35;padding:10px 13px;border-radius:4px 14px 14px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .3s;pointer-events:auto}
+.wavi-fx .say b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#0B8A5C;margin-bottom:2px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@media(max-width:860px){.wavi-fx{top:68px;right:6px}.wavi-fx a{width:88px;height:88px}.wavi-fx .say{display:none}}
+@media(prefers-reduced-motion:reduce){.wavi-fx a{animation:none}}
+@media(max-width:860px){.wavi-fx{display:none}}
+</style>
+</head>
+<body>
+<div class="wavi-fx" id="waviFx">
+  <a class="js-demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt=""></a>
+  <div class="say" id="waviSay"><b>Wavi</b>Responde com sinceridade. Eu não conto para ninguém.</div>
+</div>
+<header class="nav"><div class="wrap"><a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a><a class="back" href="/">← voltar ao site</a></div></header>
+<main><div class="wrap">
+  <span class="label">Raio-x da escola · grátis · 2 minutos</span>
+  <h1>Onde a matrícula da sua escola <em>está vazando?</em></h1>
+  <p class="lead">Seis perguntas de sim ou não. O resultado aparece na hora, com o que está vazando e quanto isso pode custar. Sem reunião, sem compromisso.</p>
+  <div class="steps"><span class="on" id="s1">1 · Sua escola</span><span id="s2">2 · Seis perguntas</span><span id="s3">3 · Resultado</span></div>
+
+  <!-- PASSO 1 -->
+  <form class="card" id="p1" autocomplete="on">
+    <h2>Para quem é o resultado?</h2>
+    <div class="f">
+      <div class="row2">
+        <div><label for="nome">Seu nome</label><input id="nome" name="nome" required placeholder="Ana"></div>
+        <div><label for="escola">Escola</label><input id="escola" name="escola" required placeholder="Acqua Vida Natação"></div>
+      </div>
+      <div class="row2">
+        <div><label for="whats">Seu WhatsApp</label><input id="whats" name="whats" inputmode="tel" required placeholder="(27) 9 9999-9999"></div>
+        <div><label for="cidade">Cidade / UF</label><input id="cidade" name="cidade" required placeholder="Vitória / ES"></div>
+      </div>
+      <div class="row2">
+        <div><label for="alunos">Alunos ativos</label><select id="alunos" name="alunos"><option>até 150</option><option>150 a 400</option><option>400 a 800</option><option>mais de 800</option></select></div>
+        <div><label for="cargo">Você é</label><select id="cargo" name="cargo"><option>Dono(a) / gestor(a)</option><option>Coordenador(a)</option><option>Professor(a)</option><option>Recepção</option></select></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Começar as perguntas →</button>
+    <p class="fine">Usamos os dados só para enviar o resultado e, se você pedir, marcar a conversa. Nada de lista, nada de spam.</p>
+  </form>
+
+  <!-- PASSO 2 -->
+  <div class="card" id="p2" hidden>
+    <h2>Responda com sinceridade</h2>
+    <div id="qs"></div>
+    <button class="btn btn-primary" id="verRes" disabled>Ver o meu resultado</button>
+  </div>
+
+  <!-- PASSO 3 -->
+  <div class="card" id="p3" hidden>
+    <div class="score"><div class="gauge" id="gauge" style="--p:0"><b id="gn">0</b></div><div><h2 id="rt"></h2><p id="rs"></p></div></div>
+    <ul class="leaks" id="leaks"></ul>
+    <div class="money" id="money"></div>
+    <a class="btn btn-primary" id="waBtn" href="#" target="_blank" rel="noopener">Quero aprofundar em 15 min por vídeo</a>
+    <a class="btn btn-ghost" href="/#preco">Ver o preço e a condição do EIN</a>
+    <p class="fine">Cenário ilustrativo com ticket médio de R$ 250 e contrato de 12 meses. A WasFit não garante resultados comerciais.</p>
+  </div>
+</div></main>
+
+<script>
+(function(){
+  var WA='5527998932954';
+  var LEAD_ENDPOINT='';   // [CONFIGURAR] URL que recebe o lead por POST (Google Apps Script, Formspree, n8n, webhook do WasFit). Vazio = só dataLayer + WhatsApp.
+  var Q=[
+    {k:'origem',t:'Você sabe de onde vêm os seus leads hoje?',s:'Instagram, indicação, Google, passou na porta.',leak:'Sem origem, você investe no canal errado e não sabe qual campanha trouxe matrícula.',ok:'Você sabe onde investir.'},
+    {k:'registro',t:'Todos os contatos ficam registrados em um só lugar?',s:'Não no celular de alguém, não em caderno.',leak:'Contato que fica no celular da recepção some quando a pessoa sai de férias, ou da empresa.',ok:'A base é da escola, não de uma pessoa.'},
+    {k:'followup',t:'Alguém faz follow-up de quem pediu preço e sumiu?',s:'De forma sistemática, toda semana.',leak:'Quem pergunta o preço e some é a matrícula mais barata de recuperar. Hoje ninguém volta nela.',ok:'Você recupera quem esfriou.'},
+    {k:'rematricula',t:'Existe fluxo ativo de rematrícula e de reposição?',s:'Aviso antes do vencimento, reposição oferecida sem pedir.',leak:'Aluno que vence e ninguém chama vira cancelamento silencioso. É a evasão que não aparece no relatório.',ok:'Renovação não depende de lembrar.'},
+    {k:'noite',t:'O WhatsApp da escola responde à noite e no fim de semana?',s:'Quando as famílias pesquisam.',leak:'Mensagem de domingo respondida na segunda já encontrou o pai matriculado em outra escola.',ok:'Você atende quando o pai procura.'},
+    {k:'evo',t:'A escola usa o EVO?',s:'Sistema de gestão.',leak:'Sem sistema conectado, cobrança, ausência e rematrícula ficam no manual. Não é vazamento, é limite: as duas IAs do dia 1 funcionam mesmo assim.',ok:'Todas as 10 IAs entram no primeiro mês.',neutral:true}
+  ];
+  var lead={},ans={};
+  var p1=document.getElementById('p1'),p2=document.getElementById('p2'),p3=document.getElementById('p3');
+  function step(n){['s1','s2','s3'].forEach(function(id,i){document.getElementById(id).classList.toggle('on',i<n)});window.scrollTo({top:0,behavior:'smooth'})}
+  function push(ev,extra){var d={event:ev};for(var k in (extra||{}))d[k]=extra[k];window.dataLayer.push(d)}
+  function send(payload){if(!LEAD_ENDPOINT)return;try{fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})}catch(e){}}
+  p1.addEventListener('submit',function(e){
+    e.preventDefault();var fd=new FormData(p1);fd.forEach(function(v,k){lead[k]=String(v).trim()});
+    lead.utm=location.search;lead.ts=new Date().toISOString();
+    push('raiox_lead',{alunos:lead.alunos,cargo:lead.cargo});send({tipo:'raiox_inicio',lead:lead});
+    var qs=document.getElementById('qs');qs.innerHTML='';
+    Q.forEach(function(q){var d=document.createElement('div');d.className='q';d.innerHTML='<p>'+q.t+'<small>'+q.s+'</small></p><div class="sn" data-k="'+q.k+'"><button type="button" data-v="1">Sim</button><button type="button" data-v="0">Não</button></div>';qs.appendChild(d)});
+    qs.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var box=b.parentNode,k=box.getAttribute('data-k');ans[k]=+b.getAttribute('data-v');box.querySelectorAll('button').forEach(function(x){x.className=''});b.className=ans[k]?'s':'n';document.getElementById('verRes').disabled=Object.keys(ans).length<Q.length});
+    p1.hidden=true;p2.hidden=false;step(2);
+  });
+  document.getElementById('verRes').addEventListener('click',function(){
+    var scored=Q.filter(function(q){return !q.neutral}),n=scored.filter(function(q){return ans[q.k]}).length,tot=scored.length,vaz=tot-n;
+    var t,s;
+    if(vaz>=4){t='Vazando por todo lado';s='A escola atrai, mas não segura. Quase toda matrícula perdida aqui é evitável.'}
+    else if(vaz>=2){t='Vazamento no meio do funil';s='Você atende bem quem chega, mas perde no que acontece depois: follow-up e renovação.'}
+    else if(vaz==1){t='Um furo, e é o que mais custa';s='A operação está organizada. O ponto que falta é justamente o que a IA faz sozinha.'}
+    else{t='Operação afinada';s='Pouca coisa vaza. Aqui a IA não conserta, amplifica: mais volume com a mesma equipe.'}
+    document.getElementById('gn').textContent=n+'/'+tot;document.getElementById('gauge').style.setProperty('--p',Math.round(n/tot*100));
+    document.getElementById('rt').textContent=t;document.getElementById('rs').textContent=s;
+    var ul=document.getElementById('leaks');ul.innerHTML='';
+    Q.forEach(function(q){var li=document.createElement('li');li.className=ans[q.k]?'ok':'';li.innerHTML='<b>'+q.t+'</b><span>'+(ans[q.k]?q.ok:q.leak)+'</span>';ul.appendChild(li)});
+    var m=document.getElementById('money');
+    if(vaz>0){var mat=Math.max(1,vaz);m.innerHTML='<strong>~R$ '+(mat*36000).toLocaleString('pt-BR')+' por ano em receita contratada</strong>'+(mat==1?'Se cada furo custar só 1 matrícula por mês.':'Se cada um dos '+vaz+' furos custar só 1 matrícula por mês (R$ 250 × 12 meses × 12).')+'<small>Conta ilustrativa. O raio-x por vídeo usa os números da sua escola.</small>'}
+    else{m.innerHTML='<strong>A pergunta muda</strong>Não é o que vaza. É quantas matrículas a mais a mesma equipe fecha com a IA respondendo 24/7.'}
+    var resumo='Oi! Fiz o raio-x no site da WasFit.\nEscola: '+lead.escola+' ('+lead.cidade+')\nNome: '+lead.nome+' · '+lead.cargo+' · '+lead.alunos+' alunos\nResultado: '+n+'/'+tot+' · '+t+'\nFuros: '+(Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum')+'\nEVO: '+(ans.evo?'sim':'não')+'\nQuero aprofundar em 15 min por vídeo.';
+    document.getElementById('waBtn').href='https://wa.me/'+WA+'?text='+encodeURIComponent(resumo);
+    document.getElementById('waBtn').addEventListener('click',function(){push('raiox_whatsapp',{score:n})});
+    push('raiox_resultado',{score:n,vazamentos:vaz,evo:ans.evo?1:0});send({tipo:'raiox_resultado',lead:lead,respostas:ans,score:n,titulo:t});
+    p2.hidden=true;p3.hidden=false;step(3);
+  });
+})();
+</script>
+<script>(function(){var WA_DEMO='5527998932954';/* [DADO A CONFIRMAR] mesmo número do index.html */var m='Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';var a=document.querySelector('.js-demo');a.href='https://wa.me/'+WA_DEMO+'?text='+encodeURIComponent(m);a.target='_blank';a.rel='noopener';a.addEventListener('click',function(){window.dataLayer.push({event:'clique_testar',local:'mascote_'+location.pathname})});var say=document.getElementById('waviSay');setTimeout(function(){say.style.opacity=0},6000)})();</script>
+</body>
+</html>

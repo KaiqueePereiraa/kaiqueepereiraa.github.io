@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testar a IA da WasFit</title><meta name="robots" content="noindex">
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#04121B;color:#E4ECF4;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px}a{display:inline-block;margin-top:18px;background:linear-gradient(100deg,#15EA9E,#9EEA4E);color:#06231A;font-weight:700;text-decoration:none;padding:16px 26px;border-radius:12px;font-size:18px}</style></head>
+<body><div><p>Abrindo o WhatsApp da IA…</p><a id="go" href="#">Conversar com a IA</a><p style="font-size:13px;color:#7C8CA0;margin-top:22px">Pergunte como um pai perguntaria: horário, valor, touca, experimental.</p></div>
+<script>
+var WA_DEMO='5527998932954'; // [DADO A CONFIRMAR] mesmo número do index.html
+var msg='Oi! Vim pelo QR da WasFit no EIN e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';
+var u='https://wa.me/'+WA_DEMO+'?text='+encodeURIComponent(msg);
+document.getElementById('go').href=u;
+window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'qr_testar',utm_source:new URLSearchParams(location.search).get('utm_source')||''});
+setTimeout(function(){location.replace(u)},600);
+</script></body></html>
