@@ -56,6 +56,9 @@
   --crestmask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 18' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H720 V6 Q697 16 675 6 T630 6 T585 6 T540 6 T495 6 T450 6 T405 6 T360 6 T315 6 T270 6 T225 6 T180 6 T135 6 T90 6 T45 6 T0 6 Z'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0}
+/* precisa vir com !important: várias classes daqui definem display e, sem isto,
+   o atributo hidden é ignorado (o modal apareceria sozinho no load) */
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--text);color:var(--ink);background:var(--navy-deep);line-height:1.55;font-size:17px;overflow-x:hidden}
 img{max-width:100%;display:block}
@@ -325,6 +328,32 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .ia-car-dots button{width:7px;height:7px;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer}
 .ia-car-dots button[aria-current="true"]{background:var(--teal);width:20px;border-radius:999px}
 @media(prefers-reduced-motion:reduce){.ia-car-track{scroll-behavior:auto}}
+
+/* ---- modal do "Testar a IA" ---- */
+.tm{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
+.tm-bg{position:absolute;inset:0;background:rgba(2,10,16,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.tm-box{position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--surface);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:30px;box-shadow:0 40px 100px rgba(0,0,0,.55);animation:tmin .22s ease-out}
+@keyframes tmin{from{opacity:0;transform:translateY(12px)}}
+.tm-x{position:absolute;top:12px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}
+.tm-x:hover{background:rgba(255,255,255,.08);color:#fff}
+.tm-box h2{font-size:clamp(23px,3.4vw,29px);color:#fff;margin:6px 0 10px}
+.tm-box>.tm-step>p{color:var(--muted);font-size:15.5px;line-height:1.5}
+.tm-f{margin-top:14px}
+.tm-f label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tm-f label span{text-transform:none;letter-spacing:0;opacity:.7}
+.tm-f input{width:100%;background:var(--surface-2);border:1px solid rgba(255,255,255,.14);color:#fff;font:inherit;font-size:16px;padding:13px 15px;border-radius:12px;outline:0}
+.tm-f input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(21,234,158,.2)}
+.tm-f input[aria-invalid="true"]{border-color:#FF6B6B}
+.tm-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+#tmFormEl .btn{width:100%;margin-top:18px;gap:10px}
+.tm-spin{width:16px;height:16px;border:2px solid rgba(6,35,26,.35);border-top-color:var(--grad-ink);border-radius:50%;animation:tmspin .7s linear infinite;display:block}
+@keyframes tmspin{to{transform:rotate(360deg)}}
+.tm-fine{font-size:12.5px;color:var(--muted-dark);margin-top:12px;text-align:center}
+.tm-ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:var(--grad);color:var(--grad-ink);font-family:var(--display);margin-bottom:14px}
+.tm-ico.err{background:#FF6B6B;color:#2a0a0a}
+.tm-step>.btn{width:100%;margin-top:18px}
+body.tm-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.tm-box{animation:none}.tm-spin{animation-duration:2s}}
 .ia-note{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
 .ia-note i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
 
@@ -485,7 +514,7 @@ footer .badges img{height:28px;width:auto}
         </a>
         <a class="btn btn-ghost" data-evt="clique_raiox" data-loc="hero" href="/raio-x/">Fazer o raio-x da minha escola</a>
       </div>
-      <p class="cta-note">Você conversa com a IA real de uma das nossas escolas, no WhatsApp, como se fosse um pai perguntando. Sem cadastro.</p>
+      <p class="cta-note" data-testar-nota="Deixe o seu WhatsApp e a IA te chama em segundos, do jeito que ela chamaria um pai da sua escola.">Você conversa com a IA real de uma das nossas escolas, no WhatsApp, como se fosse um pai perguntando. Sem cadastro.</p>
       <div class="stats"><span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span><span>Sem fidelidade</span></div>
       <div class="event"><img src="/assets/img/ein-simbolo.png" alt=""> Lançamento no EIN 2026 · 15–17 de outubro · São Paulo</div>
     </div>
@@ -549,7 +578,7 @@ footer .badges img{height:28px;width:auto}
       </div>
       <div>
         <a class="btn btn-primary js-wa" data-evt="clique_testar" data-loc="prova" data-msg="testar" data-num="demo" href="#">Testar a IA agora</a>
-        <p class="cta-note">Sem cadastro. É a IA real, não uma demonstração montada.</p>
+        <p class="cta-note" data-testar-nota="É a IA real, não uma demonstração montada. Ela te chama no seu WhatsApp.">Sem cadastro. É a IA real, não uma demonstração montada.</p>
       </div>
     </div>
 
@@ -853,12 +882,71 @@ footer .badges img{height:28px;width:auto}
   <a class="btn btn-ghost" data-evt="viu_planos" data-loc="sticky" href="#preco">Ver preço</a>
 </div>
 
+<!-- ============ TESTAR A IA · captura + webhook da plataforma ============
+     Só entra em cena quando WEBHOOK.testar estiver preenchido. Vazio, todos
+     os CTAs continuam abrindo o WhatsApp como antes. -->
+<div class="tm" id="tm" hidden>
+  <div class="tm-bg" data-tm-close></div>
+  <div class="tm-box" role="dialog" aria-modal="true" aria-labelledby="tmTitle">
+    <button class="tm-x" type="button" data-tm-close aria-label="Fechar">&times;</button>
+
+    <div class="tm-step" id="tmForm">
+      <span class="label">Teste ao vivo</span>
+      <h2 id="tmTitle">A IA vai te chamar <em>no WhatsApp</em></h2>
+      <p>Ela aborda você como abordaria um pai que pediu informação na sua escola. Você responde do jeito que quiser e vê até onde ela vai.</p>
+      <form id="tmFormEl" novalidate>
+        <div class="tm-f">
+          <label for="tmNome">Seu nome</label>
+          <input id="tmNome" name="nome" type="text" autocomplete="name" placeholder="Ana" required>
+        </div>
+        <div class="tm-f">
+          <label for="tmFone">Seu WhatsApp</label>
+          <input id="tmFone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999" required>
+        </div>
+        <div class="tm-f">
+          <label for="tmEscola">Sua escola <span>(opcional)</span></label>
+          <input id="tmEscola" name="escola" type="text" placeholder="Acqua Vida Natação">
+        </div>
+        <div class="tm-hp" aria-hidden="true"><label for="tmSite">Não preencha</label><input id="tmSite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <button class="btn btn-primary" type="submit" id="tmSend"><span>Quero ver a IA me chamando</span><i class="tm-spin" hidden></i></button>
+        <p class="tm-fine">Usamos o seu número só para a IA te chamar nesta demonstração. Nada de lista, nada de spam.</p>
+      </form>
+    </div>
+
+    <div class="tm-step" id="tmOk" hidden>
+      <div class="tm-ico">✓</div>
+      <h2>Pronto. Olha o WhatsApp.</h2>
+      <p>A IA está te chamando agora. Se em um minuto não chegar, confira se o número está certo ou fale com a gente direto.</p>
+      <a class="btn btn-ghost js-wa" data-evt="clique_whatsapp" data-loc="testar_ok" data-msg="geral" href="#">Falar com a WasFit</a>
+    </div>
+
+    <div class="tm-step" id="tmErr" hidden>
+      <div class="tm-ico err">!</div>
+      <h2>Não consegui registrar</h2>
+      <p>Deu instabilidade aqui. Abre a conversa direto que a gente te mostra a IA na hora.</p>
+      <a class="btn btn-primary js-wa" data-evt="clique_testar" data-loc="testar_erro" data-msg="testar" data-num="demo" href="#">Abrir no WhatsApp</a>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   /* ===== CONFIG ===== */
   var WA_COMERCIAL='5527998932954';          // WhatsApp da WasFit (raio-x, planos, geral)
   var WA_DEMO='5527998932954';               // Decisão 06/09: a demonstração atende no MESMO número do comercial. Se um dia
                                              // apontar para a IA de uma escola, trocar aqui, em /testar/, /servicos/ e /raio-x/.
+  /* ===== WEBHOOKS DA PLATAFORMA =====
+     Cada UUID é criado na plataforma WasFit e define QUAL IA responde.
+     A URL é https://v1.api.wasfit.com.br/wb/<uuid> — cole só o uuid abaixo.
+     Campo vazio = aquele CTA continua abrindo o WhatsApp, como antes.
+     Um por finalidade: dá para ter uma IA por contexto.                      */
+  var WEBHOOK={
+    testar:'bb3452eb-82dd-4954-80e4-b9db32951c45',  //  IA que faz a demonstração: aborda o visitante no WhatsApp
+    raiox:'',         // [FUTURO] lead do /raio-x/
+    planos:''         // [FUTURO] quem clica em Escola / Rede
+  };
+  var WEBHOOK_BASE='https://v1.api.wasfit.com.br/wb/';
+
   var MSGS={
     testar:'Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?',
     raiox:'Oi! Fiz o raio-x no site da WasFit e quero aprofundar em 15 min por vídeo.',
@@ -903,6 +991,85 @@ footer .badges img{height:28px;width:auto}
   }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
   /* régua: marcador contínuo */
   var rF=document.getElementById('rFill'),rD=document.getElementById('rDiver'),rIds=['topo','problema','prova','quem','preco','faq'];function rul(){if(!rF)return;var y=scrollY+innerHeight*.4,tops=rIds.map(function(id){var e=document.getElementById(id);return e.getBoundingClientRect().top+scrollY}),n=tops.length-1,p=0;if(y>=tops[n]){var end=document.documentElement.scrollHeight;p=1}else{for(var i=0;i<n;i++){if(y<tops[i+1]){p=(i+Math.max(0,(y-tops[i])/(tops[i+1]-tops[i])))/n;break}}}p=Math.max(0,Math.min(1,p));rF.style.height=(p*100)+'%';rD.style.top=(p*100)+'%'}window.addEventListener('scroll',rul,{passive:true});rul();
+  /* ===== TESTAR A IA: captura + webhook =====
+     Sem UUID configurado, nada disso liga e os CTAs seguem no WhatsApp. */
+  (function(){
+    if(!WEBHOOK.testar)return;
+    var tm=document.getElementById('tm'),form=document.getElementById('tmFormEl'),
+        elForm=document.getElementById('tmForm'),elOk=document.getElementById('tmOk'),elErr=document.getElementById('tmErr'),
+        nome=document.getElementById('tmNome'),fone=document.getElementById('tmFone'),escola=document.getElementById('tmEscola'),
+        hp=document.getElementById('tmSite'),send=document.getElementById('tmSend'),spin=send.querySelector('.tm-spin'),
+        rotulo=send.querySelector('span'),ultimo=null;
+
+    /* a promessa muda: agora a IA é que chama. A copy acompanha. */
+    document.querySelectorAll('[data-testar-nota]').forEach(function(el){el.textContent=el.getAttribute('data-testar-nota')});
+
+    function abrir(origem){
+      ultimo=document.activeElement;
+      elForm.hidden=false;elOk.hidden=true;elErr.hidden=true;
+      form.reset();fone.setAttribute('aria-invalid','false');nome.setAttribute('aria-invalid','false');
+      send.disabled=false;spin.hidden=true;rotulo.textContent='Quero ver a IA me chamando';
+      tm.hidden=false;tm.setAttribute('data-origem',origem||'');document.body.classList.add('tm-open');
+      setTimeout(function(){nome.focus()},60);
+      window.dataLayer.push(objEvento('abriu_testar',origem));
+    }
+    function fechar(){tm.hidden=true;document.body.classList.remove('tm-open');if(ultimo&&ultimo.focus)ultimo.focus()}
+    function objEvento(ev,origem){var d={event:ev,local:origem||''};for(var k in utm)d[k]=utm[k];return d}
+
+    /* todo CTA de "testar" passa a abrir o modal em vez do WhatsApp */
+    document.querySelectorAll('.js-wa[data-msg=testar]').forEach(function(a){
+      if(a.closest('#tm'))return;                     // o botão de fallback do erro continua indo pro WhatsApp
+      a.addEventListener('click',function(e){e.preventDefault();abrir(a.getAttribute('data-loc'))},true);
+    });
+    tm.querySelectorAll('[data-tm-close]').forEach(function(b){b.addEventListener('click',fechar)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!tm.hidden)fechar()});
+
+    /* máscara de telefone, no padrão brasileiro */
+    fone.addEventListener('input',function(){
+      var v=fone.value.replace(/\D/g,'');
+      if(v.length>11&&v.indexOf('55')===0)v=v.slice(2);
+      v=v.substring(0,11);
+      if(v.length>10)v=v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3');
+      else if(v.length>6)v=v.replace(/^(\d{2})(\d{4})(\d*)$/,'($1) $2-$3');
+      else if(v.length>2)v=v.replace(/^(\d{2})(\d*)$/,'($1) $2');
+      fone.value=v;
+    });
+
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(hp.value)return;                              // armadilha de robô: preencheu, é bot
+      var n=nome.value.trim().substring(0,120),
+          d=fone.value.replace(/\D/g,'');
+      nome.setAttribute('aria-invalid',n?'false':'true');
+      fone.setAttribute('aria-invalid',(d.length===10||d.length===11)?'false':'true');
+      if(!n||(d.length!==10&&d.length!==11)){(!n?nome:fone).focus();return}
+
+      send.disabled=true;spin.hidden=false;rotulo.textContent='Enviando…';
+      var payload={data:{
+        customer:{name:n,phone:'55'+d},
+        source:'site-wasfit',
+        contexto:'testar-a-ia',
+        escola:escola.value.trim().substring(0,120)||'Não informado',
+        origem_clique:document.querySelector('#tm').getAttribute('data-origem')||'',
+        data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
+      }};
+      /* sempre as 4 chaves, mesmo vazias: assim o mapeamento na plataforma
+         é estável e não depende de o visitante ter chegado com UTM */
+      ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){payload.data[k]=utm[k]||''});
+
+      fetch(WEBHOOK_BASE+WEBHOOK.testar,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
+          elForm.hidden=true;elOk.hidden=false;
+          window.dataLayer.push(objEvento('testar_lead'));})
+        .catch(function(err){console.error('webhook testar:',err);
+          elForm.hidden=true;elErr.hidden=false;
+          window.dataLayer.push(objEvento('testar_lead_erro'));});
+    });
+
+    /* /servicos/ e /raio-x/ mandam para cá com ?testar=1 */
+    if(p.get('testar'))setTimeout(function(){abrir('link_externo')},400);
+  })();
+
   /* carrossel das IAs com EVO: setas + bolinhas sobre a rolagem nativa.
      Sem JS a lista continua rolando com o dedo — as setas é que somem. */
   (function(){

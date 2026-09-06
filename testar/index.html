@@ -1,12 +1,155 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Testar a IA da WasFit</title><meta name="robots" content="noindex">
-<style>body{margin:0;font-family:system-ui,sans-serif;background:#04121B;color:#E4ECF4;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px}a{display:inline-block;margin-top:18px;background:linear-gradient(100deg,#15EA9E,#9EEA4E);color:#06231A;font-weight:700;text-decoration:none;padding:16px 26px;border-radius:12px;font-size:18px}</style></head>
-<body><div><p>Abrindo o WhatsApp da IA…</p><a id="go" href="#">Conversar com a IA</a><p style="font-size:13px;color:#7C8CA0;margin-top:22px">Pergunte como um pai perguntaria: horário, valor, touca, experimental.</p></div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testar a IA da WasFit</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#04121B">
+<link rel="icon" href="/assets/img/logo-mark.png">
+<link rel="apple-touch-icon" href="/assets/img/icon-512.png">
+<style>
+@font-face{font-family:'Chakra Petch';font-weight:700;font-display:swap;src:url(/assets/fonts/chakra-petch-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Work Sans';font-weight:400;font-display:swap;src:url(/assets/fonts/work-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Work Sans';font-weight:600;font-display:swap;src:url(/assets/fonts/work-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:500;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+:root{--navy-deep:#04121B;--surface:#0F1E30;--surface-2:#13283D;--abyss:#0A3A54;--water-3:#1A5A7C;
+ --teal:#15EA9E;--mint:#6BFFCF;--ink:#E4ECF4;--muted:#A9B8C8;--muted-dark:#7C8CA0;
+ --grad:linear-gradient(100deg,#15EA9E,#9EEA4E);--grad-ink:#06231A;
+ --display:'Chakra Petch',Bahnschrift,'Arial Narrow',sans-serif;--text:'Work Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--text);color:var(--ink);background:linear-gradient(180deg,var(--water-3) 0,var(--abyss) 45%,var(--navy-deep) 100%) fixed;min-height:100vh;font-size:17px;line-height:1.55;display:grid;place-items:center;padding:24px}
+.box{width:min(440px,100%);background:var(--surface);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:30px;box-shadow:0 34px 90px rgba(0,0,0,.45)}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:19px;color:#fff;margin-bottom:20px}
+.mark img{width:32px;height:32px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:8px}
+h1{font-family:var(--display);text-transform:uppercase;font-size:clamp(25px,6vw,32px);line-height:1.03;color:#fff;margin-bottom:10px}
+h1 em{font-style:normal;color:var(--mint)}
+p.sub{color:var(--muted);font-size:15.5px}
+.f{margin-top:14px}
+.f label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.f label span{text-transform:none;letter-spacing:0;opacity:.7}
+.f input{width:100%;background:var(--surface-2);border:1px solid rgba(255,255,255,.14);color:#fff;font:inherit;font-size:16px;padding:13px 15px;border-radius:12px;outline:0}
+.f input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(21,234,158,.2)}
+.f input[aria-invalid="true"]{border-color:#FF6B6B}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;font-family:var(--display);text-transform:uppercase;font-size:17px;padding:16px 24px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;margin-top:18px}
+.btn-primary{background:var(--grad);color:var(--grad-ink);box-shadow:0 8px 28px rgba(21,234,158,.28)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.spin{width:16px;height:16px;border:2px solid rgba(6,35,26,.35);border-top-color:var(--grad-ink);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.fine{font-size:12.5px;color:var(--muted-dark);margin-top:12px;text-align:center}
+.ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:28px;font-family:var(--display);background:var(--grad);color:var(--grad-ink);margin-bottom:14px}
+.ico.err{background:#FF6B6B;color:#2a0a0a}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){.spin{animation-duration:2s}}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="mark"><img src="/assets/img/logo-mark.png" alt=""> WasFit</div>
+
+  <div id="step-form">
+    <span class="label">Teste ao vivo</span>
+    <h1>A IA vai te chamar <em>no WhatsApp</em></h1>
+    <p class="sub">Ela aborda você como abordaria um pai que pediu informação na sua escola. Responda do jeito que quiser e veja até onde ela vai.</p>
+    <form id="form" novalidate>
+      <div class="f"><label for="nome">Seu nome</label><input id="nome" type="text" autocomplete="name" placeholder="Ana" required></div>
+      <div class="f"><label for="fone">Seu WhatsApp</label><input id="fone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999" required></div>
+      <div class="f"><label for="escola">Sua escola <span>(opcional)</span></label><input id="escola" type="text" placeholder="Acqua Vida Natação"></div>
+      <div class="hp" aria-hidden="true"><label for="site">Não preencha</label><input id="site" type="text" tabindex="-1" autocomplete="off"></div>
+      <button class="btn btn-primary" type="submit" id="send"><span id="sendTxt">Quero ver a IA me chamando</span><i class="spin" id="spin" hidden></i></button>
+      <p class="fine">Usamos o seu número só para a IA te chamar nesta demonstração.</p>
+    </form>
+  </div>
+
+  <div id="step-ok" hidden>
+    <div class="ico">✓</div>
+    <h1>Pronto. Olha o WhatsApp.</h1>
+    <p class="sub">A IA está te chamando agora. Se em um minuto não chegar, confira o número ou fale com a gente.</p>
+    <a class="btn btn-ghost" id="okWa" href="#">Falar com a WasFit</a>
+  </div>
+
+  <div id="step-err" hidden>
+    <div class="ico err">!</div>
+    <h1>Não consegui registrar</h1>
+    <p class="sub">Deu instabilidade aqui. Abre a conversa direto que a gente te mostra a IA na hora.</p>
+    <a class="btn btn-primary" id="errWa" href="#">Abrir no WhatsApp</a>
+  </div>
+</div>
+
 <script>
-var WA_DEMO='5527998932954'; // mesmo número do index.html (decisão 06/09: a demo atende no comercial)
-var msg='Oi! Vim pelo QR da WasFit no EIN e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';
-var u='https://wa.me/'+WA_DEMO+'?text='+encodeURIComponent(msg);
-document.getElementById('go').href=u;
-window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'qr_testar',utm_source:new URLSearchParams(location.search).get('utm_source')||''});
-setTimeout(function(){location.replace(u)},600);
-</script></body></html>
+(function(){
+  /* ===== CONFIG — manter igual ao index.html ===== */
+  var WEBHOOK_TESTAR='bb3452eb-82dd-4954-80e4-b9db32951c45';   // mesmo do WEBHOOK.testar no index.html
+  var WEBHOOK_BASE='https://v1.api.wasfit.com.br/wb/';
+  var WA_DEMO='5527998932954';               // fallback: sem webhook, ou se o envio falhar
+  var MSG='Oi! Vim pelo QR da WasFit no EIN e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?';
+
+  var waUrl='https://wa.me/'+WA_DEMO+'?text='+encodeURIComponent(MSG);
+  var utmSource=new URLSearchParams(location.search).get('utm_source')||'';
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'qr_testar',utm_source:utmSource});
+  document.getElementById('okWa').href=waUrl;
+  document.getElementById('errWa').href=waUrl;
+  [document.getElementById('okWa'),document.getElementById('errWa')].forEach(function(a){a.target='_blank';a.rel='noopener'});
+
+  /* Sem webhook configurado, a página volta a ser o atalho de antes:
+     manda direto para o WhatsApp, como o QR do estande sempre fez. */
+  if(!WEBHOOK_TESTAR){
+    document.getElementById('step-form').hidden=true;
+    document.getElementById('step-ok').hidden=false;
+    document.querySelector('#step-ok h1').textContent='Abrindo o WhatsApp…';
+    document.querySelector('#step-ok .sub').textContent='Se não abrir sozinho, toque no botão.';
+    document.getElementById('okWa').className='btn btn-primary';
+    document.getElementById('okWa').textContent='Conversar com a IA';
+    setTimeout(function(){location.replace(waUrl)},700);
+    return;
+  }
+
+  var form=document.getElementById('form'),nome=document.getElementById('nome'),fone=document.getElementById('fone'),
+      escola=document.getElementById('escola'),hp=document.getElementById('site'),
+      send=document.getElementById('send'),spin=document.getElementById('spin'),txt=document.getElementById('sendTxt');
+
+  fone.addEventListener('input',function(){
+    var v=fone.value.replace(/\D/g,'');
+    if(v.length>11&&v.indexOf('55')===0)v=v.slice(2);
+    v=v.substring(0,11);
+    if(v.length>10)v=v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3');
+    else if(v.length>6)v=v.replace(/^(\d{2})(\d{4})(\d*)$/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/^(\d{2})(\d*)$/,'($1) $2');
+    fone.value=v;
+  });
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(hp.value)return;
+    var n=nome.value.trim().substring(0,120),d=fone.value.replace(/\D/g,'');
+    nome.setAttribute('aria-invalid',n?'false':'true');
+    fone.setAttribute('aria-invalid',(d.length===10||d.length===11)?'false':'true');
+    if(!n||(d.length!==10&&d.length!==11)){(!n?nome:fone).focus();return}
+
+    send.disabled=true;spin.hidden=false;txt.textContent='Enviando…';
+    var payload={data:{
+      customer:{name:n,phone:'55'+d},
+      source:'qr-estande',
+      contexto:'testar-a-ia',
+      escola:escola.value.trim().substring(0,120)||'Não informado',
+      utm_source:utmSource,utm_medium:'',utm_campaign:'',utm_content:'',
+      data_hora:new Date().toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})
+    }};
+    fetch(WEBHOOK_BASE+WEBHOOK_TESTAR,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
+        document.getElementById('step-form').hidden=true;
+        document.getElementById('step-ok').hidden=false;
+        window.dataLayer.push({event:'testar_lead',local:'qr_estande',utm_source:utmSource});})
+      .catch(function(err){console.error('webhook testar:',err);
+        document.getElementById('step-form').hidden=true;
+        document.getElementById('step-err').hidden=false;
+        window.dataLayer.push({event:'testar_lead_erro',local:'qr_estande',utm_source:utmSource});});
+  });
+})();
+</script>
+</body>
+</html>
