@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
+     proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
+     inline DESTA página: se editar qualquer um deles, recalcule. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-rIMv9qR1seN2aXLDqO2AN2ZsthmEaYbn/bjPJC9BSSA='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>WasFit · a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. Treinada na Metodologia Gustavo Borges. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -349,6 +353,7 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .tm-spin{width:16px;height:16px;border:2px solid rgba(6,35,26,.35);border-top-color:var(--grad-ink);border-radius:50%;animation:tmspin .7s linear infinite;display:block}
 @keyframes tmspin{to{transform:rotate(360deg)}}
 .tm-fine{font-size:12.5px;color:var(--muted-dark);margin-top:12px;text-align:center}
+.tm-fine a{color:var(--mint)}
 .tm-ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:var(--grad);color:var(--grad-ink);font-family:var(--display);margin-bottom:14px}
 .tm-ico.err{background:#FF6B6B;color:#2a0a0a}
 .tm-step>.btn{width:100%;margin-top:18px}
@@ -488,7 +493,7 @@ footer .badges img{height:28px;width:auto}
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a>
+    <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt="" width="88" height="65"> WasFit</a>
     <nav class="nav-links" aria-label="Principal">
       <a href="#prova">Prova real</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#servicos">Serviços</a><a href="#faq">Perguntas</a>
     </nav>
@@ -516,14 +521,14 @@ footer .badges img{height:28px;width:auto}
       </div>
       <p class="cta-note" data-testar-nota="Deixe o seu WhatsApp e a IA te chama em segundos, do jeito que ela chamaria um pai da sua escola.">Você conversa com a IA real de uma das nossas escolas, no WhatsApp, como se fosse um pai perguntando. Sem cadastro.</p>
       <div class="stats"><span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span><span>Sem fidelidade</span></div>
-      <div class="event"><img src="/assets/img/ein-simbolo.png" alt=""> Lançamento no EIN 2026 · 15–17 de outubro · São Paulo</div>
+      <div class="event"><img src="/assets/img/ein-simbolo.png" alt="" width="72" height="72"> Lançamento no EIN 2026 · 15–17 de outubro · São Paulo</div>
     </div>
 
     <div class="stage">
       <!-- VÍDEO: quando existir, trocar o <img> por <video src="/assets/demo.mp4" autoplay muted loop playsinline poster="/assets/img/conversa-2.jpg"></video>. O botão .go continua. -->
       <div class="phone" id="demo">
         <div class="screen">
-          <img src="/assets/img/conversa-2.jpg" alt="Print real de uma conversa da IA com uma família nova, no WhatsApp de uma das nossas unidades" loading="eager">
+          <img src="/assets/img/conversa-2.jpg" alt="Print real de uma conversa da IA com uma família nova, no WhatsApp de uma das nossas unidades" loading="eager" fetchpriority="high" decoding="async" width="900" height="1599">
           <div class="live"><i></i> IA ao vivo · escola real</div>
           <a class="go js-wa" data-evt="clique_testar" data-loc="hero_phone" data-msg="testar" data-num="demo" href="#"><span>Conversar com a IA</span><small>Pergunte sobre touca, nível, horário ou experimental</small></a>
         </div>
@@ -560,8 +565,8 @@ footer .badges img{height:28px;width:auto}
     <h2 class="rv">Não é promessa. <em>É a IA respondendo de verdade.</em></h2>
     <p class="lead rv">Dois prints reais de conversas da IA com leads de natação, nas nossas unidades.<span class="long"> Nome e telefone borrados. O resto é como aconteceu.</span></p>
     <div class="prints">
-      <div class="rv"><div class="print-cap">Conversa 1 · qualifica e move o lead no funil</div><div class="print"><img src="/assets/img/conversa-1.jpg" alt="Print real: a IA se apresenta como consultora aquática, pergunta se é para o filho e qual o objetivo, e registra a etiqueta Em Espera" loading="lazy"></div></div>
-      <div class="rv"><div class="print-cap">Conversa 2 · primeira dúvida de uma família nova</div><div class="print"><img src="/assets/img/conversa-2.jpg" alt="Print real: mãe conta que a filha não sabe nadar e a IA responde sobre a metodologia e a piscina aquecida" loading="lazy"></div></div>
+      <div class="rv"><div class="print-cap">Conversa 1 · qualifica e move o lead no funil</div><div class="print"><img src="/assets/img/conversa-1.jpg" alt="Print real: a IA se apresenta como consultora aquática, pergunta se é para o filho e qual o objetivo, e registra a etiqueta Em Espera" loading="lazy" width="900" height="1599"></div></div>
+      <div class="rv"><div class="print-cap">Conversa 2 · primeira dúvida de uma família nova</div><div class="print"><img src="/assets/img/conversa-2.jpg" alt="Print real: mãe conta que a filha não sabe nadar e a IA responde sobre a metodologia e a piscina aquecida" loading="lazy" width="900" height="1599"></div></div>
     </div>
     <span class="prints-hint">← deslize para ver a outra conversa →</span>
     <div class="proof-stats rv">
@@ -683,13 +688,13 @@ footer .badges img{height:28px;width:auto}
       <p>São onze anos operando fitness e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Foram dois anos testando e aprimorando dentro da nossa operação antes de a gente abrir para o mercado.</p>
       
       <div class="founder rv">
-        <img src="/assets/img/felipe.jpg" alt="Felipe, fundador da WasFit" onerror="this.style.display='none'">
+        <img src="/assets/img/felipe.jpg" alt="Felipe, fundador da WasFit" width="72" height="72" data-hide-se-faltar>
         <div><b>Felipe Oliveira · fundador</b><p>11 anos operando fitness e natação no Espírito Santo. É quem atende no WhatsApp comercial, faz o raio-x por vídeo e conduz a implantação nas primeiras semanas. Não tem SDR no meio.</p></div>
       </div>
-      <div class="seal"><img src="/assets/img/mgb-credenciado.png" alt="Estabelecimento credenciado Metodologia Gustavo Borges"><small>As nossas escolas são credenciadas na Metodologia Gustavo Borges e rodam no EVO. A IA foi treinada dentro delas. Se a sua escola usa outra metodologia ou outro sistema, ela aprende o seu vocabulário na primeira semana.</small></div>
+      <div class="seal"><img src="/assets/img/mgb-credenciado.png" alt="Estabelecimento credenciado Metodologia Gustavo Borges" width="160" height="160"><small>As nossas escolas são credenciadas na Metodologia Gustavo Borges e rodam no EVO. A IA foi treinada dentro delas. Se a sua escola usa outra metodologia ou outro sistema, ela aprende o seu vocabulário na primeira semana.</small></div>
     </div>
     <div class="photo rv">
-      <img src="/assets/img/unidade-positiva.jpg" alt="Colagem de fotos de uma das nossas unidades: piscina coberta e aquecida, aula com crianças de touca, fachada e mascotes da metodologia na parede" loading="lazy">
+      <img src="/assets/img/unidade-positiva.jpg" alt="Colagem de fotos de uma das nossas unidades: piscina coberta e aquecida, aula com crianças de touca, fachada e mascotes da metodologia na parede" loading="lazy" width="1400" height="933">
       <div class="row"><div><b>11</b><span>anos de operação</span></div><div><b>4</b><span>unidades próprias</span></div><div><b>2</b><span>anos de testes da IA</span></div></div>
     </div>
   </div>
@@ -794,7 +799,7 @@ footer .badges img{height:28px;width:auto}
 <!-- ============ PREÇO · 10 m ============ -->
 <section class="preco crest" style="--crest:var(--water-3)" id="preco" data-say="Sem fidelidade. Se eu não entregar, você cancela.">
   <div class="wrap">
-    <div class="offer-bar rv"><img src="/assets/img/ein-lockup.png" alt="EIN, Encontro Internacional de Natação"><span class="label" style="margin:0;color:var(--muted)">Lançamento oficial · 15–17 de outubro · Senac Santo Amaro, SP</span></div>
+    <div class="offer-bar rv"><img src="/assets/img/ein-lockup.png" alt="EIN, Encontro Internacional de Natação" width="200" height="80"><span class="label" style="margin:0;color:var(--muted)">Lançamento oficial · 15–17 de outubro · Senac Santo Amaro, SP</span></div>
     <h2 class="rv">Trave o preço agora. <em>Ele nunca mais sobe.</em></h2>
     <p class="lead rv">As 20 primeiras escolas que entrarem até 31 de outubro não pagam implantação, têm 30 dias de garantia e preço travado enquanto forem clientes.</p>
 
@@ -862,10 +867,10 @@ footer .badges img{height:28px;width:auto}
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a>
+      <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt="" width="88" height="65"> WasFit</a>
       <p style="margin-top:10px;max-width:340px">IA de WhatsApp para escolas de natação e centros aquáticos, criada dentro de uma.</p>
-      <div class="badges"><img src="/assets/img/ein-simbolo.png" alt=""><span>Lançamento no EIN 2026</span></div>
-      <div class="badges"><img src="/assets/img/mgb-credenciado.png" alt=""><span>Treinada na Metodologia Gustavo Borges</span></div>
+      <div class="badges"><img src="/assets/img/ein-simbolo.png" alt="" width="72" height="72"><span>Lançamento no EIN 2026</span></div>
+      <div class="badges"><img src="/assets/img/mgb-credenciado.png" alt="" width="160" height="160"><span>Treinada na Metodologia Gustavo Borges</span></div>
     </div>
     <div><h4>Produto</h4><a href="#prova">Prova real</a><a href="#testar">Testar a IA</a><a href="/raio-x/">Raio-x da escola</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#servicos">Serviços</a><a href="#faq">Perguntas frequentes</a><a href="https://app.wasfit.com.br/login">Entrar na plataforma</a></div>
     <div><h4>Contato</h4><a class="js-wa" data-evt="clique_whatsapp" data-loc="footer" data-msg="geral" href="#">WhatsApp · (27) 99893-2954</a><a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a><a href="https://instagram.com/wasfit.ia" rel="noopener">Instagram</a><h4 style="margin-top:18px">Empresa</h4><a href="/privacidade/">Política de privacidade</a><a href="/termos/">Termos de uso</a></div>
@@ -874,7 +879,7 @@ footer .badges img{height:28px;width:auto}
 </footer>
 
 <div class="wavi-fx" id="waviFx">
-  <a class="js-wa" data-evt="clique_testar" data-loc="mascote" data-msg="testar" data-num="demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt=""></a>
+  <a class="js-wa" data-evt="clique_testar" data-loc="mascote" data-msg="testar" data-num="demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt="" width="320" height="226"></a>
   <div class="say" id="waviSay"><b>Wavi</b>Eu respondo o WhatsApp da sua escola. Quer me testar?</div>
 </div>
 <div class="sticky">
@@ -909,7 +914,7 @@ footer .badges img{height:28px;width:auto}
         </div>
         <div class="tm-hp" aria-hidden="true"><label for="tmSite">Não preencha</label><input id="tmSite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <button class="btn btn-primary" type="submit" id="tmSend"><span>Quero ver a IA me chamando</span><i class="tm-spin" hidden></i></button>
-        <p class="tm-fine">Usamos o seu número só para a IA te chamar nesta demonstração. Nada de lista, nada de spam.</p>
+        <p class="tm-fine">Ao enviar, você autoriza a WasFit a usar o seu número só para a IA te chamar nesta demonstração. Nada de lista, nada de spam. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
       </form>
     </div>
 
@@ -933,6 +938,11 @@ footer .badges img{height:28px;width:auto}
 
 <script>
 (function(){
+  /* foto que ainda não existe no repositório: some sozinha em vez de mostrar ícone quebrado */
+  Array.prototype.forEach.call(document.querySelectorAll('img[data-hide-se-faltar]'),function(im){
+    im.addEventListener('error',function(){im.style.display='none'});
+    if(im.complete&&!im.naturalWidth)im.style.display='none';
+  });
   /* ===== CONFIG ===== */
   var WA_COMERCIAL='5527998932954';          // WhatsApp da WasFit (raio-x, planos, geral)
   var WA_DEMO='5527998932954';               // Decisão 06/09: a demonstração atende no MESMO número do comercial. Se um dia

@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg='; connect-src 'self'; media-src 'self'; upgrade-insecure-requests">
+<!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
+     proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
+     inline DESTA página: se editar qualquer um deles, recalcule. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Termos de Uso · WasFit</title>
 <meta name="description" content="Termos de uso do serviço WasFit para escolas de natação.">

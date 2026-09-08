@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
+     proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
+     inline DESTA página: se editar qualquer um deles, recalcule. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-jHhjStGV0f8Cixx8EuJP3zIlYiYLhTNxj1Nb/xIbc9g=' 'sha256-XlXghU+xlMp/KNKjrvnIkC4hwlKeLUG/cxR0xhMvv9M='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>Raio-X da escola · WasFit</title>
 <meta name="description" content="Em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula da sua escola de natação está vazando.">
 <meta name="robots" content="index,follow">
@@ -59,6 +63,8 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
 .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .fine{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.fine a{color:var(--mint)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .q{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;gap:16px;align-items:center;justify-content:space-between}
 .q:first-child{border-top:0}
 .q p{font-size:17px;color:#fff;max-width:440px}
@@ -99,10 +105,10 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
 </head>
 <body>
 <div class="wavi-fx" id="waviFx">
-  <a class="js-demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt=""></a>
+  <a class="js-demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt="" width="320" height="226"></a>
   <div class="say" id="waviSay"><b>Wavi</b>Responde com sinceridade. Eu não conto para ninguém.</div>
 </div>
-<header class="nav"><div class="wrap"><a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a><a class="back" href="/">← voltar ao site</a></div></header>
+<header class="nav"><div class="wrap"><a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt="" width="88" height="65"> WasFit</a><a class="back" href="/">← voltar ao site</a></div></header>
 <main><div class="wrap">
   <span class="label">Raio-x da escola · grátis · 2 minutos</span>
   <h1>Onde a matrícula da sua escola <em>está vazando?</em></h1>
@@ -126,8 +132,9 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
         <div><label for="cargo">Você é</label><select id="cargo" name="cargo"><option>Dono(a) / gestor(a)</option><option>Coordenador(a)</option><option>Professor(a)</option><option>Recepção</option></select></div>
       </div>
     </div>
+    <div class="hp" aria-hidden="true"><label for="site">Não preencha</label><input id="site" name="website" type="text" tabindex="-1" autocomplete="off"></div>
     <button class="btn btn-primary" type="submit">Começar as perguntas →</button>
-    <p class="fine">Usamos os dados só para enviar o resultado e, se você pedir, marcar a conversa. Nada de lista, nada de spam.</p>
+    <p class="fine">Ao continuar, você autoriza a WasFit a usar estes dados para enviar o resultado e, se você pedir, marcar a conversa. Nada de lista, nada de spam. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
   </form>
 
   <!-- PASSO 2 -->
@@ -177,7 +184,7 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     {k:'noite',t:'O WhatsApp da escola responde à noite e no fim de semana?',s:'Quando as famílias pesquisam.',leak:'Mensagem de domingo respondida na segunda já encontrou o pai matriculado em outra escola.',ok:'Você atende quando o pai procura.'},
     {k:'evo',t:'A escola usa o EVO?',s:'Sistema de gestão.',leak:'Sem sistema conectado, cobrança, ausência e rematrícula ficam no manual. Não é vazamento, é limite: as duas IAs do dia 1 funcionam mesmo assim.',ok:'Todas as 10 IAs entram no primeiro mês.',neutral:true}
   ];
-  var lead={},ans={};
+  var lead={},ans={},spam=false;
   var p1=document.getElementById('p1'),p2=document.getElementById('p2'),p3=document.getElementById('p3');
   function step(n){['s1','s2','s3'].forEach(function(id,i){document.getElementById(id).classList.toggle('on',i<n)});window.scrollTo({top:0,behavior:'smooth'})}
   function push(ev,extra){var d={event:ev};for(var k in (extra||{}))d[k]=extra[k];window.dataLayer.push(d)}
@@ -196,10 +203,11 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     return {data:d};
   }
   /* cópia na planilha: cega por natureza (o Apps Script não responde preflight) */
-  function planilha(payload){if(!SHEET_ENDPOINT)return;
+  function planilha(payload){if(spam||!SHEET_ENDPOINT)return;
     try{fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})}catch(e){}}
   /* plataforma: só no fim, e a planilha registra se chegou lá */
   function plataforma(payload){
+    if(spam)return;
     if(!WEBHOOK_RAIOX){payload.data.status_plataforma='sem webhook';planilha(payload);return}
     var feito=false;
     function fecha(st){if(feito)return;feito=true;payload.data.status_plataforma=st;planilha(payload)}
@@ -209,7 +217,10 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
       .catch(function(e){console.error('webhook raio-x:',e);fecha('FALHOU')});
   }
   p1.addEventListener('submit',function(e){
-    e.preventDefault();var fd=new FormData(p1);fd.forEach(function(v,k){lead[k]=String(v).trim()});
+    e.preventDefault();
+    /* campo-armadilha: invisível para gente, preenchido por robô. A tela segue igual, mas nada é enviado. */
+    if(document.getElementById('site').value)spam=true;
+    var fd=new FormData(p1);fd.forEach(function(v,k){lead[k]=String(v).trim()});delete lead.website;
     lead.utm=location.search;lead.ts=new Date().toISOString();
     push('raiox_lead',{alunos:lead.alunos,cargo:lead.cargo});
     /* grava já: se a pessoa fechar a aba agora, o contato não se perde */

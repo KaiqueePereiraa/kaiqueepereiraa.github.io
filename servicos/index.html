@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
+     proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
+     inline DESTA página: se editar qualquer um deles, recalcule. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-4LL01Sydbt615Q01Ov5YqVPIjrlorEltHSjdrGbCzj4=' 'sha256-Slx3e5WMAeRqIoNVvH8oJkXN+x/v4u/ViOQdhTxSlc8='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>Serviços · WasFit</title>
 <meta name="description" content="O que a WasFit faz com a sua escola além da ferramenta: diagnóstico de operação comercial, higienização e ativação da base, campanhas, IA exclusiva e consultoria. Sem fidelidade.">
 <link rel="canonical" href="https://wasfit.com.br/servicos/">
@@ -104,11 +108,11 @@ footer a{color:var(--mint)}
 </head>
 <body>
 <div class="wavi-fx" id="waviFx">
-  <a class="js-demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt=""></a>
+  <a class="js-demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt="" width="320" height="226"></a>
   <div class="say" id="waviSay"><b>Wavi</b>Quer que a gente monte a operação com você?</div>
 </div>
 <header class="nav"><div class="wrap">
-  <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a>
+  <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt="" width="88" height="65"> WasFit</a>
   <nav class="nav-links"><a href="/#prova">Prova real</a><a href="/#ias">As IAs</a><a href="/#preco">Preço</a><a href="/#faq">Perguntas</a></nav>
   <a class="btn btn-primary" href="/raio-x/">Raio-X grátis · 2 min</a>
 </div></header>

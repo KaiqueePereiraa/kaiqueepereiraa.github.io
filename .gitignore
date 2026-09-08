@@ -26,3 +26,6 @@ _arquivo/
 
 # Backups locais da home v3 (comparação lado a lado) — não publicar
 *.bak
+
+# Config local do preview (não publicar)
+.claude/
