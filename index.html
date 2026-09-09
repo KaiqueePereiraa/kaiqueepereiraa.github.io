@@ -6,7 +6,7 @@
 <!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
      proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
      inline DESTA página: se editar qualquer um deles, recalcule. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-rIMv9qR1seN2aXLDqO2AN2ZsthmEaYbn/bjPJC9BSSA='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-fkSSuC2esrM8KBzSUnwsBYnFNx8ggeYWg7OSpSUXVpk='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>WasFit · a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. Treinada na Metodologia Gustavo Borges. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -384,6 +384,10 @@ body.tm-open{overflow:hidden}
 @media(max-width:860px){.serv-list{grid-template-columns:1fr}}
 .sv{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);text-decoration:none;transition:background .15s}
 .sv b{grid-row:1;grid-column:1}.sv span{grid-row:1;grid-column:2}.sv p{grid-column:1/3;grid-row:2}
+.sv span{opacity:.55;transition:opacity .15s,transform .15s}
+.sv:hover span{opacity:1;transform:translateX(3px)}
+.serv-cta{margin-top:26px;display:grid;gap:12px;justify-items:start}
+.serv-cta .cta-note{color:var(--muted);max-width:660px}
 .sv:hover{background:rgba(21,234,158,.05)}
 .sv b{font-family:var(--display);text-transform:uppercase;font-size:17px;color:#fff;line-height:1.1}
 .sv p{font-size:15px;color:var(--muted);line-height:1.45}
@@ -689,7 +693,7 @@ footer .badges img{height:28px;width:auto}
       
       <div class="founder rv">
         <img src="/assets/img/felipe.jpg" alt="Felipe, fundador da WasFit" width="72" height="72" data-hide-se-faltar>
-        <div><b>Felipe Oliveira · fundador</b><p>11 anos operando fitness e natação no Espírito Santo. É quem atende no WhatsApp comercial, faz o raio-x por vídeo e conduz a implantação nas primeiras semanas. Não tem SDR no meio.</p></div>
+        <div><b>Felipe Oliveira · fundador</b><p>11 anos operando fitness e natação no Espírito Santo. É quem atende no WhatsApp comercial, faz o raio-x de 30 minutos por vídeo e conduz a implantação nas primeiras semanas. Não tem SDR no meio.</p></div>
       </div>
       <div class="seal"><img src="/assets/img/mgb-credenciado.png" alt="Estabelecimento credenciado Metodologia Gustavo Borges" width="160" height="160"><small>As nossas escolas são credenciadas na Metodologia Gustavo Borges e rodam no EVO. A IA foi treinada dentro delas. Se a sua escola usa outra metodologia ou outro sistema, ela aprende o seu vocabulário na primeira semana.</small></div>
     </div>
@@ -756,7 +760,7 @@ footer .badges img{height:28px;width:auto}
         <li>Ninguém fica sem resposta, a qualquer hora</li><li>Nenhum contato se perde no meio da conversa</li><li>Os dados do aluno entram certos, no ato</li><li>Você sabe de onde veio cada contato</li><li>Você filtra quem te procurou e não fechou</li><li>Você vê em que etapa cada lead parou</li></ul></div>
       <div class="col b rv"><h3>Depende de estratégia · a gente faz com você</h3><ul>
         <li>Dar continuidade ao lead que a IA qualificou</li><li>Fazer campanha que dá resultado, e não só disparo</li><li>Definir o que oferecer para quem quer cancelar</li><li>Ler o que os seus números estão dizendo</li><li>Manter a sua base de dados confiável</li></ul>
-        <div class="foot">A segunda coluna a gente faz com você, ou te ensina a fazer, e você decide se quer. <a href="/servicos/" style="color:var(--mint)">Ver o que fazemos com você →</a></div></div>
+        <div class="foot">A segunda coluna a gente faz com você, ou te ensina a fazer, e você decide se quer. <a href="#servicos" style="color:var(--mint)">Ver o que fazemos com você →</a></div></div>
     </div>
   </div>
 </section>
@@ -766,16 +770,19 @@ footer .badges img{height:28px;width:auto}
   <div class="wrap">
     <span class="label">O que fazemos com você</span>
     <h2 class="rv">A ferramenta vem no plano. <em>A operação a gente monta junto, se você quiser.</em></h2>
-    <p class="lead rv">Serviços avulsos, sem fidelidade, para quem quer ir além do que a IA resolve sozinha.</p>
+    <p class="lead rv">Serviços avulsos, sem fidelidade, para quem quer ir além do que a IA resolve sozinha. O escopo e o valor saem da reunião de raio-x: primeiro a gente olha a sua operação, depois diz o que faz sentido fazer junto.</p>
     <div class="serv-list">
-      <a class="sv hi" href="/servicos/#diagnostico"><b>Diagnóstico de Operação Comercial</b><p>Funil, base e atendimento levantados; você recebe um relatório com as prioridades e um plano de 90 dias. Metade do valor volta como crédito na mensalidade.</p><span>a partir de R$ 3.700</span></a>
-      <a class="sv" href="/servicos/#base"><b>Higienização da base</b><p>Cadastro limpo, sem duplicado, com etiqueta certa. É o que faz campanha e rematrícula funcionarem.</p><span>ver valor →</span></a>
-      <a class="sv" href="/servicos/#ativacao"><b>Ativação da base</b><p>Campanha estruturada para quem parou, quem venceu e quem nunca fechou. Pela API oficial da Meta.</p><span>ver valor →</span></a>
-      <a class="sv" href="/servicos/#campanha"><b>Campanha avulsa</b><p>Rematrícula, férias, volta às aulas: a gente escreve, segmenta e dispara com você.</p><span>ver valor →</span></a>
-      <a class="sv" href="/servicos/#ia-exclusiva"><b>IA exclusiva</b><p>Uma IA treinada só na sua escola: tom, regras, turmas e exceções que só vocês têm.</p><span>ver valor →</span></a>
-      <a class="sv" href="/servicos/#consultoria"><b>Consultoria por hora</b><p>Ler os seus números, definir oferta de retenção, treinar a recepção de novo quando a equipe mudar.</p><span>ver valor →</span></a>
+      <a class="sv hi js-wa" data-msg="servicos" data-svc="Diagnóstico de Operação Comercial" data-evt="clique_servico" data-loc="home" href="#"><b>Diagnóstico de Operação Comercial</b><p>Funil, base e atendimento levantados; você recebe um relatório com as prioridades e um plano de 90 dias. Metade do valor volta como crédito na mensalidade.</p><span>→</span></a>
+      <a class="sv js-wa" data-msg="servicos" data-svc="Higienização da base" data-evt="clique_servico" data-loc="home" href="#"><b>Higienização da base</b><p>Cadastro limpo, sem duplicado, com etiqueta certa. É o que faz campanha e rematrícula funcionarem.</p><span>→</span></a>
+      <a class="sv js-wa" data-msg="servicos" data-svc="Ativação da base" data-evt="clique_servico" data-loc="home" href="#"><b>Ativação da base</b><p>Campanha estruturada para quem parou, quem venceu e quem nunca fechou. Pela API oficial da Meta.</p><span>→</span></a>
+      <a class="sv js-wa" data-msg="servicos" data-svc="Campanha avulsa" data-evt="clique_servico" data-loc="home" href="#"><b>Campanha avulsa</b><p>Rematrícula, férias, volta às aulas: a gente escreve, segmenta e dispara com você.</p><span>→</span></a>
+      <a class="sv js-wa" data-msg="servicos" data-svc="IA exclusiva" data-evt="clique_servico" data-loc="home" href="#"><b>IA exclusiva</b><p>Uma IA treinada só na sua escola: tom, regras, turmas e exceções que só vocês têm.</p><span>→</span></a>
+      <a class="sv js-wa" data-msg="servicos" data-svc="Consultoria por hora" data-evt="clique_servico" data-loc="home" href="#"><b>Consultoria por hora</b><p>Ler os seus números, definir oferta de retenção, treinar a recepção de novo quando a equipe mudar.</p><span>→</span></a>
     </div>
-    <p class="cta-note rv" style="margin-top:18px;color:var(--muted)">Tabela completa e condições em <a href="/servicos/" style="color:var(--mint)">wasfit.com.br/servicos</a>.</p>
+    <div class="serv-cta rv">
+      <a class="btn btn-primary js-wa" data-msg="servicos" data-evt="clique_reuniao" data-loc="servicos" href="#">Agendar reunião de raio-x · 30 min</a>
+      <p class="cta-note">Meia hora por vídeo, sem compromisso: a gente lê os seus números, mostra o que dá para fazer junto e quanto custa. Prefere começar sozinho? <a href="/raio-x/" style="color:var(--mint)">Faça o raio-x grátis em 2 minutos</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -859,7 +866,7 @@ footer .badges img{height:28px;width:auto}
   <div class="wrap">
     <span class="label" style="text-align:center">Fundo da piscina</span>
     <h2 class="rv">Ainda com dúvida se serve <em>para a sua escola?</em></h2>
-    <p class="lead rv">Raio-x em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula está vazando. Se quiser aprofundar, a gente marca 15 minutos por vídeo.</p>
+    <p class="lead rv">Raio-x em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula está vazando. Se quiser aprofundar, a gente marca a reunião de raio-x: 30 minutos por vídeo.</p>
     <a class="btn btn-primary rv" data-evt="clique_raiox" data-loc="final" href="/raio-x/">Fazer o raio-x grátis</a>
   </div>
 </section>
@@ -872,7 +879,7 @@ footer .badges img{height:28px;width:auto}
       <div class="badges"><img src="/assets/img/ein-simbolo.png" alt="" width="72" height="72"><span>Lançamento no EIN 2026</span></div>
       <div class="badges"><img src="/assets/img/mgb-credenciado.png" alt="" width="160" height="160"><span>Treinada na Metodologia Gustavo Borges</span></div>
     </div>
-    <div><h4>Produto</h4><a href="#prova">Prova real</a><a href="#testar">Testar a IA</a><a href="/raio-x/">Raio-x da escola</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#servicos">Serviços</a><a href="#faq">Perguntas frequentes</a><a href="https://app.wasfit.com.br/login">Entrar na plataforma</a></div>
+    <div><h4>Produto</h4><a href="#prova">Prova real</a><a href="#testar">Testar a IA</a><a href="/raio-x/">Raio-x da escola</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#servicos">O que fazemos com você</a><a href="#faq">Perguntas frequentes</a><a href="https://app.wasfit.com.br/login">Entrar na plataforma</a></div>
     <div><h4>Contato</h4><a class="js-wa" data-evt="clique_whatsapp" data-loc="footer" data-msg="geral" href="#">WhatsApp · (27) 99893-2954</a><a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a><a href="https://instagram.com/wasfit.ia" rel="noopener">Instagram</a><h4 style="margin-top:18px">Empresa</h4><a href="/privacidade/">Política de privacidade</a><a href="/termos/">Termos de uso</a></div>
   </div>
   <div class="copy">© 2026 WasFit · Serra/ES · wasfit.com.br</div>
@@ -946,7 +953,7 @@ footer .badges img{height:28px;width:auto}
   /* ===== CONFIG ===== */
   var WA_COMERCIAL='5527998932954';          // WhatsApp da WasFit (raio-x, planos, geral)
   var WA_DEMO='5527998932954';               // Decisão 06/09: a demonstração atende no MESMO número do comercial. Se um dia
-                                             // apontar para a IA de uma escola, trocar aqui, em /testar/, /servicos/ e /raio-x/.
+                                             // apontar para a IA de uma escola, trocar aqui, em /testar/ e em /raio-x/.
   /* ===== WEBHOOKS DA PLATAFORMA =====
      Cada UUID é criado na plataforma WasFit e define QUAL IA responde.
      A URL é https://v1.api.wasfit.com.br/wb/<uuid> — cole só o uuid abaixo.
@@ -967,7 +974,8 @@ footer .badges img{height:28px;width:auto}
 
   var MSGS={
     testar:'Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?',
-    raiox:'Oi! Fiz o raio-x no site da WasFit e quero aprofundar em 15 min por vídeo.',
+    raiox:'Oi! Fiz o raio-x no site da WasFit e quero agendar a reunião de raio-x de 30 min por vídeo.',
+    servicos:'Oi! Vim pelo site da WasFit e quero agendar a reunião de raio-x de 30 min por vídeo para falar sobre: {{s}}.',
     escola:'Oi! Quero garantir a condição de lançamento do EIN no plano Escola (R$ 597/mês).',
     rede:'Oi! Quero montar o plano Rede da WasFit. Minha rede tem {{u}} unidades.',
     geral:'Oi! Vim pelo site da WasFit e quero entender como funciona.'
@@ -978,11 +986,11 @@ footer .badges img{height:28px;width:auto}
   try{if(Object.keys(utm).length)sessionStorage.setItem('wf_utm',JSON.stringify(utm));else utm=JSON.parse(sessionStorage.getItem('wf_utm')||'{}')}catch(e){}
   var origem=utm.utm_source?' [origem: '+utm.utm_source+(utm.utm_campaign?'/'+utm.utm_campaign:'')+']':'';
   var units=2;
-  function waUrl(key,num){var m=(MSGS[key]||MSGS.geral).replace('{{u}}',units);if(key!=='testar')m+=origem;return 'https://wa.me/'+(num==='demo'?WA_DEMO:WA_COMERCIAL)+'?text='+encodeURIComponent(m)}
-  function track(el){var d={event:el.getAttribute('data-evt')||'clique',local:el.getAttribute('data-loc')||''};if(el.getAttribute('data-plano'))d.plano=el.getAttribute('data-plano');for(var k in utm)d[k]=utm[k];window.dataLayer.push(d)}
+  function waUrl(key,num,svc){var m=(MSGS[key]||MSGS.geral).replace('{{u}}',units).replace('{{s}}',svc||'os serviços');if(key!=='testar')m+=origem;return 'https://wa.me/'+(num==='demo'?WA_DEMO:WA_COMERCIAL)+'?text='+encodeURIComponent(m)}
+  function track(el){var d={event:el.getAttribute('data-evt')||'clique',local:el.getAttribute('data-loc')||''};if(el.getAttribute('data-plano'))d.plano=el.getAttribute('data-plano');if(el.getAttribute('data-svc'))d.servico=el.getAttribute('data-svc');for(var k in utm)d[k]=utm[k];window.dataLayer.push(d)}
   document.querySelectorAll('.js-wa').forEach(function(a){
     a.setAttribute('target','_blank');a.setAttribute('rel','noopener');
-    var set=function(){a.href=waUrl(a.getAttribute('data-msg'),a.getAttribute('data-num'))};set();
+    var set=function(){a.href=waUrl(a.getAttribute('data-msg'),a.getAttribute('data-num'),a.getAttribute('data-svc'))};set();
     a.addEventListener('click',function(){set();track(a)});
   });
   document.querySelectorAll('[data-evt]:not(.js-wa):not(.js-share)').forEach(function(a){a.addEventListener('click',function(){track(a)})});
@@ -1155,7 +1163,7 @@ footer .badges img{height:28px;width:auto}
           window.dataLayer.push(objEvento('testar_lead_erro'));});
     });
 
-    /* /servicos/ e /raio-x/ mandam para cá com ?testar=1 */
+    /* /raio-x/ manda para cá com ?testar=1 */
     if(p.get('testar'))setTimeout(function(){abrir('link_externo')},400);
   })();
 

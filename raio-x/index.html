@@ -6,7 +6,7 @@
 <!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
      proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
      inline DESTA página: se editar qualquer um deles, recalcule. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-jHhjStGV0f8Cixx8EuJP3zIlYiYLhTNxj1Nb/xIbc9g=' 'sha256-XlXghU+xlMp/KNKjrvnIkC4hwlKeLUG/cxR0xhMvv9M='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-1BncqiN1pMFgGfOXlrx+loDCWcpqwHar5fxj2SA0Ggg=' 'sha256-XlXghU+xlMp/KNKjrvnIkC4hwlKeLUG/cxR0xhMvv9M='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>Raio-X da escola · WasFit</title>
 <meta name="description" content="Em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula da sua escola de natação está vazando.">
 <meta name="robots" content="index,follow">
@@ -149,7 +149,7 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     <div class="score"><div class="gauge" id="gauge" style="--p:0"><b id="gn">0</b></div><div><h2 id="rt"></h2><p id="rs"></p></div></div>
     <ul class="leaks" id="leaks"></ul>
     <div class="money" id="money"></div>
-    <a class="btn btn-primary" id="waBtn" href="#" target="_blank" rel="noopener">Quero aprofundar em 15 min por vídeo</a>
+    <a class="btn btn-primary" id="waBtn" href="#" target="_blank" rel="noopener">Agendar a reunião de raio-x · 30 min</a>
     <a class="btn btn-ghost" href="/#preco">Ver o preço e a condição do EIN</a>
     <p class="fine">Cenário ilustrativo com ticket médio de R$ 250 e contrato de 12 meses. A WasFit não garante resultados comerciais.</p>
   </div>
@@ -244,7 +244,7 @@ h2{font-size:clamp(22px,3.5vw,32px);margin-bottom:10px}
     var m=document.getElementById('money');
     if(vaz>0){var mat=Math.max(1,vaz);m.innerHTML='<strong>~R$ '+(mat*36000).toLocaleString('pt-BR')+' por ano em receita contratada</strong>'+(mat==1?'Se cada furo custar só 1 matrícula por mês.':'Se cada um dos '+vaz+' furos custar só 1 matrícula por mês (R$ 250 × 12 meses × 12).')+'<small>Conta ilustrativa. O raio-x por vídeo usa os números da sua escola.</small>'}
     else{m.innerHTML='<strong>A pergunta muda</strong>Não é o que vaza. É quantas matrículas a mais a mesma equipe fecha com a IA respondendo 24/7.'}
-    var resumo='Oi! Fiz o raio-x no site da WasFit.\nEscola: '+arroba(lead.instagram)+' ('+lead.cidade+')\nNome: '+lead.nome+' · '+lead.cargo+' · '+lead.alunos+' alunos\nResultado: '+n+'/'+tot+' · '+t+'\nFuros: '+(Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum')+'\nEVO: '+(ans.evo?'sim':'não')+'\nQuero aprofundar em 15 min por vídeo.';
+    var resumo='Oi! Fiz o raio-x no site da WasFit.\nEscola: '+arroba(lead.instagram)+' ('+lead.cidade+')\nNome: '+lead.nome+' · '+lead.cargo+' · '+lead.alunos+' alunos\nResultado: '+n+'/'+tot+' · '+t+'\nFuros: '+(Q.filter(function(q){return !q.neutral&&!ans[q.k]}).map(function(q){return q.k}).join(', ')||'nenhum')+'\nEVO: '+(ans.evo?'sim':'não')+'\nQuero agendar a reunião de raio-x de 30 min por vídeo.';
     document.getElementById('waBtn').href='https://wa.me/'+WA+'?text='+encodeURIComponent(resumo);
     document.getElementById('waBtn').addEventListener('click',function(){push('raiox_whatsapp',{score:n})});
     push('raiox_resultado',{score:n,vazamentos:vaz,evo:ans.evo?1:0});

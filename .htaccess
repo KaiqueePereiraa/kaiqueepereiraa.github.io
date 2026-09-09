@@ -19,6 +19,9 @@ RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
     Require all denied
   </FilesMatch>
 </IfModule>
+# /servicos/ saiu do ar em 08/09/2026: o escopo e o valor saem da reuniao de raio-x
+RedirectMatch 301 ^/servicos/?$ /#servicos
+
 RedirectMatch 404 /\.git
 RedirectMatch 404 /_arquivo
 Options -Indexes
@@ -54,7 +57,7 @@ ServerSignature Off
   #   connect-src ... https://www.google-analytics.com https://www.googletagmanager.com
   #   img-src     ... https://www.google-analytics.com https://www.googletagmanager.com
   # Ao definir contato.formEndpoint, acrescente o host dele em connect-src.
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-4LL01Sydbt615Q01Ov5YqVPIjrlorEltHSjdrGbCzj4=' 'sha256-8SzQWASgseuFeRUD7hmIwMR7tIG97Q2i7gg5dK7fVPw=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-Slx3e5WMAeRqIoNVvH8oJkXN+x/v4u/ViOQdhTxSlc8=' 'sha256-XlXghU+xlMp/KNKjrvnIkC4hwlKeLUG/cxR0xhMvv9M=' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-jHhjStGV0f8Cixx8EuJP3zIlYiYLhTNxj1Nb/xIbc9g=' 'sha256-rIMv9qR1seN2aXLDqO2AN2ZsthmEaYbn/bjPJC9BSSA='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-fkSSuC2esrM8KBzSUnwsBYnFNx8ggeYWg7OSpSUXVpk=' 'sha256-1BncqiN1pMFgGfOXlrx+loDCWcpqwHar5fxj2SA0Ggg=' 'sha256-XlXghU+xlMp/KNKjrvnIkC4hwlKeLUG/cxR0xhMvv9M=' 'sha256-8SzQWASgseuFeRUD7hmIwMR7tIG97Q2i7gg5dK7fVPw='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests"
   # Fontes podem ser lidas de qualquer origem (não têm dado sensível)
   <FilesMatch "\.(woff2|png|jpe?g|webp|svg|ico)$">
     Header set Cross-Origin-Resource-Policy "cross-origin"
