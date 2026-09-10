@@ -6,7 +6,7 @@
 <!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
      proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
      inline DESTA página: se editar qualquer um deles, recalcule. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-E5VWDVxmFbC4yeG/2/f6K8+K56lcQ1wsL0skIMjTq8Y='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-RZ5mpuz8Z139E9+Kpx2GSKUra/MXFRzdNfOcnc3tiPU='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>WasFit · a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. Treinada na Metodologia Gustavo Borges. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -531,7 +531,7 @@ body.tm-open{overflow:hidden}
         <h3>Onde a matrícula da sua escola está vazando?</h3>
         <p>Seis perguntas de sim ou não. O resultado aparece aqui, na hora.</p>
         <div class="rx-res" id="rxRes"><div class="gauge" id="rxG" style="--p:0"><b id="rxN">–</b></div><div><b id="rxT">Responda as seis</b><span id="rxS">O resultado aparece aqui.</span></div></div>
-        <div class="rx-cta" id="rxCta" hidden><a class="btn btn-primary" data-evt="clique_cadastro" data-loc="raiox-home" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a><a class="btn btn-ghost" data-evt="clique_raiox" data-loc="raiox-home" href="/raio-x/">Receber o raio-x completo</a></div>
+        <div class="rx-cta" id="rxCta" hidden><a class="btn btn-primary" data-evt="clique_cadastro" data-loc="raiox-home" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a><a class="btn btn-ghost" id="rxWa" data-evt="clique_raiox" data-loc="raiox-home-video" href="#" target="_blank" rel="noopener">Agendar chamada de vídeo · 30 min</a></div>
       </div>
       <div class="rx-q" id="rxQ"></div>
     </div>
@@ -1016,14 +1016,14 @@ body.tm-open{overflow:hidden}
   [rT,rM].forEach(function(i){if(i)i.addEventListener('input',roi)});roi();
 
   /* raio-x na home */
-  var RXQ=[['Você sabe de onde vêm os seus leads hoje?'],['Todos os contatos ficam registrados em um só lugar?'],['Alguém faz follow-up de quem pediu preço e sumiu?'],['Existe fluxo ativo de rematrícula e reposição?'],['O WhatsApp responde à noite e no fim de semana?'],['A escola usa o EVO?']],rxA={},rxBox=document.getElementById('rxQ');
+  var RXQ=[['Você sabe de onde vêm os seus leads hoje?','não sabe de onde vêm os leads'],['Todos os contatos ficam registrados em um só lugar?','contatos espalhados, sem registro único'],['Alguém faz follow-up de quem pediu preço e sumiu?','sem follow-up de quem pediu preço e sumiu'],['Existe fluxo ativo de rematrícula e reposição?','sem fluxo de rematrícula e reposição'],['O WhatsApp responde à noite e no fim de semana?','WhatsApp sem resposta à noite e no fim de semana'],['A escola usa o EVO?']],rxA={},rxBox=document.getElementById('rxQ');
   if(rxBox){RXQ.forEach(function(q,i){var d=document.createElement('div');d.className='q';d.innerHTML='<p>'+q[0]+'</p><div class="sn" data-i="'+i+'"><button type="button" data-v="1">Sim</button><button type="button" data-v="0">Não</button></div>';rxBox.appendChild(d)});
     rxBox.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var box=b.parentNode,i=box.getAttribute('data-i');rxA[i]=+b.getAttribute('data-v');box.querySelectorAll('button').forEach(function(x){x.className=''});b.className=rxA[i]?'s':'n';rxShow()});}
   function rxShow(){var done=Object.keys(rxA).length,tot=5,n=0;for(var i=0;i<5;i++)if(rxA[i])n++;var vaz=tot-n;
     document.getElementById('rxN').textContent=(done>=5?n:'–')+'/5';document.getElementById('rxG').style.setProperty('--p',Math.round(n/tot*100));
     if(done<6){document.getElementById('rxT').textContent='Faltam '+(6-done);document.getElementById('rxS').textContent='Responda todas para ver o resultado.';return}
     var t,st;if(vaz>=4){t='Vazando por todo lado';st='Quase toda matrícula perdida aqui é evitável.'}else if(vaz>=2){t='Vazamento no meio do funil';st='Você atende bem quem chega e perde no que acontece depois.'}else if(vaz==1){t='Um furo, e é o que mais custa';st='Justamente o que a IA faz sozinha.'}else{t='Operação afinada';st='Aqui a IA amplifica: mais volume com a mesma equipe.'}
-    document.getElementById('rxT').textContent=t;document.getElementById('rxS').textContent=st+(vaz?' Cada furo pode valer ~R$ 36 mil/ano em receita contratada.':'');document.getElementById('rxCta').hidden=false;
+    document.getElementById('rxT').textContent=t;document.getElementById('rxS').textContent=st+(vaz?' Cada furo pode valer ~R$ 36 mil/ano em receita contratada.':'');document.getElementById('rxCta').hidden=false;var furos=[];for(var j=0;j<5;j++)if(!rxA[j])furos.push(RXQ[j][1]);var rxMsg='Oi! Fiz o raio-x no site da WasFit: '+n+'/5, '+t.toLowerCase()+'.\n'+(furos.length?'Onde vazou: '+furos.join('; ')+'.':'Nenhum furo nas cinco perguntas.')+'\nUsa EVO: '+(rxA[5]?'sim':'não')+'.\nQuero agendar a chamada de vídeo de 30 min para falar sobre o resultado.'+origem;document.getElementById('rxWa').href='https://wa.me/'+WA_COMERCIAL+'?text='+encodeURIComponent(rxMsg);
     window.dataLayer.push({event:'raiox_home',score:n,vazamentos:vaz,evo:rxA[5]?1:0})}
   /* scroll depth */
   var marks={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var pct=Math.round((scrollY+innerHeight)/document.documentElement.scrollHeight*100);for(var k in marks){if(!marks[k]&&pct>=k){marks[k]=1;window.dataLayer.push({event:'scroll_depth',pct:+k})}}},{passive:true});
