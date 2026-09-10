@@ -5,4 +5,4 @@ http://wasfit.com.br/*        https://wasfit.com.br/:splat    301!
 
 # /servicos/ saiu do ar em 08/09/2026 (o valor agora sai da reuniao de raio-x).
 # No GitHub Pages quem redireciona e a casca em /servicos/index.html.
-/servicos/*                   /#servicos                      301!
+/servicos/*                   /                               301!

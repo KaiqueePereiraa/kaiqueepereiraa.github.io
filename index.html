@@ -6,7 +6,7 @@
 <!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
      proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
      inline DESTA página: se editar qualquer um deles, recalcule. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-fkSSuC2esrM8KBzSUnwsBYnFNx8ggeYWg7OSpSUXVpk='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-E5VWDVxmFbC4yeG/2/f6K8+K56lcQ1wsL0skIMjTq8Y='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>WasFit · a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. Treinada na Metodologia Gustavo Borges. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -15,16 +15,8 @@
 <meta property="og:description" content="Criada por quem opera 4 unidades há 11 anos. Treinada na Metodologia Gustavo Borges. Teste a IA agora no WhatsApp. Lançamento no EIN 2026.">
 <meta property="og:image" content="https://wasfit.com.br/assets/img/unidade-positiva.jpg"><!-- trocar por og-wasfit.jpg 1200×630 quando existir -->
 <meta property="og:url" content="https://wasfit.com.br/">
-<meta property="og:site_name" content="WasFit">
-<meta property="og:locale" content="pt_BR">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WasFit · a IA de WhatsApp que fala a língua da sua escola de natação">
-<meta name="twitter:description" content="Criada por quem opera 4 unidades há 11 anos. Treinada na Metodologia Gustavo Borges. Teste a IA agora no WhatsApp.">
-<meta name="twitter:image" content="https://wasfit.com.br/assets/img/unidade-positiva.jpg">
-<meta name="theme-color" content="#04121B">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="/assets/img/logo-mark.png">
-<link rel="apple-touch-icon" href="/assets/img/icon-512.png">
+<link rel="preload" href="/assets/img/conversa-2.webp" as="image" fetchpriority="high">
 <link rel="preload" href="/assets/fonts/chakra-petch-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/work-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -57,12 +49,9 @@
   --display:'Chakra Petch',Bahnschrift,'DIN Alternate','Arial Narrow',sans-serif;
   --text:'Work Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  --crestmask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 18' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H720 V6 Q697 16 675 6 T630 6 T585 6 T540 6 T495 6 T450 6 T405 6 T360 6 T315 6 T270 6 T225 6 T180 6 T135 6 T90 6 T45 6 T0 6 Z'/%3E%3C/svg%3E");
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 16' preserveAspectRatio='none'%3E%3Cpath d='M0 8 Q45 0 90 8 T180 8 T270 8 T360 8 T450 8 T540 8 T630 8 T720 8 T810 8 T900 8 T990 8 T1080 8 T1170 8 T1260 8 T1350 8 T1440 8 V16 H0Z' fill='%235FB0CC'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0}
-/* precisa vir com !important: várias classes daqui definem display e, sem isto,
-   o atributo hidden é ignorado (o modal apareceria sozinho no load) */
-[hidden]{display:none!important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--text);color:var(--ink);background:var(--navy-deep);line-height:1.55;font-size:17px;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
@@ -92,48 +81,21 @@ section{padding:76px 0;position:relative}
   background-size:900px 700px,1100px 900px,700px 600px,1300px 1000px,800px 650px,1000px 800px}
 @media(max-width:860px){.bubbles{display:none}}
 
-/* ===== Régua de profundidade ===== */
-.ruler{position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:40;display:none;height:420px;width:150px}
-@media(min-width:1320px){.ruler{display:block}}
-.ruler .track{position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(255,255,255,.22)}
-.ruler .ticks{position:absolute;left:0;top:0;bottom:0;width:10px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.35) 0 1px,transparent 1px 21px)}
-.ruler .fill{position:absolute;left:0;top:0;width:2px;height:0;background:linear-gradient(180deg,var(--mint),var(--teal));box-shadow:0 0 10px rgba(21,234,158,.6);transition:height .25s ease-out}
-.ruler .diver{position:absolute;left:-5px;top:0;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(21,234,158,.18),0 0 14px var(--teal);transform:translateY(-50%);transition:top .25s ease-out}
-.ruler a{position:absolute;left:18px;transform:translateY(-50%);display:flex;align-items:baseline;gap:8px;text-decoration:none;white-space:nowrap}
-.ruler a::before{content:"";position:absolute;left:-18px;top:50%;width:14px;height:1.5px;background:rgba(255,255,255,.6)}
-.ruler a b{font-family:var(--display);font-size:14px;color:rgba(255,255,255,.7);font-weight:700;letter-spacing:0;transition:color .2s}
-.ruler a span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
-.ruler a.act b{color:var(--teal)}.ruler a.act span{color:#fff}
 /* ===== NAV (deck) ===== */
 .nav{position:sticky;top:0;z-index:50;background:rgba(4,18,27,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-/* marca à esquerda · opções centralizadas · ações à direita (as três colunas
-   1fr/auto/1fr garantem que o menu fique centrado na página, não entre os vizinhos) */
-.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:20px;color:#fff;justify-self:start}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:20px;color:#fff}
 .brand img{width:34px;height:auto}
-.nav-links{display:flex;gap:22px;font-size:15px;font-weight:500;justify-self:center}
-.nav-links a{text-decoration:none;color:var(--muted);white-space:nowrap}
+.nav-links{display:flex;gap:22px;margin-left:auto;font-size:15px;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--muted)}
 .nav-links a:hover{color:#fff}
-.nav-actions{display:flex;align-items:center;gap:16px;justify-self:end}
-.nav .btn{padding:11px 16px;font-size:14px;white-space:nowrap}
-.nav .login{font-size:13px;color:var(--muted-dark);text-decoration:none;white-space:nowrap}
-.nav .login:hover{color:#fff}
-/* abaixo de 1080 px o menu central não cabe junto com o CTA: some, e a régua
-   lateral + a barra fixa continuam dando a navegação */
-@media(max-width:1080px){.nav .wrap{display:flex;justify-content:space-between}.nav-links{display:none}}
-@media(max-width:520px){.nav .btn{padding:10px 12px;font-size:13px}.nav-actions{gap:10px}}
-@media(max-width:620px){.nav .btn .nav-long{display:none}}
-/* a onda é a própria borda de baixo do cabeçalho: como o header é sticky, ela
-   desce junto com a rolagem em vez de ficar para trás. O recorte deixa passar
-   o que estiver atrás, então funciona sobre qualquer seção. */
-.nav::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;pointer-events:none;background:rgba(4,18,27,.94);
-  -webkit-mask:var(--crestmask) 0 0/720px 14px repeat-x;mask:var(--crestmask) 0 0/720px 14px repeat-x;
-  animation:deckdrift 14s linear infinite}
-@keyframes deckdrift{to{-webkit-mask-position:720px 0;mask-position:720px 0}}
-@media(prefers-reduced-motion:reduce){.nav::after{animation:none}}
+.nav .btn{padding:11px 16px;font-size:14px}
+.nav .login{font-size:13px;color:var(--muted-dark);text-decoration:none}
+@media(max-width:860px){.nav-links,.nav .login{display:none}.nav .btn{margin-left:auto}}
+.deckline{height:16px;background:var(--wave) center/100% 16px no-repeat,var(--navy-deep);position:relative;z-index:2}
 
 /* ===== HERO (superfície) ===== */
-.hero{background:linear-gradient(180deg,var(--water-1) 0%,var(--water-2) 100%);padding:52px 0 44px;overflow:hidden;position:relative}
+.hero{background:linear-gradient(180deg,var(--water-1) 0%,var(--water-2) 100%);padding:52px 0 44px;overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center}
 @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px}}
 .badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;background:rgba(4,18,27,.5);color:#fff;padding:8px 14px;border-radius:999px;margin-bottom:22px}
@@ -148,19 +110,15 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .stats span+span::before{content:"·";position:absolute;left:-15px;color:var(--teal)}
 .event{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(4,18,27,.4);padding:8px 14px 8px 8px;border-radius:999px}
 .event img{height:26px;width:auto;border-radius:6px}
-.dive{display:flex;flex-direction:column;align-items:center;gap:10px;margin:34px auto 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.85;width:max-content;text-decoration:none}
-/* traço + mãozinha do arrasto, lado a lado (mesma dica da home antiga) */
-.dive-row{display:flex;align-items:center;gap:14px}
+.dive{display:flex;flex-direction:column;align-items:center;gap:6px;margin:34px auto 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.85;width:max-content;text-decoration:none}
 .dive i{width:1px;height:26px;background:#fff;display:block;animation:dive 1.6s ease-in-out infinite}
-.dive-hand{display:block;width:30px;height:auto;color:#fff;filter:drop-shadow(0 3px 8px rgba(0,0,0,.4));animation:dive-drag 1.8s ease-in-out infinite}
-@keyframes dive-drag{0%,100%{transform:translateY(-4px)}50%{transform:translateY(10px)}}
 @keyframes dive{0%{transform:scaleY(.3);transform-origin:top;opacity:.3}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.3);transform-origin:bottom;opacity:.3}}
 
 /* celular + polvo */
 .stage{position:relative;width:min(380px,100%);margin:0 auto}
 .phone{position:relative;z-index:1;width:min(340px,100%);margin:0 auto;border-radius:34px;background:#0b141a;padding:10px;box-shadow:0 30px 80px rgba(4,18,27,.6),0 0 0 1px rgba(255,255,255,.12)}
 .phone .screen{border-radius:26px;overflow:hidden;background:#111;aspect-ratio:9/16;position:relative}
-.phone .screen img,.phone .screen video{width:100%;height:100%;object-fit:cover;object-position:top}
+.phone .screen img,.phone .screen video{width:100%;height:100%!important;object-fit:cover;object-position:top}
 .phone .live{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:7px;background:rgba(4,18,27,.85);color:#fff;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px}
 .phone .live i{width:8px;height:8px;border-radius:50%;background:#FF4D4D;box-shadow:0 0 10px #FF4D4D;animation:blink 1.2s infinite}
 @keyframes blink{50%{opacity:.25}}
@@ -183,20 +141,28 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 
 .card b{display:block;font-size:19px;margin-bottom:6px;color:#fff}
 .card p{color:#DCEFF5}
-/* título em coluna própria, separado por um filete: o texto para de brigar
-   com o display em caixa alta e as duas frases ganham respiro */
-.callout{margin-top:26px;background:var(--grad);color:var(--grad-ink);border-radius:var(--radius-lg);padding:26px 30px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
-.callout strong{font-family:var(--display);text-transform:uppercase;font-size:clamp(24px,2.6vw,32px);line-height:1.02;letter-spacing:-.01em}
-.callout-body{border-left:2px solid rgba(6,35,26,.28);padding-left:28px;display:grid;gap:8px}
-.callout-body p{font-size:17px;font-weight:500;line-height:1.45;max-width:52ch}
-.callout-body b{font-weight:700}
-@media(max-width:760px){
-  .callout{grid-template-columns:1fr;gap:16px;padding:22px}
-  .callout strong{font-size:24px}
-  .callout-body{border-left:0;border-top:2px solid rgba(6,35,26,.28);padding-left:0;padding-top:16px}
-  .callout-body p{font-size:16px}
-}
+.callout{margin-top:26px;background:var(--grad);color:var(--grad-ink);border-radius:var(--radius);padding:22px 26px;font-size:18px;font-weight:600}
+.callout strong{font-family:var(--display);text-transform:uppercase;font-size:22px;margin-right:10px}
 
+/* ===== RAIO-X na home ===== */
+.rx{margin-top:36px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start;background:var(--surface);border:1.5px solid rgba(21,234,158,.4);border-radius:var(--radius-lg);padding:28px;box-shadow:0 0 0 6px rgba(21,234,158,.06)}
+@media(max-width:860px){.rx{grid-template-columns:1fr}}
+.rx h3{font-size:clamp(22px,2.8vw,28px);color:#fff;margin-bottom:8px}
+.rx-l p{color:var(--muted)}
+.rx-res{display:flex;gap:16px;align-items:center;margin-top:18px}
+.rx-res>div:last-child b{display:block;font-family:var(--display);text-transform:uppercase;font-size:18px;color:#fff}
+.rx-res>div:last-child span{font-size:14px;color:var(--muted)}
+.gauge{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:24px;color:#fff;background:conic-gradient(var(--teal) calc(var(--p)*1%),rgba(255,255,255,.12) 0);position:relative;flex:none}
+.gauge::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--surface)}
+.gauge b{position:relative;z-index:1}
+.rx-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.rx-q .q{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)}
+.rx-q .q:first-child{border-top:0;padding-top:0}
+.rx-q .q p{font-size:15px;color:#fff}
+.rx-q .sn{display:flex;gap:6px;flex:none}
+.rx-q .sn button{font:inherit;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer}
+.rx-q .sn button.s{background:var(--teal);color:var(--grad-ink);border-color:var(--teal)}
+.rx-q .sn button.n{background:#FF6B6B;color:#2a0a0a;border-color:#FF6B6B}
 /* ===== PROVA (−5 m) ===== */
 .prova{background:var(--navy-deep)}
 .prints{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
@@ -226,6 +192,38 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .where p strong{color:var(--mint);font-weight:600}
 
 
+
+/* ===== COMO COMEÇAR ===== */
+.start{background:var(--navy)}
+.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;align-items:center}
+@media(max-width:900px){.start-grid{grid-template-columns:1fr}}
+.steps3{display:grid;gap:8px}
+.st{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:18px 0;border-top:1px solid rgba(255,255,255,.1)}
+.st b{font-family:var(--display);font-size:40px;color:var(--teal);line-height:1}
+.st h3{font-size:19px;margin-bottom:6px;color:#fff}
+.st p{color:var(--muted);font-size:15.5px}
+.mock{background:#0B1622;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.35);font-size:14px}
+.mock-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mock-h i{font-style:normal;color:var(--teal)}
+.mock-f{margin-bottom:10px}
+.mock-f label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.mock-f .in{background:var(--surface-2);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:9px 11px;color:#fff}
+.mock-f .in span{float:right;color:var(--teal);font-family:var(--mono);font-size:11px}
+.mock-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mock-c{display:flex;gap:8px;margin:6px 0 12px;flex-wrap:wrap}
+.mock-c .ok{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--grad-ink);background:var(--grad);padding:6px 10px;border-radius:999px}
+.mock-btn{display:block;text-decoration:none;background:var(--grad);color:var(--grad-ink);font-family:var(--display);text-transform:uppercase;text-align:center;padding:12px;border-radius:10px;font-size:15px}
+.mock input.in{width:100%;font:inherit;font-size:14px;color:#fff;outline:0}
+.mock input.in:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(21,234,158,.18)}
+.mock-chat{margin:12px 0 10px;background:#0b141a;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.mc-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:2px}
+.mc{max-width:92%;padding:8px 11px;border-radius:12px;font-size:13px;line-height:1.4}
+.mc.in{background:#1f2c34;color:#fff;align-self:flex-start;border-bottom-left-radius:4px}
+.mc.out{background:#0f5b47;color:#fff;align-self:flex-end;border-bottom-right-radius:4px;transition:opacity .2s}
+.mc.sys{align-self:center;background:rgba(21,234,158,.1);color:var(--teal);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:5px 10px;border-radius:999px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+.chip{font:inherit;font-size:12px;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:5px 10px;cursor:pointer}
+.chip.on{background:var(--teal);color:var(--grad-ink);border-color:var(--teal)}
 /* ===== HISTÓRIA ===== */
 .hist{background:linear-gradient(180deg,var(--navy) 0,var(--surface-2) 100%)}
 .hist-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;margin-top:32px;align-items:start}
@@ -272,7 +270,11 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .roi h3{font-size:clamp(22px,3vw,30px)}
 .roi h3 em{font-style:normal;color:var(--mint)}
 .roi > div > p{color:var(--muted);margin-top:8px}
-.roi-n{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.roi-in{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
+.roi-in label{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);background:var(--surface-2);border-radius:12px;padding:8px 12px}
+.roi-in input{width:70px;font:inherit;font-family:var(--display);font-size:20px;color:#fff;background:transparent;border:0;border-bottom:2px solid var(--teal);outline:0;text-align:center}
+.roi-in span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.roi-n{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
 @media(max-width:900px){.roi-n{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.roi-n{grid-template-columns:1fr}.roi-n div{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 14px}.roi-n span{grid-column:1}.roi-n b{grid-column:2;grid-row:1/3;font-size:26px;margin:0}.roi-n small{grid-column:1}}
 .roi-n div{background:var(--surface-2);border-radius:14px;padding:16px}
@@ -303,62 +305,17 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 
 /* ===== IAs ===== */
 .ias{background:var(--navy)}
-/* ---- IAs: as duas do dia 1 em destaque, as outras oito em carrossel ---- */
-.ia-group{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-top:30px;margin-bottom:14px}
-.ia-group-note{font-size:15px;color:var(--muted);margin:-8px 0 16px}
-.ia-day1{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:760px){.ia-day1{grid-template-columns:1fr}}
-.ia-card{position:relative;background:linear-gradient(150deg,rgba(21,234,158,.12),rgba(21,234,158,.03));border:1px solid rgba(21,234,158,.35);border-radius:var(--radius-lg);padding:24px 26px}
-.ia-card .n{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;color:var(--teal)}
-.ia-card em{float:right;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--grad-ink);background:var(--grad);border-radius:999px;padding:4px 10px}
-.ia-card h3{font-size:23px;color:#fff;margin:10px 0 8px}
-.ia-card p{font-size:16px;color:#DCEFF5;line-height:1.5}
-.ia-card i{display:block;margin-top:12px;font-style:normal;font-size:15px;color:var(--mint);border-left:2px solid rgba(21,234,158,.5);padding-left:12px}
-/* carrossel: rolagem nativa com snap; as setas só empurram o scroll */
-.ia-car{position:relative;display:grid;grid-template-columns:1fr;padding:0 0 8px}
-.ia-car-track{list-style:none;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 2px 14px;margin:0;scrollbar-width:none}
-.ia-car-track::-webkit-scrollbar{display:none}
-.ia-mini{scroll-snap-align:start;flex:0 0 clamp(230px,26vw,268px);background:var(--surface);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:18px 20px}
-.ia-mini .n{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted)}
-.ia-mini h3{font-size:17px;color:#fff;margin:8px 0 6px;line-height:1.1}
-.ia-mini p{font-size:14.5px;color:var(--muted);line-height:1.45}
-/* setas e bolinhas numa linha abaixo do trilho: não cobrem o texto dos cards
-   em largura nenhuma, e continuam à mão no celular */
-.ia-car-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:6px}
-.ia-car-arrow{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px;transition:opacity .2s,border-color .2s,background .2s}
-.ia-car-arrow:hover:not([disabled]){border-color:var(--teal);background:rgba(21,234,158,.12)}
-.ia-car-arrow[disabled]{opacity:.28;cursor:default}
-.ia-car-dots{display:flex;gap:7px;justify-content:center}
-.ia-car-dots button{width:7px;height:7px;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer}
-.ia-car-dots button[aria-current="true"]{background:var(--teal);width:20px;border-radius:999px}
-@media(prefers-reduced-motion:reduce){.ia-car-track{scroll-behavior:auto}}
-
-/* ---- modal do "Testar a IA" ---- */
-.tm{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
-.tm-bg{position:absolute;inset:0;background:rgba(2,10,16,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.tm-box{position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--surface);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:30px;box-shadow:0 40px 100px rgba(0,0,0,.55);animation:tmin .22s ease-out}
-@keyframes tmin{from{opacity:0;transform:translateY(12px)}}
-.tm-x{position:absolute;top:12px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}
-.tm-x:hover{background:rgba(255,255,255,.08);color:#fff}
-.tm-box h2{font-size:clamp(23px,3.4vw,29px);color:#fff;margin:6px 0 10px}
-.tm-box>.tm-step>p{color:var(--muted);font-size:15.5px;line-height:1.5}
-.tm-f{margin-top:14px}
-.tm-f label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.tm-f label span{text-transform:none;letter-spacing:0;opacity:.7}
-.tm-f input{width:100%;background:var(--surface-2);border:1px solid rgba(255,255,255,.14);color:#fff;font:inherit;font-size:16px;padding:13px 15px;border-radius:12px;outline:0}
-.tm-f input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(21,234,158,.2)}
-.tm-f input[aria-invalid="true"]{border-color:#FF6B6B}
-.tm-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-#tmFormEl .btn{width:100%;margin-top:18px;gap:10px}
-.tm-spin{width:16px;height:16px;border:2px solid rgba(6,35,26,.35);border-top-color:var(--grad-ink);border-radius:50%;animation:tmspin .7s linear infinite;display:block}
-@keyframes tmspin{to{transform:rotate(360deg)}}
-.tm-fine{font-size:12.5px;color:var(--muted-dark);margin-top:12px;text-align:center}
-.tm-fine a{color:var(--mint)}
-.tm-ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:var(--grad);color:var(--grad-ink);font-family:var(--display);margin-bottom:14px}
-.tm-ico.err{background:#FF6B6B;color:#2a0a0a}
-.tm-step>.btn{width:100%;margin-top:18px}
-body.tm-open{overflow:hidden}
-@media(prefers-reduced-motion:reduce){.tm-box{animation:none}.tm-spin{animation-duration:2s}}
+.ia-list{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:860px){.ia-list{grid-template-columns:1fr}}
+.ia{display:grid;grid-template-columns:36px 1fr auto;gap:4px 12px;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.ia .n{grid-row:1;grid-column:1}.ia b{grid-row:1;grid-column:2}.ia em{grid-row:1;grid-column:3}.ia p{grid-column:2/4;grid-row:2}
+.ia .n{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.12em}
+.ia b{font-family:var(--display);text-transform:uppercase;font-size:17px;color:#fff;line-height:1.1}
+.ia p{font-size:15px;color:var(--muted);line-height:1.45}
+.ia p i{color:var(--mint);font-style:normal}
+.ia em{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--muted);white-space:nowrap}
+.ia.on .n,.ia.on em{color:var(--teal)}
+.ia.on{background:linear-gradient(90deg,rgba(21,234,158,.08),transparent);margin:0 -12px;padding-left:12px;padding-right:12px}
 .ia-note{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
 .ia-note i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
 
@@ -378,22 +335,12 @@ body.tm-open{overflow:hidden}
 .col.b li::before{border:2px solid var(--mint)}
 .col .foot{margin-top:14px;font-size:14px;color:var(--muted)}
 
-/* ===== SERVIÇOS ===== */
-.serv{background:var(--navy)}
-.serv-list{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;border-top:1px solid rgba(255,255,255,.1)}
-@media(max-width:860px){.serv-list{grid-template-columns:1fr}}
-.sv{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);text-decoration:none;transition:background .15s}
-.sv b{grid-row:1;grid-column:1}.sv span{grid-row:1;grid-column:2}.sv p{grid-column:1/3;grid-row:2}
-.sv span{opacity:.55;transition:opacity .15s,transform .15s}
-.sv:hover span{opacity:1;transform:translateX(3px)}
-.serv-cta{margin-top:26px;display:grid;gap:12px;justify-items:start}
-.serv-cta .cta-note{color:var(--muted);max-width:660px}
-.sv:hover{background:rgba(21,234,158,.05)}
-.sv b{font-family:var(--display);text-transform:uppercase;font-size:17px;color:#fff;line-height:1.1}
-.sv p{font-size:15px;color:var(--muted);line-height:1.45}
-.sv span{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);white-space:nowrap}
-.sv.hi{background:linear-gradient(90deg,rgba(21,234,158,.08),transparent);margin:0 -12px;padding-left:12px;padding-right:12px}
-/* ===== PROFESSOR ===== */
+/* ===== PROFESSOR (dentro de IA + equipe) ===== */
+.prof-box{margin-top:22px;background:rgba(4,18,27,.55);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:28px;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
+@media(max-width:820px){.prof-box{grid-template-columns:1fr}}
+.prof-box p{color:#DCEFF5;font-size:16px;margin-top:8px}
+.prof-box .btn{width:100%}
+
 .prof{background:linear-gradient(180deg,var(--abyss),var(--water-3))}
 .prof .box{background:rgba(4,18,27,.6);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
 @media(max-width:820px){.prof .box{grid-template-columns:1fr}}
@@ -464,7 +411,7 @@ footer .badges img{height:28px;width:auto}
 /* ===== MASCOTE ===== */
 .wavi-fx{position:fixed;right:16px;top:74px;z-index:55;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:none}
 .wavi-fx a{display:block;width:150px;height:150px;text-decoration:none;filter:drop-shadow(0 0 18px rgba(21,234,158,.45));animation:float 3.2s ease-in-out infinite;pointer-events:auto}
-.wavi-fx a img{width:100%;height:100%;object-fit:contain}
+.wavi-fx a img{width:100%;height:100%!important;object-fit:contain}
 .wavi-fx .say{max-width:150px;background:#fff;color:var(--navy-deep);font-size:12.5px;line-height:1.35;padding:10px 13px;border-radius:4px 14px 14px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .3s;pointer-events:none}
 .wavi-fx .say b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#0B8A5C;margin-bottom:2px}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
@@ -478,72 +425,94 @@ footer .badges img{height:28px;width:auto}
 /* reveal (só com JS) */
 .js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .js .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.dive i,.dive-hand,.phone .live i{animation:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.dive i,.phone .live i{animation:none}html{scroll-behavior:auto}}
+
+/* ---- modal do "Testar a IA" ---- */
+.tm{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
+.tm-bg{position:absolute;inset:0;background:rgba(2,10,16,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.tm-box{position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--surface);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:30px;box-shadow:0 40px 100px rgba(0,0,0,.55);animation:tmin .22s ease-out}
+@keyframes tmin{from{opacity:0;transform:translateY(12px)}}
+.tm-x{position:absolute;top:12px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}
+.tm-x:hover{background:rgba(255,255,255,.08);color:#fff}
+.tm-box h2{font-size:clamp(23px,3.4vw,29px);color:#fff;margin:6px 0 10px}
+.tm-box>.tm-step>p{color:var(--muted);font-size:15.5px;line-height:1.5}
+.tm-f{margin-top:14px}
+.tm-f label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tm-f label span{text-transform:none;letter-spacing:0;opacity:.7}
+.tm-f input{width:100%;background:var(--surface-2);border:1px solid rgba(255,255,255,.14);color:#fff;font:inherit;font-size:16px;padding:13px 15px;border-radius:12px;outline:0}
+.tm-f input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(21,234,158,.2)}
+.tm-f input[aria-invalid="true"]{border-color:#FF6B6B}
+.tm-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+#tmFormEl .btn{width:100%;margin-top:18px;gap:10px}
+.tm-spin{width:16px;height:16px;border:2px solid rgba(6,35,26,.35);border-top-color:var(--grad-ink);border-radius:50%;animation:tmspin .7s linear infinite;display:block}
+@keyframes tmspin{to{transform:rotate(360deg)}}
+.tm-fine{font-size:12.5px;color:var(--muted-dark);margin-top:12px;text-align:center}
+.tm-fine a{color:var(--mint)}
+.tm-ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:var(--grad);color:var(--grad-ink);font-family:var(--display);margin-bottom:14px}
+.tm-ico.err{background:#FF6B6B;color:#2a0a0a}
+.tm-step>.btn{width:100%;margin-top:18px}
+body.tm-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.tm-box{animation:none}.tm-spin{animation-duration:2s}}
 </style>
+<!-- voltaram do site anterior: preview no WhatsApp/Twitter, ícone do iPhone, cor da barra e referrer -->
+<link rel="apple-touch-icon" href="/assets/img/icon-512.png">
+<meta name="theme-color" content="#04121B">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:site_name" content="WasFit">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WasFit · a IA de WhatsApp que fala a língua da sua escola de natação">
+<meta name="twitter:description" content="Criada por quem opera 4 unidades há 11 anos. Treinada na Metodologia Gustavo Borges. Teste a IA agora no WhatsApp.">
+<meta name="twitter:image" content="https://wasfit.com.br/assets/img/unidade-positiva.jpg">
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
 <div class="bubbles" aria-hidden="true"></div>
 
-<nav class="ruler" aria-label="Profundidade">
-  <div class="track"></div><div class="ticks"></div><div class="fill" id="rFill"></div><div class="diver" id="rDiver"></div>
-  <a href="#topo" data-sec="topo" style="top:0%"><b>0 m</b><span>superfície</span></a>
-  <a href="#problema" data-sec="problema" style="top:20%"><b>2,5 m</b><span>o problema</span></a>
-  <a href="#prova" data-sec="prova" style="top:40%"><b>5 m</b><span>prova real</span></a>
-  <a href="#quem" data-sec="quem" style="top:60%"><b>7,5 m</b><span>metodologia</span></a>
-  <a href="#preco" data-sec="preco" style="top:80%"><b>10 m</b><span>preço</span></a>
-  <a href="#faq" data-sec="faq" style="top:100%"><b>12 m</b><span>perguntas</span></a>
-</nav>
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt="" width="88" height="65"> WasFit</a>
-    <nav class="nav-links" aria-label="Principal">
-      <a href="#prova">Prova real</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#servicos">Serviços</a><a href="#faq">Perguntas</a>
+    <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a>
+    <nav class="nav-links">
+      <a href="#raiox-home">Raio-x</a><a href="#prova">Prova real</a><a href="#comecar">Como começar</a><a href="#preco">Preço</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn-primary" data-evt="clique_raiox" data-loc="nav" href="/raio-x/">Raio-X grátis<span class="nav-long"> · 2 min</span></a>
-      <a class="login" href="https://app.wasfit.com.br/login">Entrar</a>
-    </div>
+    <a class="btn btn-primary" data-evt="clique_cadastro" data-loc="nav" href="https://app.wasfit.com.br/cadastro">7 dias grátis</a>
+    <a class="login" href="https://app.wasfit.com.br/login">Entrar</a>
   </div>
 </header>
+<div class="deckline" aria-hidden="true"></div>
 
 <!-- ============ HERO · 0 m ============ -->
-<section class="hero on-water" id="topo" data-say="Eu respondo o WhatsApp da sua escola. Quer me testar?">
+<section class="hero on-water" id="topo" data-say="Preencha os dados, conecte o WhatsApp e eu começo a atender.">
   <div class="wrap">
     <div>
       <div class="badge"><i></i> Nascido na borda da piscina, não numa startup</div>
       <h1>A IA de WhatsApp que fala a <em>língua da sua escola de natação</em></h1>
-      <p class="lead">Touca, nível, experimental, reposição, rematrícula. Criada por quem opera quatro unidades há onze anos, treinada na Metodologia Gustavo Borges, e no ar em 30 minutos.</p>
-      <div class="pills"><span class="pill">Touca</span><span class="pill">Nível</span><span class="pill">Experimental</span><span class="pill">Reposição</span><span class="pill">Rematrícula</span></div>
+      <p class="lead">Preencha os dados da sua escola, conecte o WhatsApp e ela começa a atender. Sem prompt, sem implantação. Já vem falando touca, nível e rematrícula, porque nasceu dentro de uma escola de natação.</p>
       <div class="cta-row">
-        <a class="btn btn-primary js-wa" data-evt="clique_testar" data-loc="hero" data-msg="testar" data-num="demo" href="#">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.2-.2-.2-.4-.3z"/></svg>
-          Testar a IA agora
-        </a>
-        <a class="btn btn-ghost" data-evt="clique_raiox" data-loc="hero" href="/raio-x/">Fazer o raio-x da minha escola</a>
+        <a class="btn btn-primary" data-evt="clique_cadastro" data-loc="hero" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a>
+        <a class="btn btn-ghost js-wa" data-evt="clique_testar" data-loc="hero" data-msg="testar" data-num="demo" href="#">Testar a IA agora</a>
       </div>
-      <p class="cta-note" data-testar-nota="Deixe o seu WhatsApp e a IA te chama em segundos, do jeito que ela chamaria um pai da sua escola.">Você conversa com a IA real de uma das nossas escolas, no WhatsApp, como se fosse um pai perguntando. Sem cadastro.</p>
-      <div class="stats"><span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span><span>Sem fidelidade</span></div>
-      <div class="event"><img src="/assets/img/ein-simbolo.png" alt="" width="72" height="72"> Lançamento no EIN 2026 · 15–17 de outubro · São Paulo</div>
+      <p class="cta-note"><b style="color:#fff">7 dias grátis, sem cartão. Depois, R$ 597/mês, sem fidelidade, com o uso da IA já incluído.</b> Leva 30 minutos para colocar no ar. Se não gostar, cancela em um clique.</p>
+      <div class="stats"><span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span><span>7 dias grátis</span></div>
+      <div class="event"><img src="/assets/img/ein-simbolo.png" alt=""> Lançamento no EIN 2026 · 15–17 de outubro · São Paulo</div>
     </div>
 
     <div class="stage">
       <!-- VÍDEO: quando existir, trocar o <img> por <video src="/assets/demo.mp4" autoplay muted loop playsinline poster="/assets/img/conversa-2.jpg"></video>. O botão .go continua. -->
       <div class="phone" id="demo">
         <div class="screen">
-          <img src="/assets/img/conversa-2.jpg" alt="Print real de uma conversa da IA com uma família nova, no WhatsApp de uma das nossas unidades" loading="eager" fetchpriority="high" decoding="async" width="900" height="1599">
+          <picture><source srcset="/assets/img/conversa-2.webp" type="image/webp"><img src="/assets/img/conversa-2.jpg" width="900" height="1599" alt="Print real de uma conversa da IA com uma família nova, no WhatsApp de uma das nossas unidades" loading="eager" fetchpriority="high"></picture>
           <div class="live"><i></i> IA ao vivo · escola real</div>
           <a class="go js-wa" data-evt="clique_testar" data-loc="hero_phone" data-msg="testar" data-num="demo" href="#"><span>Conversar com a IA</span><small>Pergunte sobre touca, nível, horário ou experimental</small></a>
         </div>
       </div>
     </div>
   </div>
-  <a class="dive" href="#problema"><span>Mergulhe</span><span class="dive-row"><i></i><svg class="dive-hand" viewBox="0 0 44 50" fill="none" aria-hidden="true"><path d="M23 48c-6.2 0-10.6-3-13.2-7.6l-4.6-8.2c-1.2-2.1 1.2-4.3 3.2-2.8L12 32V14a3 3 0 0 1 6 0v8h1V8a3 3 0 0 1 6 0v14h1V11a3 3 0 0 1 6 0v11h1v-7a3 3 0 0 1 6 0v18c0 7-5 13-13 13z" fill="currentColor"/></svg></span></a>
 </section>
 
 <!-- ============ PROBLEMA · 2,5 m ============ -->
-<section class="problema on-water crest" style="--crest:var(--water-2)" id="problema" data-say="Domingo à noite eu estou acordado. Sua recepção, não.">
+<section class="problema on-water crest" style="--crest:var(--water-2)" id="problema" data-say="Responde as seis. Eu te mostro onde está vazando.">
   <div class="wrap">
     <span class="label">O problema</span>
     <h2 class="rv">O que acontece hoje quando alguém manda mensagem para a sua escola <em>no domingo à noite?</em></h2>
@@ -552,12 +521,17 @@ footer .badges img{height:28px;width:auto}
       <div class="card rv"><div class="num"><b>02</b>terça, 10h</div><b>Alguém pergunta o preço e some no meio da conversa.</b><p>E ninguém percebe que sumiu.</p></div>
       <div class="card rv"><div class="num"><b>03</b>dia 30 do mês</div><b>No fim do mês, você não sabe</b><p>quantas pessoas procuraram a escola e não fecharam.</p></div>
     </div>
-    <div class="callout rv">
-      <strong>Dinheiro ficando<br>na mesa</strong>
-      <div class="callout-body">
-        <p>Nenhum dos três é problema de <b>esforço da sua equipe</b>.</p>
-        <p>É problema de não ter <b>quem esteja acordado às onze da noite</b> e <b>quem registre tudo</b>.</p>
+    <div class="callout rv"><strong>Dinheiro ficando na mesa.</strong> Nenhum dos três é problema de esforço da sua equipe. É problema de não ter quem esteja acordado às onze da noite e quem registre tudo.</div>
+
+    <div class="rx rv" id="raiox-home">
+      <div class="rx-l">
+        <span class="label">Raio-x da sua escola · 2 minutos</span>
+        <h3>Onde a matrícula da sua escola está vazando?</h3>
+        <p>Seis perguntas de sim ou não. O resultado aparece aqui, na hora.</p>
+        <div class="rx-res" id="rxRes"><div class="gauge" id="rxG" style="--p:0"><b id="rxN">–</b></div><div><b id="rxT">Responda as seis</b><span id="rxS">O resultado aparece aqui.</span></div></div>
+        <div class="rx-cta" id="rxCta" hidden><a class="btn btn-primary" data-evt="clique_cadastro" data-loc="raiox-home" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a><a class="btn btn-ghost" data-evt="clique_raiox" data-loc="raiox-home" href="/raio-x/">Receber o raio-x completo</a></div>
       </div>
+      <div class="rx-q" id="rxQ"></div>
     </div>
   </div>
 </section>
@@ -569,39 +543,13 @@ footer .badges img{height:28px;width:auto}
     <h2 class="rv">Não é promessa. <em>É a IA respondendo de verdade.</em></h2>
     <p class="lead rv">Dois prints reais de conversas da IA com leads de natação, nas nossas unidades.<span class="long"> Nome e telefone borrados. O resto é como aconteceu.</span></p>
     <div class="prints">
-      <div class="rv"><div class="print-cap">Conversa 1 · qualifica e move o lead no funil</div><div class="print"><img src="/assets/img/conversa-1.jpg" alt="Print real: a IA se apresenta como consultora aquática, pergunta se é para o filho e qual o objetivo, e registra a etiqueta Em Espera" loading="lazy" width="900" height="1599"></div></div>
-      <div class="rv"><div class="print-cap">Conversa 2 · primeira dúvida de uma família nova</div><div class="print"><img src="/assets/img/conversa-2.jpg" alt="Print real: mãe conta que a filha não sabe nadar e a IA responde sobre a metodologia e a piscina aquecida" loading="lazy" width="900" height="1599"></div></div>
+      <div class="rv"><div class="print-cap">Conversa 1 · qualifica e move o lead no funil</div><div class="print"><picture><source srcset="/assets/img/conversa-1.webp" type="image/webp"><img src="/assets/img/conversa-1.jpg" width="900" height="1599" alt="Print real: a IA se apresenta como consultora aquática, pergunta se é para o filho e qual o objetivo, e registra a etiqueta Em Espera" loading="lazy" decoding="async"></picture></div></div>
+      <div class="rv"><div class="print-cap">Conversa 2 · primeira dúvida de uma família nova</div><div class="print"><picture><source srcset="/assets/img/conversa-2.webp" type="image/webp"><img src="/assets/img/conversa-2.jpg" width="900" height="1599" alt="Print real: mãe conta que a filha não sabe nadar e a IA responde sobre a metodologia e a piscina aquecida" loading="lazy" decoding="async"></picture></div></div>
     </div>
     <span class="prints-hint">← deslize para ver a outra conversa →</span>
-    <div class="proof-stats rv">
-      <div><b>2</b><span>prints sem retoque no texto</span></div>
-      <div><b>MGB</b><span>vocabulário da metodologia</span></div>
-      <div><b>24/7</b><span>na conversa real</span></div>
-    </div>
-
-    <div class="live-box rv" id="testar">
-      <div>
-        <span class="label">Teste ao vivo</span>
-        <h3>Não acredite no print. <em style="font-style:normal;color:var(--mint)">Pergunte você mesmo.</em></h3>
-        <p>O botão abre o WhatsApp da IA de Atendimento e Vendas de uma das nossas escolas, em operação real. Pergunte como um pai perguntaria: horário, valor, se a criança de 4 anos pode entrar, como funciona a troca de touca. Ela responde na hora, sem ninguém da nossa equipe no meio.</p>
-      </div>
-      <div>
-        <a class="btn btn-primary js-wa" data-evt="clique_testar" data-loc="prova" data-msg="testar" data-num="demo" href="#">Testar a IA agora</a>
-        <p class="cta-note" data-testar-nota="É a IA real, não uma demonstração montada. Ela te chama no seu WhatsApp.">Sem cadastro. É a IA real, não uma demonstração montada.</p>
-      </div>
-    </div>
-
-    <div class="where rv">
-      <div class="n">
-        <div><b>2</b><span>escolas de natação</span></div>
-        <div><b>1</b><span>academia</span></div>
-        <div><b>1</b><span>cross</span></div>
-        <div><b>2 anos</b><span>testando e aprimorando</span></div>
-      </div>
-      <p>É onde a WasFit roda hoje, todos os dias, nas nossas unidades: dois anos de conversa real com pai, mãe e aluno, corrigindo a IA a cada resposta que saiu fora. <strong>Chega ao EIN pronta, não em beta.</strong></p>
-    </div>
-  </div>
+    <p class="cta-note rv" id="testar" style="margin-top:22px;color:var(--muted)">Não acredite no print: <a class="js-wa" data-evt="clique_testar" data-loc="prova" data-msg="testar" data-num="demo" href="#" style="color:var(--mint)">converse você mesmo com a IA de uma das nossas escolas</a>, em operação real. Pergunte como um pai perguntaria.</p>
 </section>
+
 
 <!-- ============ DA CONVERSA À MATRÍCULA ============ -->
 <section class="hist crest" style="--crest:var(--navy-deep)" id="historia" data-say="Responder foi só o começo. Olha o que acontece depois.">
@@ -658,27 +606,28 @@ footer .badges img{height:28px;width:auto}
               <div class="kc"><span class="av">BF</span><div><b>Bianca F.</b></div></div></div>
           </div>
         </div>
-        <p class="kan-note">A IA atende. As etiquetas organizam. A recepção abre o Kanban e sabe quem chamar e por quê. Sem planilha, sem depender da memória de alguém, sem procurar conversa perdida no WhatsApp.</p>
+        <p class="kan-note">A IA atende, a etiqueta organiza, a recepção abre o Kanban e sabe quem chamar. Sem planilha, sem depender da memória de alguém.</p>
       </div>
     </div>
-
-    <div class="tl rv">
-      <div><b>22:47</b>Ela chamou</div><div><b>22:51</b>A IA entendeu e apresentou a solução</div><div><b>22:55</b>Ela não respondeu</div><div><b>auto</b>Entrou em "Em Espera"</div><div><b>09:04</b>A equipe viu quem precisava de follow-up</div><div><b>09:08</b>Experimental agendada</div>
     </div>
 
     <div class="roi rv">
       <div>
         <span class="label">Agora faça uma conta simples</span>
         <h3>Você acredita que isso ajuda a sua equipe a fechar <em>pelo menos 1 matrícula a mais por mês?</em></h3>
-        <p>Só uma. Com ticket médio de R$ 250 e contrato de 12 meses.</p>
+        <p>Coloque o ticket da sua escola. Contrato de 12 meses.</p>
+      </div>
+      <div class="roi-in">
+        <label>Ticket médio da sua escola <input id="rTicket" inputmode="numeric" value="250" maxlength="5"><span>R$/mês</span></label>
+        <label>Matrículas a mais por mês <input id="rMat" inputmode="numeric" value="1" maxlength="2"><span>por mês</span></label>
       </div>
       <div class="roi-n">
-        <div><span>1 matrícula</span><b>R$ 3.000</b><small>R$ 250 × 12 meses, em receita contratada</small></div>
-        <div><span>1 a mais por mês, no ano</span><b>R$ 36.000</b><small>12 matrículas × R$ 3.000</small></div>
+        <div><span>1 matrícula</span><b id="r1">R$ 3.000</b><small id="r1s">R$ 250 × 12 meses, em receita contratada</small></div>
+        <div><span>No ano</span><b id="r2">R$ 36.000</b><small id="r2s">12 matrículas × R$ 3.000</small></div>
         <div><span>12 meses de WasFit</span><b>R$ 7.164</b><small>R$ 597 × 12</small></div>
-        <div class="net"><span>Sobra</span><b>R$ 28.836</b><small>de receita contratada acima do custo. E estamos falando de uma.</small></div>
+        <div class="net"><span>Sobra</span><b id="r3">R$ 28.836</b><small>de receita contratada acima do custo.</small></div>
       </div>
-      <p class="roi-fine">A WasFit foi construída para atuar em cada oportunidade que chega à sua escola, todos os dias. Quanto a sua escola está deixando escapar hoje? <a href="/raio-x/">Faça o raio-x e descubra em 2 minutos →</a><br><small>Cenário ilustrativo baseado em ticket médio de R$ 250 e contrato de 12 meses. A WasFit não garante resultados comerciais.</small></p>
+      <p class="roi-fine">A WasFit foi construída para atuar em cada oportunidade que chega à sua escola, todos os dias. Quanto a sua escola está deixando escapar hoje? <a href="/raio-x/">Faça o raio-x em 2 minutos →</a><br><small>Cenário ilustrativo baseado em ticket médio de R$ 250 e contrato de 12 meses. A WasFit não garante resultados comerciais.</small></p>
     </div>
   </div>
 </section>
@@ -688,18 +637,17 @@ footer .badges img{height:28px;width:auto}
   <div class="wrap">
     <div class="rv">
       <span class="label">Quem construiu</span>
-      <h2>Construímos para as nossas quatro unidades <em>antes de vender para a sua</em></h2>
-      <p>São onze anos operando fitness e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Foram dois anos testando e aprimorando dentro da nossa operação antes de a gente abrir para o mercado.</p>
+      <h2>Ela já vem pronta <em>porque a gente já usa</em></h2>
+      <p>São onze anos operando fitness e natação. O WasFit nasceu porque a gente precisava resolver o próprio problema: lead perdido no fim de semana, recepção afogada no sábado de matrícula, aluno que some e ninguém percebe. Foram dois anos preenchendo esses mesmos campos, testando e corrigindo a IA em duas escolas de natação, uma academia e um cross. É por isso que ela já chega pronta: você não compra uma ferramenta vazia, compra a que a gente já usa.</p>
       
       <div class="founder rv">
-        <img src="/assets/img/felipe.jpg" alt="Felipe, fundador da WasFit" width="72" height="72" data-hide-se-faltar>
-        <div><b>Felipe Oliveira · fundador</b><p>11 anos operando fitness e natação no Espírito Santo. É quem atende no WhatsApp comercial, faz o raio-x de 30 minutos por vídeo e conduz a implantação nas primeiras semanas. Não tem SDR no meio.</p></div>
+        <img src="/assets/img/felipe.jpg" alt="Felipe, fundador da WasFit" data-hide-se-faltar>
+        <div><b>Felipe Oliveira · fundador</b><p>11 anos operando fitness e natação no Espírito Santo. Se você precisar de gente, é quem está do outro lado do WhatsApp comercial. Para o dia a dia, a IA de suporte responde 24 h e a plataforma tem vídeos curtos de cada tela.</p></div>
       </div>
-      <div class="seal"><img src="/assets/img/mgb-credenciado.png" alt="Estabelecimento credenciado Metodologia Gustavo Borges" width="160" height="160"><small>As nossas escolas são credenciadas na Metodologia Gustavo Borges e rodam no EVO. A IA foi treinada dentro delas. Se a sua escola usa outra metodologia ou outro sistema, ela aprende o seu vocabulário na primeira semana.</small></div>
+      <div class="seal"><img src="/assets/img/mgb-credenciado.png" alt="Estabelecimento credenciado Metodologia Gustavo Borges"><small>As nossas escolas são credenciadas na Metodologia Gustavo Borges e rodam no EVO. A IA foi treinada dentro delas. Se a sua escola usa outra metodologia ou outro sistema, ela aprende o seu vocabulário na primeira semana.</small></div>
     </div>
     <div class="photo rv">
-      <img src="/assets/img/unidade-positiva.jpg" alt="Colagem de fotos de uma das nossas unidades: piscina coberta e aquecida, aula com crianças de touca, fachada e mascotes da metodologia na parede" loading="lazy" width="1400" height="933">
-      <div class="row"><div><b>11</b><span>anos de operação</span></div><div><b>4</b><span>unidades próprias</span></div><div><b>2</b><span>anos de testes da IA</span></div></div>
+      <picture><source srcset="/assets/img/unidade-positiva.webp" type="image/webp"><img src="/assets/img/unidade-positiva.jpg" alt="Colagem de fotos de uma das nossas unidades: piscina coberta e aquecida, aula com crianças de touca, fachada e mascotes da metodologia na parede" loading="lazy" decoding="async"></picture>
     </div>
   </div>
 </section>
@@ -710,116 +658,98 @@ footer .badges img{height:28px;width:auto}
     <span class="label">As IAs</span>
     <h2 class="rv">Uma IA especialista <em>para cada momento do aluno</em></h2>
     <p class="lead rv">São 10 IAs, uma para cada etapa da jornada, todas no plano.<span class="long"> Duas ligam no primeiro dia; as outras oito entram quando você conecta o EVO.</span></p>
-    <p class="ia-group rv">No primeiro dia, com EVO ou sem</p>
-    <div class="ia-day1 rv">
-      <article class="ia-card">
-        <span class="n">01</span><em>dia 1</em>
-        <h3>Atendimento</h3>
-        <p>Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola.</p>
-        <i>"A turma do nível 2 tem vaga às 17h?"</i>
-      </article>
-      <article class="ia-card">
-        <span class="n">02</span><em>dia 1</em>
-        <h3>Vendas</h3>
-        <p>Qualifica, apresenta os planos e agenda a experimental no horário que tem vaga.</p>
-        <i>"Quinta às 18h, posso reservar?"</i>
-      </article>
+    <div class="ia-list">
+      <div class="ia on"><span class="n">01</span><b>Atendimento</b><p>Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola. <i>"A turma do nível 2 tem vaga às 17h?"</i></p><em>dia 1</em></div>
+      <div class="ia on"><span class="n">02</span><b>Vendas</b><p>Qualifica, apresenta os planos e agenda a experimental no horário que tem vaga. <i>"Quinta às 18h, posso reservar?"</i></p><em>dia 1</em></div>
+      <div class="ia"><span class="n">03</span><b>Cobrança</b><p>Cobra quem está em atraso, com o tom certo, insistindo o quanto for preciso.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">04</span><b>Cancelamento</b><p>Avisa o cliente da pendência e dos próximos passos quando o contrato cai.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">05</span><b>Vencimento</b><p>Contrato encerrou? Já chama para renovar, antes do silêncio virar perda.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">06</span><b>Oportunidade</b><p>Entrou no EVO, o contato já começa. Sem esperar alguém puxar.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">07</span><b>Rematrícula</b><p>Boas-vindas para quem fechou ou rematriculou.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">08</span><b>Sem presença</b><p>Percebe quem sumiu por 7 dias e chama antes de virar desistência.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">09</span><b>Aniversário ativo</b><p>Parabeniza o aluno na data, sem ninguém precisar lembrar.</p><em>com EVO</em></div>
+      <div class="ia"><span class="n">10</span><b>Aniversário inativo</b><p>Lembra do aluno que saiu, mantendo a porta aberta.</p><em>com EVO</em></div>
     </div>
-
-    <p class="ia-group rv" style="margin-top:34px">Depois de conectar o seu EVO</p>
-    <p class="ia-group-note rv">Estas 8 IAs entram em ação assim que você conecta o EVO.</p>
-    <div class="ia-car rv" data-car>
-      <ul class="ia-car-track" data-car-track>
-        <li class="ia-mini"><span class="n">03</span><h3>Cobrança</h3><p>Cobra quem está em atraso, com o tom certo, insistindo o quanto for preciso.</p></li>
-        <li class="ia-mini"><span class="n">04</span><h3>Cancelamento</h3><p>Avisa o cliente da pendência e dos próximos passos quando o contrato cai.</p></li>
-        <li class="ia-mini"><span class="n">05</span><h3>Vencimento</h3><p>Contrato encerrou? Já chama para renovar, antes do silêncio virar perda.</p></li>
-        <li class="ia-mini"><span class="n">06</span><h3>Oportunidade</h3><p>Entrou no EVO, o contato já começa. Sem esperar alguém puxar.</p></li>
-        <li class="ia-mini"><span class="n">07</span><h3>Rematrícula</h3><p>Boas-vindas para quem fechou ou rematriculou.</p></li>
-        <li class="ia-mini"><span class="n">08</span><h3>Sem presença</h3><p>Percebe quem sumiu por 7 dias e chama antes de virar desistência.</p></li>
-        <li class="ia-mini"><span class="n">09</span><h3>Aniversário ativo</h3><p>Parabeniza o aluno na data, sem ninguém precisar lembrar.</p></li>
-        <li class="ia-mini"><span class="n">10</span><h3>Aniversário inativo</h3><p>Lembra do aluno que saiu, mantendo a porta aberta.</p></li>
-      </ul>
-      <div class="ia-car-nav">
-        <button class="ia-car-arrow" type="button" data-car-prev aria-label="Ver a IA anterior">&lsaquo;</button>
-        <div class="ia-car-dots" data-car-dots></div>
-        <button class="ia-car-arrow" type="button" data-car-next aria-label="Ver a próxima IA">&rsaquo;</button>
-      </div>
-    </div>
-    <p class="cta-note rv" style="margin-top:14px;color:var(--muted)">Não usa EVO? As duas do primeiro dia, mais o Kanban, a origem de cada contato e a comunicação em escala, já resolvem os três furos mais caros: resposta fora do horário, follow-up e registro. As outras oito ficam prontas para o dia em que você conectar.</p>
+    <p class="cta-note rv" style="margin-top:14px;color:var(--muted)">Não usa EVO? As duas do primeiro dia já cobrem resposta fora do horário, follow-up e registro. As outras oito esperam a conexão.</p>
   </div>
 </section>
 
-<!-- ============ RESOLVE ============ -->
-<section class="resolve crest" style="--crest:var(--navy)" id="resolve" data-say="O que eu não resolvo sozinho, a gente faz junto.">
+<!-- ============ IA + EQUIPE ============ -->
+<section class="resolve crest" style="--crest:var(--navy)" id="resolve" data-say="Eu tiro o repetitivo. Fechar continua sendo com a sua equipe.">
   <div class="wrap">
-    <span class="label">Sem promessa vazia</span>
-    <h2 class="rv">O que ela resolve sozinha, <em>e o que depende de estratégia</em></h2>
-    <p class="lead rv">Ferramenta nenhuma conserta operação.<span class="long"> Esta é a parte que quase ninguém escreve no site.</span></p>
+    <span class="label">IA + equipe</span>
+    <h2 class="rv">A IA cuida do repetitivo. <em>A sua equipe cuida de gente.</em></h2>
+    <p class="lead rv">Ferramenta nenhuma conserta operação. A IA responde, qualifica, registra e cobra; acolher, conduzir e fechar continua sendo da recepção, agora com o lead pronto na tela.</p>
     <div class="cols">
-      <div class="col a rv"><h3>Resolve sozinha · incluso no plano</h3><ul>
-        <li>Ninguém fica sem resposta, a qualquer hora</li><li>Nenhum contato se perde no meio da conversa</li><li>Os dados do aluno entram certos, no ato</li><li>Você sabe de onde veio cada contato</li><li>Você filtra quem te procurou e não fechou</li><li>Você vê em que etapa cada lead parou</li></ul></div>
-      <div class="col b rv"><h3>Depende de estratégia · a gente faz com você</h3><ul>
-        <li>Dar continuidade ao lead que a IA qualificou</li><li>Fazer campanha que dá resultado, e não só disparo</li><li>Definir o que oferecer para quem quer cancelar</li><li>Ler o que os seus números estão dizendo</li><li>Manter a sua base de dados confiável</li></ul>
-        <div class="foot">A segunda coluna a gente faz com você, ou te ensina a fazer, e você decide se quer. <a href="#servicos" style="color:var(--mint)">Ver o que fazemos com você →</a></div></div>
+      <div class="col a rv"><h3>A IA faz sozinha</h3><ul>
+        <li>Responde a qualquer hora, no vocabulário da escola</li><li>Qualifica e agenda a experimental</li><li>Registra origem, etapa e etiqueta de cada contato</li><li>Cobra, avisa vencimento e percebe quem sumiu</li></ul></div>
+      <div class="col b rv"><h3>Continua com a sua equipe</h3><ul>
+        <li>Acolher a família na experimental</li><li>Retomar o lead que a IA marcou como "Em Espera"</li><li>Decidir o que oferecer para quem quer cancelar</li><li>Ler os números e ajustar a operação</li></ul></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ SERVIÇOS ============ -->
-<section class="serv crest" style="--crest:var(--surface-2)" id="servicos" data-say="Quer que a gente monte a operação com você?">
-  <div class="wrap">
-    <span class="label">O que fazemos com você</span>
-    <h2 class="rv">A ferramenta vem no plano. <em>A operação a gente monta junto, se você quiser.</em></h2>
-    <p class="lead rv">Serviços avulsos, sem fidelidade, para quem quer ir além do que a IA resolve sozinha. O escopo e o valor saem da reunião de raio-x: primeiro a gente olha a sua operação, depois diz o que faz sentido fazer junto.</p>
-    <div class="serv-list">
-      <a class="sv hi js-wa" data-msg="servicos" data-svc="Diagnóstico de Operação Comercial" data-evt="clique_servico" data-loc="home" href="#"><b>Diagnóstico de Operação Comercial</b><p>Funil, base e atendimento levantados; você recebe um relatório com as prioridades e um plano de 90 dias. Metade do valor volta como crédito na mensalidade.</p><span>→</span></a>
-      <a class="sv js-wa" data-msg="servicos" data-svc="Ativação da base" data-evt="clique_servico" data-loc="home" href="#"><b>Ativação da base</b><p>Campanha estruturada para quem parou, quem venceu e quem nunca fechou. Pela API oficial da Meta.</p><span>→</span></a>
-      <a class="sv js-wa" data-msg="servicos" data-svc="Campanha avulsa" data-evt="clique_servico" data-loc="home" href="#"><b>Campanha avulsa</b><p>Rematrícula, férias, volta às aulas: a gente escreve, segmenta e dispara com você.</p><span>→</span></a>
-      <a class="sv js-wa" data-msg="servicos" data-svc="IA exclusiva" data-evt="clique_servico" data-loc="home" href="#"><b>IA exclusiva</b><p>Uma IA treinada só na sua escola: tom, regras, turmas e exceções que só vocês têm.</p><span>→</span></a>
-      <a class="sv js-wa" data-msg="servicos" data-svc="Consultoria por hora" data-evt="clique_servico" data-loc="home" href="#"><b>Consultoria por hora</b><p>Ler os seus números, definir oferta de retenção, treinar a recepção de novo quando a equipe mudar.</p><span>→</span></a>
-    </div>
-    <div class="serv-cta rv">
-      <a class="btn btn-primary js-wa" data-msg="servicos" data-evt="clique_reuniao" data-loc="servicos" href="#">Agendar reunião de raio-x · 30 min</a>
-      <p class="cta-note">Meia hora por vídeo, sem compromisso: a gente lê os seus números, mostra o que dá para fazer junto e quanto custa. Prefere começar sozinho? <a href="/raio-x/" style="color:var(--mint)">Faça o raio-x grátis em 2 minutos</a>.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROFESSOR ============ -->
-<section class="prof on-water crest" style="--crest:var(--navy)" id="professor" data-say="Professor: eu cuido do WhatsApp, você cuida da turma.">
-  <div class="wrap">
-    <div class="box rv">
+    <div class="box prof-box rv">
       <div>
         <span class="label">Para o professor</span>
-        <h2 style="font-size:clamp(24px,3.4vw,36px)">A IA cuida do WhatsApp. <em>Você cuida da turma.</em></h2>
-        <p>A IA não dá aula, não avalia nível e não troca touca. Ela responde o que a recepção responderia, organiza quem precisa de retorno e libera a sua equipe para acolher e ensinar. Se você é professor e achou que faz sentido para a sua escola, centro aquático ou hidro, manda para quem decide.</p>
+        <h3 style="font-size:clamp(20px,2.6vw,26px);color:#fff">A IA não dá aula, não avalia nível e não troca touca.</h3>
+        <p>Ela responde o que a recepção responderia e libera a sua equipe para ensinar. Se você é professor e achou que faz sentido para a sua escola, centro aquático ou hidro, manda para quem decide.</p>
       </div>
       <div>
         <a class="btn btn-primary js-share" data-evt="clique_compartilhar" data-loc="professor" href="#">Mandar para o meu gestor</a>
-        <p class="cta-note" style="text-align:center;margin-top:10px">Abre o WhatsApp com o link pronto</p>
+        <p class="cta-note" style="text-align:center;margin-top:10px;color:var(--muted)">Abre o WhatsApp com o link pronto</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ COMO COMEÇAR ============ -->
+<section class="start crest" style="--crest:var(--surface-2)" id="comecar" data-say="Três passos. Nenhum deles precisa de mim para configurar.">
+  <div class="wrap">
+    <span class="label">Como começar</span>
+    <h2 class="rv">Preencha. Conecte. <em>Pronto.</em></h2>
+    <p class="lead rv">Você não escreve prompt, não configura fluxo, não faz curso. A IA já vem treinada em natação e na Metodologia Gustavo Borges; o que falta são os dados da sua escola.</p>
+    <div class="start-grid">
+      <div class="steps3 rv">
+        <div class="st"><b>1</b><div><h3>Preencha os dados da escola</h3><p>Nome, endereço, planos e valores, turmas e horários, regras de touca, nível e experimental. Cadastro guiado, campo a campo. Errou? Edita a qualquer hora.</p></div></div>
+        <div class="st"><b>2</b><div><h3>Conecte o WhatsApp e o EVO</h3><p>No fim do cadastro o sistema pede a conexão. O WhatsApp é o número que os seus alunos já conhecem; o EVO é um link de API que você copia lá dentro. Não usa EVO? Pula.</p></div></div>
+        <div class="st"><b>3</b><div><h3>As IAs começam a atender</h3><p>Atendimento e Vendas no ar na hora, com os créditos da IA já inclusos: nada para contratar à parte. As outras oito ligam quando o EVO conecta. Dúvida? IA de suporte 24 h no WhatsApp.</p></div></div>
+      </div>
+      <div class="mock rv" id="mock">
+        <div class="mock-h"><span>Experimente: preencha como se fosse a sua escola</span><i>ao vivo</i></div>
+        <div class="mock-f"><label for="mEscola">Nome da escola</label><input class="in" id="mEscola" value="Acqua Vida Natação" maxlength="40"></div>
+        <div class="mock-2"><div class="mock-f"><label for="mPlano">Plano 2x/semana</label><input class="in" id="mPlano" value="250" inputmode="numeric" maxlength="5"></div><div class="mock-f"><label for="mHora">Horário com vaga</label><input class="in" id="mHora" value="Ter/Qui 17h" maxlength="24"></div></div>
+        <div class="mock-f"><label for="mTouca">Regra de troca de touca</label><input class="in" id="mTouca" value="quando a professora valida os objetivos do nível" maxlength="80"></div>
+        <div class="mock-chat">
+          <div class="mc-h">Escolha a pergunta do pai. A IA responde com os seus dados.</div>
+          <div class="chips"><button type="button" class="chip on" data-q="medo">tem medo de água</button><button type="button" class="chip" data-q="touca">por que não trocou de touca?</button><button type="button" class="chip" data-q="cancel">quero cancelar</button></div>
+          <div class="mc in" id="mcIn"></div>
+          <div class="mc out" id="mcOut"></div>
+          <div class="mc sys" id="mcSys"></div>
+        </div>
+        <div class="mock-c"><div class="ok">✓ WhatsApp</div><div class="ok">✓ EVO</div></div>
+        <a class="mock-btn" data-evt="clique_cadastro" data-loc="mock" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis com os dados reais</a>
+      </div>
+    </div>
+    <p class="cta-note rv" style="margin-top:22px;color:var(--muted)">Cerca de 30 minutos do seu tempo, uma vez. Depois disso, quem fala com o pai às 22h é a IA.</p>
   </div>
 </section>
 
 <!-- ============ PREÇO · 10 m ============ -->
-<section class="preco crest" style="--crest:var(--water-3)" id="preco" data-say="Sem fidelidade. Se eu não entregar, você cancela.">
+<section class="preco crest" style="--crest:var(--navy)" id="preco" data-say="Sem fidelidade. Se eu não entregar, você cancela.">
   <div class="wrap">
-    <div class="offer-bar rv"><img src="/assets/img/ein-lockup.png" alt="EIN, Encontro Internacional de Natação" width="200" height="80"><span class="label" style="margin:0;color:var(--muted)">Lançamento oficial · 15–17 de outubro · Senac Santo Amaro, SP</span></div>
+    <div class="offer-bar rv"><img src="/assets/img/ein-lockup.png" alt="EIN, Encontro Internacional de Natação"><span class="label" style="margin:0;color:var(--muted)">Lançamento oficial · 15–17 de outubro · Senac Santo Amaro, SP</span></div>
     <h2 class="rv">Trave o preço agora. <em>Ele nunca mais sobe.</em></h2>
-    <p class="lead rv">As 20 primeiras escolas que entrarem até 31 de outubro não pagam implantação, têm 30 dias de garantia e preço travado enquanto forem clientes.</p>
+    <p class="lead rv">Já vem com o uso da IA incluído por 12 meses. Você não paga nada além da mensalidade para ela atender. As 20 primeiras escolas até 31 de outubro ainda travam o preço enquanto forem clientes e têm 30 dias de garantia.</p>
 
     <div class="price-grid">
       <div class="plan hi rv">
         <span class="rec">Recomendado para começar</span>
-        <h3>Escola</h3><div class="sub">Para escolas com 1 unidade · sem fidelidade, cancele quando quiser</div>
+        <h3>Escola</h3><div class="sub">Para escolas com 1 unidade · sem fidelidade · sem implantação</div>
         <div class="price"><b>R$ 597</b><span>/mês</span></div>
-        <div class="impl"><s>+ R$ 1.900 de implantação</s> <b>· grátis na condição de lançamento</b></div>
+        <div class="impl"><b style="color:#fff">7 dias grátis, sem cartão.</b> Depois, R$ 597/mês. <b>Uso da IA incluído por 12 meses.</b></div>
         <ul>
-          <li>Todas as 10 IAs do ciclo do aluno</li><li>2 números da escola: um para a conversa do dia a dia, outro verificado na API oficial da Meta para comunicação em escala</li><li>Comunicação em escala pela API oficial da Meta</li><li>Kanban de leads com a etapa visível</li><li>Etiquetas, filtros e origem de cada contato</li><li>Integração nativa com o EVO</li><li>No ar em 30 minutos</li><li>Treinamento em vídeo + IA de suporte</li>
+          <li>Cadastro guiado: preenche, conecta, pronto</li><li><b style="color:#fff">Créditos da IA inclusos por 12 meses</b> <small style="color:var(--muted)">(1.000 respostas/mês)</small></li><li>Todas as 10 IAs do ciclo do aluno</li><li>2 números da escola: um para a conversa do dia a dia, outro verificado na API oficial da Meta para comunicação em escala</li><li>Comunicação em escala pela API oficial da Meta</li><li>Kanban de leads com a etapa visível</li><li>Etiquetas, filtros e origem de cada contato</li><li>Integração nativa com o EVO</li><li>No ar em 30 minutos</li><li>IA de suporte 24 h + vídeos de cada tela</li>
         </ul>
-        <a class="btn btn-primary" data-evt="clique_plano" data-plano="escola" data-loc="preco" href="https://app.wasfit.com.br/login">Quero garantir a condição de lançamento</a>
-        <div class="fine">Você faz o cadastro da escola na plataforma. Dúvida antes de fechar? Chame no WhatsApp.</div>
+        <a class="btn btn-primary" data-evt="clique_plano" data-plano="escola" data-loc="preco" href="https://app.wasfit.com.br/cadastro?plano=escola">Começar 7 dias grátis</a>
+        <div class="fine">Leva 30 minutos. Se não gostar, cancela em um clique. Os dados da sua escola são seus.</div>
       </div>
 
       <div>
@@ -827,16 +757,16 @@ footer .badges img{height:28px;width:auto}
           <h3>Rede</h3><div class="sub">Para 2 ou mais unidades · tudo do Escola, em cada unidade, com painel unificado</div>
           <div class="price"><b id="redePrice">R$ 997</b><span>/mês</span></div>
           <div class="units"><button type="button" id="uMinus" aria-label="menos uma unidade">−</button><output id="uOut">2 unidades</output><button type="button" id="uPlus" aria-label="mais uma unidade">+</button></div>
-          <div class="impl">R$ 997 para 2 unidades, + R$ 400 por unidade adicional.</div><div class="impl"><s>+ R$ 2.900 de implantação, + R$ 900/un.</s> <b>· grátis na condição de lançamento</b></div>
-          <a class="btn btn-ghost js-wa" data-evt="clique_plano" data-plano="rede" data-loc="preco" data-msg="rede" href="#">Montar o meu plano Rede</a>
+          <div class="impl">R$ 997 para 2 unidades, + R$ 400 por unidade adicional.</div><div class="impl"><b>Sem implantação. Créditos da IA inclusos por 12 meses, por unidade.</b></div>
+          <a class="btn btn-ghost" data-evt="clique_plano" data-plano="rede" data-loc="preco" href="https://app.wasfit.com.br/cadastro?plano=rede">Começar 7 dias grátis · Rede</a>
         </div>
         <div class="vagas rv">
-          <div><b><span id="vagasN">20</span> de 20 vagas</b><br><small>Válido até 31/10/2026 ou até acabarem</small></div>
+          <div><b><span id="vagasN">20</span> de 20 vagas</b><br><small>Preço travado enquanto for cliente · 30 dias de garantia · até 31/10/2026</small></div>
           <div class="bar"><i id="vagasBar"></i></div>
         </div>
       </div>
     </div>
-    <p class="cta-note rv" style="margin-top:18px;color:var(--muted)">Já usa outra plataforma? A gente leva a sua base, etiquetas, histórico e número. Implantação com migração: R$ 1.000 a mais.</p>
+    
   </div>
 </section>
 
@@ -847,14 +777,16 @@ footer .badges img{height:28px;width:auto}
     <h2 class="rv">As dúvidas <em>que chegam primeiro</em></h2>
     <div style="margin-top:18px">
       <details><summary>Isso substitui a minha recepção?</summary><p>Não. A IA cuida do repetitivo e entrega o interessado qualificado. Quem acolhe, conduz e fecha continua sendo a sua equipe, com mais tempo para isso.</p></details>
-      <details><summary>A IA vai falar errado com o meu aluno?</summary><p>Pode acontecer: nenhuma IA acerta tudo logo de cara. É para isso que serve a primeira semana: a gente lê todas as conversas reais, vê onde ela saiu do esperado e ajusta. No fim dessa semana ela já responde no tom e no vocabulário da sua escola.</p></details>
-      <details><summary>Minha escola não usa EVO. Funciona?</summary><p>As duas IAs do primeiro dia, Atendimento e Vendas, funcionam sem EVO. As outras oito precisam dele, porque é o EVO que dá à IA o cadastro do aluno, a grade e a situação de cada um. Sem EVO, elas ficam prontas esperando o dia em que você conectar.</p></details>
+      <details><summary>Preciso saber criar prompt ou configurar IA?</summary><p>Não. Você não escreve uma linha. O cadastro é guiado: nome, endereço, planos e valores, turmas e horários, regras da sua escola. No fim, o próprio sistema pede para conectar o WhatsApp e o EVO. A IA já vem treinada em natação e na Metodologia Gustavo Borges; ela só precisa dos seus dados.</p></details>
+      <details><summary>E se eu preencher algum dado errado?</summary><p>Você entra e corrige. Todos os campos são editáveis a qualquer momento, e a IA passa a responder com o dado novo na hora. Dúvida no caminho: a IA de suporte responde 24 h no WhatsApp, e cada tela tem um vídeo curto na plataforma.</p></details>
+      <details><summary>Minha escola não usa EVO. Funciona?</summary><p>Funciona. Atendimento e Vendas rodam sem EVO. As outras oito precisam dele, porque é o EVO que dá à IA o cadastro do aluno, a grade e a situação de cada um. Quando você conectar (é um link de API que você copia dentro do EVO), elas ligam sozinhas.</p></details>
       <details><summary>Minha escola não usa a Metodologia Gustavo Borges. Serve?</summary><p>Serve. A IA nasceu dentro de escolas MGB, por isso já chega sabendo touca, nível, experimental e reposição. Se a sua escola usa outra metodologia, o vocabulário dela entra no ajuste da primeira semana: a gente lê as conversas reais e alinha nomes de níveis, turmas e regras. O que não muda é o que faz a diferença: responder na hora, qualificar e não deixar lead sem próximo passo.</p></details>
       <details><summary>Serve para centro aquático e hidroginástica?</summary><p>Sim. A IA foi treinada em escola de natação, mas o atendimento, a venda de experimental, a cobrança e a rematrícula funcionam do mesmo jeito para hidro e para turmas de adulto. No ajuste da primeira semana ela aprende o vocabulário da sua operação.</p></details>
       <details><summary>Por que dois números? Preciso trocar o meu?</summary><p>Não precisa trocar. Você mantém o número que os seus alunos já conhecem para a conversa do dia a dia. O segundo é um número verificado e protegido pela API oficial da Meta, usado só para comunicação em escala (campanhas, avisos, rematrícula), porque é o canal que a Meta garante e que não coloca em risco o número da recepção. Os dois aparecem no mesmo painel, para a mesma equipe.</p></details>
-      <details><summary>Quanto tempo até estar funcionando? E quanto do meu tempo?</summary><p>A IA começa a responder no mesmo dia da ativação, que leva cerca de 30 minutos. Nas quatro semanas seguintes a gente ajusta as conversas, monta o seu funil, conecta o EVO e treina a sua recepção. Total do seu tempo: cerca de 5 horas.</p></details>
-      <details><summary>O que é a condição de lançamento do EIN?</summary><p>Até 31 de outubro, as 20 primeiras escolas entram sem pagar implantação, com preço travado enquanto forem clientes e 30 dias de garantia. Depois disso, a implantação volta a ser cobrada e o preço passa a ser o de tabela.</p></details>
-      <details><summary>Posso cancelar quando quiser?</summary><p>Pode, no mês que quiser, sem multa. Não existe contrato de permanência.</p></details>
+      <details><summary>O que está incluído no uso da IA?</summary><p>1.000 respostas da IA por mês, por 12 meses, já dentro da mensalidade. Se chegar perto do fim, você recebe um aviso e recarrega na plataforma. Mensagens de campanha pela API oficial da Meta são cobradas pela Meta, à parte.</p></details>
+      <details><summary>Como funcionam os 7 dias grátis?</summary><p>Você cria a conta sem cartão, preenche os dados, conecta o WhatsApp e usa a IA de verdade por sete dias, com as suas famílias. No fim, se quiser continuar, coloca o pagamento. Se não quiser, a conta encerra sozinha; ninguém cobra e ninguém liga.</p></details>
+      <details><summary>Posso cancelar quando quiser?</summary><p>Pode, no mês que quiser, sem multa. Não existe contrato de permanência nem taxa de implantação.</p></details>
+      <details><summary>Já uso outra plataforma. Preciso começar do zero?</summary><p>Não. Você cadastra a escola, conecta o seu número e a IA começa. Se quiser trazer histórico, etiquetas ou base de outra ferramenta, a gente combina isso depois que você já estiver dentro.</p></details>
       <details><summary>Os dados da minha escola e dos alunos ficam seguros?</summary><p>Os dados são da sua escola e continuam sendo. A gente usa só para operar a ferramenta. Nada é vendido nem compartilhado com terceiros, o acesso fica restrito a quem opera a sua conta, e se um dia você sair, leva a sua base e o histórico com você.</p></details>
     </div>
   </div>
@@ -865,32 +797,33 @@ footer .badges img{height:28px;width:auto}
   <div class="wrap">
     <span class="label" style="text-align:center">Fundo da piscina</span>
     <h2 class="rv">Ainda com dúvida se serve <em>para a sua escola?</em></h2>
-    <p class="lead rv">Raio-x em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula está vazando. Se quiser aprofundar, a gente marca a reunião de raio-x: 30 minutos por vídeo.</p>
-    <a class="btn btn-primary rv" data-evt="clique_raiox" data-loc="final" href="/raio-x/">Fazer o raio-x grátis</a>
+    <p class="lead rv">Raio-x em 2 minutos: 6 perguntas de sim ou não e o resultado na hora, mostrando onde a matrícula está vazando.</p>
+    <div class="cta-row rv" style="justify-content:center"><a class="btn btn-primary" data-evt="clique_cadastro" data-loc="final" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a><a class="btn btn-ghost" data-evt="clique_raiox" data-loc="final" href="/raio-x/">Fazer o raio-x grátis</a></div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt="" width="88" height="65"> WasFit</a>
+      <a class="brand" href="/"><img src="/assets/img/logo-mark.png" alt=""> WasFit</a>
       <p style="margin-top:10px;max-width:340px">IA de WhatsApp para escolas de natação e centros aquáticos, criada dentro de uma.</p>
-      <div class="badges"><img src="/assets/img/ein-simbolo.png" alt="" width="72" height="72"><span>Lançamento no EIN 2026</span></div>
-      <div class="badges"><img src="/assets/img/mgb-credenciado.png" alt="" width="160" height="160"><span>Treinada na Metodologia Gustavo Borges</span></div>
+      <div class="badges"><img src="/assets/img/ein-simbolo.png" alt=""><span>Lançamento no EIN 2026</span></div>
+      <div class="badges"><img src="/assets/img/mgb-credenciado.png" alt=""><span>Treinada na Metodologia Gustavo Borges</span></div>
     </div>
-    <div><h4>Produto</h4><a href="#prova">Prova real</a><a href="#testar">Testar a IA</a><a href="/raio-x/">Raio-x da escola</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#servicos">O que fazemos com você</a><a href="#faq">Perguntas frequentes</a><a href="https://app.wasfit.com.br/login">Entrar na plataforma</a></div>
+    <div><h4>Produto</h4><a href="#prova">Prova real</a><a href="#comecar">Como começar</a><a href="#testar">Testar a IA</a><a href="/raio-x/">Raio-x da escola</a><a href="#ias">As IAs</a><a href="#preco">Preço</a><a href="#faq">Perguntas frequentes</a><a href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a><a href="https://app.wasfit.com.br/login">Entrar na plataforma</a></div>
+    <!-- contato@wasfit.com.br volta quando o domínio receber e-mail: hoje o MX é nulo ("0 .") e SPF "-all", então tudo que for mandado para lá volta. -->
     <div><h4>Contato</h4><a class="js-wa" data-evt="clique_whatsapp" data-loc="footer" data-msg="geral" href="#">WhatsApp · (27) 99893-2954</a><a href="mailto:adm.wasfit@gmail.com">adm.wasfit@gmail.com</a><a href="https://instagram.com/wasfit.ia" rel="noopener">Instagram</a><h4 style="margin-top:18px">Empresa</h4><a href="/privacidade/">Política de privacidade</a><a href="/termos/">Termos de uso</a></div>
   </div>
   <div class="copy">© 2026 WasFit · Serra/ES · wasfit.com.br</div>
 </footer>
 
 <div class="wavi-fx" id="waviFx">
-  <a class="js-wa" data-evt="clique_testar" data-loc="mascote" data-msg="testar" data-num="demo" href="#" aria-label="Testar a IA no WhatsApp"><img src="/assets/img/wavi.png" alt="" width="320" height="226"></a>
-  <div class="say" id="waviSay"><b>Wavi</b>Eu respondo o WhatsApp da sua escola. Quer me testar?</div>
+  <a class="js-wa" data-evt="clique_testar" data-loc="mascote" data-msg="testar" data-num="demo" href="#" aria-label="Testar a IA no WhatsApp"><picture><source srcset="/assets/img/wavi.webp" type="image/webp"><img src="/assets/img/wavi.png" alt="" decoding="async"></picture></a>
+  <div class="say" id="waviSay"><b>WasFit</b>Eu respondo o WhatsApp da sua escola. Quer me testar?</div>
 </div>
 <div class="sticky">
-  <a class="btn btn-primary js-wa" data-evt="clique_testar" data-loc="sticky" data-msg="testar" data-num="demo" href="#">Testar a IA</a>
-  <a class="btn btn-ghost" data-evt="viu_planos" data-loc="sticky" href="#preco">Ver preço</a>
+  <a class="btn btn-primary" data-evt="clique_cadastro" data-loc="sticky" href="https://app.wasfit.com.br/cadastro">7 dias grátis</a>
+  <a class="btn btn-ghost js-wa" data-evt="clique_testar" data-loc="sticky" data-msg="testar" data-num="demo" href="#">Testar a IA</a>
 </div>
 
 <!-- ============ TESTAR A IA · captura + webhook da plataforma ============
@@ -974,7 +907,6 @@ footer .badges img{height:28px;width:auto}
   var MSGS={
     testar:'Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?',
     raiox:'Oi! Fiz o raio-x no site da WasFit e quero agendar a reunião de raio-x de 30 min por vídeo.',
-    servicos:'Oi! Vim pelo site da WasFit e quero agendar a reunião de raio-x de 30 min por vídeo para falar sobre: {{s}}.',
     escola:'Oi! Quero garantir a condição de lançamento do EIN no plano Escola (R$ 597/mês).',
     rede:'Oi! Quero montar o plano Rede da WasFit. Minha rede tem {{u}} unidades.',
     geral:'Oi! Vim pelo site da WasFit e quero entender como funciona.'
@@ -985,11 +917,11 @@ footer .badges img{height:28px;width:auto}
   try{if(Object.keys(utm).length)sessionStorage.setItem('wf_utm',JSON.stringify(utm));else utm=JSON.parse(sessionStorage.getItem('wf_utm')||'{}')}catch(e){}
   var origem=utm.utm_source?' [origem: '+utm.utm_source+(utm.utm_campaign?'/'+utm.utm_campaign:'')+']':'';
   var units=2;
-  function waUrl(key,num,svc){var m=(MSGS[key]||MSGS.geral).replace('{{u}}',units).replace('{{s}}',svc||'os serviços');if(key!=='testar')m+=origem;return 'https://wa.me/'+(num==='demo'?WA_DEMO:WA_COMERCIAL)+'?text='+encodeURIComponent(m)}
-  function track(el){var d={event:el.getAttribute('data-evt')||'clique',local:el.getAttribute('data-loc')||''};if(el.getAttribute('data-plano'))d.plano=el.getAttribute('data-plano');if(el.getAttribute('data-svc'))d.servico=el.getAttribute('data-svc');for(var k in utm)d[k]=utm[k];window.dataLayer.push(d)}
+  function waUrl(key,num){var m=(MSGS[key]||MSGS.geral).replace('{{u}}',units);if(key!=='testar')m+=origem;return 'https://wa.me/'+(num==='demo'?WA_DEMO:WA_COMERCIAL)+'?text='+encodeURIComponent(m)}
+  function track(el){var d={event:el.getAttribute('data-evt')||'clique',local:el.getAttribute('data-loc')||''};if(el.getAttribute('data-plano'))d.plano=el.getAttribute('data-plano');for(var k in utm)d[k]=utm[k];window.dataLayer.push(d)}
   document.querySelectorAll('.js-wa').forEach(function(a){
     a.setAttribute('target','_blank');a.setAttribute('rel','noopener');
-    var set=function(){a.href=waUrl(a.getAttribute('data-msg'),a.getAttribute('data-num'),a.getAttribute('data-svc'))};set();
+    var set=function(){a.href=waUrl(a.getAttribute('data-msg'),a.getAttribute('data-num'))};set();
     a.addEventListener('click',function(){set();track(a)});
   });
   document.querySelectorAll('[data-evt]:not(.js-wa):not(.js-share)').forEach(function(a){a.addEventListener('click',function(){track(a)})});
@@ -1005,8 +937,8 @@ footer .badges img{height:28px;width:auto}
   render();
   /* vagas: /vagas.json {"restam":17} editável sem deploy */
   if(location.protocol!=='file:')fetch('/vagas.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){var n=Math.max(0,Math.min(20,parseInt(j.restam,10)));if(!isNaN(n)){document.getElementById('vagasN').textContent=n;document.getElementById('vagasBar').style.width=((20-n)/20*100)+'%'}}).catch(function(){});
-  /* reveal + régua */
-  var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.ruler a');var fx=document.getElementById('waviFx'),say=document.getElementById('waviSay');
+  /* reveal + mascote */
+  var secs=document.querySelectorAll('section[id]');var fx=document.getElementById('waviFx'),say=document.getElementById('waviSay');
   /* No mobile o balao so vive enquanto a faixa embaixo dele estiver livre (as ondas entre secoes).
      Assim que texto sobe por baixo, ele some na hora, em vez de esperar o timer. */
   var waviMob=window.matchMedia('(max-width:860px)');
@@ -1032,7 +964,7 @@ footer .badges img{height:28px;width:auto}
   function waviFala(t,ms){
     clearTimeout(say._h);clearTimeout(say._d);clearInterval(say._t);say.style.opacity=0;
     say._d=setTimeout(function(){
-      if(t)say.innerHTML='<b>Wavi</b>'+t;
+      if(t)say.innerHTML='<b>WasFit</b>'+t;
       var n=0;
       function tenta(){
         if(waviLivre()){clearInterval(say._t);say.style.opacity=1;say._h=setTimeout(function(){say.style.opacity=0},ms||5000);return}
@@ -1051,12 +983,50 @@ footer .badges img{height:28px;width:auto}
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-    var map={topo:'topo',problema:'problema',prova:'prova',historia:'prova',quem:'quem',ias:'quem',resolve:'quem',professor:'quem',preco:'preco',faq:'faq',raiox:'faq'};
-    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k=map[e.target.id];links.forEach(function(l){l.classList.toggle('act',l.getAttribute('data-sec')===k)});var t=e.target.getAttribute('data-say');if(t)waviFala(t)}})},{rootMargin:'-40% 0px -50% 0px'});
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target.getAttribute('data-say');if(t)waviFala(t)}})},{rootMargin:'-40% 0px -50% 0px'});
     secs.forEach(function(s){io2.observe(s)});
   }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
-  /* régua: marcador contínuo */
-  var rF=document.getElementById('rFill'),rD=document.getElementById('rDiver'),rIds=['topo','problema','prova','quem','preco','faq'];function rul(){if(!rF)return;var y=scrollY+innerHeight*.4,tops=rIds.map(function(id){var e=document.getElementById(id);return e.getBoundingClientRect().top+scrollY}),n=tops.length-1,p=0;if(y>=tops[n]){var end=document.documentElement.scrollHeight;p=1}else{for(var i=0;i<n;i++){if(y<tops[i+1]){p=(i+Math.max(0,(y-tops[i])/(tops[i+1]-tops[i])))/n;break}}}p=Math.max(0,Math.min(1,p));rF.style.height=(p*100)+'%';rD.style.top=(p*100)+'%'}window.addEventListener('scroll',rul,{passive:true});rul();
+  
+  /* mock interativo */
+  var mE=document.getElementById('mEscola'),mP=document.getElementById('mPlano'),mH=document.getElementById('mHora'),mT=document.getElementById('mTouca'),mO=document.getElementById('mcOut'),mI=document.getElementById('mcIn'),mS=document.getElementById('mcSys'),mq='medo';
+  var Q={
+    medo:{q:'boa noite! meu filho tem 4 anos e morre de medo de água. tem como?',
+      a:function(e,p,h,t){return 'Boa noite! Tem sim, e é bem comum nessa idade. Aqui na '+e+' ele começa na adaptação: turma pequena, professora dentro da água, sem pressa para colocar o rosto. A troca de touca só acontece '+t+'. Tenho vaga '+h+(p?', R$ '+p+'/mês':'')+'. Quer que eu reserve uma experimental para ele conhecer a piscina?'},
+      s:'22:55 · sem resposta → etiqueta Em Espera. Amanhã a recepção retoma.'},
+    touca:{q:'oi, minha filha está na mesma touca há 3 meses. por que ainda não trocou?',
+      a:function(e,p,h,t){return 'Oi! Boa pergunta. Aqui na '+e+' a troca acontece '+t+', não por tempo de turma. Vou verificar com a professora quais objetivos ainda faltam para ela e te retorno por aqui. Quer que eu já agende uma conversa de 10 minutos com a coordenação?'},
+      s:'Registrado: dúvida pedagógica → encaminhada à coordenação. Sem resposta perdida.'},
+    cancel:{q:'quero cancelar a matrícula do meu filho',
+      a:function(e,p,h,t){return 'Entendi, e obrigado por avisar por aqui. Antes de eu encaminhar, posso te perguntar o motivo? Se for horário, tenho vaga '+h+'. Se for outra coisa, a '+e+' tem opções de pausa e reposição. Me conta e eu já resolvo ou passo para a coordenação com tudo anotado.'},
+      s:'Etiqueta Retenção → a coordenação vê o pedido com o motivo antes de virar cancelamento.'}
+  };
+  function mock(){if(!mO)return;var e=(mE.value||'a nossa escola').trim(),p=parseInt(mP.value,10),h=(mH.value||'terça e quinta').trim(),t=(mT.value||'quando a professora valida os objetivos do nível').trim(),k=Q[mq];
+    mO.style.opacity=.4;setTimeout(function(){mI.textContent=k.q;mO.textContent=k.a(e,isNaN(p)?'':p.toLocaleString('pt-BR'),h,t);mS.textContent=k.s;mO.style.opacity=1},150)}
+  [mE,mP,mH,mT].forEach(function(i){if(i)i.addEventListener('input',mock)});
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on')});c.classList.add('on');mq=c.getAttribute('data-q');mock();window.dataLayer.push({event:'mock_pergunta',pergunta:mq})})});
+  mock();
+  document.querySelectorAll('.mock input').forEach(function(i){i.addEventListener('focus',function(){window.dataLayer.push({event:'mock_interacao',campo:i.id})},{once:true})});
+  /* ROI interativo */
+  var rT=document.getElementById('rTicket'),rM=document.getElementById('rMat');
+  function roi(){if(!rT)return;var t=Math.max(0,parseInt(rT.value,10)||0),m=Math.max(0,parseInt(rM.value,10)||0),a=t*12,y=a*12*m,net=y-7164,f=function(n){return 'R$ '+n.toLocaleString('pt-BR')};
+    document.getElementById('r1').textContent=f(a);document.getElementById('r1s').textContent=f(t)+' × 12 meses, em receita contratada';
+    document.getElementById('r2').textContent=f(y);document.getElementById('r2s').textContent=(12*m)+' matrículas × '+f(a);
+    var r3=document.getElementById('r3');r3.textContent=(net<0?'− ':'')+f(Math.abs(net));r3.parentNode.querySelector('small').textContent=net>=0?'de receita contratada acima do custo.':'ainda não cobre o custo com esses números.'}
+  [rT,rM].forEach(function(i){if(i)i.addEventListener('input',roi)});roi();
+
+  /* raio-x na home */
+  var RXQ=[['Você sabe de onde vêm os seus leads hoje?'],['Todos os contatos ficam registrados em um só lugar?'],['Alguém faz follow-up de quem pediu preço e sumiu?'],['Existe fluxo ativo de rematrícula e reposição?'],['O WhatsApp responde à noite e no fim de semana?'],['A escola usa o EVO?']],rxA={},rxBox=document.getElementById('rxQ');
+  if(rxBox){RXQ.forEach(function(q,i){var d=document.createElement('div');d.className='q';d.innerHTML='<p>'+q[0]+'</p><div class="sn" data-i="'+i+'"><button type="button" data-v="1">Sim</button><button type="button" data-v="0">Não</button></div>';rxBox.appendChild(d)});
+    rxBox.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;var box=b.parentNode,i=box.getAttribute('data-i');rxA[i]=+b.getAttribute('data-v');box.querySelectorAll('button').forEach(function(x){x.className=''});b.className=rxA[i]?'s':'n';rxShow()});}
+  function rxShow(){var done=Object.keys(rxA).length,tot=5,n=0;for(var i=0;i<5;i++)if(rxA[i])n++;var vaz=tot-n;
+    document.getElementById('rxN').textContent=(done>=5?n:'–')+'/5';document.getElementById('rxG').style.setProperty('--p',Math.round(n/tot*100));
+    if(done<6){document.getElementById('rxT').textContent='Faltam '+(6-done);document.getElementById('rxS').textContent='Responda todas para ver o resultado.';return}
+    var t,st;if(vaz>=4){t='Vazando por todo lado';st='Quase toda matrícula perdida aqui é evitável.'}else if(vaz>=2){t='Vazamento no meio do funil';st='Você atende bem quem chega e perde no que acontece depois.'}else if(vaz==1){t='Um furo, e é o que mais custa';st='Justamente o que a IA faz sozinha.'}else{t='Operação afinada';st='Aqui a IA amplifica: mais volume com a mesma equipe.'}
+    document.getElementById('rxT').textContent=t;document.getElementById('rxS').textContent=st+(vaz?' Cada furo pode valer ~R$ 36 mil/ano em receita contratada.':'');document.getElementById('rxCta').hidden=false;
+    window.dataLayer.push({event:'raiox_home',score:n,vazamentos:vaz,evo:rxA[5]?1:0})}
+  /* scroll depth */
+  var marks={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var pct=Math.round((scrollY+innerHeight)/document.documentElement.scrollHeight*100);for(var k in marks){if(!marks[k]&&pct>=k){marks[k]=1;window.dataLayer.push({event:'scroll_depth',pct:+k})}}},{passive:true});
+
   /* ===== TESTAR A IA: captura + webhook =====
      Sem UUID configurado, nada disso liga e os CTAs seguem no WhatsApp. */
   (function(){
@@ -1165,37 +1135,6 @@ footer .badges img{height:28px;width:auto}
     /* /raio-x/ manda para cá com ?testar=1 */
     if(p.get('testar'))setTimeout(function(){abrir('link_externo')},400);
   })();
-
-  /* carrossel das IAs com EVO: setas + bolinhas sobre a rolagem nativa.
-     Sem JS a lista continua rolando com o dedo — as setas é que somem. */
-  (function(){
-    var car=document.querySelector('[data-car]');if(!car)return;
-    var track=car.querySelector('[data-car-track]'),dots=car.querySelector('[data-car-dots]');
-    var prev=car.querySelector('[data-car-prev]'),next=car.querySelector('[data-car-next]');
-    var slides=[].slice.call(track.children);if(!slides.length)return;
-    var step=function(){return slides[0].offsetWidth+14};
-    slides.forEach(function(s,i){
-      var b=document.createElement('button');b.type='button';
-      b.setAttribute('aria-label','Ir para a IA '+(i+1)+' de '+slides.length);
-      b.addEventListener('click',function(){track.scrollTo({left:i*step(),behavior:'smooth'})});
-      dots.appendChild(b);
-    });
-    var btns=[].slice.call(dots.children);
-    function sync(){
-      var i=Math.round(track.scrollLeft/step());
-      btns.forEach(function(b,k){b.setAttribute('aria-current',k===i?'true':'false')});
-      var end=track.scrollWidth-track.clientWidth-2;
-      prev.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=end;
-    }
-    prev.addEventListener('click',function(){track.scrollBy({left:-step(),behavior:'smooth'})});
-    next.addEventListener('click',function(){track.scrollBy({left:step(),behavior:'smooth'})});
-    var t;track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sync,90)},{passive:true});
-    window.addEventListener('resize',sync,{passive:true});
-    sync();
-  })();
-
-  /* scroll depth */
-  var marks={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var pct=Math.round((scrollY+innerHeight)/document.documentElement.scrollHeight*100);for(var k in marks){if(!marks[k]&&pct>=k){marks[k]=1;window.dataLayer.push({event:'scroll_depth',pct:+k})}}},{passive:true});
 })();
 </script>
 </body>
