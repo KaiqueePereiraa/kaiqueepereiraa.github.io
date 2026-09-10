@@ -6,7 +6,7 @@
 <!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
      proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
      inline DESTA página: se editar qualquer um deles, recalcule. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-P3JZHozO+OT0WXvvuzoQfZhX4qItOIvnoahMNZZzwNE='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-kPVn/g/0Q0I59x+0fTLT7rJT3bJllleExAlL23BlgOA='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>WasFit · a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. Treinada na Metodologia Gustavo Borges. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -40,6 +40,7 @@
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 
 :root{
+  --crestmask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 18' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H720 V6 Q697 16 675 6 T630 6 T585 6 T540 6 T495 6 T450 6 T405 6 T360 6 T315 6 T270 6 T225 6 T180 6 T135 6 T90 6 T45 6 T0 6 Z'/%3E%3C/svg%3E");
   --navy:#0D1827;--navy-deep:#04121B;--surface:#0F1E30;--surface-2:#13283D;--abyss:#0A3A54;
   --water-1:#5FB0CC;--water-2:#2F7FA3;--water-3:#1A5A7C;
   --teal:#15EA9E;--lime:#9EEA4E;--mint:#6BFFCF;
@@ -84,6 +85,18 @@ section{padding:76px 0;position:relative}
 @media(max-width:860px){.bubbles{display:none}}
 
 /* ===== NAV (deck) ===== */
+/* ===== Régua de profundidade ===== */
+.ruler{position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:40;display:none;height:420px;width:150px}
+@media(min-width:1320px){.ruler{display:block}}
+.ruler .track{position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(255,255,255,.22)}
+.ruler .ticks{position:absolute;left:0;top:0;bottom:0;width:10px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.35) 0 1px,transparent 1px 21px)}
+.ruler .fill{position:absolute;left:0;top:0;width:2px;height:0;background:linear-gradient(180deg,var(--mint),var(--teal));box-shadow:0 0 10px rgba(21,234,158,.6);transition:height .25s ease-out}
+.ruler .diver{position:absolute;left:-5px;top:0;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(21,234,158,.18),0 0 14px var(--teal);transform:translateY(-50%);transition:top .25s ease-out}
+.ruler a{position:absolute;left:18px;transform:translateY(-50%);display:flex;align-items:baseline;gap:8px;text-decoration:none;white-space:nowrap}
+.ruler a::before{content:"";position:absolute;left:-18px;top:50%;width:14px;height:1.5px;background:rgba(255,255,255,.6)}
+.ruler a b{font-family:var(--display);font-size:14px;color:rgba(255,255,255,.7);font-weight:700;letter-spacing:0;transition:color .2s}
+.ruler a span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
+.ruler a.act b{color:var(--teal)}.ruler a.act span{color:#fff}
 .nav{position:sticky;top:0;z-index:50;background:rgba(4,18,27,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav .wrap{display:flex;align-items:center;gap:22px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:20px;color:#fff}
@@ -93,8 +106,15 @@ section{padding:76px 0;position:relative}
 .nav-links a:hover{color:#fff}
 .nav .btn{padding:11px 16px;font-size:14px}
 .nav .login{font-size:13px;color:var(--muted-dark);text-decoration:none}
-@media(max-width:860px){.nav-links,.nav .login{display:none}.nav .btn{margin-left:auto}}
-.deckline{height:16px;background:var(--wave) center/100% 16px no-repeat,var(--navy-deep);position:relative;z-index:2}
+/* a onda é a própria borda de baixo do cabeçalho: como o header é sticky, ela
+   desce junto com a rolagem em vez de ficar para trás. O recorte deixa passar
+   o que estiver atrás, então funciona sobre qualquer seção. */
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;pointer-events:none;background:rgba(4,18,27,.94);
+  -webkit-mask:var(--crestmask) 0 0/720px 14px repeat-x;mask:var(--crestmask) 0 0/720px 14px repeat-x;
+  animation:deckdrift 14s linear infinite}
+@keyframes deckdrift{to{-webkit-mask-position:720px 0;mask-position:720px 0}}
+@media(prefers-reduced-motion:reduce){.nav::after{animation:none}}
+@media(max-width:860px){.nav-links{display:none}.nav .btn{margin-left:auto}}
 
 /* ===== HERO (superfície) ===== */
 .hero{background:linear-gradient(180deg,var(--water-1) 0%,var(--water-2) 100%);padding:52px 0 44px;overflow:hidden}
@@ -108,8 +128,8 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
 .cta-note{font-size:14px;color:#DCEFF5}
 .stats{display:flex;flex-wrap:wrap;gap:0 24px;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#EAF6FA;margin-top:22px}
-.stats span{position:relative;padding:6px 0}
-.stats span+span::before{content:"·";position:absolute;left:-15px;color:var(--teal)}
+.stats span{position:relative;padding:6px 0 6px 13px}
+.stats span::before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--teal)}
 .event{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(4,18,27,.4);padding:8px 14px 8px 8px;border-radius:999px}
 .event img{height:26px;width:auto;border-radius:6px}
 .dive{display:flex;flex-direction:column;align-items:center;gap:6px;margin:34px auto 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.85;width:max-content;text-decoration:none}
@@ -144,7 +164,9 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .card b{display:block;font-size:19px;margin-bottom:6px;color:#fff}
 .card p{color:#DCEFF5}
 .callout{margin-top:26px;background:var(--grad);color:var(--grad-ink);border-radius:var(--radius);padding:22px 26px;font-size:18px;font-weight:600}
-.callout strong{font-family:var(--display);text-transform:uppercase;font-size:22px;margin-right:10px}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:6px 26px;align-items:center}
+.callout strong{font-family:var(--display);text-transform:uppercase;font-size:22px;line-height:1.05}
+@media(max-width:700px){.callout{grid-template-columns:1fr}}
 
 /* ===== RAIO-X na home ===== */
 .rx{margin-top:36px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:start;background:var(--surface);border:1.5px solid rgba(21,234,158,.4);border-radius:var(--radius-lg);padding:28px;box-shadow:0 0 0 6px rgba(21,234,158,.06)}
@@ -475,6 +497,24 @@ footer .badges img{height:28px;width:auto}
 .tm-step>.btn{width:100%;margin-top:18px}
 body.tm-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.tm-box{animation:none}.tm-spin{animation-duration:2s}}
+
+/* organizacao dos textos (10/09): espaco antes dos planos, passos alinhados ao topo, quebras no celular */
+#preco .price-grid{margin-top:44px}
+#comecar .start-grid{align-items:start}
+.mock-h i{white-space:nowrap}
+@media(max-width:520px){#raiox-home .label{font-size:11.5px;letter-spacing:.08em}}
+@media(max-width:720px){.prints{scroll-padding-inline:20px}}
+@media(max-width:360px){.nav .login{display:none}}
+
+/* o "risco" entre o topo e as ondas: a sombra do celular (30px + 80px de desfoque) passava do fim do topo e
+   escurecia o fundo logo acima da onda, que e pintada no azul exato do fim do degrade. Espaco para a sombra
+   sumir antes da onda; no celular, onde o aparelho ocupa a largura toda, a sombra tambem fica mais curta. */
+.hero{padding-bottom:72px}
+@media(max-width:900px){.hero{padding-bottom:76px}.phone{box-shadow:0 16px 40px rgba(4,18,27,.5),0 0 0 1px rgba(255,255,255,.12)}}
+
+/* regua: o texto das secoes comeca em (largura-1120)/2+20. Entre 1320 e 1419 px (inclui o notebook de 1366)
+   os nomes "metodologia", "o problema"... invadiam o texto: ali a regua mostra so os numeros. */
+@media(max-width:1419px){.ruler a span{display:none}}
 </style>
 <!-- voltaram do site anterior: preview no WhatsApp/Twitter, ícone do iPhone, cor da barra e referrer -->
 <link rel="apple-touch-icon" href="/assets/img/icon-512.png">
@@ -502,7 +542,15 @@ body.tm-open{overflow:hidden}
     <a class="login" href="https://app.wasfit.com.br/login">Entrar</a>
   </div>
 </header>
-<div class="deckline" aria-hidden="true"></div>
+<nav class="ruler" aria-label="Profundidade">
+  <div class="track"></div><div class="ticks"></div><div class="fill" id="rFill"></div><div class="diver" id="rDiver"></div>
+  <a href="#topo" data-sec="topo" style="top:0%"><b>0 m</b><span>superfície</span></a>
+  <a href="#problema" data-sec="problema" style="top:20%"><b>2,5 m</b><span>o problema</span></a>
+  <a href="#prova" data-sec="prova" style="top:40%"><b>5 m</b><span>prova real</span></a>
+  <a href="#quem" data-sec="quem" style="top:60%"><b>7,5 m</b><span>metodologia</span></a>
+  <a href="#preco" data-sec="preco" style="top:80%"><b>10 m</b><span>preço</span></a>
+  <a href="#faq" data-sec="faq" style="top:100%"><b>12 m</b><span>perguntas</span></a>
+</nav>
 
 <!-- ============ HERO · 0 m ============ -->
 <section class="hero on-water" id="topo" data-say="Preencha os dados, conecte o WhatsApp e eu começo a atender.">
@@ -515,8 +563,8 @@ body.tm-open{overflow:hidden}
         <a class="btn btn-primary" data-evt="clique_cadastro" data-loc="hero" href="https://app.wasfit.com.br/cadastro">Começar 7 dias grátis</a>
         <a class="btn btn-ghost js-wa" data-evt="clique_testar" data-loc="hero" data-msg="testar" data-num="demo" href="#">Testar a IA agora</a>
       </div>
-      <p class="cta-note"><b style="color:#fff">7 dias grátis, sem cartão. Depois, R$ 597/mês, sem fidelidade, com o uso da IA já incluído.</b> Leva 30 minutos para colocar no ar. Se não gostar, cancela em um clique.</p>
-      <div class="stats"><span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span><span>7 dias grátis</span></div>
+      <p class="cta-note"><b style="color:#fff">7 dias grátis, sem cartão.</b> Depois, R$ 597/mês, sem fidelidade, com o uso da IA já incluído. Leva 30 minutos para colocar no ar. Se não gostar, cancela em um clique.</p>
+      <div class="stats"><span>4 unidades próprias</span><span>11 anos de operação</span><span>No ar em 30 min</span></div>
       <div class="event"><img src="/assets/img/ein-simbolo.png" alt=""> Lançamento no EIN 2026 · 15–17 de outubro · São Paulo</div>
     </div>
 
@@ -541,13 +589,13 @@ body.tm-open{overflow:hidden}
     <div class="grid3">
       <div class="card rv"><div class="num"><b>01</b>sábado, 21h</div><b>A mensagem fica esperando até segunda.</b><p>Quando alguém responde, o pai já falou com outra escola.</p></div>
       <div class="card rv"><div class="num"><b>02</b>terça, 10h</div><b>Alguém pergunta o preço e some no meio da conversa.</b><p>E ninguém percebe que sumiu.</p></div>
-      <div class="card rv"><div class="num"><b>03</b>dia 30 do mês</div><b>No fim do mês, você não sabe</b><p>quantas pessoas procuraram a escola e não fecharam.</p></div>
+      <div class="card rv"><div class="num"><b>03</b>dia 30 do mês</div><b>No fim do mês, ninguém sabe quantos escaparam.</b><p>Quantas pessoas procuraram a escola e não fecharam? Sem registro, esse número não existe.</p></div>
     </div>
-    <div class="callout rv"><strong>Dinheiro ficando na mesa.</strong> Nenhum dos três é problema de esforço da sua equipe. É problema de não ter quem esteja acordado às onze da noite e quem registre tudo.</div>
+    <div class="callout rv"><strong>Dinheiro ficando<br>na mesa.</strong> Nenhum dos três é problema de esforço da sua equipe. É problema de não ter quem esteja acordado às onze da noite e quem registre tudo.</div>
 
     <div class="rx rv" id="raiox-home">
       <div class="rx-l">
-        <span class="label">Raio-x da sua escola · 2 minutos</span>
+        <span class="label">Raio-x da sua escola · 2&nbsp;minutos</span>
         <h3>Onde a matrícula da sua escola está vazando?</h3>
         <p>Seis perguntas de sim ou não. O resultado aparece aqui, na hora.</p>
         <div class="rx-res" id="rxRes"><div class="gauge" id="rxG" style="--p:0"><b id="rxN">–</b></div><div><b id="rxT">Responda as seis</b><span id="rxS">O resultado aparece aqui.</span></div></div>
@@ -630,7 +678,6 @@ body.tm-open{overflow:hidden}
         </div>
         <p class="kan-note">A IA atende, a etiqueta organiza, a recepção abre o Kanban e sabe quem chamar. Sem planilha, sem depender da memória de alguém.</p>
       </div>
-    </div>
     </div>
 
     <div class="roi rv">
@@ -854,7 +901,7 @@ body.tm-open{overflow:hidden}
   <div class="say" id="waviSay"><b>WasFit</b>Eu respondo o WhatsApp da sua escola. Quer me testar?</div>
 </div>
 <div class="sticky">
-  <a class="btn btn-primary" data-evt="clique_cadastro" data-loc="sticky" href="https://app.wasfit.com.br/cadastro">7 dias grátis</a>
+  <a class="btn btn-primary js-wa" data-evt="clique_reuniao" data-loc="sticky" data-msg="reuniao" href="#">Agendar raio-x</a>
   <a class="btn btn-ghost js-wa" data-evt="clique_testar" data-loc="sticky" data-msg="testar" data-num="demo" href="#">Testar a IA</a>
 </div>
 
@@ -939,6 +986,7 @@ body.tm-open{overflow:hidden}
   var MSGS={
     testar:'Oi! Vim pelo site da WasFit e quero conhecer a escola. Minha filha tem 5 anos e nunca fez natação. Como funciona?',
     raiox:'Oi! Fiz o raio-x no site da WasFit e quero agendar a reunião de raio-x de 30 min por vídeo.',
+    reuniao:'Oi! Vim pelo site da WasFit e quero agendar a reunião de raio-x de 30 min por vídeo.',
     escola:'Oi! Quero garantir a condição de lançamento do EIN no plano Escola (R$ 597/mês).',
     rede:'Oi! Quero montar o plano Rede da WasFit. Minha rede tem {{u}} unidades.',
     geral:'Oi! Vim pelo site da WasFit e quero entender como funciona.'
@@ -970,7 +1018,7 @@ body.tm-open{overflow:hidden}
   /* vagas: /vagas.json {"restam":17} editável sem deploy */
   if(location.protocol!=='file:')fetch('/vagas.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){var n=Math.max(0,Math.min(20,parseInt(j.restam,10)));if(!isNaN(n)){document.getElementById('vagasN').textContent=n;document.getElementById('vagasBar').style.width=((20-n)/20*100)+'%'}}).catch(function(){});
   /* reveal + mascote */
-  var secs=document.querySelectorAll('section[id]');var fx=document.getElementById('waviFx'),say=document.getElementById('waviSay');
+  var secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.ruler a');var fx=document.getElementById('waviFx'),say=document.getElementById('waviSay');
   /* No mobile o balao so vive enquanto a faixa embaixo dele estiver livre (as ondas entre secoes).
      Assim que texto sobe por baixo, ele some na hora, em vez de esperar o timer. */
   var waviMob=window.matchMedia('(max-width:860px)');
@@ -982,7 +1030,7 @@ body.tm-open{overflow:hidden}
       for(var x=r.left+7;x<r.right-5;x+=24){
         var el=document.elementFromPoint(x,y);
         if(!el||el.closest('.wavi-fx'))continue;
-        if(el.closest('img,picture,video,canvas,svg,iframe'))return false;/* print de conversa tambem e leitura */
+        if(el.closest('img,picture,video,canvas,svg,iframe,.phone,.print,.mock'))return false;/* print de conversa tambem e leitura */
         var c=el.childNodes;
         for(var i=0;i<c.length;i++){
           if(c[i].nodeType!==3||!c[i].nodeValue.trim())continue;
@@ -1015,9 +1063,13 @@ body.tm-open{overflow:hidden}
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
     document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target.getAttribute('data-say');if(t)waviFala(t)}})},{rootMargin:'-40% 0px -50% 0px'});
+    /* cada secao acende a marca da regua que fica acima dela */
+    var map={topo:'topo',problema:'problema',prova:'prova',historia:'prova',quem:'quem',ias:'quem',resolve:'quem',comecar:'quem',preco:'preco',faq:'faq',raiox:'faq'};
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k=map[e.target.id];links.forEach(function(l){l.classList.toggle('act',l.getAttribute('data-sec')===k)});var t=e.target.getAttribute('data-say');if(t)waviFala(t)}})},{rootMargin:'-40% 0px -50% 0px'});
     secs.forEach(function(s){io2.observe(s)});
   }else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  /* régua: marcador contínuo */
+  var rF=document.getElementById('rFill'),rD=document.getElementById('rDiver'),rIds=['topo','problema','prova','quem','preco','faq'];function rul(){if(!rF)return;var y=scrollY+innerHeight*.4,tops=rIds.map(function(id){var e=document.getElementById(id);return e.getBoundingClientRect().top+scrollY}),n=tops.length-1,p=0;if(y>=tops[n]){var end=document.documentElement.scrollHeight;p=1}else{for(var i=0;i<n;i++){if(y<tops[i+1]){p=(i+Math.max(0,(y-tops[i])/(tops[i+1]-tops[i])))/n;break}}}p=Math.max(0,Math.min(1,p));rF.style.height=(p*100)+'%';rD.style.top=(p*100)+'%'}window.addEventListener('scroll',rul,{passive:true});rul();
   
   /* mock interativo */
   var mE=document.getElementById('mEscola'),mP=document.getElementById('mPlano'),mH=document.getElementById('mHora'),mT=document.getElementById('mTouca'),mO=document.getElementById('mcOut'),mI=document.getElementById('mcIn'),mS=document.getElementById('mcSys'),mq='medo';
