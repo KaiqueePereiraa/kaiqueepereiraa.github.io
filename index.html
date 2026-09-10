@@ -6,7 +6,7 @@
 <!-- CSP também vai por cabeçalho (.htaccess/_headers/netlify.toml). Esta <meta> é a única
      proteção no GitHub Pages, que não lê aqueles arquivos. Os hashes são dos <script>
      inline DESTA página: se editar qualquer um deles, recalcule. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-RZ5mpuz8Z139E9+Kpx2GSKUra/MXFRzdNfOcnc3tiPU='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-djPdT5J1kuWFwawDhtbzz0YHt/63i3CUBG3CyUjLa4c=' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-P3JZHozO+OT0WXvvuzoQfZhX4qItOIvnoahMNZZzwNE='; connect-src 'self' https://script.google.com https://v1.api.wasfit.com.br; media-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
 <title>WasFit · a IA de WhatsApp que fala a língua da sua escola de natação</title>
 <meta name="description" content="IA de WhatsApp criada dentro de uma escola de natação: touca, nível, experimental, reposição, rematrícula. Treinada na Metodologia Gustavo Borges. No ar em 30 minutos. Integração nativa com o EVO. API oficial da Meta.">
 <link rel="canonical" href="https://wasfit.com.br/">
@@ -309,6 +309,26 @@ h1{font-size:clamp(36px,5.6vw,62px);margin-bottom:18px;color:#fff;text-shadow:0 
 .ias{background:var(--navy)}
 .ia-list{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;border-top:1px solid rgba(255,255,255,.1)}
 @media(max-width:860px){.ia-list{grid-template-columns:1fr}}
+/* as 8 IAs que dependem do EVO voltam para o carrossel (pedido de 10/09) */
+.ia-group{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-top:30px;margin-bottom:14px}
+.ia-group-note{font-size:15px;color:var(--muted);margin:-8px 0 16px}
+.ia-car{position:relative;display:grid;grid-template-columns:1fr;padding:0 0 8px}
+.ia-car-track{list-style:none;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 2px 14px;margin:0;scrollbar-width:none}
+.ia-car-track::-webkit-scrollbar{display:none}
+.ia-mini{scroll-snap-align:start;flex:0 0 clamp(230px,26vw,268px);background:var(--surface);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:18px 20px}
+.ia-mini .n{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.ia-mini h3{font-size:17px;color:#fff;margin:8px 0 6px;line-height:1.1}
+.ia-mini p{font-size:14.5px;color:var(--muted);line-height:1.45}
+/* setas e bolinhas numa linha abaixo do trilho: não cobrem o texto dos cards
+   em largura nenhuma, e continuam à mão no celular */
+.ia-car-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:6px}
+.ia-car-arrow{width:38px;height:38px;flex:none;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px;transition:opacity .2s,border-color .2s,background .2s}
+.ia-car-arrow:hover:not([disabled]){border-color:var(--teal);background:rgba(21,234,158,.12)}
+.ia-car-arrow[disabled]{opacity:.28;cursor:default}
+.ia-car-dots{display:flex;gap:7px;justify-content:center}
+.ia-car-dots button{width:7px;height:7px;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer}
+.ia-car-dots button[aria-current="true"]{background:var(--teal);width:20px;border-radius:999px}
+@media(prefers-reduced-motion:reduce){.ia-car-track{scroll-behavior:auto}}
 .ia{display:grid;grid-template-columns:36px 1fr auto;gap:4px 12px;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}
 .ia .n{grid-row:1;grid-column:1}.ia b{grid-row:1;grid-column:2}.ia em{grid-row:1;grid-column:3}.ia p{grid-column:2/4;grid-row:2}
 .ia .n{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.12em}
@@ -663,14 +683,25 @@ body.tm-open{overflow:hidden}
     <div class="ia-list">
       <div class="ia on"><span class="n">01</span><b>Atendimento</b><p>Responde qualquer pessoa, a qualquer hora, no vocabulário da sua escola. <i>"A turma do nível 2 tem vaga às 17h?"</i></p><em>dia 1</em></div>
       <div class="ia on"><span class="n">02</span><b>Vendas</b><p>Qualifica, apresenta os planos e agenda a experimental no horário que tem vaga. <i>"Quinta às 18h, posso reservar?"</i></p><em>dia 1</em></div>
-      <div class="ia"><span class="n">03</span><b>Cobrança</b><p>Cobra quem está em atraso, com o tom certo, insistindo o quanto for preciso.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">04</span><b>Cancelamento</b><p>Avisa o cliente da pendência e dos próximos passos quando o contrato cai.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">05</span><b>Vencimento</b><p>Contrato encerrou? Já chama para renovar, antes do silêncio virar perda.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">06</span><b>Oportunidade</b><p>Entrou no EVO, o contato já começa. Sem esperar alguém puxar.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">07</span><b>Rematrícula</b><p>Boas-vindas para quem fechou ou rematriculou.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">08</span><b>Sem presença</b><p>Percebe quem sumiu por 7 dias e chama antes de virar desistência.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">09</span><b>Aniversário ativo</b><p>Parabeniza o aluno na data, sem ninguém precisar lembrar.</p><em>com EVO</em></div>
-      <div class="ia"><span class="n">10</span><b>Aniversário inativo</b><p>Lembra do aluno que saiu, mantendo a porta aberta.</p><em>com EVO</em></div>
+    </div>
+    <p class="ia-group rv" style="margin-top:34px">Depois de conectar o seu EVO</p>
+    <p class="ia-group-note rv">Estas 8 IAs entram em ação assim que você conecta o EVO.</p>
+    <div class="ia-car rv" data-car>
+      <ul class="ia-car-track" data-car-track>
+        <li class="ia-mini"><span class="n">03</span><h3>Cobrança</h3><p>Cobra quem está em atraso, com o tom certo, insistindo o quanto for preciso.</p></li>
+        <li class="ia-mini"><span class="n">04</span><h3>Cancelamento</h3><p>Avisa o cliente da pendência e dos próximos passos quando o contrato cai.</p></li>
+        <li class="ia-mini"><span class="n">05</span><h3>Vencimento</h3><p>Contrato encerrou? Já chama para renovar, antes do silêncio virar perda.</p></li>
+        <li class="ia-mini"><span class="n">06</span><h3>Oportunidade</h3><p>Entrou no EVO, o contato já começa. Sem esperar alguém puxar.</p></li>
+        <li class="ia-mini"><span class="n">07</span><h3>Rematrícula</h3><p>Boas-vindas para quem fechou ou rematriculou.</p></li>
+        <li class="ia-mini"><span class="n">08</span><h3>Sem presença</h3><p>Percebe quem sumiu por 7 dias e chama antes de virar desistência.</p></li>
+        <li class="ia-mini"><span class="n">09</span><h3>Aniversário ativo</h3><p>Parabeniza o aluno na data, sem ninguém precisar lembrar.</p></li>
+        <li class="ia-mini"><span class="n">10</span><h3>Aniversário inativo</h3><p>Lembra do aluno que saiu, mantendo a porta aberta.</p></li>
+      </ul>
+      <div class="ia-car-nav">
+        <button class="ia-car-arrow" type="button" data-car-prev aria-label="Ver a IA anterior">&lsaquo;</button>
+        <div class="ia-car-dots" data-car-dots></div>
+        <button class="ia-car-arrow" type="button" data-car-next aria-label="Ver a próxima IA">&rsaquo;</button>
+      </div>
     </div>
     <p class="cta-note rv" style="margin-top:14px;color:var(--muted)">Não usa EVO? As duas do primeiro dia já cobrem resposta fora do horário, follow-up e registro. As outras oito esperam a conexão.</p>
   </div>
@@ -1025,6 +1056,34 @@ body.tm-open{overflow:hidden}
     var t,st;if(vaz>=4){t='Vazando por todo lado';st='Quase toda matrícula perdida aqui é evitável.'}else if(vaz>=2){t='Vazamento no meio do funil';st='Você atende bem quem chega e perde no que acontece depois.'}else if(vaz==1){t='Um furo, e é o que mais custa';st='Justamente o que a IA faz sozinha.'}else{t='Operação afinada';st='Aqui a IA amplifica: mais volume com a mesma equipe.'}
     document.getElementById('rxT').textContent=t;document.getElementById('rxS').textContent=st+(vaz?' Cada furo pode valer ~R$ 36 mil/ano em receita contratada.':'');document.getElementById('rxCta').hidden=false;var furos=[];for(var j=0;j<5;j++)if(!rxA[j])furos.push(RXQ[j][1]);var rxMsg='Oi! Fiz o raio-x no site da WasFit: '+n+'/5, '+t.toLowerCase()+'.\n'+(furos.length?'Onde vazou: '+furos.join('; ')+'.':'Nenhum furo nas cinco perguntas.')+'\nUsa EVO: '+(rxA[5]?'sim':'não')+'.\nQuero agendar a chamada de vídeo de 30 min para falar sobre o resultado.'+origem;document.getElementById('rxWa').href='https://wa.me/'+WA_COMERCIAL+'?text='+encodeURIComponent(rxMsg);
     window.dataLayer.push({event:'raiox_home',score:n,vazamentos:vaz,evo:rxA[5]?1:0})}
+  /* carrossel das IAs com EVO: setas + bolinhas sobre a rolagem nativa.
+     Sem JS a lista continua rolando com o dedo — as setas é que somem. */
+  (function(){
+    var car=document.querySelector('[data-car]');if(!car)return;
+    var track=car.querySelector('[data-car-track]'),dots=car.querySelector('[data-car-dots]');
+    var prev=car.querySelector('[data-car-prev]'),next=car.querySelector('[data-car-next]');
+    var slides=[].slice.call(track.children);if(!slides.length)return;
+    var step=function(){return slides[0].offsetWidth+14};
+    slides.forEach(function(s,i){
+      var b=document.createElement('button');b.type='button';
+      b.setAttribute('aria-label','Ir para a IA '+(i+1)+' de '+slides.length);
+      b.addEventListener('click',function(){track.scrollTo({left:i*step(),behavior:'smooth'})});
+      dots.appendChild(b);
+    });
+    var btns=[].slice.call(dots.children);
+    function sync(){
+      var i=Math.round(track.scrollLeft/step());
+      btns.forEach(function(b,k){b.setAttribute('aria-current',k===i?'true':'false')});
+      var end=track.scrollWidth-track.clientWidth-2;
+      prev.disabled=track.scrollLeft<=2;next.disabled=track.scrollLeft>=end;
+    }
+    prev.addEventListener('click',function(){track.scrollBy({left:-step(),behavior:'smooth'})});
+    next.addEventListener('click',function(){track.scrollBy({left:step(),behavior:'smooth'})});
+    var t;track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sync,90)},{passive:true});
+    window.addEventListener('resize',sync,{passive:true});
+    sync();
+  })();
+
   /* scroll depth */
   var marks={25:0,50:0,75:0,100:0};window.addEventListener('scroll',function(){var pct=Math.round((scrollY+innerHeight)/document.documentElement.scrollHeight*100);for(var k in marks){if(!marks[k]&&pct>=k){marks[k]=1;window.dataLayer.push({event:'scroll_depth',pct:+k})}}},{passive:true});
 
