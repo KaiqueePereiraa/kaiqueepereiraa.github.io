@@ -55,6 +55,8 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:var(--text);color:var(--ink);background:var(--navy-deep);line-height:1.55;font-size:17px;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
+/* hidden precisa vencer display:grid/flex das classes (.tm, .tm-spin, .rx-cta...): sem isso o modal nao fecha */
+[hidden]{display:none!important}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px;position:relative;z-index:1}
 h1,h2,h3,.display{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:1.02;letter-spacing:-.005em;text-wrap:balance}
